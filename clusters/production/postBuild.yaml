@@ -13,4 +13,4 @@ spec:
       NGINX_VERSION: 4.8.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
     substituteFrom:
     - kind: ConfigMap
-      name: tumogroup-flux-config
+      name: tumo-flux-config
