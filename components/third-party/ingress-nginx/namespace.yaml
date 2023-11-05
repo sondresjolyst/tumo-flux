@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: ingress-nginx
   labels:
-    purpose: tumogroup-base-ns
+    purpose: tumo-base-ns
