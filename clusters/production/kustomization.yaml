@@ -9,4 +9,4 @@ patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml
   - path: ./overlay/third-party/metallb/helmRelease.yaml
-  - path: ./overlay/third-party/ingress-nginx/patches.yaml
+  - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
