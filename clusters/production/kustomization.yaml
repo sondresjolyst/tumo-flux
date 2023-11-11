@@ -5,7 +5,6 @@ resources:
 - ../../components/third-party/metrics-server
 - ../../components/third-party/metallb
 - ../../components/third-party/ingress-nginx
-- ../../components/third-party/ingress-nginx
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml
