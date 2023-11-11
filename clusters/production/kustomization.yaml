@@ -1,11 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- flux-system
-- ../../components/third-party/cert-manager
-- ../../components/third-party/ingress-nginx
-- ../../components/third-party/metallb
-- ../../components/third-party/metrics-server
+  - flux-system
+  - ../../components/third-party/cert-manager
+  - ../../components/third-party/ingress-nginx
+  - ../../components/third-party/metallb
+  - ../../components/third-party/metrics-server
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/cert-manager/helmRelease.yaml

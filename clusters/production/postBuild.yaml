@@ -15,5 +15,5 @@ spec:
       METRICS_VERSION: 3.11.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       CERT_MANAGER_VERSION: 1.13.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
     substituteFrom:
-    - kind: ConfigMap
-      name: tumo-flux-config
+      - kind: ConfigMap
+        name: tumo-flux-config
