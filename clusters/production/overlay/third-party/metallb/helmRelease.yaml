@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: metallb
-      version: ${METALLB_VERSION}
+      version: ${METALLB_VERSION} # Set in postBuild development
       sourceRef:
         kind: HelmRepository
         name: metallb
