@@ -17,17 +17,16 @@ spec:
                  version: ${NGINX_VERSION} # Set in postBuild development
             values:
                controller:
-                  metrics:
-                     serviceMonitor: null
+                  # metrics:
+                  #    serviceMonitor: null
                   resources:
                      limits:
-                        cpu: "6"
                         memory: 500Mi
                      requests:
                         cpu: 100m
                         memory: 500Mi
-                  extraArgs: null
-                  priorityClassName: high-priority
+                  # extraArgs: null
+                  # priorityClassName: high-priority
       target:
         kind: HelmRelease
         name: ingress-nginx
