@@ -9,14 +9,11 @@ spec:
       version: 4.4.2 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
   values:
     controller:
-      metrics:
-        serviceMonitor: null
+      # metrics:
+      #   serviceMonitor: null
       resources:
         limits:
-          cpu: "6"
           memory: 500Mi
         requests:
           cpu: 100m
           memory: 500Mi
-      extraArgs: null
-      priorityClassName: high-priority
