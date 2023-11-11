@@ -4,6 +4,7 @@ metadata:
   name: metallb
   namespace: metallb-system
 spec:
+  releaseName: metallb
   chart:
     spec:
       chart: metallb
@@ -14,7 +15,6 @@ spec:
         namespace: flux-system
   interval: 15m
   timeout: 5m
-  releaseName: metallb
   # valuesFrom:
   # - kind: ConfigMap
   #   name: metallb-config

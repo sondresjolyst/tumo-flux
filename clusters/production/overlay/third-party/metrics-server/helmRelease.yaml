@@ -4,6 +4,17 @@ metadata:
   name: metrics-server
   namespace: kube-system
 spec:
+  releaseName: metrics-server
   chart:
     spec:
+      chart: metrics-server
       version: ${METRICS_VERSION}
+      sourceRef:
+        kind: HelmRepository
+        name: metrics-server
+        namespace: flux-system
+  interval: 5m
+  timeout: 5m
+  install:
+    remediation:
+      retries: 3
