@@ -13,6 +13,7 @@ spec:
       NGINX_VERSION: 4.8.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       METALLB_VERSION: 0.13.12 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.11.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
+      CERT_MANAGER_VERSION: 1.13.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
     substituteFrom:
     - kind: ConfigMap
       name: tumo-flux-config
