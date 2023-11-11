@@ -23,12 +23,6 @@ spec:
       rbac:
         create: true
     podLabels: { aadpodidbinding: certman-label }
-    apiService:
-      insecureSkipTLSVerify: true
-    resources:
-      requests:
-        cpu: 100m
-        memory: 200mi
   valuesFrom:
     - kind: Secret
       name: cert-manager-helm-secret
