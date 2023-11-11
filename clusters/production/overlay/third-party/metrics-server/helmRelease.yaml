@@ -11,7 +11,7 @@ spec:
       version: ${METRICS_VERSION} # Set in postBuild development
       sourceRef:
         kind: HelmRepository
-        name: metrics-server
+        name: kubernetes-sigs
         namespace: flux-system
   interval: 5m
   timeout: 5m
