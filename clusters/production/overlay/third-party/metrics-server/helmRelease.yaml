@@ -13,6 +13,13 @@ spec:
         kind: HelmRepository
         name: kubernetes-sigs
         namespace: flux-system
+  values:
+    apiService:
+      insecureSkipTLSVerify: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 200mi
   interval: 5m
   timeout: 5m
   install:
