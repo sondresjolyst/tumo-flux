@@ -18,5 +18,3 @@ spec:
   dnsNames:
   - "*.${RESOURCE_DNS}"
   - "${RESOURCE_DNS}"
-  - "*.app.${RESOURCE_DNS}"
-  - "*.${clusterName}.${RESOURCE_DNS}"
