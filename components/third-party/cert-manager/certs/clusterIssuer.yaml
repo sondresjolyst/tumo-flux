@@ -12,15 +12,9 @@ spec:
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
       name: ${CERT_ISSUER}
-    # HTTP challenge is not supported for wildcard certificates
-    # http01: {}
     solvers:
-      # - http01:
-      #     ingress:
-      #       ingressClassName: nginx
       - dns01:
           cloudflare:
-            email: sonyslyst@gmail.com
             apiTokenSecretRef:
               key: api-token
               name: cloudflare-dns-secret
