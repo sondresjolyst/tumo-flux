@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: tumo-wildcard-tls-cert
+  name: tumo-wildcard-tls
   namespace: default
 spec:
   secretName: tumo-wildcard-tls-cert
