@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: ${KUBED_VERSION} # https://artifacthub.io/packages/helm/appscode/kubed
+      version: ${KUBED_VERSION} # Set in postBuild production
