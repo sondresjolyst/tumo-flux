@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubed
+  namespace: kube-system
+spec:
+  releaseName: kubed
+  chart:
+    spec:
+      chart: kubed
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: kubed
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    enableAnalytics: false
+    apiserver:
+      enabled: false
+    rbac:
+      create: true
+    config:
+      clusterName: ${TUMO_ZONE} # Defined in flux patch
