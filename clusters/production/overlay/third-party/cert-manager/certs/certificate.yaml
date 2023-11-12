@@ -17,4 +17,3 @@ spec:
   commonName: "*.${RESOURCE_DNS}"
   dnsNames:
   - "*.${RESOURCE_DNS}"
-  - "${RESOURCE_DNS}"
