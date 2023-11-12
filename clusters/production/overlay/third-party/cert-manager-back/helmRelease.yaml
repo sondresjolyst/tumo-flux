@@ -6,7 +6,7 @@
 # spec:
 #   chart:
 #     spec:
-#       version: ${CERT_MANAGER_VERSION} # Set in postBuild development
+#       version: ${CERT_MANAGER_VERSION} # Set in postBuild production
 #   values:
 #     resources:
 #       limits:

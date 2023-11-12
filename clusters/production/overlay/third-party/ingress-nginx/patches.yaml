@@ -14,7 +14,7 @@ spec:
         spec:
            chart:
               spec:
-                 version: ${NGINX_VERSION} # Set in postBuild development
+                 version: ${NGINX_VERSION} # Set in postBuild production
             values:
                controller:
                   # metrics:

@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: metrics-server
-      version: ${METRICS_VERSION} # Set in postBuild development
+      version: ${METRICS_VERSION} # Set in postBuild production
       sourceRef:
         kind: HelmRepository
         name: kubernetes-sigs
