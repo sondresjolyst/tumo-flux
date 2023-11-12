@@ -20,6 +20,7 @@ spec:
       #       ingressClassName: nginx
       - dns01:
           cloudflare:
+            email: sonyslyst@gmail.com
             apiTokenSecretRef:
               key: api-token
               name: cloudflare-dns-secret
