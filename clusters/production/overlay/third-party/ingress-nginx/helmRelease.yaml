@@ -9,6 +9,9 @@ spec:
       version: ${NGINX_VERSION} # Set in postBuild production
   values:
     controller:
+      service:
+        ports:
+          https: 444
       # metrics:
       #   serviceMonitor: null
       resources:
