@@ -15,12 +15,8 @@ spec:
         namespace: flux-system
   values:
     persistence:
+      storageClass: "home-assistant"
       config:
         enabled: true
   interval: 15m
   timeout: 5m
-  # values:
-  #   persistence:
-  #     enabled: true
-  #     accessMode: ReadWriteOnce
-  #     size: 8Gi
