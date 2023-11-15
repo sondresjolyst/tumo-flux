@@ -13,9 +13,5 @@ spec:
         kind: HelmRepository
         name: home-assistant
         namespace: flux-system
-  values:
-    persistence:
-      config:
-        enabled: true
   interval: 15m
   timeout: 5m
