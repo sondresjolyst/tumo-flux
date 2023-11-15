@@ -15,8 +15,3 @@ spec:
         namespace: flux-system
   interval: 15m
   timeout: 5m
-  values:
-    persistence:
-      enabled: true
-      accessMode: ReadWriteOnce
-      size: 4Gi
