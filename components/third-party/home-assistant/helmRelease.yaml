@@ -13,10 +13,14 @@ spec:
         kind: HelmRepository
         name: home-assistant
         namespace: flux-system
-  interval: 15m
-  timeout: 5m
   values:
     persistence:
-      enabled: true
-      accessMode: ReadWriteOnce
-      size: 8Gi
+      config:
+        enabled: true
+  interval: 15m
+  timeout: 5m
+  # values:
+  #   persistence:
+  #     enabled: true
+  #     accessMode: ReadWriteOnce
+  #     size: 8Gi
