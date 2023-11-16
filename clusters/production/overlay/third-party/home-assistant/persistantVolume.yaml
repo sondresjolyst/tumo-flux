@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: kubernetes-storage
   capacity:
-    storage: 8Gi
+    storage: 4Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
