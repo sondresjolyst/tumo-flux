@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: kubernetes-storage
 spec:
-  storageClassName: storageclassslow
+  storageClassName: kubernetes-storage
   capacity:
     storage: 8Gi
   volumeMode: Filesystem
