@@ -13,5 +13,11 @@ spec:
         kind: HelmRepository
         name: home-assistant
         namespace: flux-system
+  values:
+    persistence:
+      config:
+        enabled: true
+        StorageClass: storageClassSlow
+        size: 8Gi
   interval: 15m
   timeout: 5m
