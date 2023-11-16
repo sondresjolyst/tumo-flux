@@ -17,7 +17,7 @@ spec:
     persistence:
       config:
         enabled: true
-        StorageClass: storageClassSlow
+        StorageClass: storageclassslow
         size: 8Gi
   interval: 15m
   timeout: 5m
