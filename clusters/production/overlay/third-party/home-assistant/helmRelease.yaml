@@ -22,7 +22,7 @@ spec:
     pod:
       initContainers:
         - name: append-configmap
-          image: alpine
+          image: busybox
           command: ["/bin/sh", "-c"]
           args: ["cp /config/configuration.yaml /tmp/configuration.yaml && cat /configmap/configuration.yaml >> /tmp/configuration.yaml && cp /tmp/configuration.yaml /config/configuration.yaml"]
           volumeMounts:
