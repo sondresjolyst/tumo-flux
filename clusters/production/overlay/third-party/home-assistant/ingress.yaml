@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-    - host:
+    - hosts:
         - 'home-assistant.prod.tumogroup.com'
   rules:
     - http:
