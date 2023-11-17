@@ -21,6 +21,7 @@ spec:
         existingClaim: kubernetes-storage
         size: 12Gi
         type: configMap
+        name: home-assistant-config
         configMap:
           name: home-assistant-config
   interval: 15m
