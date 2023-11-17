@@ -25,7 +25,7 @@ spec:
           name: home-assistant-config
     extraVolumeMounts:
       - name: config
-        mountPath: /config
+        mountPath: /config/configuration.yaml
         readOnly: true
   interval: 15m
   timeout: 5m
