@@ -4,3 +4,4 @@ resources:
 # - helmRelease.yaml
 - storageClass.yaml
 - persistantVolume.yaml
+- ingress.yaml
