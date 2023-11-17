@@ -18,6 +18,6 @@ spec:
       config:
         enabled: true
         storageClass: kubernetes-storage
-        size: 4Gi
+        size: 12Gi
   interval: 15m
   timeout: 5m
