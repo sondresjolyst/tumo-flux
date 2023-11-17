@@ -26,6 +26,6 @@ spec:
     extraVolumeMounts:
       - name: config
         mountPath: /config/configuration.yaml
-        readOnly: true
+        subPath: configuration.yaml
   interval: 15m
   timeout: 5m
