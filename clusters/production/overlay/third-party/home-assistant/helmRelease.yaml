@@ -20,9 +20,14 @@ spec:
         storageClass: kubernetes-storage
         existingClaim: kubernetes-storage
         size: 12Gi
-        type: configMap
-        name: home-assistant-config
-        configMap:
-          name: home-assistant-config
+    pod:
+      initContainers:
+        - name: append-configmap
+          image: alpine
+          command: ["/bin/sh", "-c"]
+          args: ["cp /config/configuration.yaml /tmp/configuration.yaml && cat /config/configmap.yaml >> /tmp/configuration.yaml && cp /tmp/configuration.yaml /config/configuration.yaml"]
+          volumeMounts:
+            - mountPath: /config
+              name: config
   interval: 15m
   timeout: 5m
