@@ -18,14 +18,24 @@ spec:
       config:
         enabled: true
         storageClass: kubernetes-storage
+        existingClaim: kubernetes-storage
         size: 12Gi
-    extraVolumes:
-      - name: config
-        configMap:
-          name: home-assistant-config
-    extraVolumeMounts:
-      - name: config
-        mountPath: /config/configuration.yaml
-        subPath: configuration.yaml
+    # extraVolumes:
+    #   - name: config
+    #     configMap:
+    #       name: home-assistant-config
+    # extraVolumeMounts:
+    #   - name: config
+    #     mountPath: /config/configuration.yaml
+    #     subPath: configuration.yaml
   interval: 15m
   timeout: 5m
+  template:
+    spec:
+      initContainers:
+        - name: config-init
+          image: busybox
+          command: ['sh', '-c', 'cp /config/http-config.yaml /config/configuration.yaml']
+          volumeMounts:
+            - name: config
+              mountPath: /config
