@@ -18,7 +18,6 @@ spec:
       config:
         enabled: true
         storageClass: kubernetes-storage
-        existingClaim: kubernetes-storage
         size: 12Gi
     pod:
       initContainers:
