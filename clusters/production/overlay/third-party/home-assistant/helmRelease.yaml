@@ -19,11 +19,13 @@ spec:
         enabled: true
         storageClass: kubernetes-storage
         size: 12Gi
-    http:
-      use_x_forwarded_for: true
-      trusted_proxies:
-        - 192.169.0.0/16
-      ip_ban_enabled: true
-      login_attempts_threshold: 10
+    extraVolumes:
+      - name: config
+        configMap:
+          name: home-assistant-config
+    extraVolumeMounts:
+      - name: config
+        mountPath: /config
+        readOnly: true
   interval: 15m
   timeout: 5m
