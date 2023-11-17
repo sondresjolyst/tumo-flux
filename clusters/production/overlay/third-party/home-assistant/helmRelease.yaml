@@ -19,19 +19,19 @@ spec:
         enabled: true
         storageClass: kubernetes-storage
         size: 12Gi
-  controllers:
-    main:
-      pod:
-        initContainers:
-          - name: append-configmap
-            image: busybox
-            command: ["/bin/sh", "-c"]
-            args: ["cp /config/configuration.yaml /tmp/configuration.yaml && cat /configmap/configuration.yaml >> /tmp/configuration.yaml && cp /tmp/configuration.yaml /config/configuration.yaml"]
-            volumeMounts:
-              - mountPath: /config
-                name: config
-              - mountPath: /configmap
-                name: home-assistant-config
-                readOnly: true
+    controllers:
+      main:
+        pod:
+          initContainers:
+            - name: append-configmap
+              image: busybox
+              command: ["/bin/sh", "-c"]
+              args: ["cp /config/configuration.yaml /tmp/configuration.yaml && cat /configmap/configuration.yaml >> /tmp/configuration.yaml && cp /tmp/configuration.yaml /config/configuration.yaml"]
+              volumeMounts:
+                - mountPath: /config
+                  name: config
+                - mountPath: /configmap
+                  name: home-assistant-config
+                  readOnly: true
   interval: 15m
   timeout: 5m
