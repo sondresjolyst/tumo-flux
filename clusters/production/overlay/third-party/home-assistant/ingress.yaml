@@ -11,7 +11,8 @@ spec:
     - hosts:
         - 'home-assistant.prod.tumogroup.com'
   rules:
-    - http:
+    - host: home-assistant.prod.tumogroup.com
+      http:
         paths:
           - path: /
             pathType: Prefix
