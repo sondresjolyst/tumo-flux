@@ -5,4 +5,3 @@ resources:
 - storageClass.yaml
 - persistantVolume.yaml
 - ingress.yaml
-- middleware.yaml
