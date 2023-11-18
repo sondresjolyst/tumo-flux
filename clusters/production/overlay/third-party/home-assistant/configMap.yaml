@@ -3,6 +3,11 @@ kind: ConfigMap
 metadata:
   name: home-assistant-config
   namespace: home-assistant
+  annotations:
+    meta.helm.sh/release-name: home-assistant
+    meta.helm.sh/release-namespace: home-assistant
+  labels:
+    app.kubernetes.io/managed-by: Helm
 data:
   configuration.yaml: |
     http:
