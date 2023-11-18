@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: my-header
+  namespace: home-assistant
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-For: "192.169.36.90"

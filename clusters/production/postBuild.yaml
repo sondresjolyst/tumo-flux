@@ -17,6 +17,7 @@ spec:
       HOME_ASSISTANT_VERSION: 1.29.2 # https://artifacthub.io/packages/helm/pree-helm-charts/home-assistant?modal=install
       MOSQUITTO_VERSION: 11.0.13 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
+      TRAEFIK_VERSION: 25.0.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
