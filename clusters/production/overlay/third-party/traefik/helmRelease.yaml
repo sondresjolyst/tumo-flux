@@ -13,9 +13,9 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: flux-system
-  values:
-    ports:
-      websecure:
-        port: 8445
+  # values:
+  #   ports:
+  #     websecure:
+  #       port: 8445
   interval: 15m
   timeout: 5m
