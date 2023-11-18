@@ -14,25 +14,25 @@ spec:
         name: home-assistant
         namespace: flux-system
   values:
-      image:
-        repository: homeassistant/home-assistant
-        tag: 2021.1.5
-      service:
-        type: LoadBalancer
-        port: 8123
-      ingress:
-        enabled: false
-      persistence:
+    persistence:
+      config:
         enabled: true
         storageClass: kubernetes-storage
         size: 12Gi
-      extraVolumes:
-        - name: config-volume
-          configMap:
-            name: home-assistant-config
-      extraVolumeMounts:
-        - name: config-volume
-          mountPath: /config/configuration.yaml
-          subPath: configuration.yaml
+        advancedMounts:
+          main:
+            main:
+              - path: /config/foo.yaml
+                readOnly: true
+                subPath: foo.yaml
+    configMaps:
+      config:
+        enabled: true
+        data:
+          foo.yaml: |
+            http:
+              use_x_forwarded_for: true
+              trusted_proxies:
+                - 192.169.0.0/16
   interval: 15m
   timeout: 5m
