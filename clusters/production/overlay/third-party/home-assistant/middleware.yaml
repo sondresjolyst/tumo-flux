@@ -7,3 +7,6 @@ spec:
   headers:
     customRequestHeaders:
       X-Forwarded-For: "192.169.36.90"
+  dependsOn:
+    - name: traefik
+      namespace: traefik
