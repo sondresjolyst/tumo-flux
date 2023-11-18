@@ -19,11 +19,5 @@ spec:
         enabled: true
         storageClass: kubernetes-storage
         size: 12Gi
-    homeAssistant:
-      config:
-        http:
-          use_x_forwarded_for: true
-          trusted_proxies:
-            - 192.169.36.90
   interval: 15m
   timeout: 5m
