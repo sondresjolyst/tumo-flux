@@ -14,9 +14,8 @@ spec:
         name: traefik
         namespace: flux-system
   values:
-      service:
-        ports:
-          websecure: 
-            port: 444
+    ports:
+      websecure: 
+        port: 444
   interval: 15m
   timeout: 5m
