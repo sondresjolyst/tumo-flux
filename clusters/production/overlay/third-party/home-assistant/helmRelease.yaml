@@ -21,6 +21,3 @@ spec:
         size: 12Gi
   interval: 15m
   timeout: 5m
-  dependsOn:
-    - name: traefik
-      namespace: traefik
