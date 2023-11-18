@@ -16,6 +16,6 @@ spec:
   values:
     ports:
       websecure:
-        targetPort: 445
+        port: 445
   interval: 15m
   timeout: 5m
