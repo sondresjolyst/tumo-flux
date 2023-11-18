@@ -22,8 +22,8 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: /foo/foo.yaml
-                readOnly: false
+              - path: /config/foo.yaml
+                readOnly: true
                 subPath: foo.yaml
     configMaps:
       config:
