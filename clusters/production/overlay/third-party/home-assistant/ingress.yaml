@@ -7,16 +7,16 @@ metadata:
     meta.helm.sh/release-name: home-assistant
     meta.helm.sh/release-namespace: home-assistant
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    traefik.ingress.kubernetes.io/router.middlewares: home-assistant-my-header@kubernetescrd
+    # traefik.ingress.kubernetes.io/router.middlewares: home-assistant-my-header@kubernetescrd
   labels:
     app.kubernetes.io/managed-by: Helm
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   tls:
     - hosts:
-        - "home-assistant.traefik.prod.tumogroup.com"
+        - "home-assistant.nginx.prod.tumogroup.com"
   rules:
-    - host: home-assistant.traefik.prod.tumogroup.com
+    - host: home-assistant.nginx.prod.tumogroup.com
       http:
         paths:
           - path: /
