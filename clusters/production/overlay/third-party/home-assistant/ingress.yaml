@@ -10,9 +10,9 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - "home-assistant.prod.tumogroup.com"
+        - "home-assistant.traefik.prod.tumogroup.com"
   rules:
-    - host: home-assistant.prod.tumogroup.com
+    - host: home-assistant.traefik.prod.tumogroup.com
       http:
         paths:
           - path: /
