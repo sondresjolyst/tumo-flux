@@ -12,6 +12,7 @@ resources:
   - ../../components/third-party/traefik
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/home-assistant
+  - ./overlay/third-party/mosquitto
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
