@@ -19,10 +19,20 @@ spec:
         enabled: true
         storageClass: kubernetes-storage
         size: 12Gi
-        type: configMap
-        globalMounts:
-          - path: /foo
-            readOnly: false
-
+        advancedMounts:
+          main:
+            main:
+              - path: /config/foo.yaml
+                readOnly: false
+                subPath: foo.yaml
+    configMaps:
+      config:
+        enabled: true
+        data:
+          foo.yaml: |
+            http:
+              use_x_forwarded_for: true
+              trusted_proxies:
+                - 192.169.0.0/16
   interval: 15m
   timeout: 5m
