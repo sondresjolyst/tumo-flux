@@ -4,8 +4,12 @@ metadata:
   name: home-assistant
   namespace: home-assistant
   annotations:
+    meta.helm.sh/release-name: home-assistant
+    meta.helm.sh/release-namespace: home-assistant
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     traefik.ingress.kubernetes.io/router.middlewares: home-assistant-my-header@kubernetescrd
+  labels:
+    app.kubernetes.io/managed-by: Helm
 spec:
   ingressClassName: traefik
   tls:
