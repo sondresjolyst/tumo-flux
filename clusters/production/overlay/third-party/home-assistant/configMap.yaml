@@ -26,5 +26,6 @@ data:
       use_x_forwarded_for: true
     trusted_proxies:
       - 127.0.0.1
-    trusted_networks:
+    trusted_proxies:
+      - 10.0.0.200
       - 192.169.0.0/16
