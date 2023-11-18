@@ -19,5 +19,10 @@ spec:
         enabled: true
         storageClass: kubernetes-storage
         size: 12Gi
+        type: configMap
+        globalMounts:
+          - path: /foo
+            readOnly: false
+
   interval: 15m
   timeout: 5m

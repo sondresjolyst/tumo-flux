@@ -5,3 +5,4 @@ resources:
 - storageClass.yaml
 - persistantVolume.yaml
 - ingress.yaml
+- configMap.yaml
