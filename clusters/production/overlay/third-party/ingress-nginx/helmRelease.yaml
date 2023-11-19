@@ -20,3 +20,5 @@ spec:
         requests:
           cpu: 100m
           memory: 500Mi
+      tcp:
+        1883: "mosquitto/mosquitto:1883"
