@@ -13,11 +13,5 @@ spec:
         kind: HelmRepository
         name: mosquitto
         namespace: flux-system
-  values:
-    persistence:
-      data:
-        storageClass: "local-path"
-      configinc:
-        storageClass: "local-path"
   interval: 15m
   timeout: 5m
