@@ -21,4 +21,4 @@ spec:
           cpu: 100m
           memory: 500Mi
       extraArgs:
-        tcp-services-configmap: "ingress-nginx/tcp-services"
+        tcp-services-configmap: "$(POD_NAMESPACE)/tcp-services"
