@@ -18,5 +18,7 @@ spec:
       persistence:
         enable: true
         storageClass: "local-path"
+      service:
+        type: LoadBalancer
   interval: 15m
   timeout: 5m
