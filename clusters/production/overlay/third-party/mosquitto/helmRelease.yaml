@@ -18,8 +18,7 @@ spec:
       data:
         storageClass: "local-path"
       configinc:
-        storageClass: "local-path"
-        mounthPath: "/mosquitto/config/mosquitto.conf"
+        mounthPath: "/mosquitto/config/passwordfile"
         subPath: "passwordfile"
         type: configmap
         objectName: mosquittopassword
