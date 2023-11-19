@@ -22,5 +22,9 @@ spec:
         subPath: "passwordfile"
         type: configmap
         objectName: mosquittopassword
+    configmap:
+      data:
+        mosquittopassword: |
+          foo:foo
   interval: 15m
   timeout: 5m
