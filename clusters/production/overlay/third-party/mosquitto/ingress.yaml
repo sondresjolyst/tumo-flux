@@ -11,10 +11,10 @@ metadata:
     app.kubernetes.io/managed-by: Helm
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-        - "mosquitto.prod.tumogroup.com"
-      secretName: mosquitto-tls
+  # tls:
+  #   - hosts:
+  #       - "mosquitto.prod.tumogroup.com"
+  #     secretName: mosquitto-tls
   rules:
     - host: mosquitto.prod.tumogroup.com
       http:
@@ -25,4 +25,4 @@ spec:
               service:
                 name: mosquitto
                 port:
-                  number: 9001
+                  number: 1883
