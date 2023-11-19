@@ -9,4 +9,4 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
 data:
-  1883: "mosquitto/mosquitto:1883"
+  "1883": "mosquitto/mosquitto:1883"
