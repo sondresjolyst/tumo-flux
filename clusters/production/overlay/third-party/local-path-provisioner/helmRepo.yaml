@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: mosquitto
+  name: local-path-provisioner
   namespace: local-path-provisioner
 spec:
   interval: 10m0s
