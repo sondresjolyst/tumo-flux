@@ -17,5 +17,17 @@ spec:
     service:
       main:
         type: LoadBalancer
+    persistence:
+      data:
+        storageClass: local-path
+      configinc:
+        storageClass: local-path
+      mosquittopassword:
+        enable: true
+        mountPath: "mosquitto/config/passwordfile"
+        subPath: "passwordfile"
+        type: configmap
+        objectName: mosquittopassword
+
   interval: 15m
   timeout: 5m
