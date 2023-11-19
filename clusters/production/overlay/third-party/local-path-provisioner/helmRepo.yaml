@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: local-path-provisioner
-  namespace: local-path-provisioner
-spec:
-  interval: 10m0s
-  url: https://ebrianne.github.io/helm-charts
