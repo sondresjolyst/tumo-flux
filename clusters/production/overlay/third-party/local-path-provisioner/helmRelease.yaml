@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: local-path-provisioner
-      version: xx # Set by flux patch
+      version: ${LOCAL_PATH_PROVISIONER_VERSION} # Set in postBuild production
       sourceRef:
         kind: HelmRepository
         name: local-path-provisioner
