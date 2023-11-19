@@ -20,5 +20,5 @@ spec:
         requests:
           cpu: 100m
           memory: 500Mi
-    extraArgs:
+      extraArgs:
         tcp-services-configmap: "ingress-nginx/tcp-services"
