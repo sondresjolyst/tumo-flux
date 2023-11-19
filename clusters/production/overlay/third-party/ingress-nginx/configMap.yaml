@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+  annotations:
+    meta.helm.sh/release-name: ingress-nginx
+    meta.helm.sh/release-namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/managed-by: Helm
+data:
+  1883: "mosquitto/mosquitto:1883"
