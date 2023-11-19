@@ -13,5 +13,9 @@ spec:
         kind: HelmRepository
         name: mosquitto
         namespace: flux-system
+  values:
+    service:
+      main:
+        type: LoadBalancer
   interval: 15m
   timeout: 5m
