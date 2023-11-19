@@ -13,13 +13,5 @@ spec:
         kind: HelmRepository
         name: mosquitto
         namespace: flux-system
-  values:
-    mosquitto:
-      persistence:
-        enable: true
-        storageClass: "local-path"
-      config: "allow_anonymous true"
-    service:
-      type: LoadBalancer
   interval: 15m
   timeout: 5m
