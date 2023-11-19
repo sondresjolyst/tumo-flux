@@ -5,4 +5,4 @@ metadata:
   namespace: local-path-provisioner
 spec:
   interval: 10m0s
-  url: https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/chart
+  url: https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/chart/local-path-provisioner
