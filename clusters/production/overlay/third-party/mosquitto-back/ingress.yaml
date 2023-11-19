@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mosquitto
+  namespace: mosquitto
+  annotations:
+    meta.helm.sh/release-name: mosquitto
+    meta.helm.sh/release-namespace: mosquitto
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: nginx
+  # tls:
+  #   - hosts:
+  #       - "mosquitto.prod.tumogroup.com"
+  #     secretName: mosquitto-tls
+  rules:
+    - host: mosquitto.prod.tumogroup.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mosquitto
+                port:
+                  number: 1883
