@@ -19,6 +19,7 @@ spec:
       MOSQUITTO_VERSION: 11.0.13 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       TRAEFIK_VERSION: 25.0.0 # https://artifacthub.io/packages/helm/traefik/traefik
+      LOCAL_PATH_PROVISIONER_VERSION: 0.0.21 # https://artifacthub.io/packages/helm/ebrianne/local-path-provisioner
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config

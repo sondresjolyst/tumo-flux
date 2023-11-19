@@ -1,17 +1,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: traefik
-  namespace: traefik
+  name: local-path-provisioner
+  namespace: local-path-provisioner
 spec:
-  releaseName: traefik
+  releaseName: local-path-provisioner
   chart:
     spec:
-      chart: traefik
+      chart: local-path-provisioner
       version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
-        name: traefik
+        name: local-path-provisioner
         namespace: flux-system
   interval: 15m
   timeout: 5m

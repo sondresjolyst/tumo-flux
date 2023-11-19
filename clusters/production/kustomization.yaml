@@ -9,7 +9,7 @@ resources:
   - ../../components/third-party/metallb
   - ../../components/third-party/metrics-server
   - ../../components/third-party/mosquitto
-  - ../../components/third-party/traefik
+  - ../../components/third-party/local-path-provisioner
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/mosquitto
@@ -22,4 +22,4 @@ patches:
   - path: ./overlay/third-party/metallb/helmRelease.yaml
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
-  - path: ./overlay/third-party/traefik/helmRelease.yaml
+  - path: ./overlay/third-party/local-path-provisioner/helmRelease.yaml
