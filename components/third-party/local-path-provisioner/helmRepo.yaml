@@ -5,4 +5,4 @@ metadata:
   namespace: local-path-provisioner
 spec:
   interval: 10m0s
-  url: https://ebrianne.github.io/helm-charts
+  url: https://github.com/rancher/local-path-provisioner/tree/master/deploy/chart/local-path-provisioner
