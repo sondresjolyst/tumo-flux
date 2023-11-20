@@ -11,7 +11,7 @@ spec:
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
       CERT_MANAGER_VERSION: 1.13.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
-      HOME_ASSISTANT_VERSION: 0.5.12
+      HOME_ASSISTANT_VERSION: 0.5.12 # https://artifacthub.io/packages/helm/alekc/home-assistant
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.3.1 # https://artifacthub.io/packages/helm/kured/kured
       LOCAL_PATH_PROVISIONER_VERSION: 0.0.24 # https://artifacthub.io/packages/helm/containeroo/local-path-provisioner
