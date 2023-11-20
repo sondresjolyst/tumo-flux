@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  annotations:
+    meta.helm.sh/release-namespace: kube-system
+  name: kured
+  namespace: kube-system
+spec:
+  releaseName: kured
+  chart:
+    spec:
+      chart: kured
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: kured
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    updateStrategy: RollingUpdate
+    metrics:
+      create: true
+    extraArgs:
+      period: 5m0s
+      reboot-days: mon,tue,wed,thu,fri
+      time-zone: CET

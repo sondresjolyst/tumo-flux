@@ -10,16 +10,15 @@ spec:
       FLUX_CONFIG_PATH: ./clusters/production
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
-      NGINX_VERSION: 4.8.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      METALLB_VERSION: 0.13.12 # https://artifacthub.io/packages/helm/metallb/metallb
-      METRICS_VERSION: 3.11.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       CERT_MANAGER_VERSION: 1.13.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       HOME_ASSISTANT_VERSION: 0.5.12
-      # MOSQUITTO_VERSION: 1.0.4 # https://artifacthub.io/packages/helm/naps/mosquitto
-      MOSQUITTO_VERSION: 11.0.13 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
-      TRAEFIK_VERSION: 25.0.0 # https://artifacthub.io/packages/helm/traefik/traefik
+      KURED_VERSION: 5.3.1 # https://artifacthub.io/packages/helm/kured/kured
       LOCAL_PATH_PROVISIONER_VERSION: 0.0.24 # https://artifacthub.io/packages/helm/containeroo/local-path-provisioner
+      METALLB_VERSION: 0.13.12 # https://artifacthub.io/packages/helm/metallb/metallb
+      METRICS_VERSION: 3.11.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
+      MOSQUITTO_VERSION: 11.0.13 # https://artifacthub.io/packages/helm/truecharts/mosquitto
+      NGINX_VERSION: 4.8.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
