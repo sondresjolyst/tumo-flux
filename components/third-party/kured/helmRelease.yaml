@@ -21,8 +21,8 @@ spec:
       retries: 3
   values:
     updateStrategy: RollingUpdate
-    metrics:
-      create: true
+    # metrics:
+    #   create: true
     extraArgs:
       period: 5m0s
       reboot-days: mon,tue,wed,thu,fri
