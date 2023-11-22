@@ -9,7 +9,7 @@ spec:
       version: ${KURED_VERSION} # Set in postBuild production
   values:
     extraArgs:
-      start-time: 5am
-      end-time: 7am
+      start-time: 2am
+      end-time: 4am
       drain-timeout: 15m
       force-reboot: true
