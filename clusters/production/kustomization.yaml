@@ -4,6 +4,7 @@ resources:
   - flux-system
   - ../../components/third-party/cert-manager
   - ../../components/third-party/home-assistant
+  - ../../components/third-party/home-assistant-et
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kubed
   - ../../components/third-party/kured
