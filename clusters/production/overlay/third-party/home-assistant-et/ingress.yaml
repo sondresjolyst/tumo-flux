@@ -4,8 +4,8 @@ metadata:
   name: home-assistant-et
   namespace: home-assistant-et
   annotations:
-    meta.helm.sh/release-name: home-assistant-et
-    meta.helm.sh/release-namespace: home-assistant-et
+    meta.helm.sh/release-name: home-assistant
+    meta.helm.sh/release-namespace: home-assistant
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   labels:
     app.kubernetes.io/managed-by: Helm

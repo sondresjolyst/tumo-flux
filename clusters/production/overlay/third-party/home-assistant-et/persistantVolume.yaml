@@ -3,8 +3,8 @@ kind: PersistentVolume
 metadata:
   name: kubernetes-storage-et
   annotations:
-    meta.helm.sh/release-name: home-assistant-et
-    meta.helm.sh/release-namespace: home-assistant-et
+    meta.helm.sh/release-name: home-assistant
+    meta.helm.sh/release-namespace: home-assistant
   labels:
     app.kubernetes.io/managed-by: Helm
 spec:
