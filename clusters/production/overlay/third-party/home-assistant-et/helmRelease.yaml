@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: home-assistant-et
+spec:
+  releaseName: home-assistant
+  chart:
+    spec:
+      chart: home-assistant
+      version: ${HOME_ASSISTANT_VERSION} # Set in postBuild production
+      sourceRef:
+        kind: HelmRepository
+        name: home-assistant
+        namespace: flux-system
+  values:
+    persistence:
+      enabled: true
+      storageClass: kubernetes-storage-et
+      size: 12Gi
+      additionalVolumes:
+        - name: config-volume
+          configMap:
+            name: home-assistant-config
+      additionalMounts:
+        - name: config-volume
+          mountPath: /config/configuration.yaml
+          subPath: configuration.yaml
+  interval: 15m
+  timeout: 5m
