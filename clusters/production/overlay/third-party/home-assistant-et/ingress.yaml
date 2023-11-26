@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: home-assistant
+  name: home-assistant-et
   namespace: home-assistant-et
   annotations:
-    meta.helm.sh/release-name: home-assistant
-    meta.helm.sh/release-namespace: home-assistant
+    meta.helm.sh/release-name: home-assistant-et
+    meta.helm.sh/release-namespace: home-assistant-et
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   labels:
     app.kubernetes.io/managed-by: Helm
@@ -23,6 +23,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: home-assistant
+                name: home-assistant-et
                 port:
                   number: 8123
