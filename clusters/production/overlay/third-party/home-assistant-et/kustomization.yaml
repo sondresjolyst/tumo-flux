@@ -6,3 +6,4 @@ resources:
 - ingress.yaml
 - configMap.yaml
 - namespace.yaml
+- helmRelease.yaml
