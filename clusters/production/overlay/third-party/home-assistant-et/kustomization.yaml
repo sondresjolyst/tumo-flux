@@ -5,3 +5,4 @@ resources:
 - persistantVolume.yaml
 - ingress.yaml
 - configMap.yaml
+- namespace.yaml
