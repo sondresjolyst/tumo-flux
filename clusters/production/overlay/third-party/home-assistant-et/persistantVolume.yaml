@@ -8,7 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
 spec:
-  storageClassName: kubernetes-storage
+  storageClassName: kubernetes-storage-et
   capacity:
     storage: 12Gi
   volumeMode: Filesystem
