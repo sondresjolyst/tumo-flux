@@ -12,6 +12,11 @@ data:
   configuration.yaml: |
     # Loads default set of integrations. Do not remove.
     default_config:
+    default_config_exclude:
+      early_loader_hook: true
+      exclude:
+        - dhcp
+        - ssdp
 
     # Load frontend themes from the themes folder
     frontend:
