@@ -21,6 +21,7 @@ data:
         - zeroconf
         - energy
         - map
+        - media_source
 
     # Load frontend themes from the themes folder
     frontend:
