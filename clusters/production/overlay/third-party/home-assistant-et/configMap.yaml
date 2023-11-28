@@ -20,6 +20,7 @@ data:
         - cloud
         - zeroconf
         - energy
+        - map
 
     # Load frontend themes from the themes folder
     frontend:
