@@ -17,6 +17,8 @@ data:
       exclude:
         - dhcp
         - ssdp
+        - cloud
+        - zeroconf 
 
     # Load frontend themes from the themes folder
     frontend:
