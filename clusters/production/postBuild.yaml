@@ -15,6 +15,7 @@ spec:
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.3.1 # https://artifacthub.io/packages/helm/kured/kured
       LOCAL_PATH_PROVISIONER_VERSION: 0.0.24 # https://artifacthub.io/packages/helm/containeroo/local-path-provisioner
+      NFS_SUBDIR_EXTERNAL_PROVISIONER_VERSION: 4.0.18 # https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
       METALLB_VERSION: 0.13.12 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.11.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MOSQUITTO_VERSION: 11.0.13 # https://artifacthub.io/packages/helm/truecharts/mosquitto
