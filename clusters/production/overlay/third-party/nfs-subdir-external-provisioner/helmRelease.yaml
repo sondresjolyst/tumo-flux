@@ -13,5 +13,21 @@ spec:
         kind: HelmRepository
         name: nfs-subdir-external-provisioner
         namespace: flux-system
+  values:
+    nfs:
+      server: truenas
+      path: /mnt/kubernetes
+    storageClass:
+      create: true
+      name: "nfs-client"
+      defaultclass: false
+      archiveOnDelete: "false"
+    resources:
+      limits:
+        cpu: "100m"
+        memory: "128Mi"
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
   interval: 15m
   timeout: 5m
