@@ -15,7 +15,7 @@ spec:
         namespace: flux-system
   values:
     nfs:
-      server: truenas
+      server: truenas.local
       path: /mnt/kubernetes
     storageClass:
       create: true
