@@ -29,5 +29,9 @@ spec:
       requests:
         cpu: "100m"
         memory: "128Mi"
+    securityContext:
+      runAsUser: 65534
+      runAsGroup: 65534
+      fsGroup: 2000
   interval: 15m
   timeout: 5m
