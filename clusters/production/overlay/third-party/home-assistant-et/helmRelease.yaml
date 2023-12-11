@@ -18,8 +18,8 @@ spec:
       port: 8124
     persistence:
       enabled: true
-      storageClass: kubernetes-storage-et
-      size: 12Gi
+      storageClass: nfs-client
+      size: 10Gi
       additionalVolumes:
         - name: config-volume
           configMap:
