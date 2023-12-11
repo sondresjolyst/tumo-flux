@@ -19,9 +19,11 @@ spec:
         type: LoadBalancer
     persistence:
       data:
-        storageClass: local-path
+        storageClass: nfs-client
+        size: 5Gi
       configinc:
-        storageClass: local-path
+        storageClass: nfs-client
+        size: 128Mi
       mosquittopassword:
         enable: true
         mountPath: "mosquitto/config/passwordfile"

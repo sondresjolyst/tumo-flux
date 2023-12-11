@@ -16,8 +16,8 @@ spec:
   values:
     persistence:
       enabled: true
-      storageClass: kubernetes-storage
-      size: 12Gi
+      storageClass: nfs-client
+      size: 10Gi
       additionalVolumes:
         - name: config-volume
           configMap:
