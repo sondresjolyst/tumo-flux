@@ -19,7 +19,7 @@ spec:
       path: /mnt/kubernetes
     storageClass:
       create: true
-      name: "nfs-clienta"
+      name: "nfs-client"
       defaultclass: false
       archiveOnDelete: "false"
     resources:
