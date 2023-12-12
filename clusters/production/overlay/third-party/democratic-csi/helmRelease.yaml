@@ -16,6 +16,24 @@ spec:
   values:
     csiDriver:
       name: "org.democratic-csi.nfs"
+    storageClasses:
+    - name: freenas-nfs-csi
+      defaultClass: false
+      reclaimPolicy: Retain
+      volumeBindingMode: Immediate
+      allowVolumeExpansion: true
+      parameters:
+        fsType: nfs
+          
+      mountOptions:
+      - noatime
+      - nfsvers=4
+      secrets:
+        provisioner-secret:
+        controller-publish-secret:
+        node-stage-secret:
+        node-publish-secret:
+        controller-expand-secret:
     driver:
       config:
         driver: freenas-nfs # Choose the driver that matches your storage system
@@ -26,12 +44,22 @@ spec:
           host: truenas.local
           port: 80
         zfs:
-          datasetParentName: "mnt/kubernetes"
-          datasetEnableQuotas: false
+          datasetParentName: "mnt/kubernetes/vols"
+          detachedSnapshotsDatasetParentName: mnt/kubernetes/snaps
+          datasetEnableQuotas: true
           datasetEnableReservation: false
           datasetPermissionsMode: "0777"
           datasetPermissionsUser: "root"
           datasetPermissionsGroup: "wheel"
+        nfs:
+          shareHost: truenas.local
+          shareAlldirs: false
+          shareAllowedHosts: []
+          shareAllowedNetworks: []
+          shareMaprootUser: root
+          shareMaprootGroup: wheel
+          shareMapallUser: ""
+          shareMapallGroup: ""
     node:
       driver:
         config:
