@@ -26,9 +26,5 @@ spec:
         - name: config-volume
           mountPath: /config/configuration.yaml
           subPath: configuration.yaml
-    securityContext:
-      runAsUser: 65534
-      runAsGroup: 65534
-      fsGroup: 65534
   interval: 15m
   timeout: 5m
