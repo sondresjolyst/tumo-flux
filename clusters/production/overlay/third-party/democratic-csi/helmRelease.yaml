@@ -36,15 +36,25 @@ spec:
         controller-expand-secret:
     driver:
       config:
-        driver: freenas-nfs # Choose the driver that matches your storage system
-        instance_id: democratic-csi
+        driver: freenas-nfs
+        instance_id:
         volume_context_name: true
         httpConnection:
+          apiKeySecretRef:
+            name: api-key-secret
+            key: apikey
           protocol: http
           host: truenas.local
           port: 80
           allowInsecure: true
           apiVersion: 2
+        sshConnection:
+          host: truenas.local
+          port: 22
+          username: csi
+          privateKeySecretRef:
+            name: private-key-secret
+            key: privatekey
         zfs:
           datasetParentName: "mnt/kubernetes/vols"
           detachedSnapshotsDatasetParentName: mnt/kubernetes/snaps
