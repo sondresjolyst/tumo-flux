@@ -1,0 +1,39 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: democratic-csi
+  namespace: democratic-csi
+spec:
+  releaseName: democratic-csi
+  chart:
+    spec:
+      chart: democratic-csi
+      version: ${DEMOCRATIC_CSI_VERSION} # Set in postBuild production
+      sourceRef:
+        kind: HelmRepository
+        name: democratic-csi
+        namespace: flux-system
+  values:
+    driver:
+      config:
+        driver: freenas-nfs # Choose the driver that matches your storage system
+        instance_id: democratic-csi
+        volume_context_name: true
+        httpConnection:
+          protocol: http
+          host: truenas.local
+          port: 80
+        zfs:
+          datasetParentName: "mnt/kubernetes"
+          datasetEnableQuotas: false
+          datasetEnableReservation: false
+          datasetPermissionsMode: "0777"
+          datasetPermissionsUser: "root"
+          datasetPermissionsGroup: "wheel"
+    node:
+      driver:
+        config:
+          iscsi:
+            interface: default
+  interval: 15m
+  timeout: 5m
