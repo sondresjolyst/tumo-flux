@@ -32,6 +32,6 @@ spec:
     securityContext:
       runAsUser: 65534
       runAsGroup: 65534
-      fsGroup: 2000
+      fsGroup: 65534
   interval: 15m
   timeout: 5m
