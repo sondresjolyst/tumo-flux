@@ -40,9 +40,9 @@ spec:
         instance_id: democratic-csi
         volume_context_name: true
         httpConnection:
-          protocol: http
+          protocol: https
           host: truenas.local
-          port: 80
+          port: 443
         zfs:
           datasetParentName: "mnt/kubernetes/vols"
           detachedSnapshotsDatasetParentName: mnt/kubernetes/snaps
