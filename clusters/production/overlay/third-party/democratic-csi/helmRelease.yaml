@@ -43,6 +43,7 @@ spec:
           protocol: http
           host: truenas.local
           port: 80
+          allowInsecure: true
         zfs:
           datasetParentName: "mnt/kubernetes/vols"
           detachedSnapshotsDatasetParentName: mnt/kubernetes/snaps
