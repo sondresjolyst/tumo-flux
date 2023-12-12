@@ -14,6 +14,8 @@ spec:
         name: democratic-csi
         namespace: flux-system
   values:
+    csiDriver:
+      name: "org.democratic-csi.nfs"
     driver:
       config:
         driver: freenas-nfs # Choose the driver that matches your storage system
