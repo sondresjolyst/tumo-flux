@@ -44,6 +44,7 @@ spec:
           host: truenas.local
           port: 80
           allowInsecure: true
+          apiVersion: 2
         zfs:
           datasetParentName: "mnt/kubernetes/vols"
           detachedSnapshotsDatasetParentName: mnt/kubernetes/snaps
