@@ -62,7 +62,7 @@ spec:
         nfs:
           shareHost: truenas.local
           shareBasePath: "/mnt/kubernetes"
-          controllerBasePath: "/mnt/kubernetes"
+          controllerBasePath: "/kubernetes"
           dirPermissionsMode: "0700"
           dirPermissionsUser: 1000
           dirPermissionsGroup: 1000
