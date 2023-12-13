@@ -51,10 +51,10 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "mkdir -p /mnt/kubernetes; mount truenas.local:/mnt/kubernetes /mnt/kubernetes"]
+              command: ["/bin/sh", "-c", "mkdir -p /kubernetes; mount truenas.local:/mnt/kubernetes /kubernetes"]
           preStop:
             exec:
-              command: ["/bin/sh","-c","umount /mnt/kubernetes"]
+              command: ["/bin/sh","-c","umount /kubernetes"]
     driver:
       config:
         driver: nfs-client
