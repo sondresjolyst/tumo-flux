@@ -15,16 +15,15 @@ spec:
         namespace: flux-system
   values:
     csiDriver:
-      name: "org.democratic-csi.nfs"
+      name: "org.democratic-csi.nfs-client"
     storageClasses:
-    - name: freenas-nfs-csi
-      defaultClass: false
+    - name: democratic-nfs-client
+      defaultClass: true
       reclaimPolicy: Retain
       volumeBindingMode: Immediate
-      allowVolumeExpansion: true
+      allowVolumeExpansion: false
       parameters:
         fsType: nfs
-          
       mountOptions:
       - noatime
       - nfsvers=4
@@ -34,48 +33,38 @@ spec:
         node-stage-secret:
         node-publish-secret:
         controller-expand-secret:
+    volumeSnapshotClasses: []
+    controller:
+      enabled: true
+      externalResizer:
+        enabled: false
+      strategy: deployment
+      hostNetwork: true
+      hostIPC: true
+      driver:
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+            - SYS_ADMIN
+          privileged: true
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "mkdir -p /mnt/kubernetes; mount truenas.local:/mnt/kubernetes /mnt/kubernetes"]
+          preStop:
+            exec:
+              command: ["/bin/sh","-c","umount /mnt/kubernetes"]
     driver:
       config:
-        driver: freenas-nfs
+        driver: nfs-client
         instance_id:
-        volume_context_name: true
-        httpConnection:
-          apiKeySecretRef:
-            name: api-key-secret
-            key: apikey
-          protocol: http
-          host: truenas.local
-          port: 80
-          allowInsecure: true
-          apiVersion: 2
-        sshConnection:
-          host: truenas.local
-          port: 22
-          username: csi
-          privateKeySecretRef:
-            name: private-key-secret
-            key: privatekey
-        zfs:
-          datasetParentName: "mnt/kubernetes/vols"
-          detachedSnapshotsDatasetParentName: mnt/kubernetes/snaps
-          datasetEnableQuotas: true
-          datasetEnableReservation: false
-          datasetPermissionsMode: "0777"
-          datasetPermissionsUser: "root"
-          datasetPermissionsGroup: "wheel"
         nfs:
           shareHost: truenas.local
-          shareAlldirs: false
-          shareAllowedHosts: []
-          shareAllowedNetworks: []
-          shareMaprootUser: root
-          shareMaprootGroup: wheel
-          shareMapallUser: ""
-          shareMapallGroup: ""
-    node:
-      driver:
-        config:
-          iscsi:
-            interface: default
+          shareBasePath: "/mnt/kubernetes"
+          controllerBasePath: "/mnt/kubernetes"
+          dirPermissionsMode: "0700"
+          dirPermissionsUser: 1000
+          dirPermissionsGroup: 1000
   interval: 15m
   timeout: 5m
