@@ -26,7 +26,7 @@ spec:
         fsType: nfs
       mountOptions:
       - noatime
-      - nfsvers=4
+      - nfsvers=3
       secrets:
         provisioner-secret:
         controller-publish-secret:
@@ -59,6 +59,11 @@ spec:
       config:
         driver: nfs-client
         instance_id:
+        httpConnection:
+          protocol: http
+          host: truenas.local
+          port: 80
+          allowInsecure: true
         nfs:
           shareHost: truenas.local
           shareBasePath: "/mnt/kubernetes"
