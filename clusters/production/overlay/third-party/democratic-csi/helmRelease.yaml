@@ -51,7 +51,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "mkdir -p /kubernetes; mount truenas.local:/mnt/kubernetes /kubernetes"]
+              command: ["/bin/sh", "-c", "mkdir -p /kubernetes; mount -t nfs truenas.local:/mnt/kubernetes /kubernetes"]
           preStop:
             exec:
               command: ["/bin/sh","-c","umount /kubernetes"]
