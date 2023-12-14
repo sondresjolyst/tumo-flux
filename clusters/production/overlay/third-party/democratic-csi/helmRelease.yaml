@@ -50,7 +50,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: api-key-secret
-                key: apikey
+                key: apiKey
           allowInsecure: true
         zfs:
           datasetParentName: kubernetes/nfs/v
