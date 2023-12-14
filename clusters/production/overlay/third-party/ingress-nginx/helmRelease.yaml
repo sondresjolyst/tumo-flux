@@ -16,9 +16,9 @@ spec:
       #   serviceMonitor: null
       resources:
         limits:
-          memory: 500Mi
+          memory: 1024Mi
         requests:
           cpu: 100m
-          memory: 500Mi
+          memory: 1024Mi
       extraArgs:
         tcp-services-configmap: "$(POD_NAMESPACE)/tcp-services"

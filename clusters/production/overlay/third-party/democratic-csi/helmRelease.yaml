@@ -44,7 +44,7 @@ spec:
         instance_id:
         httpConnection:
           protocol: http
-          host: 192.168.1.162
+          host: truenas.local
           port: 80
           apiKey: 2-vWevPfEOrC38rqmdjU5qAcvpfiZLJo5y8VL2i3JDBRtwcWL7keBxxvTsbfLPpLHj
           allowInsecure: true
@@ -57,7 +57,7 @@ spec:
           datasetPermissionsUser: 0
           datasetPermissionsGroup: 0
         nfs:
-          shareHost: 192.168.1.162
+          shareHost: truenas.local
           shareAlldirs: false
           shareAllowedHosts: []
           shareAllowedNetworks: []
