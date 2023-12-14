@@ -9,6 +9,7 @@ spec:
       version: ${NGINX_VERSION} # Set in postBuild production
   values:
     controller:
+      replicaCount: 2
       service:
         ports:
           https: 444
