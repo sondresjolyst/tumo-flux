@@ -46,7 +46,10 @@ spec:
           protocol: http
           host: 192.168.1.162
           port: 80
-          apiKey: 2-vWevPfEOrC38rqmdjU5qAcvpfiZLJo5y8VL2i3JDBRtwcWL7keBxxvTsbfLPpLHj
+          apiKey:
+            secretKeyRef:
+              name: api-key-secret
+              key: apiKey
           allowInsecure: true
         zfs:
           datasetParentName: kubernetes/nfs/v
