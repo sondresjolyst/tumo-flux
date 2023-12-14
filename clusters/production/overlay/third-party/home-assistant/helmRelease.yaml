@@ -16,7 +16,7 @@ spec:
   values:
     persistence:
       enabled: true
-      storageClass: freenas-nfs-csi
+      storageClass: nfs
       size: 10Gi
       additionalVolumes:
         - name: config-volume

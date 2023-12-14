@@ -19,10 +19,10 @@ spec:
         type: LoadBalancer
     persistence:
       data:
-        storageClass: freenas-nfs-csi
+        storageClass: nfs
         size: 5Gi
       configinc:
-        storageClass: freenas-nfs-csi
+        storageClass: nfs
         size: 128Mi
       mosquittopassword:
         enable: true
