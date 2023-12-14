@@ -47,7 +47,7 @@ spec:
           host: 192.168.1.162
           port: 80
         apiKey:
-          valuesFrom:
+          valueFrom:
             secretKeyRef:
               name: api-key-secret
               key: apikey
