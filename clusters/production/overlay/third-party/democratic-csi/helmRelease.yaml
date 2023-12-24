@@ -35,35 +35,9 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     volumeSnapshotClasses: []
-      # - name: nfs
-      #   parameters:
-      #     detachedSnapshots: "true"
     driver:
       existingConfigSecret: api-key-secret
       config:
         driver: freenas-api-nfs
-        instance_id:
-        httpConnection:
-          protocol: http
-          host: 192.168.1.162
-          port: 80
-          allowInsecure: true
-        zfs:
-          datasetParentName: kubernetes/nfs/v
-          detachedSnapshotsDatasetParentName: kubernetes/nfs/s
-          datasetEnableQuotas: true
-          datasetEnableReservation: false
-          datasetPermissionsMode: "0777"
-          datasetPermissionsUser: 0
-          datasetPermissionsGroup: 0
-        nfs:
-          shareHost: 192.168.1.162
-          shareAlldirs: false
-          shareAllowedHosts: []
-          shareAllowedNetworks: []
-          shareMaprootUser: root
-          shareMaprootGroup: root
-          shareMapallUser: ""
-          shareMapallGroup: ""
   interval: 15m
   timeout: 5m
