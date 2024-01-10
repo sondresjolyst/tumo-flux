@@ -8,5 +8,8 @@ spec:
     spec:
       version: ${MYSQL_VERSION} # Set in postBuild production
   values:
-    global:
-      storageClass: nfs
+    primary:
+      persistence:
+        enabled: true
+        storageClass: nfs
+        size: 8Gi
