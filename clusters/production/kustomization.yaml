@@ -4,6 +4,7 @@ resources:
   - flux-system
   - ../../components/third-party/cert-manager
   - ../../components/third-party/democratic-csi
+  - ../../components/third-party/grafana
   - ../../components/third-party/home-assistant
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kubed
@@ -13,7 +14,6 @@ resources:
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
   - ./overlay/third-party/cert-manager
-  - ./overlay/third-party/grafana
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
   - ./overlay/third-party/ingress-nginx
