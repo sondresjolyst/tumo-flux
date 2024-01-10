@@ -5,4 +5,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  url: oci://registry-1.docker.io/bitnamicharts/mysql
+  url: https://charts.bitnami.com/bitnami
