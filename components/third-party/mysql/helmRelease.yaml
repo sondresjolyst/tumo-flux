@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mysql
+  namespace: mysql
+spec:
+  releaseName: mysql
+  chart:
+    spec:
+      chart: mysql
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: mysql
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "500Mi"
