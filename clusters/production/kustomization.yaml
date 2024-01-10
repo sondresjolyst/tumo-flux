@@ -13,7 +13,7 @@ resources:
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
   - ./overlay/third-party/cert-manager
-  # - ./overlay/third-party/grafana
+  - ./overlay/third-party/grafana
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
   - ./overlay/third-party/ingress-nginx
@@ -23,7 +23,7 @@ patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/democratic-csi/helmRelease.yaml
-  # - path: ./overlay/third-party/grafana/helmRelease.yaml
+  - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
   - path: ./overlay/third-party/kubed/helmRelease.yaml

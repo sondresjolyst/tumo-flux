@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitor
+spec:
+  chart:
+    spec:
+      version: ${GRAFANA_VERSION} # Set in postBuild production
+  values:
+    env:
+      GF_DATABASE_HOST: mysql.mysql.svc.cluster.local
+      GF_DATABASE_NAME: grafana
+      GF_DATABASE_USER: grafana

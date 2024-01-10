@@ -10,4 +10,3 @@ metadata:
     app.kubernetes.io/managed-by: Helm
 data:
   "1883": "mosquitto/mosquitto:1883"
-  "3306": "mysql/mysql:3306"
