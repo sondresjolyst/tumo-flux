@@ -27,8 +27,8 @@ spec:
       GF_DATABASE_TYPE: mysql
       GF_DATABASE_SSL_MODE: "skip-verify"
       GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
-    envFromSecret: grafana-secrets
-  valuesFrom:
-  - kind: Secret
-    name: grafana-helm-secret
-    valuesKey: config
+    # envFromSecret: grafana-secrets
+  # valuesFrom:
+  # - kind: Secret
+  #   name: grafana-helm-secret
+  #   valuesKey: config
