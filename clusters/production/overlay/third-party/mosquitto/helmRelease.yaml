@@ -30,6 +30,7 @@ spec:
         subPath: "passwordfile"
         type: configmap
         objectName: mosquittopassword
+    containerPort: 1883
     livenessProbe:
       httpGet:
         path: /healthz
