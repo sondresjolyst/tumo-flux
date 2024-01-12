@@ -14,6 +14,14 @@ spec:
         name: mosquitto
         namespace: flux-system
   values:
+    auth:
+      enabled: true
+      users:
+        - username: admin
+          password:
+            secretKeyRef:
+              name: mosquittopassword
+              key: password
     service:
       port: 1883
       type: LoadBalancer
@@ -24,11 +32,5 @@ spec:
       configinc:
         storageClass: nfs
         size: 128Mi
-      mosquittopassword:
-        enable: true
-        mountPath: "mosquitto/config/passwordfile"
-        subPath: "passwordfile"
-        type: configmap
-        objectName: mosquittopassword
   interval: 15m
   timeout: 5m
