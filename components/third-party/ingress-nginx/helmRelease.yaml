@@ -36,10 +36,10 @@ spec:
         enabled: true
       stats:
         enabled: true
-      # metrics:
-      #   serviceMonitor: 
-      #     enabled: true
-      #   enabled: true
+      metrics:
+        serviceMonitor: 
+          enabled: true
+        enabled: true
       service:
         externalTrafficPolicy: Local
       ingressClassResource:
