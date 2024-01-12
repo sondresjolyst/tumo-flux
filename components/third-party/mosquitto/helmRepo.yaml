@@ -5,4 +5,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  url: https://charts.truecharts.org/
+  url:  https://sondresjolyst.github.io/tumo-helm-charts
