@@ -16,12 +16,9 @@ spec:
   values:
     auth:
       enabled: true
+      secretName: mosquittopassword
       users:
         - username: admin
-          password:
-            secretKeyRef:
-              name: mosquittopassword
-              key: password
     service:
       port: 1883
       type: LoadBalancer
