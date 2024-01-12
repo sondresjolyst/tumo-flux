@@ -16,8 +16,7 @@ spec:
   values:
     service:
       port: 1883
-      main:
-        type: LoadBalancer
+      type: LoadBalancer
     persistence:
       data:
         storageClass: nfs
@@ -31,6 +30,19 @@ spec:
         subPath: "passwordfile"
         type: configmap
         objectName: mosquittopassword
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 1883
+      initialDelaySeconds: 30
+      periodSeconds: 10
+
+    readinessProbe:
+      httpGet:
+        path: /healthz
+        port: 1883
+      initialDelaySeconds: 5
+      periodSeconds: 5
 
   interval: 15m
   timeout: 5m
