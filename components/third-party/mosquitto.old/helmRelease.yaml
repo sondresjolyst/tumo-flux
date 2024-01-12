@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mosquitto
+  namespace: mosquitto
+spec:
+  releaseName: mosquitto
+  chart:
+    spec:
+      chart: mosquitto
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: mosquitto
+        namespace: flux-system
+  interval: 15m
+  timeout: 5m
