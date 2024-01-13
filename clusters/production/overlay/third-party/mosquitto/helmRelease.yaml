@@ -16,7 +16,7 @@ spec:
   values:
     auth:
       enabled: true
-      secretName: mosquittopassword
+      secretName: mosquittoconf
       users:
         - username: admin
     service:
