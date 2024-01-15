@@ -6,9 +6,10 @@ resources:
   - ../../components/third-party/democratic-csi
   - ../../components/third-party/grafana
   - ../../components/third-party/home-assistant
+  - ../../components/third-party/influxdb
   - ../../components/third-party/ingress-nginx
-  - ../../components/third-party/kubed
   - ../../components/third-party/kube-prometheus-stack
+  - ../../components/third-party/kubed
   - ../../components/third-party/kured
   - ../../components/third-party/metallb
   - ../../components/third-party/metrics-server
@@ -26,9 +27,10 @@ patches:
   - path: ./overlay/third-party/democratic-csi/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant/helmRelease.yaml
+  - path: ./overlay/third-party/influxdb.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
-  - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
+  - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/metallb/helmRelease.yaml
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml

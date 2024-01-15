@@ -1,0 +1,11 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: influxdb
+  namespace: monitor
+spec:
+  releaseName: influxdb
+  chart:
+    spec:
+      chart: influxdb
+      version: ${INFLUXDB_VERSION} # Set in postBuild production
