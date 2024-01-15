@@ -13,3 +13,6 @@ spec:
       enabled: true
       storageClass: nfs
       size: 8Gi
+    influxdb:
+      service:
+        type: LoadBalancer
