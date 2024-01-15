@@ -8,3 +8,8 @@ spec:
     spec:
       chart: influxdb
       version: ${INFLUXDB_VERSION} # Set in postBuild production
+  values:
+    persistence:
+      enabled: true
+      storageClass: nfs
+      size: 8Gi
