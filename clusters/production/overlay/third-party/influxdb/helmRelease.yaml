@@ -4,7 +4,6 @@ metadata:
   name: influxdb
   namespace: monitor
 spec:
-  releaseName: influxdb
   chart:
     spec:
       chart: influxdb
