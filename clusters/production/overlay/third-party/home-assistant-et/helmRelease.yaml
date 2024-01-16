@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: home-assistant
-      version: 0.5.12 # Set in postBuild production
+      version: ${HOME_ASSISTANT_VERSION} # Set in postBuild production
       sourceRef:
         kind: HelmRepository
         name: home-assistant

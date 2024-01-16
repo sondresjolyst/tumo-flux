@@ -13,8 +13,10 @@ spec:
       service:
         ports:
           https: 444
-      # metrics:
-      #   serviceMonitor: null
+      metrics:
+        serviceMonitor: 
+          enabled: true
+        enabled: true
       resources:
         limits:
           memory: 1024Mi
