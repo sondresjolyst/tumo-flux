@@ -10,7 +10,7 @@ spec:
       chart: mosquitto
       version: xx # Set by flux patch
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: mosquitto
         namespace: flux-system
   interval: 15m

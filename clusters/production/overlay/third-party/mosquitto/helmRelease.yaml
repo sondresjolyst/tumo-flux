@@ -16,18 +16,30 @@ spec:
   values:
     auth:
       enabled: true
-      secretName: mosquittoconf
-      users:
-        - username: admin
-    service:
-      port: 1883
-      type: LoadBalancer
+    websockets:
+      enabled: true
+    configmap:
+      config:
+        enabled: true
+        data:
+          mosquitto.conf: |
+            password_file /mosquitto/passwords/passwords.conf
     persistence:
       data:
         storageClass: nfs
         size: 5Gi
+        mountPath: "/mosquitto/data"
       configinc:
         storageClass: nfs
         size: 128Mi
+        mountPath: "/mosquitto/configinc"
+    extraVolumes:
+      - name: password
+        secret:
+          secretName: mosquittoconf
+    extraVolumeMounts:
+      - name: password
+        mountPath: /mosquitto/passwords/passwords.conf
+        subPath: password
   interval: 15m
   timeout: 5m
