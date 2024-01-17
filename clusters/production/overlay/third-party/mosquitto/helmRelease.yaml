@@ -10,7 +10,7 @@ spec:
       chart: mosquitto
       # version: ${MOSQUITTO_VERSION} # Set by flux patch
       sourceRef:
-        kind: gitRepository
+        kind: GitRepository
         name: mosquitto
         namespace: flux-system
   values:
