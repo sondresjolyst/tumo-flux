@@ -7,7 +7,7 @@ spec:
   releaseName: mosquitto
   chart:
     spec:
-      chart: mosquitto
+      chart: ./charts/stable/mosquitto
       # version: ${MOSQUITTO_VERSION} # Set by flux patch
       sourceRef:
         kind: GitRepository
