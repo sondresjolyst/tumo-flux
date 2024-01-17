@@ -8,9 +8,9 @@ spec:
   chart:
     spec:
       chart: mosquitto
-      version: ${MOSQUITTO_VERSION} # Set by flux patch
+      # version: ${MOSQUITTO_VERSION} # Set by flux patch
       sourceRef:
-        kind: HelmRepository
+        kind: gitRepository
         name: mosquitto
         namespace: flux-system
   values:
