@@ -33,13 +33,13 @@ spec:
         storageClass: nfs
         size: 128Mi
         mountPath: "/mosquitto/configinc"
-    extraVolumes:
+    additionalVolumes:
       - name: password
         secret:
-          secretName: mosquittoconf
-    extraVolumeMounts:
+          secretName: mosquitto-password
+    additionalVolumeMounts:
       - name: password
-        mountPath: /mosquitto/passwords/passwords.conf
-        subPath: password
+        mountPath: /mosquitto/passwords
+        subPath: passwords.conf
   interval: 15m
   timeout: 5m
