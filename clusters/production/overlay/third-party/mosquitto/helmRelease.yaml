@@ -7,39 +7,27 @@ spec:
   releaseName: mosquitto
   chart:
     spec:
-      chart: ./charts/stable/mosquitto
-      # version: ${MOSQUITTO_VERSION} # Set by flux patch
+      chart: mosquitto
+      version: ${MOSQUITTO_VERSION} # Set by flux patch
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: mosquitto
         namespace: flux-system
   values:
     auth:
       enabled: true
-    websockets:
-      enabled: true
-    configmap:
-      config:
-        enabled: true
-        data:
-          mosquitto.conf: |
-            password_file /mosquitto/passwords/passwords.conf
+      secretName: mosquittoconf
+      users:
+        - username: admin
+    service:
+      port: 1883
+      type: LoadBalancer
     persistence:
       data:
         storageClass: nfs
         size: 5Gi
-        mountPath: "/mosquitto/data"
       configinc:
         storageClass: nfs
         size: 128Mi
-        mountPath: "/mosquitto/configinc"
-    additionalVolumes:
-      - name: password
-        secret:
-          secretName: mosquitto-password
-    additionalVolumeMounts:
-      - name: password
-        mountPath: /mosquitto/passwords
-        subPath: passwords.conf
   interval: 15m
   timeout: 5m
