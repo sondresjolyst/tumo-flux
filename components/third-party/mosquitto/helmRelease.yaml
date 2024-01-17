@@ -4,11 +4,11 @@ metadata:
   name: mosquitto
   namespace: mosquitto
 spec:
-  releaseName: mosquitto
+  # releaseName: mosquitto
   chart:
     spec:
-      chart: mosquitto
-      version: xx # Set by flux patch
+      chart: ./charts/stable/mosquitto
+      # version: xx # Set by flux patch
       sourceRef:
         kind: GitRepository
         name: mosquitto
