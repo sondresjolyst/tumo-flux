@@ -10,24 +10,33 @@ spec:
       chart: mosquitto
       version: ${MOSQUITTO_VERSION} # Set by flux patch
       sourceRef:
-        kind: HelmRepository
-        name: mosquitto
+        kind: GitRepository
+        name: truecharts
         namespace: flux-system
   values:
     auth:
       enabled: true
-      secretName: mosquittoconf
-      users:
-        - username: admin
     service:
       port: 1883
       type: LoadBalancer
+    configmap:
+      config:
+        enabled: true
+        data:
+          mosquitto.conf: |
+            password_file /mosquitto/passwords/passwords.conf
     persistence:
       data:
-        storageClass: nfs
-        size: 5Gi
+        enabled: true
+        mountPath: "/mosquitto/data"
       configinc:
-        storageClass: nfs
-        size: 128Mi
+        enabled: true
+        mountPath: "/mosquitto/configinc"
+      mosquitto-config:
+        enabled: true
+        mountPath: "/mosquitto/config/mosquitto.conf"
+        subPath: "mosquitto.conf"
+        type: configmap
+        objectName: config
   interval: 15m
   timeout: 5m

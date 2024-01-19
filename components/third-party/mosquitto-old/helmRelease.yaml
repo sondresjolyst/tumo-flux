@@ -10,8 +10,8 @@ spec:
       chart: mosquitto
       version: xx # Set by flux patch
       sourceRef:
-        kind: GitRepository
-        name: truecharts
+        kind: HelmRepository
+        name: mosquitto
         namespace: flux-system
   interval: 15m
   timeout: 5m
