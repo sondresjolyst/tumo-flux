@@ -7,8 +7,8 @@ spec:
   releaseName: mosquitto
   chart:
     spec:
-      chart: mosquitto
-      version: ${MOSQUITTO_VERSION} # Set by flux patch
+      chart: ./charts/stable/mosquitto
+      # version: ${MOSQUITTO_VERSION} # Set by flux patch
       sourceRef:
         kind: GitRepository
         name: truecharts
