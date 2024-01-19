@@ -23,12 +23,6 @@ spec:
           main:
             port: 1883
             targetPort: 1883
-    configmap:
-      config:
-        enabled: true
-        data:
-          mosquitto.conf: |
-            password_file /mosquitto/passwords/passwords.conf
     persistence:
       data:
         enabled: true
@@ -56,7 +50,7 @@ spec:
               containers:
               - name: mosquitto
                 volumeMounts:
-                - mountPath: /mosquitto/passwords
+                - mountPath: /mosquitto/configinc
                   name: mosquittoconf
                   readOnly: true
               volumes:
