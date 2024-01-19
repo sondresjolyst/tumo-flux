@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: ./charts/stable/mosquitto
-      # version: xx # Set by flux patch
+      version: xx # Set by flux patch
       sourceRef:
         kind: GitRepository
         name: truecharts
