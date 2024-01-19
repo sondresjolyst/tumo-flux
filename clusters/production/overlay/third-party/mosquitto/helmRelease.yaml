@@ -16,9 +16,9 @@ spec:
   values:
     auth:
       enabled: true
-    service:
-      port: 1883
-      type: LoadBalancer
+    # service:
+    #   port: 1883
+    #   type: LoadBalancer
     configmap:
       config:
         enabled: true
