@@ -16,9 +16,13 @@ spec:
   values:
     auth:
       enabled: true
-    # service:
-    #   port: 1883
-    #   type: LoadBalancer
+    service:
+      main:
+        type: LoadBalancer
+        ports:
+          main:
+            port: 1883
+            targetPort: 1883
     configmap:
       config:
         enabled: true
@@ -38,5 +42,25 @@ spec:
         subPath: "mosquitto.conf"
         type: configmap
         objectName: config
+  postRenderers:
+  - kustomize:
+      patchesStrategicMerge:
+      - apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: mosquitto
+        spec:
+          template:
+            spec:
+              containers:
+              - name: mosquitto
+                volumeMounts:
+                - mountPath: /mosquitto/passwords/passwords.conf
+                  name: mosquittoconf
+                  readOnly: true
+              volumes:
+              - name: mosquittoconf
+                secret:
+                  secretName: mosquittoconf
   interval: 15m
   timeout: 5m
