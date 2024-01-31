@@ -13,6 +13,7 @@ spec:
       CERT_MANAGER_VERSION: 1.13.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.5 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       GRAFANA_VERSION: 7.2.1 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAV_VERSION: 10.1.14 # https://github.com/truecharts/charts/blob/master/charts/stable/grav/Chart.yaml
       HOME_ASSISTANT_VERSION: 0.6.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 5.11.4 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed

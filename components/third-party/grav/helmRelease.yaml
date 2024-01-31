@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grav
+  namespace: grav
+spec:
+  releaseName: grav
+  chart:
+    spec:
+      chart: ./charts/stable/grav
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: GitRepository
+        name: truecharts
+        namespace: flux-system
+  interval: 15m
+  timeout: 5m

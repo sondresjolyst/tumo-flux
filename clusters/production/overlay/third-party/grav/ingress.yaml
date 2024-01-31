@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grav
+  namespace: grav
+  annotations:
+    meta.helm.sh/release-name: grav
+    meta.helm.sh/release-namespace: grav
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "grav.prod.tumogroup.com"
+      secretName: grav-tls
+  rules:
+    - host: grav.prod.tumogroup.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grav
+                port:
+                  number: 10012

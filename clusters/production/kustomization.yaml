@@ -5,6 +5,7 @@ resources:
   - ../../components/third-party/cert-manager
   - ../../components/third-party/democratic-csi
   - ../../components/third-party/grafana
+  - ../../components/third-party/grav
   - ../../components/third-party/home-assistant
   - ../../components/third-party/influxdb
   - ../../components/third-party/ingress-nginx
@@ -26,6 +27,7 @@ patches:
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/democratic-csi/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
+  - path: ./overlay/third-party/grav/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant/helmRelease.yaml
   - path: ./overlay/third-party/influxdb/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
