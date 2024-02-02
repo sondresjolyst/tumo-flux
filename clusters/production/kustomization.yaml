@@ -17,6 +17,7 @@ resources:
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
   - ./overlay/third-party/cert-manager
+  - ./overlay/third-party/grav
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
   - ./overlay/third-party/ingress-nginx
