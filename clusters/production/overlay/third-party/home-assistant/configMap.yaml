@@ -33,7 +33,7 @@ data:
       ssl: false
       host: localhost
       port: 8086
-      token: !secret influxdb-secret  # Reference to the secret
+      token: ${{ secrets.influxdb-secret.admin-user-token }}
       organization: primary
       bucket: primary
       tags:
