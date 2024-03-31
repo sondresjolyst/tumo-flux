@@ -27,3 +27,15 @@ data:
         - 127.0.0.1
         - 192.168.0.0/16
         - 192.169.0.0/16
+    
+    influxdb:
+      api_version: 2
+      ssl: false
+      host: localhost
+      port: 8086
+      token: !secret influxdb-token-secret  # Reference to the secret
+      organization: primary
+      bucket: primary
+      tags:
+        source: HA
+      default_measurement: units
