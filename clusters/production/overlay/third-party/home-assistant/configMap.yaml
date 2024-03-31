@@ -33,7 +33,7 @@ data:
       ssl: false
       host: localhost
       port: 8086
-      token: !secret influxdb-token-secret  # Reference to the secret
+      token: !secret influxdb-secret  # Reference to the secret
       organization: primary
       bucket: primary
       tags:
