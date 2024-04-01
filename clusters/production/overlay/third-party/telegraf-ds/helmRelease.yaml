@@ -1,0 +1,47 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: telegraf-ds
+  namespace: monitor
+spec:
+  chart:
+    spec:
+      chart: telegraf-ds
+      version: ${TELEGRAF_VERSION} # Set in postBuild production
+  values:
+    config:
+      inputs:
+        - mqtt_consumer:
+            servers: ["tcp://mqtt.prod.tumogroup.com:1883"]
+            topics: ["home/#"]
+            qos: 0
+            connection_timeout: "30s"
+            max_undelivered_messages: 1000
+            username:
+              valueFrom:
+                secretKeyRef:
+                  name: mosquitto-credentials
+                  key: username
+            password:
+              valueFrom:
+                secretKeyRef:
+                  name: mosquitto-credentials
+                  key: password
+      outputs:
+        - influxdb_v2:
+            urls: ["http://influxdb.prod.tumogroup.com"]
+            token:
+              valueFrom:
+                secretKeyRef:
+                  name: influxdb-credentials
+                  key: token
+            organization:
+              valueFrom:
+                secretKeyRef:
+                  name: influxdb-credentials
+                  key: organization
+            bucket:
+              valueFrom:
+                secretKeyRef:
+                  name: influxdb-credentials
+                  key: bucket

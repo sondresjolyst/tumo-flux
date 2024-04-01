@@ -16,10 +16,12 @@ resources:
   - ../../components/third-party/metrics-server
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
+  - ../../components/third-party/telegraf-ds
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/grav
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
+  - ./overlay/third-party/influxdb
   - ./overlay/third-party/ingress-nginx
   - ./overlay/third-party/mosquitto
   - ./overlay/third-party/mysql
@@ -39,3 +41,4 @@ patches:
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
+  - path: ./overlay/third-party/telegraf-ds/helmRelease.yaml
