@@ -9,10 +9,10 @@ spec:
       chart: telegraf-ds
       version: ${TELEGRAF_VERSION} # Set in postBuild production
   valuesFrom:
-    - secretKeyRef:
-        name: influxdb-credentials
-    - secretKeyRef:
-        name: mosquitto-credentials
+    - kind: Secret
+      name: influxdb-credentials
+    - kind: Secret
+      name: mosquitto-credentials
   values:
     config:
       inputs:
