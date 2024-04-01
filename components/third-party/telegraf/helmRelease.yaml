@@ -1,17 +1,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: telegraf-ds
+  name: telegraf
   namespace: monitor
 spec:
-  releaseName: telegraf-ds
+  releaseName: telegraf
   chart:
     spec:
-      chart: telegraf-ds
+      chart: telegraf
       version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
-        name: telegraf-ds
+        name: telegraf
         namespace: flux-system
   interval: 5m
   install:

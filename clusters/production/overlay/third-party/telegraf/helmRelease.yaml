@@ -1,12 +1,12 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: telegraf-ds
+  name: telegraf
   namespace: monitor
 spec:
   chart:
     spec:
-      chart: telegraf-ds
+      chart: telegraf
       version: ${TELEGRAF_VERSION} # Set in postBuild production
   values:
     env:
