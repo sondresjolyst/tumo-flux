@@ -8,33 +8,33 @@ spec:
     spec:
       chart: telegraf-ds
       version: ${TELEGRAF_VERSION} # Set in postBuild production
-  env:
-    - name: MOSQUITTO_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: mosquitto-credentials
-          key: username
-    - name: MOSQUITTO_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: mosquitto-credentials
-          key: password
-    - name: INFLUXDB_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: influxdb-credentials
-          key: token
-    - name: INFLUXDB_ORGANIZATION
-      valueFrom:
-        secretKeyRef:
-          name: influxdb-credentials
-          key: organization
-    - name: INFLUXDB_BUCKET
-      valueFrom:
-        secretKeyRef:
-          name: influxdb-credentials
-          key: bucket
   values:
+    env:
+      - name: MOSQUITTO_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: mosquitto-credentials
+            key: username
+      - name: MOSQUITTO_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mosquitto-credentials
+            key: password
+      - name: INFLUXDB_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: influxdb-credentials
+            key: token
+      - name: INFLUXDB_ORGANIZATION
+        valueFrom:
+          secretKeyRef:
+            name: influxdb-credentials
+            key: organization
+      - name: INFLUXDB_BUCKET
+        valueFrom:
+          secretKeyRef:
+            name: influxdb-credentials
+            key: bucket
     config:
       inputs:
         - mqtt_consumer:
