@@ -8,11 +8,32 @@ spec:
     spec:
       chart: telegraf-ds
       version: ${TELEGRAF_VERSION} # Set in postBuild production
-  valuesFrom:
-    - kind: Secret
-      name: influxdb-credentials
-    - kind: Secret
-      name: mosquitto-credentials
+  env:
+    - name: MOSQUITTO_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: mosquitto-credentials
+          key: username
+    - name: MOSQUITTO_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: mosquitto-credentials
+          key: password
+    - name: INFLUXDB_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: influxdb-credentials
+          key: token
+    - name: INFLUXDB_ORGANIZATION
+      valueFrom:
+        secretKeyRef:
+          name: influxdb-credentials
+          key: organization
+    - name: INFLUXDB_BUCKET
+      valueFrom:
+        secretKeyRef:
+          name: influxdb-credentials
+          key: bucket
   values:
     config:
       inputs:
@@ -22,11 +43,12 @@ spec:
             qos: 0
             connection_timeout: "30s"
             max_undelivered_messages: 1000
-            username: "{{ .Values.username }}"
-            password: "{{ .Values.password }}"
+            username: "$MOSQUITTO_USERNAME"
+            password: "$MOSQUITTO_PASSWORD"
       outputs:
         - influxdb_v2:
-            urls: ["https://influxdb.prod.tumogroup.com"]
-            token: "{{ .Values.token }}"
-            organization: "{{ .Values.organization }}"
-            bucket: "{{ .Values.bucket }}"
+            urls: 
+              - "https://influxdb.prod.tumogroup.com"
+            token: "$INFLUXDB_TOKEN"
+            organization: "$INFLUXDB_ORGANIZATION"
+            bucket: "$INFLUXDB_BUCKET"
