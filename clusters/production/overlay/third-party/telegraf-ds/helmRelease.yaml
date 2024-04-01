@@ -11,6 +11,10 @@ spec:
   values:
     config:
       inputs:
+        - cgroups:
+            paths:
+              - "/sys/fs/cgroup/cpuacct"
+              - "/sys/fs/cgroup/memory"
         - mqtt_consumer:
             servers: ["tcp://mqtt.prod.tumogroup.com:1883"]
             topics: ["home/#"]
@@ -29,7 +33,7 @@ spec:
                   key: password
       outputs:
         - influxdb_v2:
-            urls: ["http://influxdb.prod.tumogroup.com"]
+            urls: ["https://influxdb.prod.tumogroup.com"]
             token:
               valueFrom:
                 secretKeyRef:
