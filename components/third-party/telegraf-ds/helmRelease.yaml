@@ -23,4 +23,5 @@ spec:
         cpu: "100m"
         memory: "500Mi"
     config:
+      docker: false
       docker_endpoint: ""
