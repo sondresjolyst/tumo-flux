@@ -8,44 +8,25 @@ spec:
     spec:
       chart: telegraf-ds
       version: ${TELEGRAF_VERSION} # Set in postBuild production
+  valuesFrom:
+    - secretKeyRef:
+        name: influxdb-credentials
+    - secretKeyRef:
+        name: mosquitto-credentials
   values:
     config:
       inputs:
-        - cgroups:
-            paths:
-              - "/sys/fs/cgroup/cpuacct"
-              - "/sys/fs/cgroup/memory"
         - mqtt_consumer:
             servers: ["tcp://mqtt.prod.tumogroup.com:1883"]
             topics: ["home/#"]
             qos: 0
             connection_timeout: "30s"
             max_undelivered_messages: 1000
-            username:
-              valueFrom:
-                secretKeyRef:
-                  name: mosquitto-credentials
-                  key: username
-            password:
-              valueFrom:
-                secretKeyRef:
-                  name: mosquitto-credentials
-                  key: password
+            username: "{{ .Values.username }}"
+            password: "{{ .Values.password }}"
       outputs:
         - influxdb_v2:
             urls: ["https://influxdb.prod.tumogroup.com"]
-            token:
-              valueFrom:
-                secretKeyRef:
-                  name: influxdb-credentials
-                  key: token
-            organization:
-              valueFrom:
-                secretKeyRef:
-                  name: influxdb-credentials
-                  key: organization
-            bucket:
-              valueFrom:
-                secretKeyRef:
-                  name: influxdb-credentials
-                  key: bucket
+            token: "{{ .Values.token }}"
+            organization: "{{ .Values.organization }}"
+            bucket: "{{ .Values.bucket }}"
