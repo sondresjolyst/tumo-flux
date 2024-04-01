@@ -25,3 +25,5 @@ spec:
     config:
       docker: false
       docker_endpoint: ""
+    service:
+      enabled: false
