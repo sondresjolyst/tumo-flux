@@ -45,6 +45,7 @@ spec:
             max_undelivered_messages: 1000
             username: "$MOSQUITTO_USERNAME"
             password: "$MOSQUITTO_PASSWORD"
+            data_format: "json"
       outputs:
         - influxdb_v2:
             urls: 
