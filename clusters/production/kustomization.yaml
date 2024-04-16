@@ -40,7 +40,7 @@ patches:
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/metallb/helmRelease.yaml
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml
-  - path: ./overlay/third-party/minecraft/helmRelease.yaml
+  - path: ./overlay/third-party/minecraft-hs/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
   - path: ./overlay/third-party/telegraf/helmRelease.yaml
