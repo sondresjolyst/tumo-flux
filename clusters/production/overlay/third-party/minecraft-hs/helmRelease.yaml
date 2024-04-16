@@ -4,7 +4,7 @@ metadata:
   name: minecraft-hs
   namespace: minecraft
 spec:
-  releaseName: minecraft-hs
+  releaseName: minecraft
   chart:
     spec:
       chart: minecraft
