@@ -11,8 +11,8 @@ spec:
   values:
     resources:
       requests:
-        cpu: "500m"
-        memory: "5120Mi"
+        cpu: "1500m"
+        memory: "10Gi"
     minecraftServer:
       eula: "TRUE"
       version: "LATEST"
