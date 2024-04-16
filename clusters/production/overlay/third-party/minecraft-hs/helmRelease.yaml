@@ -22,6 +22,8 @@ spec:
       icon: "https://static.miraheze.org/windowswallpaperwiki/thumb/0/06/Koala.jpg/200px-Koala.jpg"
       memory: 5120M
       serviceType: LoadBalancer
+      downloadWorldUrl: "https://drive.usercontent.google.com/download?id=10NLGCr98FLunpo9XJ7sj3WdW5uYC54nI&export=download&authuser=0&confirm=t&uuid=d66322cf-0cbc-4b2c-bce6-7e32ed5f1d3a&at=APZUnTW8jBXQxTrgHucFM2MttUfR%3A1713279653608"
+      forceReDownload: true
     persistence:
       storageClass: nfs
       dataDir:
