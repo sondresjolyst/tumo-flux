@@ -4,15 +4,10 @@ metadata:
   name: minecraft-hs
   namespace: minecraft
 spec:
-  releaseName: minecraft-hs
   chart:
     spec:
       chart: minecraft
       version: ${MINECRAFT_VERSION} # Set in postBuild production
-      sourceRef:
-        kind: HelmRepository
-        name: itzg
-        namespace: flux-system
   values:
     resources:
       requests:
