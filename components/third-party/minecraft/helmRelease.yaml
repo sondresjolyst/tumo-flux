@@ -11,7 +11,7 @@ spec:
       version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
-        name: itzg
+        name: minecraft-server-charts
         namespace: flux-system
   interval: 5m
   install:
