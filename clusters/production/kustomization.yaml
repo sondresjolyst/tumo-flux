@@ -14,6 +14,7 @@ resources:
   - ../../components/third-party/kured
   - ../../components/third-party/metallb
   - ../../components/third-party/metrics-server
+  - ../../components/third-party/minecraft
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
   - ../../components/third-party/telegraf
@@ -39,6 +40,7 @@ patches:
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/metallb/helmRelease.yaml
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml
+  - path: ./overlay/third-party/minecraft/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
   - path: ./overlay/third-party/telegraf/helmRelease.yaml

@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft
+  namespace: minecraft
+spec:
+  releaseName: minecraft
+  chart:
+    spec:
+      chart: minecraft
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: itzg
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "512Mi"

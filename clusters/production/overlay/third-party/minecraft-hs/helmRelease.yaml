@@ -1,0 +1,40 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-hs
+  namespace: minecraft
+spec:
+  releaseName: minecraft-hs
+  chart:
+    spec:
+      chart: minecraft
+      version: ${MINECRAFT_VERSION} # Set in postBuild production
+      sourceRef:
+        kind: HelmRepository
+        name: itzg
+        namespace: flux-system
+  values:
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "5120Mi"
+    minecraftServer:
+      eula: "TRUE"
+      version: "LATEST"
+      type: "SPIGOT"
+      maxWorldSize: 1000000
+      ops: "sonyslyst,haasjo"
+      icon: "https://static.miraheze.org/windowswallpaperwiki/thumb/0/06/Koala.jpg/200px-Koala.jpg"
+      memory: 5120M
+    persistence:
+      storageClass: nfs
+      dataDir:
+        enabled: true
+        Size: 10Gi
+    mcbackup:
+      enabled: true    
+      persistence:
+      storageClass: nfs
+      backupDir:
+        enabled: true
+        Size: 10Gi
