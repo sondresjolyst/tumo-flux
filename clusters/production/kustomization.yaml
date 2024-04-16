@@ -24,6 +24,7 @@ resources:
   - ./overlay/third-party/home-assistant-et
   - ./overlay/third-party/influxdb
   - ./overlay/third-party/ingress-nginx
+  - ./overlay/third-party/minecraft-hs
   - ./overlay/third-party/mosquitto
   - ./overlay/third-party/mysql
 patches:
