@@ -20,7 +20,7 @@ spec:
       maxWorldSize: 1000000
       ops: "sonyslyst,haasjo"
       icon: "https://static.miraheze.org/windowswallpaperwiki/thumb/0/06/Koala.jpg/200px-Koala.jpg"
-      memory: 5120M
+      memory: 10Gi
       serviceType: LoadBalancer
     persistence:
       storageClass: nfs
