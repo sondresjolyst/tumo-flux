@@ -11,8 +11,8 @@ spec:
   values:
     resources:
       requests:
-        cpu: "5000m"
-        memory: "10Gi"
+        cpu: "8000m"
+        memory: "16Gi"
     minecraftServer:
       eula: "TRUE"
       version: "LATEST"
@@ -20,7 +20,7 @@ spec:
       maxWorldSize: 1000000
       ops: "sonyslyst,haasjo"
       icon: "https://static.miraheze.org/windowswallpaperwiki/thumb/0/06/Koala.jpg/200px-Koala.jpg"
-      memory: 10G
+      memory: 16G
       serviceType: LoadBalancer
     persistence:
       storageClass: nfs
