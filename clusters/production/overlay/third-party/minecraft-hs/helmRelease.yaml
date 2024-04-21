@@ -23,7 +23,10 @@ spec:
       memory: 16G
       serviceType: LoadBalancer
       pluginUrls: [
-        "https://dev.bukkit.org/projects/chunky-pregenerator/files/latest"
+        "https://dev.bukkit.org/projects/chunky-pregenerator/files/latest",
+        "https://mediafilez.forgecdn.net/files/5267/144/MoreMobHeads-1.20_1.0.37.jar"
+        
+        
       ]
     persistence:
       storageClass: nfs
