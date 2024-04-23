@@ -13,5 +13,10 @@ spec:
         kind: HelmRepository
         name: home-assistant
         namespace: flux-system
+  values:
+    resources:
+      requests:
+        cpu: "125m"
+        memory: "768Mi"
   interval: 15m
   timeout: 5m

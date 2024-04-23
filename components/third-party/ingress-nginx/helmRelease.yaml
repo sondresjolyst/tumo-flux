@@ -49,10 +49,10 @@ spec:
         controllerValue: "k8s.io/ingress-nginx"
       resources:
         limits:
-          memory: 500Mi
+          memory: 512Mi
         requests:
           cpu: 100m
-          memory: 500Mi
+          memory: 768Mi
       ingressClassByName: true
       watchIngressWithoutClass: true
       config:

@@ -13,5 +13,10 @@ spec:
         kind: HelmRepository
         name: democratic-csi
         namespace: flux-system
+  values:
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "512Mi"
   interval: 15m
   timeout: 5m

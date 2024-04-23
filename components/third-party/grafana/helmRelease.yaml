@@ -21,7 +21,7 @@ spec:
     resources:
       requests:
         cpu: "50m"
-        memory: "250Mi"
+        memory: "256Mi"
     nodeSelector: {"kubernetes.io/os": "linux"}
     env:
       GF_DATABASE_TYPE: mysql

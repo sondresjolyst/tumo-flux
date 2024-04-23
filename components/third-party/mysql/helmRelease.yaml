@@ -20,7 +20,7 @@ spec:
   values:
     resources:
       requests:
-        cpu: "100m"
-        memory: "500Mi"
+        cpu: "50m"
+        memory: "768Mi"
     auth:
       existingSecret: mysql-secret

@@ -18,7 +18,10 @@ spec:
     remediation:
       retries: 3
   values:
-    # resources: xx # Set by flux patch
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "128Mi"
     installCRDs: true
     global:
       rbac:

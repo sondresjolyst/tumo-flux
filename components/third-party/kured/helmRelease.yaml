@@ -21,6 +21,10 @@ spec:
       retries: 3
   values:
     updateStrategy: RollingUpdate
+    resources:
+      requests:
+        cpu: "10m"
+        memory: "128Mi"
     # metrics:
     #   create: true
     extraArgs:

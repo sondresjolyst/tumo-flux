@@ -26,7 +26,7 @@ spec:
       resources:
         requests:
           cpu: "100m"
-          memory: "100Mi"
+          memory: "128Mi"
     prometheus:
       prometheusSpec:
         retention: 60d # default
@@ -80,4 +80,4 @@ spec:
         resources:
           requests:
             cpu: "100m"
-            memory: "400Mi"
+            memory: "512Mi"

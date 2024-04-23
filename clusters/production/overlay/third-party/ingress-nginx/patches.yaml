@@ -21,10 +21,10 @@ spec:
                   #    serviceMonitor: null
                   resources:
                      limits:
-                        memory: 500Mi
+                        memory: 768Mi
                      requests:
                         cpu: 100m
-                        memory: 500Mi
+                        memory: 768Mi
                   # extraArgs: null
                   # priorityClassName: high-priority
       target:

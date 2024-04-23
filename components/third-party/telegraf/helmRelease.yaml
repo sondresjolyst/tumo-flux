@@ -20,8 +20,8 @@ spec:
   values:
     resources:
       requests:
-        cpu: "100m"
-        memory: "500Mi"
+        cpu: "50m"
+        memory: "768Mi"
     config:
       docker: false
       docker_endpoint: ""
