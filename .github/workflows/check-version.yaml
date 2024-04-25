@@ -10,12 +10,14 @@ on:
         type: choice
         options:
           - "production"
+        default: "production"
       destinationCluster:
         description: "Destination cluster"
         required: false
         type: choice
         options:
           - "production"
+        default: "production"
 
 jobs:
   check-version:
@@ -31,14 +33,8 @@ jobs:
           PR_BRANCH_TEMP="automatic-version-update"
           PR_NAME_TEMP="Automatic Pull Request"
           destinationCluster="${{ inputs.destinationCluster }}"
-
-          if [ -z $destinationCluster ]; then
-            echo "PR_BRANCH=${PR_BRANCH_TEMP}-development" >> $GITHUB_ENV
-            echo "PR_NAME=${PR_NAME_TEMP} - development" >> $GITHUB_ENV
-          else
-            echo "PR_BRANCH=${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
-            echo "PR_NAME=${PR_NAME_TEMP} - ${destinationCluster}" >> $GITHUB_ENV
-          fi
+          echo "PR_BRANCH=${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
+          echo "PR_NAME=${PR_NAME_TEMP} - ${destinationCluster}" >> $GITHUB_ENV
 
       - name: Check version
         id: checkversion
