@@ -10,7 +10,7 @@ spec:
       FLUX_CONFIG_PATH: ./clusters/production
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
-      CERT_MANAGER_VERSION: 1.13.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.14.4 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.6 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       GRAFANA_VERSION: 7.3.9 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAV_VERSION: 10.1.14 # https://github.com/truecharts/charts/blob/master/charts/stable/grav/Chart.yaml
