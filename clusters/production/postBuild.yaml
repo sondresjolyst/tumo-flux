@@ -10,22 +10,22 @@ spec:
       FLUX_CONFIG_PATH: ./clusters/production
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
-      CERT_MANAGER_VERSION: 1.13.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.14.5 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.6 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       GRAFANA_VERSION: 7.3.9 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAV_VERSION: 10.1.14 # https://github.com/truecharts/charts/blob/master/charts/stable/grav/Chart.yaml
-      HOME_ASSISTANT_VERSION: 0.14.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      INFLUXDB_VERSION: 6.0.8 # https://artifacthub.io/packages/helm/bitnami/influxdb
+      HOME_ASSISTANT_VERSION: 0.15.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      INFLUXDB_VERSION: 6.0.9 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.4.5 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.14.5 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.12.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
-      MINECRAFT_VERSION: 4.16.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
+      MINECRAFT_VERSION: 4.17.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 13.1.7 # https://github.com/truecharts/charts/blob/master/charts/stable/mosquitto/Chart.yaml
-      MYSQL_VERSION: 9.16.2 # https://artifacthub.io/packages/helm/bitnami/mysql
-      NGINX_VERSION: 4.10.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      PROMETHEUS_VERSION: 55.8.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      TELEGRAF_VERSION: 1.8.44 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      MYSQL_VERSION: 10.2.2 # https://artifacthub.io/packages/helm/bitnami/mysql
+      NGINX_VERSION: 4.10.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      PROMETHEUS_VERSION: 58.4.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      TELEGRAF_VERSION: 1.8.45 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
