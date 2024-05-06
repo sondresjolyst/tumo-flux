@@ -24,7 +24,7 @@ spec:
       MOSQUITTO_VERSION: 13.1.7 # https://github.com/truecharts/charts/blob/master/charts/stable/mosquitto/Chart.yaml
       MYSQL_VERSION: 10.2.2 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.10.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      PROMETHEUS_VERSION: 58.2.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 58.4.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       TELEGRAF_VERSION: 1.8.45 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
