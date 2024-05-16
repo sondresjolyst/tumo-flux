@@ -5,11 +5,11 @@ if [[ -z "${PR_BRANCH}" ]]; then
 fi
 
 if [[ -z "${SOURCE_CLUSTER}" ]]; then
-    SOURCE_CLUSTER="development"
+    SOURCE_CLUSTER="production"
 fi
 
 if [[ -z "${DESTINATION_CLUSTER}" ]]; then
-    DESTINATION_CLUSTER="development"
+    DESTINATION_CLUSTER="production"
 fi
 
 numberOfChanges=0
