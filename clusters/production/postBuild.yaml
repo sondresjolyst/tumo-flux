@@ -22,7 +22,7 @@ spec:
       METRICS_VERSION: 3.12.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 4.18.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 15.0.6 # https://artifacthub.io/packages/helm/truecharts/mosquitto
-      MYSQL_VERSION: 10.2.4 # https://artifacthub.io/packages/helm/bitnami/mysql
+      MYSQL_VERSION: 10.3.0 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.10.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       PROMETHEUS_VERSION: 58.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       TELEGRAF_VERSION: 1.8.45 # https://artifacthub.io/packages/helm/influxdata/telegraf
