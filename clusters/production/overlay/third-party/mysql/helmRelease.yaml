@@ -9,17 +9,18 @@ spec:
       version: ${MYSQL_VERSION} # Set in postBuild production
   values:
     primary:
+      extraFlags: "--authentication-policy=mysql_native_password"
       persistence:
         enabled: true
         storageClass: nfs
         size: 8Gi
-      extraVolumes:
-        - name: config
-          configMap:
-            name: mysql-config
-      extraVolumeMounts:
-        - name: config
-          mountPath: /opt/bitnami/mysql/conf/
+      # extraVolumes:
+      #   - name: config
+      #     configMap:
+      #       name: mysql-config
+      # extraVolumeMounts:
+      #   - name: config
+      #     mountPath: /opt/bitnami/mysql/conf/
     auth:
       database: grafana
       username: grafana
