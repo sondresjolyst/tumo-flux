@@ -48,4 +48,11 @@ spec:
     auth:
       database: grafana
       username: grafana
+    extraVolumes:
+      - name: config
+        configMap:
+          name: mysql-config
+    extraVolumeMounts:
+      - name: config
+        mountPath: /opt/bitnami/mysql/conf/
       # authenticationPolicy: caching_sha2_password
