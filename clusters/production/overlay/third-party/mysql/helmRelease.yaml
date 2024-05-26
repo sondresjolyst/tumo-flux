@@ -16,7 +16,4 @@ spec:
     auth:
       database: grafana
       username: grafana
-    configFiles:
-      my_custom.cnf: |
-        [mysqld]
-        default_authentication_plugin=mysql_native_password
+      authenticationPolicy: caching_sha2_password
