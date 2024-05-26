@@ -13,6 +13,7 @@ spec:
         configuration: |
           [mysqld]
           default_authentication_plugin=mysql_native_password
+          mysql_native_password=ON
         enabled: true
         storageClass: nfs
         size: 8Gi
