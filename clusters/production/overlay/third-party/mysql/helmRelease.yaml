@@ -10,10 +10,13 @@ spec:
   values:
     primary:
       persistence:
+        configuration: |
+          [mysqld]
+          default_authentication_plugin=mysql_native_password
         enabled: true
         storageClass: nfs
         size: 8Gi
     auth:
       database: grafana
       username: grafana
-      authenticationPolicy: caching_sha2_password
+      # authenticationPolicy: caching_sha2_password
