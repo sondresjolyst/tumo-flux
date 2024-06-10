@@ -21,7 +21,7 @@ spec:
       METALLB_VERSION: 0.14.5 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.12.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 4.19.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
-      MOSQUITTO_VERSION: 15.0.10 # https://artifacthub.io/packages/helm/truecharts/mosquitto
+      MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 11.1.2 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.10.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       PROMETHEUS_VERSION: 60.0.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
