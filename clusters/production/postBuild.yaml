@@ -15,7 +15,7 @@ spec:
       GRAFANA_VERSION: 8.0.2 # https://artifacthub.io/packages/helm/grafana/grafana
       GRAV_VERSION: 13.0.1 # https://artifacthub.io/packages/helm/truecharts/grav
       HOME_ASSISTANT_VERSION: 0.18.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      INFLUXDB_VERSION: 6.3.5 # https://artifacthub.io/packages/helm/bitnami/influxdb
+      INFLUXDB_VERSION: 6.3.6 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.4.5 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.14.5 # https://artifacthub.io/packages/helm/metallb/metallb
