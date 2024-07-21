@@ -10,6 +10,7 @@ spec:
   values:
     existingSecret: wordpress-secret
     image:
+      repository: bitnami/wordpress-nginx
       debug: true
     ingress:
       enabled: true
