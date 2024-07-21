@@ -9,12 +9,25 @@ spec:
       version: ${WORDPRESS_VERSION} # Set in postBuild production
   values:
     existingSecret: wordpress-secret
+    containerSecurityContext:
+      enabled: false
+    memcached:
+      containerSecurityContext:
+        enabled: false
+      podSecurityContext:
+        enabled: false
+    podSecurityContext:
+      enabled: false
     persistence:
       enabled: true
       storageClass: nfs
       size: 10Gi
     mariadb:
       primary:
+        containerSecurityContext:
+          enabled: false
+        podSecurityContext:
+          enabled: false
         persistence:
           enabled: true
           storageClass: nfs
