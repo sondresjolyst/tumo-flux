@@ -9,10 +9,6 @@ spec:
       version: ${WORDPRESS_VERSION} # Set in postBuild production
   values:
     existingSecret: wordpress-secret
-    diagnosticMode:
-      enabled: true
-    image:
-      debug: true
     ingress:
       enabled: true
       hostname: wordpress1.prod.tumogroup.com
