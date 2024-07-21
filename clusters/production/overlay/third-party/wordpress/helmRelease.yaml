@@ -8,4 +8,13 @@ spec:
     spec:
       version: ${WORDPRESS_VERSION} # Set in postBuild production
   values:
-
+    persistence:
+      enabled: true
+      storageClass: nfs
+      size: 10Gi
+    mariadb:
+      primary:
+        persistence:
+          enabled: true
+          storageClass: nfs
+          size: 10Gi
