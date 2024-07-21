@@ -26,6 +26,7 @@ spec:
       NGINX_VERSION: 4.11.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       PROMETHEUS_VERSION: 61.3.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       TELEGRAF_VERSION: 1.8.50 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      WORDPRESS_VERSION: 23.0.9 # https://artifacthub.io/packages/helm/bitnami/wordpress
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config

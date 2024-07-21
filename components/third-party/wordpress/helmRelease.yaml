@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wordpress
+  namespace: wordpress
+spec:
+  releaseName: wordpress
+  chart:
+    spec:
+      chart: wordpress
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: wordpress
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "768Mi"
