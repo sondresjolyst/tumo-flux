@@ -27,6 +27,8 @@ spec:
       enabled: true
       storageClass: nfs
       size: 10Gi
+      accessModes:
+        - ReadWriteMany
     mariadb:
       primary:
         containerSecurityContext:
@@ -37,3 +39,5 @@ spec:
           enabled: true
           storageClass: nfs
           size: 10Gi
+          accessModes:
+            - ReadWriteMany
