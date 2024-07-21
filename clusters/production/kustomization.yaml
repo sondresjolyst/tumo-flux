@@ -27,6 +27,7 @@ resources:
   - ./overlay/third-party/ingress-nginx
   - ./overlay/third-party/mosquitto
   - ./overlay/third-party/mysql
+  - ./overlay/third-party/wordpress
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
