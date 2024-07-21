@@ -9,8 +9,9 @@ spec:
       version: ${WORDPRESS_VERSION} # Set in postBuild production
   values:
     existingSecret: wordpress-secret
+    diagnosticMode:
+      enabled: true
     image:
-      repository: bitnami/wordpress-nginx
       debug: true
     ingress:
       enabled: true
