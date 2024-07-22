@@ -9,9 +9,6 @@ spec:
       version: ${WORDPRESS_VERSION} # Set in postBuild production
   values:
     existingSecret: wordpress-secret
-    ingress:
-      enabled: true
-      hostname: wordpress1.prod.tumogroup.com
     containerSecurityContext:
       enabled: false
     memcached:
