@@ -25,4 +25,4 @@ spec:
               service:
                 name: wordpress
                 port:
-                  number: 80
+                  number: 443
