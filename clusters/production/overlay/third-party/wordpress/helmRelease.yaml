@@ -8,6 +8,10 @@ spec:
     spec:
       version: ${WORDPRESS_VERSION} # Set in postBuild production
   values:
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "768Mi"
     existingSecret: wordpress-secret
     containerSecurityContext:
       enabled: false
