@@ -18,7 +18,7 @@ spec:
       INFLUXDB_VERSION: 6.3.13 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.4.5 # https://artifacthub.io/packages/helm/kured/kured
-      METALLB_VERSION: 0.14.7 # https://artifacthub.io/packages/helm/metallb/metallb
+      METALLB_VERSION: 0.14.8 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.12.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 4.19.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
