@@ -19,6 +19,7 @@ spec:
       enabled: true
       ingressClassName: nginx
       tls: true
+      hostname: wordpress1.prod.tumogroup.com
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
     wordpressConfigureCache: true
