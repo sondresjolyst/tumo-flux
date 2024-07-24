@@ -10,7 +10,7 @@ spec:
   values:
     resources:
       requests:
-        cpu: "200m"
+        cpu: "500m"
         memory: "768Mi"
     existingSecret: wordpress-secret
     containerSecurityContext:
