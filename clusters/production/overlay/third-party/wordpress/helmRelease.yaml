@@ -18,8 +18,6 @@ spec:
     wordpressConfigureCache: true
     memcached:
       enabled: true
-      auth:
-        enabled: true
       containerSecurityContext:
         enabled: false
       podSecurityContext:
