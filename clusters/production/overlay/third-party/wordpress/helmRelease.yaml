@@ -15,13 +15,6 @@ spec:
     existingSecret: wordpress-secret
     containerSecurityContext:
       enabled: false
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      tls: true
-      hostname: wordpress1.prod.tumogroup.com
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-prod"
     wordpressConfigureCache: true
     memcached:
       enabled: true
