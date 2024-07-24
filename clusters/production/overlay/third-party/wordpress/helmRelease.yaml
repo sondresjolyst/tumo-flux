@@ -15,7 +15,13 @@ spec:
     existingSecret: wordpress-secret
     containerSecurityContext:
       enabled: false
+    wordpressConfigureCache: true
     memcached:
+      enabled: true
+      auth:
+        enabled: true
+        username: "wordpresscaching"
+        existingPasswordSecret: wordpress-secret
       containerSecurityContext:
         enabled: false
       podSecurityContext:
