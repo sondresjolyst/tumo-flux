@@ -33,7 +33,7 @@ spec:
     name: ${CERT_ISSUER}
   duration: 2160h # 90d
   renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
-  commonName: "*canmodi.com"
+  commonName: "canmodi.com"
   dnsNames:
   - "canmodi.com"
   - "*.canmodi.com"
