@@ -13,10 +13,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "wordpress.prod.tumogroup.com"
+        - "canmodi.com"
       secretName: wordpress-tls
   rules:
-    - host: wordpress.prod.tumogroup.com
+    - host: canmodi.com
       http:
         paths:
           - path: /

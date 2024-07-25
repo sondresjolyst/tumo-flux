@@ -17,3 +17,25 @@ spec:
   commonName: "*.${RESOURCE_DNS}"
   dnsNames:
   - "*.${RESOURCE_DNS}"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: canmodi-wildcard-tls
+  namespace: default
+spec:
+  secretName: canmodi-wildcard-tls-cert
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "canmodi-wildcard-sync=canmodi-wildcard-tls-cert"
+  issuerRef:
+    kind: ClusterIssuer
+    name: ${CERT_ISSUER}
+  duration: 2160h # 90d
+  renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
+  commonName: "*.canmodi.com"
+  dnsNames:
+  - "canmodi.com"
+  - "*.canmodi.com"
+  - "canmodi.no"
+  - "*.canmodi.no"
