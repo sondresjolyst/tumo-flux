@@ -14,9 +14,20 @@ spec:
   tls:
     - hosts:
         - "canmodi.no"
+        - "www.canmodi.no"
       secretName: wordpress-tls
   rules:
     - host: canmodi.no
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wordpress
+                port:
+                  number: 80
+    - host: www.canmodi.no
       http:
         paths:
           - path: /
