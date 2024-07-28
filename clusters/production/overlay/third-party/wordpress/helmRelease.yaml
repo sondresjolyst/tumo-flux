@@ -28,6 +28,7 @@ spec:
     replicaCount: 2
     wordpressConfigureCache: true
     wordpressUsername: admin
+    wordpressScheme: https
     pdb:
       create: true
       minAvailable: "1"
