@@ -28,8 +28,17 @@ spec:
     replicaCount: 2
     wordpressConfigureCache: true
     wordpressUsername: admin
+    pdb:
+      create: true
+      minAvailable: "1"
+    metrics:
+      enabled: true
     mariadb:
       primary:
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "768Mi"
         containerSecurityContext:
           enabled: false
         podSecurityContext:
