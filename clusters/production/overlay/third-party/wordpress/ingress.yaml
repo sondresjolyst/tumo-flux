@@ -39,7 +39,7 @@ spec:
               service:
                 name: wordpress
                 port:
-                  number: 80
+                  number: 32377
     - host: canmodi.com
       http:
         paths:

@@ -13,23 +13,21 @@ spec:
         cpu: "500m"
         memory: "768Mi"
     existingSecret: wordpress-secret
-    containerSecurityContext:
-      enabled: false
-    wordpressConfigureCache: true
     memcached:
       enabled: true
       containerSecurityContext:
         enabled: false
       podSecurityContext:
         enabled: false
-    podSecurityContext:
-      enabled: false
     persistence:
       enabled: true
       storageClass: nfs
       size: 10Gi
       accessModes:
         - ReadWriteMany
+    replicaCount: 2
+    wordpressConfigureCache: true
+    wordpressUsername: admin
     mariadb:
       primary:
         containerSecurityContext:
@@ -42,3 +40,7 @@ spec:
           size: 10Gi
           accessModes:
             - ReadWriteMany
+    containerSecurityContext:
+      enabled: false
+    podSecurityContext:
+      enabled: false
