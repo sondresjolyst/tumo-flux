@@ -23,9 +23,9 @@ spec:
       enabled: true
       storageClass: nfs
       size: 10Gi
-      # accessModes:
-      #   - ReadWriteMany
-    replicaCount: 1
+      accessModes:
+        - ReadWriteMany
+    replicaCount: 2
     wordpressConfigureCache: true
     wordpressUsername: admin
     wordpressScheme: https
