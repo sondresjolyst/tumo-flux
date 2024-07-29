@@ -29,6 +29,8 @@ spec:
     wordpressConfigureCache: true
     wordpressUsername: admin
     wordpressScheme: https
+    allowOverrideNone: false
+    htaccessPersistenceEnabled: true
     image:
       debug: true
     pdb:
