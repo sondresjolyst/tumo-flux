@@ -29,6 +29,8 @@ spec:
     wordpressConfigureCache: true
     wordpressUsername: admin
     wordpressScheme: https
+    image:
+      debug: true
     pdb:
       create: true
       minAvailable: "1"
