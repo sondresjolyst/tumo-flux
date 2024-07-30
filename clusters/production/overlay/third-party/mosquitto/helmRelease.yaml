@@ -23,8 +23,8 @@ spec:
           main:
             port: 1883
             targetPort: 1883
+    storageClass: nfs
     persistence:
-      storageClass: nfs
       data:
         enabled: true
         mountPath: "/mosquitto/data"
