@@ -22,5 +22,5 @@ spec:
       requests:
         cpu: "50m"
         memory: "768Mi"
-    auth:
-      existingSecret: mysql-secret
+    # auth:
+    #   existingSecret: mysql-secret
