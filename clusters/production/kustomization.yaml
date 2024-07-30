@@ -18,7 +18,7 @@ resources:
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
   - ../../components/third-party/telegraf
-  - ../../components/third-party/wordpress
+  # - ../../components/third-party/wordpress
   - ./overlay/third-party/cert-manager
   # - ./overlay/third-party/grav
   - ./overlay/third-party/home-assistant
@@ -27,7 +27,7 @@ resources:
   - ./overlay/third-party/ingress-nginx
   - ./overlay/third-party/mosquitto
   - ./overlay/third-party/mysql
-  - ./overlay/third-party/wordpress
+  # - ./overlay/third-party/wordpress
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
@@ -46,4 +46,4 @@ patches:
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
   - path: ./overlay/third-party/telegraf/helmRelease.yaml
-  - path: ./overlay/third-party/wordpress/helmRelease.yaml
+  # - path: ./overlay/third-party/wordpress/helmRelease.yaml
