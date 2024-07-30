@@ -9,7 +9,7 @@ spec:
       version: ${MYSQL_VERSION} # Set in postBuild production
   values:
     primary:
-      extraFlags: "--mysql-native-password=ON --character-set-server=UTF8MB4"
+      # extraFlags: "--mysql-native-password=ON --character-set-server=UTF8MB4"
       persistence:
         enabled: true
         storageClass: nfs
@@ -39,5 +39,4 @@ spec:
       database: grafana
       username: grafana
       createDatabase: true
-      existingSecret: mysql-secret
       # authenticationPolicy: caching_sha2_password
