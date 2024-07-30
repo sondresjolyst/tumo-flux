@@ -39,5 +39,5 @@ spec:
       database: grafana
       username: grafana
       createDatabase: true
-      existingSecret:
+      existingSecret: mysql-secret
       # authenticationPolicy: caching_sha2_password
