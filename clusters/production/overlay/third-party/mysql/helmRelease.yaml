@@ -16,20 +16,23 @@ spec:
         enabled: true
         storageClass: nfs
         size: 8Gi
+      startupProbe:
+        enabled: false
+        initialDelaySeconds: 600
       livenessProbe:
-        enabled: true
-        initialDelaySeconds: 360
-        periodSeconds: 10
-        timeoutSeconds: 5
-        failureThreshold: 6
-        successThreshold: 1
+        enabled: false
+        # initialDelaySeconds: 360
+        # periodSeconds: 10
+        # timeoutSeconds: 5
+        # failureThreshold: 6
+        # successThreshold: 1
       readinessProbe:
-        enabled: true
-        initialDelaySeconds: 360
-        periodSeconds: 5
-        timeoutSeconds: 3
-        failureThreshold: 6
-        successThreshold: 1
+        enabled: false
+        # initialDelaySeconds: 360
+        # periodSeconds: 5
+        # timeoutSeconds: 3
+        # failureThreshold: 6
+        # successThreshold: 1
       # extraVolumes:
       #   - name: config
       #     configMap:
@@ -37,6 +40,8 @@ spec:
       # extraVolumeMounts:
       #   - name: config
       #     mountPath: /opt/bitnami/mysql/conf/
+    secondary:
+      replicaCount: 0
     auth:
       database: grafana
       username: grafana
