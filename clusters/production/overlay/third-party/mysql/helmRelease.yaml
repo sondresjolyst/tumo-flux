@@ -8,6 +8,8 @@ spec:
     spec:
       version: ${MYSQL_VERSION} # Set in postBuild production
   values:
+    image:
+      debug: true
     primary:
       # extraFlags: "--mysql-native-password=ON --character-set-server=UTF8MB4"
       persistence:
