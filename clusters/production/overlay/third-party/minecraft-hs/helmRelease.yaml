@@ -24,7 +24,7 @@ spec:
       serviceType: LoadBalancer
       pluginUrls: [
         "https://dev.bukkit.org/projects/chunky-pregenerator/files/latest",
-        "TreeFeller-1.24.1.jar"
+        "https://dev.bukkit.org/projects/thizzyz-tree-feller/files/5539016"
       ]
     persistence:
       storageClass: nfs
