@@ -24,8 +24,7 @@ spec:
       serviceType: LoadBalancer
       pluginUrls: [
         "https://dev.bukkit.org/projects/chunky-pregenerator/files/latest",
-        "https://mediafilez.forgecdn.net/files/5267/144/MoreMobHeads-1.20_1.0.37.jar",
-        "https://mediafilez.forgecdn.net/files/5092/459/UltimateTimber-3.0.0.jar"
+        "TreeFeller-1.24.1.jar"
       ]
     persistence:
       storageClass: nfs
