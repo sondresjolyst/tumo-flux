@@ -24,7 +24,7 @@ spec:
       serviceType: LoadBalancer
       pluginUrls: [
         "https://dev.bukkit.org/projects/chunky-pregenerator/files/latest",
-        "https://dev.bukkit.org/projects/thizzyz-tree-feller/files/5539016"
+        "https://dev.bukkit.org/projects/thizzyz-tree-feller/files/5539016/download"
       ]
     persistence:
       storageClass: nfs
