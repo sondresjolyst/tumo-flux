@@ -27,7 +27,7 @@ spec:
         "https://dev.bukkit.org/projects/thizzyz-tree-feller/files/5539016/download",
         "https://dev.bukkit.org/projects/essentialsx/files/latest",
         "https://download.luckperms.net/1552/bukkit/loader/LuckPerms-Bukkit-5.4.137.jar",
-        "https://www.spigotmc.org/resources/vault.34315/download?version=344916",
+        "https://dev.bukkit.org/projects/vault/files/3007470/download",
         "https://dev.bukkit.org/projects/gui-shop/files/latest",
       ]
     persistence:
