@@ -12,7 +12,7 @@ spec:
       TUMO_ENVIRONMENT: prod # prod
       CERT_MANAGER_VERSION: 1.15.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.6 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
-      GRAFANA_VERSION: 8.4.6 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 8.4.7 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION: 0.19.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 6.3.18 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
