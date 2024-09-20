@@ -24,7 +24,7 @@ spec:
       MYSQL_VERSION: 11.1.17 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.11.2 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       PROMETHEUS_VERSION: 62.7.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      TELEGRAF_VERSION: 1.8.53 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      TELEGRAF_VERSION: 1.8.54 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
