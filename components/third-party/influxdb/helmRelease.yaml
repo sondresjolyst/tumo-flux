@@ -18,9 +18,10 @@ spec:
     remediation:
       retries: 3
   values:
-    resources:
-      requests:
-        cpu: "100m"
-        memory: "512Mi"
+    influxdb:
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "512Mi"
     auth:
       existingSecret: influxdb-secret

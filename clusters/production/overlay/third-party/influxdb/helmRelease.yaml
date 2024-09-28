@@ -16,3 +16,7 @@ spec:
     influxdb:
       service:
         type: LoadBalancer
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "512Mi"
