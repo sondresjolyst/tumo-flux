@@ -36,6 +36,8 @@ spec:
             name: influxdb-credentials
             key: bucket
     config:
+      agent:
+        debug: true
       inputs:
         - mqtt_consumer:
             servers: ["tcp://mqtt.prod.tumogroup.com:1883"]
