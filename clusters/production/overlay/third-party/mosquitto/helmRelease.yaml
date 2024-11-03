@@ -40,7 +40,7 @@ spec:
         objectName: config
   postRenderers:
   - kustomize:
-      patches:
+      patchesStrategicMerge:
       - apiVersion: apps/v1
         kind: Deployment
         metadata:
