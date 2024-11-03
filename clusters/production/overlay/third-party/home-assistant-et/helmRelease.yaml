@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: home-assistant-et
@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: home-assistant
-      version: ${HOME_ASSISTANT_VERSION} # Set in postBuild production
+      version: ${HOME_ASSISTANT_VERSION_ET} # Set in postBuild production
       sourceRef:
         kind: HelmRepository
         name: home-assistant
