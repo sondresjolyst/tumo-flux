@@ -39,26 +39,26 @@ spec:
         type: configmap
         objectName: config
   postRenderers:
-  - kustomize:
-      patches:
-        - patch: |
-          apiVersion: apps/v1
-          kind: Deployment
-          metadata:
-            name: mosquitto
-            namespace: mosquitto
-          spec:
-            template:
+    - kustomize:
+        patches:
+          - patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: mosquitto
+                namespace: mosquitto
               spec:
-                containers:
-                - name: mosquitto
-                  volumeMounts:
-                  - mountPath: /mosquitto/configinc
-                    name: mosquittoconf
-                    readOnly: true
-                volumes:
-                - name: mosquittoconf
-                  secret:
-                    secretName: mosquittoconf
+                template:
+                  spec:
+                    containers:
+                    - name: mosquitto
+                      volumeMounts:
+                      - mountPath: /mosquitto/configinc
+                        name: mosquittoconf
+                        readOnly: true
+                    volumes:
+                    - name: mosquittoconf
+                      secret:
+                        secretName: mosquittoconf
   interval: 15m
   timeout: 5m
