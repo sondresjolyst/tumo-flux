@@ -17,6 +17,8 @@ spec:
     apiService:
       create: true
       insecureSkipTLSVerify: true
+    args:
+      - --kubelet-insecure-tls
   interval: 5m
   timeout: 5m
   install:
