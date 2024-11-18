@@ -11,10 +11,10 @@ spec:
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
       CERT_MANAGER_VERSION: 1.16.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
-      DEMOCRATIC_CSI_VERSION: 0.14.6 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
+      DEMOCRATIC_CSI_VERSION: 0.14.7 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       GRAFANA_VERSION: 8.6.0 # https://artifacthub.io/packages/helm/grafana/grafana
-      HOME_ASSISTANT_VERSION: 0.26.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      HOME_ASSISTANT_VERSION_ET: 0.26.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION: 0.27.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION_ET: 0.27.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 6.3.22 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.5.2 # https://artifacthub.io/packages/helm/kured/kured
@@ -24,7 +24,7 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 12.0.0 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.11.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      PROMETHEUS_VERSION: 66.1.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 66.2.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       TELEGRAF_VERSION: 1.8.55 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
