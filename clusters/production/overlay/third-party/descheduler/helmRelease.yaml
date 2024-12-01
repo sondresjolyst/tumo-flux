@@ -7,3 +7,18 @@ spec:
   chart:
     spec:
       version: ${DESCHEDULER_VERSION} # Set in postBuild production
+  values:
+    deschedulerPolicy:
+      profiles:
+        - name: PodLifeTime
+          pluginConfig:
+          - name: "PodLifeTime"
+            args:
+              maxPodLifeTimeSeconds: 86400
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: telegraf
+          plugins:
+            deschedule:
+              enabled:
+                - "PodLifeTime"
