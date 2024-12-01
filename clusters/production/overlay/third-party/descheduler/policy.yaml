@@ -1,5 +1,13 @@
 apiVersion: "descheduler/v1alpha2"
 kind: "DeschedulerPolicy"
+metadata:
+  name: descheduler
+  namespace: kube-system
+  annotations:
+    meta.helm.sh/release-name: descheduler
+    meta.helm.sh/release-namespace: kube-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
 profiles:
   - name: PodLifeTime
     pluginConfig:
