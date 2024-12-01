@@ -12,6 +12,7 @@ spec:
       TUMO_ENVIRONMENT: prod # prod
       CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.7 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
+      DESCHEDULER_VERSION: 0.31.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       GRAFANA_VERSION: 8.6.3 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION: 0.27.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION_ET: 0.27.0 # https://artifacthub.io/packages/helm/alekc/home-assistant

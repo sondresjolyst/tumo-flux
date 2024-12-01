@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: descheduler
+  namespace: kube-system
+spec:
+  chart:
+    spec:
+      version: ${DESCHEDULER_VERSION} # Set in postBuild production

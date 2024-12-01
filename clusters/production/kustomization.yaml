@@ -4,6 +4,7 @@ resources:
   - flux-system
   - ../../components/third-party/cert-manager
   - ../../components/third-party/democratic-csi
+  - ../../components/third-party/descheduler
   - ../../components/third-party/grafana
   # - ../../components/third-party/grav
   - ../../components/third-party/home-assistant
@@ -20,6 +21,7 @@ resources:
   - ../../components/third-party/telegraf
   # - ../../components/third-party/wordpress
   - ./overlay/third-party/cert-manager
+  - ./overlay/third-party/descheduler
   # - ./overlay/third-party/grav
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
@@ -32,10 +34,11 @@ patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/democratic-csi/helmRelease.yaml
+  - path: ./overlay/third-party/descheduler/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   # - path: ./overlay/third-party/grav/helmRelease.yaml
-  - path: ./overlay/third-party/home-assistant/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant-et/helmRelease.yaml
+  - path: ./overlay/third-party/home-assistant/helmRelease.yaml
   - path: ./overlay/third-party/influxdb/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
