@@ -13,10 +13,10 @@ spec:
       CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.7 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.31.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
-      GRAFANA_VERSION: 8.6.3 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 8.6.4 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION: 0.27.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION_ET: 0.27.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      INFLUXDB_VERSION: 6.3.23 # https://artifacthub.io/packages/helm/bitnami/influxdb
+      INFLUXDB_VERSION: 6.4.0 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.5.2 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.14.8 # https://artifacthub.io/packages/helm/metallb/metallb
