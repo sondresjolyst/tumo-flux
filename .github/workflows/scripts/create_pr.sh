@@ -6,7 +6,7 @@ function create-pr() {
     fi
 
     if [[ -z "${PR_NAME}" ]]; then
-        PR_NAME="Automatic Pull Request"
+        PR_NAME="Automatic Helm chart versions"
     fi
 
     if [[ $(git fetch origin && git branch --remotes) == *"origin/${PR_BRANCH}"* ]]; then

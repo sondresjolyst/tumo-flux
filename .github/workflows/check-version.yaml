@@ -38,8 +38,8 @@ jobs:
             destinationCluster="production"
           fi
 
-          echo "PR_BRANCH=${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
-          echo "PR_NAME=${PR_NAME_TEMP} - ${destinationCluster}" >> $GITHUB_ENV
+          echo "PR_BRANCH=chore/${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
+          echo "PR_NAME=chore(${destinationCluster}): ${PR_NAME_TEMP}" >> $GITHUB_ENV
       - name: Check version
         id: checkversion
         env:
