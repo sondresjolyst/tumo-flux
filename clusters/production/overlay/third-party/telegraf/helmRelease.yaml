@@ -9,6 +9,7 @@ spec:
       chart: telegraf
       version: ${TELEGRAF_VERSION} # Set in postBuild production
   values:
+    replicaCount: 2
     env:
       - name: MOSQUITTO_USERNAME
         valueFrom:
