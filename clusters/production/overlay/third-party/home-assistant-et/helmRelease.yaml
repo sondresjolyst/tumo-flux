@@ -14,6 +14,8 @@ spec:
         name: home-assistant
         namespace: flux-system
   values:
+    image:
+      tag: "2024.12.5"
     service:
       port: 8124
     persistence:
