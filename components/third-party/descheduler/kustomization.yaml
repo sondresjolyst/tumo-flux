@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - helmRepo.yaml
   - helmRelease.yaml
-patchesStrategicMerge:
   - clusterrole.yaml
