@@ -13,7 +13,7 @@ spec:
       CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.7 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.32.1 # https://artifacthub.io/packages/helm/descheduler/descheduler
-      GRAFANA_VERSION: 8.8.2 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 8.8.3 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION: 1.1.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION_ET: 1.1.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 6.5.1 # https://artifacthub.io/packages/helm/bitnami/influxdb
@@ -21,7 +21,7 @@ spec:
       KURED_VERSION: 5.5.2 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.14.9 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.12.2 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
-      MINECRAFT_VERSION: 4.23.6 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
+      MINECRAFT_VERSION: 4.23.7 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 12.2.1 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.12.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
