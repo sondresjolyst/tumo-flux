@@ -14,6 +14,10 @@ spec:
         name: home-assistant
         namespace: flux-system
   values:
+    resources:
+      requests:
+        cpu: "125m"
+        memory: "768Mi"
     service:
       port: 8124
     persistence:
