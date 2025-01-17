@@ -10,7 +10,7 @@ spec:
       FLUX_CONFIG_PATH: ./clusters/production
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
-      CERT_MANAGER_VERSION: 1.16.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.16.3 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.7 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.32.1 # https://artifacthub.io/packages/helm/descheduler/descheduler
       GRAFANA_VERSION: 8.8.3 # https://artifacthub.io/packages/helm/grafana/grafana
