@@ -5,10 +5,10 @@ metadata:
   namespace: postgresql
 spec:
   releaseName: postgresql
-  chart:
-    spec:
-      chart: postgresql
-      version: xx # Set by flux patch
+  chartRef:
+    kind: postgresql
+    name: kubernetes-event-exporter
+    namespace: flux-system
   interval: 5m
   install:
     remediation:
