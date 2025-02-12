@@ -4,7 +4,6 @@ metadata:
   name: postgresql
   namespace: postgresql
 spec:
-  releaseName: postgresql
   chart:
     spec:
       version: ${POSTGRESQL_VERSION}
