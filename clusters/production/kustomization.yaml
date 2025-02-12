@@ -51,5 +51,6 @@ patches:
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
   - path: ./overlay/third-party/postgresql/helmRelease.yaml
+  - path: ./overlay/third-party/postgresql/helmRepo.yaml
   - path: ./overlay/third-party/telegraf/helmRelease.yaml
   # - path: ./overlay/third-party/wordpress/helmRelease.yaml

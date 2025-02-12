@@ -5,7 +5,9 @@ metadata:
   namespace: postgresql
 spec:
   chartRef:
-    version: ${POSTGRESQL_VERSION}
+    kind: postgresql
+    name: kubernetes-event-exporter
+    namespace: flux-system
   values:
     auth:
       existingSecret: postgresql-secret
