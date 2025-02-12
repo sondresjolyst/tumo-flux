@@ -6,8 +6,8 @@ metadata:
 spec:
   releaseName: postgresql
   chartRef:
-    kind: postgresql
-    name: kubernetes-event-exporter
+    kind: OCIRepository
+    name: postgresql
     namespace: flux-system
   interval: 5m
   install:
