@@ -10,7 +10,7 @@ spec:
       chart: postgresql
       version: xx # Set by flux patch
       sourceRef:
-        kind: HelmRepository
+        kind: OCIRepository
         name: postgresql
         namespace: flux-system
   interval: 5m

@@ -4,10 +4,10 @@ metadata:
   name: postgresql
   namespace: postgresql
 spec:
+  releaseName: postgresql
   chart:
     spec:
-      chart: postgresql
-      version: ${POSTGRESQL_VERSION} # Set in postBuild production
+      version: ${POSTGRESQL_VERSION}
   values:
     auth:
       existingSecret: postgresql-secret
@@ -29,5 +29,5 @@ spec:
           size: 8Gi
     metrics:
       enabled: true
-      serviceMonitor: 
+      serviceMonitor:
         enabled: true
