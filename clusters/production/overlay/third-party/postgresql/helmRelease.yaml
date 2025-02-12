@@ -6,6 +6,7 @@ metadata:
 spec:
   chart:
     spec:
+      chart: postgresql
       version: ${POSTGRESQL_VERSION} # Set in postBuild production
   values:
     auth:
