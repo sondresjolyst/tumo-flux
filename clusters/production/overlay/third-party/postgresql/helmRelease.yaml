@@ -4,9 +4,8 @@ metadata:
   name: postgresql
   namespace: postgresql
 spec:
-  chart:
-    spec:
-      version: ${POSTGRESQL_VERSION}
+  chartRef:
+    version: ${POSTGRESQL_VERSION}
   values:
     auth:
       existingSecret: postgresql-secret
