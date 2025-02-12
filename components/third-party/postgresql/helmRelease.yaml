@@ -9,10 +9,6 @@ spec:
     spec:
       chart: postgresql
       version: xx # Set by flux patch
-      chartRef:
-        kind: OCIRepository
-        name: postgresql
-        namespace: flux-system
   interval: 5m
   install:
     remediation:
