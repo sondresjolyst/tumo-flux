@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: postgresql
+  namespace: postgresql
+spec:
+  chart:
+    spec:
+      version: ${POSTGRESQL_VERSION} # Set in postBuild production
+  values:
+    auth:
+      existingSecret: postgresql-secret
+      secretKeys:
+        adminPasswordKey: "adminPasswordKey"
+        userPasswordKey: "userPasswordKey"
+        replicationPasswordKey: "replicationPasswordKey"
+    primary:
+      persistence:
+        enabled: true
+        storageClass: nfs
+        size: 8Gi
+    backup:
+      enabled: true
+      cronjob:
+        storage:
+          enabled: true
+          storageClass: nfs
+          size: 8Gi
+    metrics:
+      enabled: true
+      serviceMonitor: 
+        enabled: true
