@@ -15,6 +15,9 @@ spec:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hosts:
         - host: garge-api-dev.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
         - secretName: garge-tls
           hosts:
