@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: garge-dev
+  labels:
+    tumo-wildcard-sync: tumo-wildcard-tls-cert
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: garge-prod
+  labels:
+    tumo-wildcard-sync: tumo-wildcard-tls-cert

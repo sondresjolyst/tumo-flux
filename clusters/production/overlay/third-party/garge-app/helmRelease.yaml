@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: garge-app
+  namespace: garge-dev
+spec:
+  chart:
+    spec:
+      chart: garge-app
+      version: ${GARGE_APP_VERSION} # Set in postBuild production
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: garge-app-dev.prod.tumogroup.com
+      tls:
+        - secretName: garge-tls
+          hosts:
+            - garge-app-dev.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "2048Mi"
+        cpu: "750m"
+      limits:
+        memory: "2048Mi"
+        cpu: "750m"

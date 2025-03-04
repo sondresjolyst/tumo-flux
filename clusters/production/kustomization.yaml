@@ -19,6 +19,10 @@ resources:
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
   - ../../components/third-party/telegraf
+  - ../../components/third-party/garge
+  - ../../components/third-party/garge-api
+  - ../../components/third-party/garge-app
+  - ../../components/third-party/garge-operator
   # - ../../components/third-party/wordpress
   - ./overlay/third-party/cert-manager
   # - ./overlay/third-party/grav
@@ -48,5 +52,7 @@ patches:
   - path: ./overlay/third-party/minecraft-hs/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
-  - path: ./overlay/third-party/telegraf/helmRelease.yaml
+  - path: ./overlay/third-party/garge-api/helmRelease.yaml
+  - path: ./overlay/third-party/garge-app/helmRelease.yaml
+  - path: ./overlay/third-party/garge-operator/helmRelease.yaml
   # - path: ./overlay/third-party/wordpress/helmRelease.yaml
