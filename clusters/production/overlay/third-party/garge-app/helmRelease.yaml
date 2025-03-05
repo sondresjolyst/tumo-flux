@@ -26,7 +26,7 @@ spec:
         - secretName: garge-tls
           hosts:
             - garge.no
-              www.garge.no
+            - www.garge.no
     resources:
       requests:
         memory: "2048Mi"
