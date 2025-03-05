@@ -14,14 +14,19 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hosts:
-        - host: garge-app-dev.prod.tumogroup.com
+        - host: garge.no
+          paths:
+            - path: /
+              pathType: Prefix
+        - host: www.garge.no
           paths:
             - path: /
               pathType: Prefix
       tls:
         - secretName: garge-tls
           hosts:
-            - garge-app-dev.prod.tumogroup.com
+            - garge.no
+              www.garge.no
     resources:
       requests:
         memory: "2048Mi"

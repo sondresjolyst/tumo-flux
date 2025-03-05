@@ -39,3 +39,23 @@ spec:
   - "*.canmodi.com"
   - "canmodi.no"
   - "*.canmodi.no"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: garge-wildcard-tls
+  namespace: default
+spec:
+  secretName: garge-wildcard-tls-cert
+  secretTemplate:
+    annotations:
+      kubed.appscode.com/sync: "garge-wildcard-sync=garge-wildcard-tls-cert"
+  issuerRef:
+    kind: ClusterIssuer
+    name: ${CERT_ISSUER}
+  duration: 2160h # 90d
+  renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
+  commonName: "garge.no"
+  dnsNames:
+  - "garge.no"
+  - "*.garge.no"
