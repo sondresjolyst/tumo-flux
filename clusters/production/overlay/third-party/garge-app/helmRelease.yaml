@@ -14,6 +14,38 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hosts:
+        - host: dev.garge.no
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: garge-app-tls
+          hosts:
+            - dev.garge.no
+    resources:
+      requests:
+        memory: "2048Mi"
+        cpu: "750m"
+      limits:
+        memory: "2048Mi"
+        cpu: "750m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: garge-app
+  namespace: garge-prod
+spec:
+  chart:
+    spec:
+      chart: garge-app
+      version: ${GARGE_APP_VERSION} # Set in postBuild production
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
         - host: garge.no
           paths:
             - path: /

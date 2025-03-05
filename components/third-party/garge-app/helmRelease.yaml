@@ -25,3 +25,31 @@ spec:
       limits:
         memory: "2048Mi"
         cpu: "750m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: garge-app
+  namespace: garge-prod
+spec:
+  releaseName: garge-app
+  chart:
+    spec:
+      chart: garge-app
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: garge
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "2048Mi"
+        cpu: "750m"
+      limits:
+        memory: "2048Mi"
+        cpu: "750m"
