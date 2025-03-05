@@ -13,7 +13,7 @@ spec:
       CERT_MANAGER_VERSION: 1.17.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.14.7 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.32.2 # https://artifacthub.io/packages/helm/descheduler/descheduler
-      GARGE_API_VERSION: 0.1.0 # https://github.com/sondresjolyst/garge/releases
+      GARGE_API_VERSION: garge-operator-0.1.1 # https://github.com/sondresjolyst/garge/releases
       GARGE_APP_VERSION: 0.1.0 # https://github.com/sondresjolyst/garge/releases
       GARGE_OPERATOR_VERSION: 0.1.1 # https://github.com/sondresjolyst/garge/releases
       GRAFANA_VERSION: 8.10.1 # https://artifacthub.io/packages/helm/grafana/grafana
