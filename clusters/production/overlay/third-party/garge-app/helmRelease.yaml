@@ -23,7 +23,7 @@ spec:
             - path: /
               pathType: Prefix
       tls:
-        - secretName: garge-tls
+        - secretName: garge-app-tls
           hosts:
             - garge.no
             - www.garge.no
