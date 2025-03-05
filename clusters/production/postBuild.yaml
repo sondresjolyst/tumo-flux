@@ -15,7 +15,7 @@ spec:
       DESCHEDULER_VERSION: 0.32.2 # https://artifacthub.io/packages/helm/descheduler/descheduler
       GARGE_API_VERSION: garge-operator-0.1.1 # https://github.com/sondresjolyst/garge/releases
       GARGE_APP_VERSION: garge-operator-0.1.1 # https://github.com/sondresjolyst/garge/releases
-      GARGE_OPERATOR_VERSION: 0.1.1 # https://github.com/sondresjolyst/garge/releases
+      GARGE_OPERATOR_VERSION: garge-operator-0.1.1 # https://github.com/sondresjolyst/garge/releases
       GRAFANA_VERSION: 8.10.1 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION_ET: 1.2.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 1.2.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
