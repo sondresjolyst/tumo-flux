@@ -9,6 +9,15 @@ spec:
       chart: garge-app
       version: ${GARGE_APP_VERSION} # Set in postBuild production
   values:
+    env:
+      - name: JWT_SECRET
+        secretKeyRef:
+          key: JWT_SECRET
+          name: garge-app-secrets
+      - name: NEXT_PUBLIC_API_URL
+        secretKeyRef:
+          key: NEXT_PUBLIC_API_URL
+          name: garge-app-secrets
     ingress:
       enabled: true
       annotations:
@@ -41,6 +50,15 @@ spec:
       chart: garge-app
       version: ${GARGE_APP_VERSION} # Set in postBuild production
   values:
+    env:
+      - name: JWT_SECRET
+        secretKeyRef:
+          key: JWT_SECRET
+          name: garge-app-secrets
+      - name: NEXT_PUBLIC_API_URL
+        secretKeyRef:
+          key: NEXT_PUBLIC_API_URL
+          name: garge-app-secrets
     ingress:
       enabled: true
       annotations:

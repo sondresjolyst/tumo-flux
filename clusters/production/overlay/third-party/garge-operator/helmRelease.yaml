@@ -9,6 +9,35 @@ spec:
       chart: garge-operator
       version: ${GARGE_OPERATOR_VERSION} # Set in postBuild production
   values:
+    env:
+      - name: API__BASEURL
+        secretKeyRef:
+          key: API__BASEURL
+          name: garge-operator-secrets
+      - name: MQTT__BROKER
+        secretKeyRef:
+          key: MQTT__BROKER
+          name: garge-operator-secrets
+      - name: MQTT__PORT
+        secretKeyRef:
+          key: MQTT__PORT
+          name: garge-operator-secrets
+      - name: MQTT__USERNAME
+        secretKeyRef:
+          key: MQTT__USERNAME
+          name: garge-operator-secrets
+      - name: MQTT__PASSWORD
+        secretKeyRef:
+          key: MQTT__PASSWORD
+          name: garge-operator-secrets
+      - name: API__EMAIL
+        secretKeyRef:
+          key: API__EMAIL
+          name: garge-operator-secrets
+      - name: API__PASSWORD
+        secretKeyRef:
+          key: API__PASSWORD
+          name: garge-operator-secrets
     resources:
       requests:
         memory: "128Mi"
@@ -28,6 +57,35 @@ spec:
       chart: garge-operator
       version: ${GARGE_OPERATOR_VERSION} # Set in postBuild production
   values:
+    env:
+      - name: API__BASEURL
+        secretKeyRef:
+          key: API__BASEURL
+          name: garge-operator-secrets
+      - name: MQTT__BROKER
+        secretKeyRef:
+          key: MQTT__BROKER
+          name: garge-operator-secrets
+      - name: MQTT__PORT
+        secretKeyRef:
+          key: MQTT__PORT
+          name: garge-operator-secrets
+      - name: MQTT__USERNAME
+        secretKeyRef:
+          key: MQTT__USERNAME
+          name: garge-operator-secrets
+      - name: MQTT__PASSWORD
+        secretKeyRef:
+          key: MQTT__PASSWORD
+          name: garge-operator-secrets
+      - name: API__EMAIL
+        secretKeyRef:
+          key: API__EMAIL
+          name: garge-operator-secrets
+      - name: API__PASSWORD
+        secretKeyRef:
+          key: API__PASSWORD
+          name: garge-operator-secrets
     resources:
       requests:
         memory: "128Mi"

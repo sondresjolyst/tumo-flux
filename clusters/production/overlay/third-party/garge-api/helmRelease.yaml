@@ -9,6 +9,19 @@ spec:
       chart: garge-api
       version: ${GARGE_API_VERSION} # Set in postBuild production
   values:
+    env:
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: garge-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: garge-api-secrets
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: garge-api-secrets
     ingress:
       enabled: true
       annotations:
@@ -41,6 +54,19 @@ spec:
       chart: garge-api
       version: ${GARGE_API_VERSION} # Set in postBuild production
   values:
+    env:
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: garge-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: garge-api-secrets
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: garge-api-secrets
     ingress:
       enabled: true
       annotations:
