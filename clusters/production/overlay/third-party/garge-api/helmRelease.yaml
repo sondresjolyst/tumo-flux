@@ -22,6 +22,8 @@ spec:
         secretKeyRef:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
+    image:
+      pullPolicy: Always
     ingress:
       enabled: true
       annotations:
@@ -67,6 +69,8 @@ spec:
         secretKeyRef:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
+    image:
+      pullPolicy: Always
     ingress:
       enabled: true
       annotations:

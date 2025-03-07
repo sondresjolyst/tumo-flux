@@ -18,6 +18,8 @@ spec:
         secretKeyRef:
           key: NEXT_PUBLIC_API_URL
           name: garge-app-secrets
+    image:
+      pullPolicy: Always
     ingress:
       enabled: true
       annotations:
@@ -59,6 +61,8 @@ spec:
         secretKeyRef:
           key: NEXT_PUBLIC_API_URL
           name: garge-app-secrets
+    image:
+      pullPolicy: Always
     ingress:
       enabled: true
       annotations:

@@ -38,6 +38,8 @@ spec:
         secretKeyRef:
           key: API__PASSWORD
           name: garge-operator-secrets
+    image:
+      pullPolicy: Always
     resources:
       requests:
         memory: "128Mi"
@@ -86,6 +88,8 @@ spec:
         secretKeyRef:
           key: API__PASSWORD
           name: garge-operator-secrets
+    image:
+      pullPolicy: Always
     resources:
       requests:
         memory: "128Mi"
