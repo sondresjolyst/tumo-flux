@@ -28,7 +28,7 @@ spec:
         "https://dev.bukkit.org/projects/essentialsx/files/latest",
         "https://dev.bukkit.org/projects/vault/files/latest",
         "https://dev.bukkit.org/projects/gui-shop/files/latest",
-       
+        "https://dev.bukkit.org/projects/gravity-control/files/latest",
       ]
     persistence:
       storageClass: nfs
