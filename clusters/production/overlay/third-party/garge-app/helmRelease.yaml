@@ -24,7 +24,6 @@ spec:
       enabled: true
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       hosts:
         - host: dev.garge.no
           paths:
@@ -68,7 +67,6 @@ spec:
       enabled: true
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        nginx.ingress.kubernetes.io/force-ssl-redirect: "true" 
       hosts:
         - host: garge.no
           paths:
