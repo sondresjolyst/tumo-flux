@@ -25,6 +25,7 @@ resources:
   - ../../components/third-party/garge-operator
   # - ../../components/third-party/wordpress
   - ./overlay/third-party/cert-manager
+  - ./overlay/third-party/garge-app
   # - ./overlay/third-party/grav
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et

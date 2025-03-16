@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: garge-redirect
+  namespace: garge-prod
+  annotations:
+    meta.helm.sh/release-name: garge-app
+    meta.helm.sh/release-namespace: garge-prod
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.garge.no"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - garge.no
+    secretName: garge-app-tls
+  rules:
+    - host: garge.no
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-service
+                port:
+                  number: 80
