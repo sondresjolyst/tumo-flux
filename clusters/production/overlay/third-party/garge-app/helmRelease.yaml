@@ -71,6 +71,8 @@ spec:
       enabled: true
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.ingress.kubernetes.io/permanent-redirect: https://www.garge.no$request_uri
       hosts:
         - host: garge.no
           paths:
