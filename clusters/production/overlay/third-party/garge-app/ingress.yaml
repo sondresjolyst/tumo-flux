@@ -14,7 +14,7 @@ spec:
   tls:
   - hosts:
       - garge.no
-    secretName: garge-app-tls
+    secretName: garge-app-redirect-tls
   rules:
     - host: garge.no
       http:
