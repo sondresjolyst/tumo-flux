@@ -2,6 +2,49 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: garge-app
+  namespace: garge-dev
+spec:
+  chart:
+    spec:
+      chart: garge-app
+      version: ${GARGE_APP_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: JWT_SECRET
+        secretKeyRef:
+          key: JWT_SECRET
+          name: garge-app-secrets
+      - name: NEXT_PUBLIC_API_URL
+        secretKeyRef:
+          key: NEXT_PUBLIC_API_URL
+          name: garge-app-secrets
+    image:
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: dev.garge.no
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: garge-app-tls
+          hosts:
+            - dev.garge.no
+    resources:
+      requests:
+        memory: "2048Mi"
+        cpu: "750m"
+      limits:
+        memory: "2048Mi"
+        cpu: "750m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: garge-app
   namespace: garge-prod
 spec:
   chart:
@@ -29,12 +72,7 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
         nginx.ingress.kubernetes.io/rewrite-target: /
-        nginx.ingress.kubernetes.io/permanent-redirect: https://www.garge.no
       hosts:
-        - host: garge.no
-          paths:
-            - path: /
-              pathType: Prefix
         - host: www.garge.no
           paths:
             - path: /
@@ -42,7 +80,6 @@ spec:
       tls:
         - secretName: garge-app-tls
           hosts:
-            - garge.no
             - www.garge.no
     resources:
       requests:
@@ -51,3 +88,28 @@ spec:
       limits:
         memory: "2048Mi"
         cpu: "750m"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: garge-redirect
+  namespace: garge-prod
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://www.garge.no"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+    - host: garge.no
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-service
+                port:
+                  number: 80
+  tls:
+    - secretName: garge-app-tls
+      hosts:
+        - garge.no
