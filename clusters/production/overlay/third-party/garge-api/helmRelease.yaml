@@ -70,7 +70,7 @@ spec:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
     image:
-      tag: dev
+      tag: "dev"
       pullPolicy: Always
     ingress:
       enabled: true
