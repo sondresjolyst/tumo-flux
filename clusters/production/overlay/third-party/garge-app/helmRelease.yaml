@@ -23,6 +23,8 @@ spec:
           key: NEXTAUTH_URL
           name: garge-app-secrets
     image:
+      repository: sondresjo/garge-app
+      tag: "dev"
       pullPolicy: Always
     ingress:
       enabled: true
