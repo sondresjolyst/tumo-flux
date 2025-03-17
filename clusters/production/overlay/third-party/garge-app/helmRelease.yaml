@@ -10,13 +10,17 @@ spec:
       version: ${GARGE_APP_VERSION} # Set in postBuild production
   values:
     env:
-      - name: JWT_SECRET
-        secretKeyRef:
-          key: JWT_SECRET
-          name: garge-app-secrets
       - name: NEXT_PUBLIC_API_URL
         secretKeyRef:
           key: NEXT_PUBLIC_API_URL
+          name: garge-app-secrets
+      - name: NEXTAUTH_SECRET
+        secretKeyRef:
+          key: NEXTAUTH_SECRET
+          name: garge-app-secrets
+      - name: NEXTAUTH_URL
+        secretKeyRef:
+          key: NEXTAUTH_URL
           name: garge-app-secrets
     image:
       pullPolicy: Always
@@ -71,7 +75,6 @@ spec:
       enabled: true
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        nginx.ingress.kubernetes.io/rewrite-target: /
       hosts:
         - host: www.garge.no
           paths:
