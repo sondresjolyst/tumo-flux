@@ -39,6 +39,7 @@ spec:
           key: API__PASSWORD
           name: garge-operator-secrets
     image:
+      tag: dev
       pullPolicy: Always
     resources:
       requests:
