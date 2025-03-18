@@ -52,10 +52,10 @@ spec:
             - garge-api-dev.prod.tumogroup.com
     resources:
       requests:
-        memory: "128Mi"
+        memory: "1024Mi"
         cpu: "500m"
       limits:
-        memory: "128Mi"
+        memory: "1024Mi"
         cpu: "500m"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
