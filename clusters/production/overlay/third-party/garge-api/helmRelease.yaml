@@ -23,6 +23,7 @@ spec:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
     image:
+      tag: "dev"
       pullPolicy: Always
     ingress:
       enabled: true
@@ -70,7 +71,6 @@ spec:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
     image:
-      tag: "dev"
       pullPolicy: Always
     ingress:
       enabled: true
