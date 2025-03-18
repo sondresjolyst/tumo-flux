@@ -22,6 +22,18 @@ spec:
         secretKeyRef:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
+      - name: SENDGRIDSETTINGS__APIKEY
+        secretKeyRef:
+          key: SENDGRIDSETTINGS__APIKEY
+          name: garge-api-secrets
+      - name: SENDGRIDSETTINGS__SENDEREMAIL
+        secretKeyRef:
+          key: SENDGRIDSETTINGS__SENDEREMAIL
+          name: garge-api-secrets
+      - name: SENDGRIDSETTINGS__SENDERNAME
+        secretKeyRef:
+          key: SENDGRIDSETTINGS__SENDERNAME
+          name: garge-api-secrets
     image:
       tag: "dev"
       pullPolicy: Always
