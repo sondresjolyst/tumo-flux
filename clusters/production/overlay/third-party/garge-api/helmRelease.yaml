@@ -83,6 +83,7 @@ spec:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
     image:
+      tag: "v1.0.0"
       pullPolicy: Always
     ingress:
       enabled: true

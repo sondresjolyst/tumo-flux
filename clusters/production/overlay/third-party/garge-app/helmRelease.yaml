@@ -71,6 +71,7 @@ spec:
           key: NEXTAUTH_URL
           name: garge-app-secrets
     image:
+      tag: "v1.0.0"
       pullPolicy: Always
     ingress:
       enabled: true
