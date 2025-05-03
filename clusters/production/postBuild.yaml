@@ -28,7 +28,7 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 12.3.4 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.12.2 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      PROMETHEUS_VERSION: 71.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 71.2.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       TELEGRAF_VERSION: 1.8.56 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
