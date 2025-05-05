@@ -12,7 +12,7 @@ spec:
       TUMO_ENVIRONMENT: prod # prod
       CERT_MANAGER_VERSION: 1.17.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.15.0 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
-      DESCHEDULER_VERSION: 0.32.2 # https://artifacthub.io/packages/helm/descheduler/descheduler
+      DESCHEDULER_VERSION: 0.33.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       GARGE_API_VERSION: 0.1.3 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.3 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.4 # https://artifacthub.io/packages/helm/garge/garge-operator
