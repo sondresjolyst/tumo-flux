@@ -19,14 +19,14 @@ spec:
       GRAFANA_VERSION: 9.2.2 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION_ET: 1.2.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 1.2.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      INFLUXDB_VERSION: 7.1.1 # https://artifacthub.io/packages/helm/bitnami/influxdb
+      INFLUXDB_VERSION: 7.1.2 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.6.1 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.15.2 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.12.2 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 4.26.3 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
-      MYSQL_VERSION: 13.0.0 # https://artifacthub.io/packages/helm/bitnami/mysql
+      MYSQL_VERSION: 13.0.1 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       PROMETHEUS_VERSION: 73.2.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       TELEGRAF_VERSION: 1.8.57 # https://artifacthub.io/packages/helm/influxdata/telegraf
