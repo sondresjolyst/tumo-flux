@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: bobby-api
+  namespace: bobby-prod
+spec:
+  chart:
+    spec:
+      chart: bobby-api
+      version: ${BOBBY_API_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: API_USERNAME
+        secretKeyRef:
+          key: API_USERNAME
+          name: bobby-api-secrets
+      - name: API_PASSWORD
+        secretKeyRef:
+          key: API_PASSWORD
+          name: bobby-api-secrets
+    image:
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: bobby-api.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: bobby-api-tls
+          hosts:
+            - bobby-api.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
