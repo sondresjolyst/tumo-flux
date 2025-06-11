@@ -8,6 +8,10 @@ resources:
   - ../../components/third-party/descheduler
   - ../../components/third-party/grafana
   # - ../../components/third-party/grav
+  - ../../components/third-party/garge
+  - ../../components/third-party/garge-api
+  - ../../components/third-party/garge-app
+  - ../../components/third-party/garge-operator
   - ../../components/third-party/home-assistant
   - ../../components/third-party/influxdb
   - ../../components/third-party/ingress-nginx
@@ -19,12 +23,9 @@ resources:
   - ../../components/third-party/minecraft
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
+  - ../../components/third-party/spark-kubernetes-operator
   - ../../components/third-party/telegraf
   - ../../components/third-party/tumogroup
-  - ../../components/third-party/garge
-  - ../../components/third-party/garge-api
-  - ../../components/third-party/garge-app
-  - ../../components/third-party/garge-operator
   # - ../../components/third-party/wordpress
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/garge-app
@@ -42,6 +43,9 @@ patches:
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/democratic-csi/helmRelease.yaml
   - path: ./overlay/third-party/descheduler/helmRelease.yaml
+  - path: ./overlay/third-party/garge-api/helmRelease.yaml
+  - path: ./overlay/third-party/garge-app/helmRelease.yaml
+  - path: ./overlay/third-party/garge-operator/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   # - path: ./overlay/third-party/grav/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant-et/helmRelease.yaml
@@ -56,7 +60,5 @@ patches:
   - path: ./overlay/third-party/minecraft-hs/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
-  - path: ./overlay/third-party/garge-api/helmRelease.yaml
-  - path: ./overlay/third-party/garge-app/helmRelease.yaml
-  - path: ./overlay/third-party/garge-operator/helmRelease.yaml
+  - path: ./overlay/third-party/spark-kubernetes-operator/helmRelease.yaml
   # - path: ./overlay/third-party/wordpress/helmRelease.yaml

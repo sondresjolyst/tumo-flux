@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: spark-kubernetes-operator
+  namespace: spark-kubernetes-operator
+spec:
+  chart:
+    spec:
+      chart: spark-kubernetes-operator
+      version: ${SPARK_KUBERNETES_OPERATOR_VERSION} # Set in postBuild production
+  values:
+    persistence:
+      enabled: true
+      storageClass: nfs
+      size: 10Gi
+    resources:
+      requests:
+        memory: "2Gi"
+        cpu: "1"
+      limits:
+        memory: "2Gi"
+        cpu: "1"
