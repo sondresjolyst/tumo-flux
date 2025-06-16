@@ -12,3 +12,6 @@ spec:
       GF_DATABASE_HOST: mysql.mysql.svc.cluster.local
       GF_DATABASE_NAME: grafana
       GF_DATABASE_USER: grafana
+    plugins:
+      - volkovlabs-image-panel
+      - yesoreyeram-infinity-datasource
