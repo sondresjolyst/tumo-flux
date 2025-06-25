@@ -10,9 +10,9 @@ spec:
       version: ${GARGE_APP_VERSION} # Set in postBuild production
   values:
     env:
-      - name: NEXT_PUBLIC_API_URL
+      - name: API_URL
         secretKeyRef:
-          key: NEXT_PUBLIC_API_URL
+          key: API_URL
           name: garge-app-secrets
       - name: NEXTAUTH_SECRET
         secretKeyRef:
