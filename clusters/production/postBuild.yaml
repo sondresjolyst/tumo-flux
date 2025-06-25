@@ -31,7 +31,7 @@ spec:
       NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       PROMETHEUS_VERSION: 75.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.1.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
-      TELEGRAF_VERSION: 1.8.58 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      TELEGRAF_VERSION: 1.8.59 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
