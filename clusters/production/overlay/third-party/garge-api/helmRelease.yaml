@@ -95,7 +95,6 @@ spec:
           key: SENDGRIDSETTINGS__SENDERNAME
           name: garge-api-secrets
     image:
-      tag: "v1.0.0"
       pullPolicy: Always
     ingress:
       enabled: true
@@ -112,8 +111,8 @@ spec:
             - garge-api.prod.tumogroup.com
     resources:
       requests:
-        memory: "512Mi"
+        memory: "1024Mi"
         cpu: "750m"
       limits:
-        memory: "512Mi"
+        memory: "1024Mi"
         cpu: "750m"
