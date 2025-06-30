@@ -19,21 +19,25 @@ spec:
       ha:
         enabled: true
         replicas: 5
+        raft:
+          enabled: true
+          setNodeId: true
+
       dataStorage:
         storageClass: nfs
-      ingress:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        pathType: Prefix
-        hosts:
-          - host: vault.prod.tumogroup.com
-            paths:
-              - path: /*
-        tls:
-          - secretName: vault-tls
-            hosts:
-              - vault.prod.tumogroup.com
+      # ingress:
+      #   enabled: true
+      #   annotations:
+      #     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      #   pathType: Prefix
+      #   hosts:
+      #     - host: vault.prod.tumogroup.com
+      #       paths:
+      #         - path: /*
+      #   tls:
+      #     - secretName: vault-tls
+      #       hosts:
+      #         - vault.prod.tumogroup.com
       readinessProbe:
         enabled: true
         path: "/v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204"
@@ -41,9 +45,9 @@ spec:
         enabled: true
         path: "/v1/sys/health?standbyok=true"
         initialDelaySeconds: 60
-        auditStorage:
-          enabled: true
-          storageClass: nfs
+      auditStorage:
+        enabled: true
+        storageClass: nfs
       standalone:
         enabled: false
       resources:
