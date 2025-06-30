@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: redis
+  namespace: redis
+spec:
+  chart:
+    spec:
+      chart: redis
+      version: ${REDIS_VERSION} # Set in postBuild production
+  values:
+    metrics:
+      enabled: true
+    architecture: standalone
+    sentinel:
+      enabled: true
+

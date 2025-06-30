@@ -24,6 +24,7 @@ resources:
   - ../../components/third-party/minecraft
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
+  - ../../components/third-party/redis
   - ../../components/third-party/spark-kubernetes-operator
   - ../../components/third-party/telegraf
   - ../../components/third-party/tumogroup
@@ -61,5 +62,6 @@ patches:
   - path: ./overlay/third-party/minecraft-hs/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
+  - path: ./overlay/third-party/redis/helmRelease.yaml
   - path: ./overlay/third-party/spark-kubernetes-operator/helmRelease.yaml
   # - path: ./overlay/third-party/wordpress/helmRelease.yaml
