@@ -9,7 +9,7 @@ spec:
       chart: redis
       version: xx # Set by flux patch
       sourceRef:
-        kind: HelmRepository
+        kind: OCIRepository
         name: bitnami
         namespace: flux-system
   interval: 1m0s
