@@ -29,7 +29,7 @@ spec:
         hosts:
           - host: vault.prod.tumogroup.com
             paths:
-              - path: /
+              - path: /*
         tls:
           - secretName: vault-tls
             hosts:
