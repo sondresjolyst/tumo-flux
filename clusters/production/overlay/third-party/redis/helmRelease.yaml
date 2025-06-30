@@ -4,10 +4,10 @@ metadata:
   name: redis
   namespace: redis
 spec:
-  chart:
-    spec:
-      chart: redis
-      version: ${REDIS_VERSION} # Set in postBuild production
+  # chart:
+  #   spec:
+  #     chart: redis
+  #     version: ${REDIS_VERSION} # Set in postBuild production
   values:
     metrics:
       enabled: true
