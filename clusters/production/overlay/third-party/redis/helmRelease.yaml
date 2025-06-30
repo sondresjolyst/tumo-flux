@@ -11,7 +11,7 @@ spec:
   values:
     metrics:
       enabled: true
-    architecture: standalone
+    architecture: replication
     sentinel:
       enabled: true
 
