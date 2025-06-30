@@ -7,5 +7,5 @@ spec:
   interval: 10m
   url: oci://registry-1.docker.io/bitnamicharts/redis
   ref:
-    semver: ${GARGE_APP_VERSION} # Set in postBuild production
+    semver: ${REDIS_VERSION} # Set in postBuild production
 
