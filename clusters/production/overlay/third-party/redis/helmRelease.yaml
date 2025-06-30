@@ -9,9 +9,11 @@ spec:
   #     chart: redis
   #     version: ${REDIS_VERSION} # Set in postBuild production
   values:
+    architecture: replication
+    global:
+      storageClass: nfs
     metrics:
       enabled: true
-    architecture: replication
     sentinel:
       enabled: true
 
