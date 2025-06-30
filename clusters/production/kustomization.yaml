@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - flux-system
-  - ../../components/third-party/bitnami
   - ../../components/third-party/bobby-api
   - ../../components/third-party/cert-manager
   - ../../components/third-party/democratic-csi
@@ -64,4 +63,5 @@ patches:
   - path: ./overlay/third-party/mysql/helmRelease.yaml
   - path: ./overlay/third-party/redis/helmRelease.yaml
   - path: ./overlay/third-party/spark-kubernetes-operator/helmRelease.yaml
+  - path: ../../components/third-party/redis/ociRepo.yaml
   # - path: ./overlay/third-party/wordpress/helmRelease.yaml

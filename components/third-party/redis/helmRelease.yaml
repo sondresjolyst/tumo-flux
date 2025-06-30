@@ -4,14 +4,18 @@ metadata:
   name: redis
   namespace: redis
 spec:
-  chart:
-    spec:
-      chart: redis
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: OCIRepository
-        name: bitnami
-        namespace: flux-system
+  # chart:
+  #   spec:
+  #     chart: redis
+  #     version: xx # Set by flux patch
+  #     sourceRef:
+  #       kind: OCIRepository
+  #       name: bitnami
+  #       namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: redis
+    namespace: flux-system
   interval: 1m0s
   install:
     remediation:
