@@ -25,11 +25,11 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        pathType: Prefix
         hosts:
           - host: vault.prod.tumogroup.com
             paths:
               - path: /
-                pathType: Prefix
         tls:
           - secretName: vault-tls
             hosts:
