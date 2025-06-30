@@ -11,7 +11,7 @@ spec:
   values:
     architecture: replication
     global:
-      storageClass: nfs
+      defaultStorageClass: nfs
     metrics:
       enabled: true
     sentinel:
