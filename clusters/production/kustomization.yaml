@@ -27,6 +27,7 @@ resources:
   - ../../components/third-party/spark-kubernetes-operator
   - ../../components/third-party/telegraf
   - ../../components/third-party/tumogroup
+  - ../../components/third-party/vault
   # - ../../components/third-party/wordpress
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/garge-app
@@ -63,5 +64,6 @@ patches:
   - path: ./overlay/third-party/mysql/helmRelease.yaml
   - path: ./overlay/third-party/redis/helmRelease.yaml
   - path: ./overlay/third-party/spark-kubernetes-operator/helmRelease.yaml
+  - path: ./overlay/third-party/vault/helmRelease.yaml
   - path: ../../components/third-party/redis/ociRepo.yaml
   # - path: ./overlay/third-party/wordpress/helmRelease.yaml

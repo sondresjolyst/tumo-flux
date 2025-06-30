@@ -33,6 +33,7 @@ spec:
       REDIS_VERSION: 21.2.6 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.1.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.59 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      VAULT_VERSION: 0.30.0 # https://artifacthub.io/packages/helm/hashicorp/vault
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
