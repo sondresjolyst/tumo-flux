@@ -12,8 +12,16 @@ spec:
     architecture: replication
     global:
       defaultStorageClass: nfs
-    metrics:
-      enabled: true
+    master:
+      persistence:
+        storageClass: nfs
+    replica:
+      persistence:
+        storageClass: nfs
     sentinel:
+      enabled: true
+      persistence:
+        storageClass: nfs
+    metrics:
       enabled: true
 
