@@ -59,7 +59,7 @@ spec:
                 --from-literal=token="${TOKEN}"
           env:
             - name: VAULT_ADDR
-              value: http://127.0.0.1:8200
+              value: http://vault.vault-transit.svc:8200
           volumeMounts:
             - name: vault-tls
               mountPath: /vault/userconfig
