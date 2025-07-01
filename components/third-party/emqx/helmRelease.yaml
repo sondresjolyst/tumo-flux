@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: emqx
+  namespace: emqx
+spec:
+  releaseName: emqx
+  chart:
+    spec:
+      chart: emqx
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: emqx
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "256m"
+      limits:
+        memory: "512Mi"
+        cpu: "256m"
