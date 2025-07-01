@@ -80,6 +80,12 @@ spec:
       chart: vault
       version: ${VAULT_VERSION} # Set in postBuild production
   values:
+    ui:
+      enabled: true
+      service:
+        enabled: true
+        type: ClusterIP
+        port: 8200
     server:
       dataStorage:
         storageClass: nfs
@@ -87,7 +93,7 @@ spec:
         enabled: true
         storageClass: nfs
       standalone:
-        enabled: false
+        enabled: true
       resources:
         requests:
           memory: 8Gi
