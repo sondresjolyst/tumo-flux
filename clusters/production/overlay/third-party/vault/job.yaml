@@ -1,0 +1,69 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vault-transit-bootstrap
+  namespace: vault-transit
+  labels:
+    app: vault
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: bootstrap
+          image: hashicorp/vault:1.15.0
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              echo "⏳ Waiting for Vault to be ready..."
+              while true; do
+                vault status > /dev/null 2>&1 && break
+                sleep 2
+              done
+
+              echo "🔐 Initializing Vault..."
+              vault operator init -format=json -key-shares=5 -key-threshold=3 > /tmp/init.json
+
+              for i in 0 1 2; do
+                key=$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)
+                vault operator unseal "$key"
+              done
+
+              export VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
+
+              echo "🚀 Enabling Transit..."
+              vault secrets enable transit
+
+              echo "🔑 Creating Transit Key..."
+              vault write -f transit/keys/autounseal
+
+              echo "📜 Writing Policy..."
+              vault policy write autounseal - <<EOF
+              path "transit/encrypt/autounseal" {
+                capabilities = ["update"]
+              }
+              path "transit/decrypt/autounseal" {
+                capabilities = ["update"]
+              }
+              EOF
+
+              echo "🎫 Generating Token..."
+              TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
+
+              echo "📦 Creating secret in vault namespace..."
+              kubectl create secret generic vault-b-unseal-token \
+                -n vault \
+                --from-literal=token="${TOKEN}"
+          env:
+            - name: VAULT_ADDR
+              value: http://127.0.0.1:8200
+          volumeMounts:
+            - name: vault-tls
+              mountPath: /vault/userconfig
+              readOnly: true
+      volumes:
+        - name: vault-tls
+          emptyDir: {}
