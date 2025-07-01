@@ -3,8 +3,6 @@ kind: Job
 metadata:
   name: vault-transit-bootstrap
   namespace: vault-transit
-  labels:
-    app: vault
 spec:
   backoffLimit: 0
   template:
@@ -12,21 +10,22 @@ spec:
       restartPolicy: Never
       containers:
         - name: bootstrap
-          image: hashicorp/vault:1.15.0
+          image: hashicorp/vault:1.19.0
           command:
             - /bin/sh
             - -c
             - |
               set -e
-              echo "⏳ Waiting for Vault to be ready..."
-              while true; do
-                vault status > /dev/null 2>&1 && break
-                sleep 2
+              echo "⏳ Waiting for Vault to respond at $VAULT_ADDR..."
+              until curl -s "$VAULT_ADDR/v1/sys/health" | grep '"initialized": false'; do
+                echo "Waiting..." && sleep 2
               done
 
               echo "🔐 Initializing Vault..."
               vault operator init -format=json -key-shares=5 -key-threshold=3 > /tmp/init.json
+              cat /tmp/init.json
 
+              echo "🔓 Unsealing Vault..."
               for i in 0 1 2; do
                 key=$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)
                 vault operator unseal "$key"
@@ -40,30 +39,25 @@ spec:
               echo "🔑 Creating Transit Key..."
               vault write -f transit/keys/autounseal
 
-              echo "📜 Writing Policy..."
+              echo "📜 Writing policy..."
               vault policy write autounseal - <<EOF
-              path "transit/encrypt/autounseal" {
-                capabilities = ["update"]
-              }
-              path "transit/decrypt/autounseal" {
-                capabilities = ["update"]
-              }
+                path "transit/encrypt/autounseal" {
+                  capabilities = ["update"]
+                }
+                path "transit/decrypt/autounseal" {
+                  capabilities = ["update"]
+                }
               EOF
 
-              echo "🎫 Generating Token..."
+              echo "🎫 Creating token..."
               TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
 
-              echo "📦 Creating secret in vault namespace..."
-              kubectl create secret generic vault-b-unseal-token \
-                -n vault \
-                --from-literal=token="${TOKEN}"
+              echo "📦 Creating token secret in vault namespace..."
+              kubectl create ns vault --dry-run=client -o yaml | kubectl apply -f -
+              kubectl delete secret vault-b-unseal-token -n vault --ignore-not-found
+              kubectl create secret generic vault-b-unseal-token -n vault --from-literal=token="$TOKEN"
+
+              echo "✅ Bootstrap complete"
           env:
             - name: VAULT_ADDR
               value: http://vault.vault-transit.svc:8200
-          volumeMounts:
-            - name: vault-tls
-              mountPath: /vault/userconfig
-              readOnly: true
-      volumes:
-        - name: vault-tls
-          emptyDir: {}
