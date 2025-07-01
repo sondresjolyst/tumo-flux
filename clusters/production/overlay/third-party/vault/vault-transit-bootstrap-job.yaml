@@ -16,14 +16,14 @@ spec:
             - -c
             - |
               set -e
-              echo "⏳ Waiting for Vault to respond at $VAULT_ADDR..."
-              until curl -s "$VAULT_ADDR/v1/sys/health" | grep '"initialized": false'; do
+
+              echo "⏳ Waiting for Vault to be ready at $VAULT_ADDR..."
+              until vault status > /dev/null 2>&1; do
                 echo "Waiting..." && sleep 2
               done
 
               echo "🔐 Initializing Vault..."
               vault operator init -format=json -key-shares=5 -key-threshold=3 > /tmp/init.json
-              cat /tmp/init.json
 
               echo "🔓 Unsealing Vault..."
               for i in 0 1 2; do
@@ -36,28 +36,28 @@ spec:
               echo "🚀 Enabling Transit..."
               vault secrets enable transit
 
-              echo "🔑 Creating Transit Key..."
+              echo "🔑 Creating auto-unseal key..."
               vault write -f transit/keys/autounseal
 
-              echo "📜 Writing policy..."
+              echo "📜 Writing autounseal policy..."
               vault policy write autounseal - <<EOF
-                path "transit/encrypt/autounseal" {
-                  capabilities = ["update"]
-                }
-                path "transit/decrypt/autounseal" {
-                  capabilities = ["update"]
-                }
+              path "transit/encrypt/autounseal" {
+                capabilities = ["update"]
+              }
+              path "transit/decrypt/autounseal" {
+                capabilities = ["update"]
+              }
               EOF
 
-              echo "🎫 Creating token..."
+              echo "🎫 Generating token..."
               TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
 
-              echo "📦 Creating token secret in vault namespace..."
+              echo "📦 Writing token to vault namespace as secret..."
               kubectl create ns vault --dry-run=client -o yaml | kubectl apply -f -
               kubectl delete secret vault-b-unseal-token -n vault --ignore-not-found
               kubectl create secret generic vault-b-unseal-token -n vault --from-literal=token="$TOKEN"
 
-              echo "✅ Bootstrap complete"
+              echo "✅ Vault Transit bootstrapped!"
           env:
             - name: VAULT_ADDR
               value: http://vault.vault-transit.svc:8200
