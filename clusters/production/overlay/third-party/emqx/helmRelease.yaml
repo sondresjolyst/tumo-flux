@@ -34,3 +34,14 @@ spec:
               - emqx-dashboard.prod.tumogroup.com
       mqtt:
         enabled: true
+        pathType: Prefix
+        hosts:
+          - host: emqx-mqtt.prod.tumogroup.com
+            paths:
+              - /
+        tls:
+          - secretName: emqx-mqtt-tls
+            hosts:
+              - emqx-mqtt.prod.tumogroup.com
+    metrics:
+      enabled: true
