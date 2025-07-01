@@ -23,22 +23,24 @@ spec:
     ingress:
       dashboard:
         enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
         pathType: Prefix
+        path: /
         hosts:
-          - host: emqx-dashboard.prod.tumogroup.com
-            paths:
-              - /
+          - emqx-dashboard.prod.tumogroup.com
         tls:
           - secretName: emqx-dashboard-tls
             hosts:
               - emqx-dashboard.prod.tumogroup.com
       mqtt:
         enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
         pathType: Prefix
+        path: /
         hosts:
-          - host: emqx-mqtt.prod.tumogroup.com
-            paths:
-              - /
+          - emqx-mqtt.prod.tumogroup.com
         tls:
           - secretName: emqx-mqtt-tls
             hosts:
