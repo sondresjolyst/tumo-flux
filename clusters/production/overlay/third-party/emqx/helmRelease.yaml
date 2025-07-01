@@ -1,0 +1,36 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: emqx
+  namespace: emqx
+spec:
+  chart:
+    spec:
+      chart: emqx
+      version: ${EMQX_VERSION} # Set in postBuild production
+  values:
+    persistence:
+      enabled: true
+      storageClass: nfs
+      size: 1Gi
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 500m
+      limits:
+        memory: 1Gi
+        cpu: 500m
+    ingress:
+      dashboard:
+        enabled: true
+        pathType: Prefix
+        hosts:
+          - host: emqx-dashboard.prod.tumogroup.com
+            paths:
+              - /
+        tls:
+          - secretName: emqx-dashboard-tls
+            hosts:
+              - emqx-dashboard.prod.tumogroup.com
+      mqtt:
+        enabled: true

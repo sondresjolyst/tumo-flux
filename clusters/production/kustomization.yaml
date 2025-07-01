@@ -6,6 +6,7 @@ resources:
   - ../../components/third-party/cert-manager
   - ../../components/third-party/democratic-csi
   - ../../components/third-party/descheduler
+  - ../../components/third-party/emqx
   - ../../components/third-party/grafana
   # - ../../components/third-party/grav
   - ../../components/third-party/garge
@@ -45,6 +46,7 @@ patches:
   - path: ./overlay/third-party/cert-manager/patches.yaml
   - path: ./overlay/third-party/democratic-csi/helmRelease.yaml
   - path: ./overlay/third-party/descheduler/helmRelease.yaml
+  - path: ./overlay/third-party/emqx/helmRelease.yaml
   - path: ./overlay/third-party/garge-api/helmRelease.yaml
   - path: ./overlay/third-party/garge-app/helmRelease.yaml
   - path: ./overlay/third-party/garge-operator/helmRelease.yaml
