@@ -22,9 +22,14 @@ data:
     printf 'Shell VAULT_VER: "%s" (length: %d)\n' "$VAULT_VER" "$(echo -n "$VAULT_VER" | wc -c)"
     echo -n "$VAULT_VER" | hexdump -C
     echo "Env VAULT_VER: $(env | grep VAULT_VER)"
+    # FIX: Ensure correct URL construction
+    if [ -z "$VAULT_VER" ]; then
+      echo "ERROR: VAULT_VER is empty!" >&2
+      exit 1
+    fi
     DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VER}/vault_${VAULT_VER}_linux_amd64.zip"
     echo "Download URL: $DOWNLOAD_URL"
-    curl -L -o vault.zip "$DOWNLOAD_URL"
+    curl -fL -o vault.zip "$DOWNLOAD_URL"
     unzip -j vault.zip vault
     chmod +x vault && mv vault /usr/local/bin/
     env | sort
