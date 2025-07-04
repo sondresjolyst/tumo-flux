@@ -26,12 +26,12 @@ spec:
 
               echo "⬇️ Installing Vault CLI..."
               env | sort
-              unset VAULT_VERSION
-              VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')
-              export VAULT_VERSION
-              echo "Shell VAULT_VERSION: $VAULT_VERSION"
-              echo "Env VAULT_VERSION: $(env | grep VAULT_VERSION)"
-              DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip"
+              unset VAULT_VER
+              VAULT_VER="$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')"
+              export VAULT_VER
+              echo "Shell VAULT_VER: $VAULT_VER"
+              echo "Env VAULT_VER: $(env | grep VAULT_VER)"
+              DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VER}/vault_${VAULT_VER}_linux_amd64.zip"
               echo "Download URL: $DOWNLOAD_URL"
               curl -L -o vault.zip "$DOWNLOAD_URL"
               unzip -j vault.zip vault
