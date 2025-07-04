@@ -17,18 +17,21 @@ spec:
             - |
               set -e
 
-              echo "📦 Installing Vault CLI and jq..."
-              apk add --no-cache curl jq bash
-              apk add --no-cache ca-certificates
+              echo "📦 Installing dependencies..."
+              apk add --no-cache curl jq bash ca-certificates
+
+              echo "🧪 Fetching latest Vault version..."
               VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r .current_version)
-              curl -L -o vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
-              unzip vault.zip
+
+              echo "⬇️ Downloading Vault CLI ${VAULT_VERSION}..."
+              curl -L -o vault https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64
+              chmod +x vault
               mv vault /usr/local/bin/
-              chmod +x /usr/local/bin/vault
 
-              echo "🔗 Setting up Vault environment..."
+              export VAULT_ADDR=http://vault.vault-transit.svc:8200
+              echo "🔗 Using Vault at $VAULT_ADDR"
 
-              echo "⏳ Waiting for Vault to be ready at $VAULT_ADDR..."
+              echo "⏳ Waiting for Vault to be reachable and uninitialized..."
               until vault status -format=json | grep '"initialized": false' > /dev/null; do
                 echo "Waiting..." && sleep 2
               done
@@ -63,12 +66,12 @@ spec:
               echo "🎫 Generating token..."
               TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
 
-              echo "📦 Writing token to vault namespace as secret..."
+              echo "📦 Writing token to vault namespace..."
               kubectl create ns vault --dry-run=client -o yaml | kubectl apply -f -
               kubectl delete secret vault-b-unseal-token -n vault --ignore-not-found
               kubectl create secret generic vault-b-unseal-token -n vault --from-literal=token="$TOKEN"
 
-              echo "✅ Vault Transit bootstrapped!"
+              echo "✅ Vault Transit bootstrapped successfully!"
           env:
             - name: VAULT_ADDR
               value: http://vault.vault-transit.svc:8200
