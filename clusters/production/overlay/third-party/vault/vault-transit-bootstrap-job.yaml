@@ -20,7 +20,7 @@ spec:
               echo "📦 Installing Vault CLI and jq..."
               apk add --no-cache curl jq bash
               VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r .current_version)
-              curl -o vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
+              curl -L -o vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
               unzip vault.zip
               mv vault /usr/local/bin/
               chmod +x /usr/local/bin/vault
