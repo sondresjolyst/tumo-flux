@@ -12,7 +12,7 @@ spec:
         - name: bootstrap
           image: alpine:latest
           command:
-            - /bin/sh
+            - /bin/bash
             - -c
             - |
               set -e
@@ -25,10 +25,8 @@ spec:
               chmod +x kubectl && mv kubectl /usr/local/bin/
 
               echo "⬇️ Installing Vault CLI..."
-              echo "$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault)"
-              FOO=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault)
-              echo "$(echo $FOO | jq -r '.current_version')"
               VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')
+              echo "Detected Vault version: $VAULT_VERSION"
 
               echo "Using Vault version: https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip"
               curl -L -o vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
