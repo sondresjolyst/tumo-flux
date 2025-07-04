@@ -10,14 +10,14 @@ spec:
       restartPolicy: Never
       containers:
         - name: bootstrap
-          image: alpine:latest
+          image: debian:stable-slim
           command:
             - /bin/bash
             - -c
             - |
               set -e
 
-              apk add --no-cache curl jq bash ca-certificates
+              apt-get update && apt-get install -y curl jq ca-certificates unzip
 
               echo "📥 Installing kubectl..."
               KUBE_VERSION=$(curl -s https://dl.k8s.io/release/stable.txt)
