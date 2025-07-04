@@ -17,83 +17,49 @@ spec:
             - |
               set -e
 
-              echo "📦 Installing dependencies..."
               apk add --no-cache curl jq bash ca-certificates
 
-              echo "fetching latest kubectl version..."
-              KUBE_VERSION=$(curl -s curl -s https://cdn.dl.k8s.io/release/stable.txt)
-              echo "Detected kubectl version: ${KUBE_VERSION}"
-
               echo "📥 Installing kubectl..."
+              KUBE_VERSION=$(curl -s https://dl.k8s.io/release/stable.txt)
               curl -LO "https://dl.k8s.io/release/${KUBE_VERSION}/bin/linux/amd64/kubectl"
-              chmod +x kubectl
-              mv kubectl /usr/local/bin/
+              chmod +x kubectl && mv kubectl /usr/local/bin/
 
-              echo "🧪 Fetching latest Vault version..."
-              VAULT_JSON=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault)
-              VAULT_VERSION=$(echo "$VAULT_JSON" | jq -r .current_version)
-              
-              echo "🧪 Vault version payload: $VAULT_JSON"
-              echo "🔍 Detected Vault version: $VAULT_VERSION"
-
-              echo "⬇️ Downloading Vault CLI ${VAULT_VERSION}..."
+              echo "⬇️ Installing Vault CLI..."
+              VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')
               curl -L -o vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
-              unzip -o vault.zip
-              chmod +x vault
-              mv vault /usr/local/bin/
+              unzip -j vault.zip vault
+              chmod +x vault && mv vault /usr/local/bin/
 
               export VAULT_ADDR=http://vault.vault-transit.svc:8200
-              echo "🔗 Using Vault at $VAULT_ADDR"
 
-              echo "⏳ Checking Vault status..."
-              while true; do
-                INIT=$(vault status -format=json | jq -r .initialized)
-                if [ "$INIT" = "false" ]; then
-                  echo "Vault is reachable and uninitialized. Proceeding with init..."
-                  break
-                elif [ "$INIT" = "true" ]; then
-                  echo "Vault is already initialized. Skipping init..."
-                  break
-                else
-                  echo "Waiting for Vault to respond..." && sleep 2
-                fi
+              echo "🔐 Bootstrapping Vault Transit..."
+
+              until vault status -format=json | jq -e '.initialized == false' > /dev/null; do
+                echo "Waiting for Vault to be reachable..." && sleep 2
               done
 
-              echo "🔐 Initializing Vault..."
               vault operator init -format=json -key-shares=5 -key-threshold=3 > /tmp/init.json
 
-              echo "🔓 Unsealing Vault..."
               for i in 0 1 2; do
-                key=$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)
-                vault operator unseal "$key"
+                vault operator unseal $(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)
               done
 
               export VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
 
-              echo "🚀 Enabling Transit..."
               vault secrets enable transit
-
-              echo "🔑 Creating auto-unseal key..."
               vault write -f transit/keys/autounseal
 
-              echo "📜 Writing autounseal policy..."
               vault policy write autounseal - <<EOF
-              path "transit/encrypt/autounseal" {
-                capabilities = ["update"]
-              }
-              path "transit/decrypt/autounseal" {
-                capabilities = ["update"]
-              }
+              path "transit/encrypt/autounseal" { capabilities = ["update"] }
+              path "transit/decrypt/autounseal" { capabilities = ["update"] }
               EOF
 
-              echo "🎫 Generating token..."
               TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
 
-              echo "📦 Writing token to vault namespace..."
               kubectl delete secret vault-b-unseal-token -n vault --ignore-not-found
               kubectl create secret generic vault-b-unseal-token -n vault --from-literal=token="$TOKEN"
 
-              echo "✅ Vault Transit bootstrapped successfully!"
+              echo "✅ Done."
           env:
             - name: VAULT_ADDR
               value: http://vault.vault-transit.svc:8200
