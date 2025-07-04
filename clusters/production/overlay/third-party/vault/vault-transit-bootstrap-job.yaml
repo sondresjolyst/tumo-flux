@@ -11,7 +11,7 @@ spec:
       containers:
         - name: bootstrap
           image: debian:stable-slim
-          command: ["/bin/bash", "-c", "chmod +x /scripts/vault-bootstrap.sh && /scripts/vault-bootstrap.sh"]
+          command: ["/bin/bash", "/scripts/vault-bootstrap.sh"]
           volumeMounts:
             - name: script
               mountPath: /scripts
