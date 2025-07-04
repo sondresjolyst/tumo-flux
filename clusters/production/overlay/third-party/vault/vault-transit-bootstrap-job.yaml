@@ -30,7 +30,8 @@ spec:
               VAULT_VER="$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')"
               VAULT_VER="$(echo "$VAULT_VER" | tr -d '[:space:]')"
               export VAULT_VER
-              echo "Shell VAULT_VER: '$VAULT_VER' (length: ${#VAULT_VER})"
+              printf "Shell VAULT_VER: '%s' (length: %d)\n" "$VAULT_VER" "${#VAULT_VER}"
+              echo -n "$VAULT_VER" | hexdump -C
               echo "Env VAULT_VER: $(env | grep VAULT_VER)"
               DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VER}/vault_${VAULT_VER}_linux_amd64.zip"
               echo "Download URL: $DOWNLOAD_URL"
