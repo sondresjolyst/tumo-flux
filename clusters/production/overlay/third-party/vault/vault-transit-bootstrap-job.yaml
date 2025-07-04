@@ -20,7 +20,7 @@ spec:
               echo "🔗 Setting up Vault environment..."
 
               echo "⏳ Waiting for Vault to be ready at $VAULT_ADDR..."
-              until vault status > /dev/null 2>&1; do
+              until vault status -format=json | grep '"initialized": false' > /dev/null; do
                 echo "Waiting..." && sleep 2
               done
 
