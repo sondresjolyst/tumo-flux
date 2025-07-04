@@ -20,7 +20,7 @@ spec:
               apt-get update && apt-get install -y curl jq ca-certificates unzip
 
               echo "📥 Installing kubectl..."
-              KUBE_VERSION=$(curl -s https://dl.k8s.io/release/stable.txt)
+              KUBE_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt)
               curl -LO "https://dl.k8s.io/release/${KUBE_VERSION}/bin/linux/amd64/kubectl"
               chmod +x kubectl && mv kubectl /usr/local/bin/
 
