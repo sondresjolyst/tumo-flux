@@ -20,8 +20,15 @@ spec:
               echo "📦 Installing dependencies..."
               apk add --no-cache curl jq bash ca-certificates
 
+              echo "📥 Installing kubectl..."
+              curl -LO "https://dl.k8s.io/release/$(curl -s https://cdn.dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+              chmod +x kubectl
+              mv kubectl /usr/local/bin/
+
               echo "🧪 Fetching latest Vault version..."
               VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r .current_version)
+
+              echo "🔍 Detected Vault version: ${VAULT_VERSION}"
 
               echo "⬇️ Downloading Vault CLI ${VAULT_VERSION}..."
               curl -L -o vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
@@ -32,9 +39,18 @@ spec:
               export VAULT_ADDR=http://vault.vault-transit.svc:8200
               echo "🔗 Using Vault at $VAULT_ADDR"
 
-              echo "⏳ Waiting for Vault to be reachable and uninitialized..."
-              until vault status -format=json | grep '"initialized": false' > /dev/null; do
-                echo "Waiting..." && sleep 2
+              echo "⏳ Checking Vault status..."
+              while true; do
+                INIT=$(vault status -format=json | jq -r .initialized)
+                if [ "$INIT" = "false" ]; then
+                  echo "Vault is reachable and uninitialized. Proceeding with init..."
+                  break
+                elif [ "$INIT" = "true" ]; then
+                  echo "Vault is already initialized. Skipping init..."
+                  break
+                else
+                  echo "Waiting for Vault to respond..." && sleep 2
+                fi
               done
 
               echo "🔐 Initializing Vault..."
@@ -68,7 +84,6 @@ spec:
               TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
 
               echo "📦 Writing token to vault namespace..."
-              kubectl create ns vault --dry-run=client -o yaml | kubectl apply -f -
               kubectl delete secret vault-b-unseal-token -n vault --ignore-not-found
               kubectl create secret generic vault-b-unseal-token -n vault --from-literal=token="$TOKEN"
 

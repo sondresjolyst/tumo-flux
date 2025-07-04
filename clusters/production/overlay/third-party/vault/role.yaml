@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: vault-secret-manager
+  namespace: vault
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "create", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: vault-transit-bootstrap-binding
+  namespace: vault
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: vault-transit
+roleRef:
+  kind: Role
+  name: vault-secret-manager
+  apiGroup: rbac.authorization.k8s.io
