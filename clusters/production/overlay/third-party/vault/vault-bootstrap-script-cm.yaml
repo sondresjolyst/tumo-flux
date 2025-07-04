@@ -7,6 +7,10 @@ data:
   vault-bootstrap.sh: |
     #!/bin/bash
     set -ex
+    echo "--- SCRIPT DIAGNOSTICS ---"
+    file /scripts/vault-bootstrap.sh || true
+    cat -A /scripts/vault-bootstrap.sh || true
+    echo "--------------------------"
     apt-get update && apt-get install -y curl jq ca-certificates unzip bsdmainutils
     echo "📥 Installing kubectl..."
     KUBE_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt)
@@ -22,7 +26,6 @@ data:
     printf 'Shell VAULT_VER: "%s" (length: %d)\n' "$VAULT_VER" "$(echo -n "$VAULT_VER" | wc -c)"
     echo -n "$VAULT_VER" | hexdump -C
     echo "Env VAULT_VER: $(env | grep VAULT_VER)"
-    # FIX: Ensure correct URL construction
     if [ -z "$VAULT_VER" ]; then
       echo "ERROR: VAULT_VER is empty!" >&2
       exit 1
