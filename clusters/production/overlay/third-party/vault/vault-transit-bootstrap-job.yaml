@@ -24,7 +24,8 @@ spec:
               VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r .current_version)
 
               echo "⬇️ Downloading Vault CLI ${VAULT_VERSION}..."
-              curl -L -o vault https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64
+              curl -L -o vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
+              unzip -o vault.zip
               chmod +x vault
               mv vault /usr/local/bin/
 
