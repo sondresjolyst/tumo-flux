@@ -25,12 +25,15 @@ spec:
               chmod +x kubectl && mv kubectl /usr/local/bin/
 
               echo "⬇️ Installing Vault CLI..."
+              env | sort
               VAULT_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')
               echo "Detected Vault version: $VAULT_VERSION"
-              echo "Using Vault version: https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip"
-              curl -L -o vault.zip "https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip"
+              DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip"
+              echo "Download URL: $DOWNLOAD_URL"
+              curl -L -o vault.zip "$DOWNLOAD_URL"
               unzip -j vault.zip vault
               chmod +x vault && mv vault /usr/local/bin/
+              env | sort
 
               export VAULT_ADDR=http://vault.vault-transit.svc:8200
 
