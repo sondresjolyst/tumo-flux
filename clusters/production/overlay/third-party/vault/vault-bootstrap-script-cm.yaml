@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vault-bootstrap-script
+  namespace: vault-transit
+data:
+  vault-bootstrap.sh: |
+    #!/bin/bash
+    set -ex
+    apt-get update && apt-get install -y curl jq ca-certificates unzip bsdmainutils
+    echo "📥 Installing kubectl..."
+    KUBE_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt)
+    curl -LO "https://dl.k8s.io/release/${KUBE_VERSION}/bin/linux/amd64/kubectl"
+    chmod +x kubectl && mv kubectl /usr/local/bin/
+    echo "⬇️ Installing Vault CLI..."
+    env | sort
+    unset VAULT_VER
+    VAULT_VER="$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')"
+    VAULT_VER="$(echo "$VAULT_VER" | tr -d '[:space:]' | tr -d '\000-\037\177')"
+    export VAULT_VER
+    declare -p VAULT_VER
+    printf 'Shell VAULT_VER: "%s" (length: %d)\n' "$VAULT_VER" "$(echo -n "$VAULT_VER" | wc -c)"
+    echo -n "$VAULT_VER" | hexdump -C
+    echo "Env VAULT_VER: $(env | grep VAULT_VER)"
+    DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VER}/vault_${VAULT_VER}_linux_amd64.zip"
+    echo "Download URL: $DOWNLOAD_URL"
+    curl -L -o vault.zip "$DOWNLOAD_URL"
+    unzip -j vault.zip vault
+    chmod +x vault && mv vault /usr/local/bin/
+    env | sort
+    export VAULT_ADDR=http://vault.vault-transit.svc:8200
+    echo "🔐 Bootstrapping Vault Transit..."
+    until vault status -format=json | jq -e '.initialized == false' > /dev/null; do
+      echo "Waiting for Vault to be reachable..." && sleep 2
+    done
+    vault operator init -format=json -key-shares=5 -key-threshold=3 > /tmp/init.json
+    for i in 0 1 2; do
+      vault operator unseal $(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)
+    done
+    export VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
+    vault secrets enable transit
+    vault write -f transit/keys/autounseal
+    vault policy write autounseal - <<EOF
+    path "transit/encrypt/autounseal" { capabilities = ["update"] }
+    path "transit/decrypt/autounseal" { capabilities = ["update"] }
+    EOF
+    TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
+    kubectl delete secret vault-b-unseal-token -n vault --ignore-not-found
+    kubectl create secret generic vault-b-unseal-token -n vault --from-literal=token="$TOKEN"
+    echo "✅ Done."
