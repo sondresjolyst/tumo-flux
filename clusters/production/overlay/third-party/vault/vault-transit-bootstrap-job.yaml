@@ -17,7 +17,7 @@ spec:
             - |
               set -ex
 
-              apt-get update && apt-get install -y curl jq ca-certificates unzip
+              apt-get update && apt-get install -y curl jq ca-certificates unzip bsdmainutils
 
               echo "📥 Installing kubectl..."
               KUBE_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt)
@@ -28,9 +28,10 @@ spec:
               env | sort
               unset VAULT_VER
               VAULT_VER="$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')"
-              VAULT_VER="$(echo "$VAULT_VER" | tr -d '[:space:]')"
+              VAULT_VER="$(echo "$VAULT_VER" | tr -d '[:space:]' | tr -d '\000-\037\177')"
               export VAULT_VER
-              printf "Shell VAULT_VER: '%s' (length: %d)\n" "$VAULT_VER" "${#VAULT_VER}"
+              declare -p VAULT_VER
+              printf 'Shell VAULT_VER: "%s" (length: %d)\n' "$VAULT_VER" "$(echo -n "$VAULT_VER" | wc -c)"
               echo -n "$VAULT_VER" | hexdump -C
               echo "Env VAULT_VER: $(env | grep VAULT_VER)"
               DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VER}/vault_${VAULT_VER}_linux_amd64.zip"
