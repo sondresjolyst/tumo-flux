@@ -37,7 +37,7 @@ spec:
 
             seal "transit" {
               address = "http://vault.vault-transit.svc:8200"
-              token   = "{{env \"VAULT_UNSEAL_TOKEN\"}}"
+              token   = "{{`{{env \"VAULT_UNSEAL_TOKEN\"}}`}}"
               key_name = "autounseal"
               mount_path = "transit/"
               tls_skip_verify = true
