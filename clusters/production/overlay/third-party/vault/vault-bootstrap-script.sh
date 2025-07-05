@@ -19,8 +19,9 @@ chmod +x vault && mv vault /usr/local/bin/
 : "${VAULT_ADDR:?VAULT_ADDR must be set as an environment variable}"
 
 # Bootstrap Vault Transit
-until vault status -format=json | jq -e '.initialized == false' >/dev/null; do
-    echo "Waiting for Vault to be reachable..." && sleep 2
+until vault status -format=json | jq -e '.initialized == false and .sealed == true' >/dev/null; do
+    vault status -format=json
+    echo "Waiting for Vault to be reachable and uninitialized..." && sleep 2
 done
 vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json
 for i in 0 1 2; do
