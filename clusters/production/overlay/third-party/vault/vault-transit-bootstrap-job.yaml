@@ -10,4 +10,4 @@ spec:
       restartPolicy: Never
       containers:
         - name: bootstrap
-          image: sondresjo/vault-bootstrap:latest
+          image: sondresjo/vault-transit-bootstrap:latest
