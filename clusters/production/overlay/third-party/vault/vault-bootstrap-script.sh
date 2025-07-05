@@ -6,16 +6,18 @@ cat -A /scripts/vault-bootstrap.sh || true
 echo "--------------------------"
 apt-get update && apt-get install -y curl jq ca-certificates unzip bsdmainutils
 echo "📥 Installing kubectl..."
-KUBE_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt | tr -d '\r\n')
+KUBE_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt | tr -d '\r\n[:space:]')
+KUBE_VERSION=$(printf "%s" "$KUBE_VERSION")
+echo "KUBE_VERSION: '$KUBE_VERSION'"
 curl -LO "https://dl.k8s.io/release/${KUBE_VERSION}/bin/linux/amd64/kubectl"
 chmod +x kubectl && mv kubectl /usr/local/bin/
 echo "⬇️ Installing Vault CLI..."
 env | sort
 unset VAULT_VER
 VAULT_VER="$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')"
-# Remove all whitespace, carriage returns, and newlines
 VAULT_VER_CLEAN=$(echo -n "$VAULT_VER" | tr -d '\r\n[:space:]' | tr -d '\000-\037\177')
-export VAULT_VER="$VAULT_VER_CLEAN"
+VAULT_VER=$(printf "%s" "$VAULT_VER_CLEAN")
+export VAULT_VER
 declare -p VAULT_VER
 printf 'Shell VAULT_VER: "%s" (length: %d)\n' "$VAULT_VER" "$(echo -n "$VAULT_VER" | wc -c)"
 echo -n "$VAULT_VER" | hexdump -C
