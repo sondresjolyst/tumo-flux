@@ -1,45 +1,30 @@
 #!/bin/bash
-set -ex
-echo "--- SCRIPT DIAGNOSTICS ---"
-file /scripts/vault-bootstrap.sh || true
-cat -A /scripts/vault-bootstrap.sh || true
-echo "--------------------------"
-apt-get update && apt-get install -y curl jq ca-certificates unzip bsdmainutils
-echo "📥 Installing kubectl..."
+set -euo pipefail
+
+# Install kubectl
 KUBE_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt | tr -d '\r\n[:space:]')
-KUBE_VERSION=$(printf "%s" "$KUBE_VERSION")
-echo "KUBE_VERSION: '$KUBE_VERSION'"
-curl -LO "https://dl.k8s.io/release/${KUBE_VERSION}/bin/linux/amd64/kubectl"
+echo "Installing kubectl version: $KUBE_VERSION"
+curl -sLO "https://dl.k8s.io/release/${KUBE_VERSION}/bin/linux/amd64/kubectl"
 chmod +x kubectl && mv kubectl /usr/local/bin/
-echo "⬇️ Installing Vault CLI..."
-env | sort
-unset VAULT_VER
-VAULT_VER="$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version')"
-VAULT_VER_CLEAN=$(echo -n "$VAULT_VER" | tr -d '\r\n[:space:]' | tr -d '\000-\037\177')
-VAULT_VER=$(printf "%s" "$VAULT_VER_CLEAN")
-export VAULT_VER
-declare -p VAULT_VER
-printf 'Shell VAULT_VER: "%s" (length: %d)\n' "$VAULT_VER" "$(echo -n "$VAULT_VER" | wc -c)"
-echo -n "$VAULT_VER" | hexdump -C
-echo "Env VAULT_VER: $(env | grep VAULT_VER)"
-if [ -z "$VAULT_VER" ]; then
-  echo "ERROR: VAULT_VER is empty!" >&2
-  exit 1
-fi
+
+# Install Vault CLI
+VAULT_VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/vault | jq -r '.current_version' | tr -d '\r\n[:space:]\000-\037\177')
+echo "Installing Vault CLI version: $VAULT_VER"
 DOWNLOAD_URL="https://releases.hashicorp.com/vault/${VAULT_VER}/vault_${VAULT_VER}_linux_amd64.zip"
 echo "Download URL: $DOWNLOAD_URL"
-curl -fL -o vault.zip "$DOWNLOAD_URL"
+curl -sSfL -o vault.zip "$DOWNLOAD_URL"
 unzip -j vault.zip vault
 chmod +x vault && mv vault /usr/local/bin/
-env | sort
+
 export VAULT_ADDR=http://vault.vault-transit.svc:8200
-echo "🔐 Bootstrapping Vault Transit..."
-until vault status -format=json | jq -e '.initialized == false' > /dev/null; do
-  echo "Waiting for Vault to be reachable..." && sleep 2
+
+# Bootstrap Vault Transit
+until vault status -format=json | jq -e '.initialized == false' >/dev/null; do
+    echo "Waiting for Vault to be reachable..." && sleep 2
 done
-vault operator init -format=json -key-shares=5 -key-threshold=3 > /tmp/init.json
+vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json
 for i in 0 1 2; do
-  vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)"
+    vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)"
 done
 VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
 export VAULT_TOKEN
