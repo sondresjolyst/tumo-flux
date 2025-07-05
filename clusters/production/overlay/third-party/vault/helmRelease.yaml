@@ -22,21 +22,30 @@ spec:
         raft:
           enabled: true
           setNodeId: true
+          config: |
+            ui = true
+
+            listener "tcp" {
+              tls_disable = 1
+              address = "[::]:8200"
+              cluster_address = "[::]:8201"
+            }
+
+            storage "raft" {
+              path = "/vault/data"
+            }
+
+            seal "transit" {
+              address = "http://vault.vault-transit.svc:8200"
+              token   = "{{ env \"VAULT_UNSEAL_TOKEN\" }}"
+              key_name = "autounseal"
+              mount_path = "transit/"
+              tls_skip_verify = true
+            }
+
+            service_registration "kubernetes" {}
       dataStorage:
         storageClass: nfs
-      # ingress:
-      #   enabled: true
-      #   annotations:
-      #     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      #   pathType: Prefix
-      #   hosts:
-      #     - host: vault.prod.tumogroup.com
-      #       paths:
-      #         - path: /*
-      #   tls:
-      #     - secretName: vault-tls
-      #       hosts:
-      #         - vault.prod.tumogroup.com
       readinessProbe:
         enabled: true
         path: "/v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204"
@@ -53,14 +62,6 @@ spec:
         - envName: VAULT_UNSEAL_TOKEN
           secretName: vault-b-unseal-token
           secretKey: token
-      extraConfig: |
-        seal "transit" {
-          address = "http://vault.vault-transit.svc:8200"
-          token   = "{{ env \"VAULT_UNSEAL_TOKEN\" }}"
-          key_name = "autounseal"
-          mount_path = "transit/"
-          tls_skip_verify = true
-        }
       resources:
         requests:
           memory: 8Gi

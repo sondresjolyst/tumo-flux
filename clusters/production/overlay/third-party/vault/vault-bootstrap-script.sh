@@ -22,6 +22,15 @@ chmod +x vault && mv vault /usr/local/bin/
 
 if [[ "$ROLE" == "transit" ]]; then
   echo "[transit] Bootstrapping Transit Vault..."
+  # Wait for Vault API to be reachable
+  for i in {1..60}; do
+    if vault status >/dev/null 2>&1; then
+      echo "[transit] Vault API is reachable."
+      break
+    fi
+    echo "[transit] Waiting for Vault API... ($i/60)"
+    sleep 5
+  done
   if vault status | grep -q 'Initialized.*false'; then
     echo "[transit] Vault is uninitialized, proceeding with initialization."
     vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json
@@ -76,6 +85,15 @@ elif [[ "$ROLE" == "main" ]]; then
     exit 1
   fi
   export VAULT_TOKEN="$TOKEN"
+  # Wait for Vault API to be reachable
+  for i in {1..60}; do
+    if vault status >/dev/null 2>&1; then
+      echo "[main] Vault API is reachable."
+      break
+    fi
+    echo "[main] Waiting for Vault API... ($i/60)"
+    sleep 5
+  done
   if vault status | grep -q 'Initialized.*false'; then
     echo "[main] Vault is uninitialized, proceeding with initialization."
     vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json

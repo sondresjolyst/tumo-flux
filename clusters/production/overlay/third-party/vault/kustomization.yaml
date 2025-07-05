@@ -4,8 +4,4 @@ resources:
   - role.yaml
   - vault-transit-bootstrap-job.yaml
   - vault-main-bootstrap-job.yaml
-configMapGenerator:
-  - name: vault-bootstrap-script
-    namespace: vault-transit
-    files:
-      - vault-bootstrap.sh=vault-bootstrap-script.sh
+
