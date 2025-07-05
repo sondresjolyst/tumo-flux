@@ -11,3 +11,8 @@ spec:
       containers:
         - name: bootstrap
           image: sondresjo/vault-transit-bootstrap:latest
+          env:
+            - name: VAULT_ADDR
+              value: http://vault.vault-transit.svc:8200
+            - name: ROLE
+              value: transit

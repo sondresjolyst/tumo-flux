@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vault-main-bootstrap
+  namespace: vault
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: bootstrap
+          image: sondresjo/vault-transit-bootstrap:latest
+          env:
+            - name: VAULT_ADDR
+              value: http://vault.vault.svc:8200
+            - name: VAULT_UNSEAL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: vault-b-unseal-token
+                  key: token
+            - name: ROLE
+              value: main
