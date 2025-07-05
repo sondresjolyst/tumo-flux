@@ -2,6 +2,12 @@ name: Build and Push Docker Image
 
 on:
   workflow_dispatch:
+    inputs:
+      vault_addr:
+        description: 'Vault Address'
+        required: true
+        default: 'http://vault-0.vault-transit.svc:8200'
+
 
 jobs:
   dev:
@@ -14,4 +20,6 @@ jobs:
       username: sondresjo
       repository: sondresjo/vault-transit-bootstrap
       working_directory: ./clusters/production/overlay/third-party/vault
+      build_args: |
+        VAULT_ADDR=${{ github.event.inputs.vault_addr }}
       tag: latest

@@ -16,7 +16,7 @@ curl -sSfL -o vault.zip "$DOWNLOAD_URL"
 unzip -j vault.zip vault
 chmod +x vault && mv vault /usr/local/bin/
 
-export VAULT_ADDR=http://vault.vault-transit.svc:8200
+: "${VAULT_ADDR:?VAULT_ADDR must be set as an environment variable}"
 
 # Bootstrap Vault Transit
 until vault status -format=json | jq -e '.initialized == false' >/dev/null; do
