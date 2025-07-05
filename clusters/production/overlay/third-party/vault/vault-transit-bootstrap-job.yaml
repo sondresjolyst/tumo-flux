@@ -10,12 +10,4 @@ spec:
       restartPolicy: Never
       containers:
         - name: bootstrap
-          image: debian:stable-slim
-          command: ["/bin/bash", "/scripts/vault-bootstrap.sh"]
-          volumeMounts:
-            - name: script
-              mountPath: /scripts
-      volumes:
-        - name: script
-          configMap:
-            name: vault-bootstrap-script
+          image: sondresjo/vault-bootstrap:latest
