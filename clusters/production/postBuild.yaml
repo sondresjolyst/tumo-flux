@@ -30,7 +30,7 @@ spec:
       MYSQL_VERSION: 13.0.2 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       PROMETHEUS_VERSION: 75.9.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      REDIS_VERSION: 21.2.6 # https://artifacthub.io/packages/helm/bitnami/redis
+      REDIS_VERSION: 21.2.7 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.2.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.59 # https://artifacthub.io/packages/helm/influxdata/telegraf
       VAULT_VERSION: 0.30.0 # https://artifacthub.io/packages/helm/hashicorp/vault
