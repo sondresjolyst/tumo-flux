@@ -33,7 +33,7 @@ spec:
       PROMETHEUS_VERSION: 75.10.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       REDIS_VERSION: 21.2.10 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.2.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
-      TELEGRAF_VERSION: 1.8.59 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      TELEGRAF_VERSION: 1.8.60 # https://artifacthub.io/packages/helm/influxdata/telegraf
       VAULT_VERSION: 0.30.0 # https://artifacthub.io/packages/helm/hashicorp/vault
     substituteFrom:
       - kind: ConfigMap
