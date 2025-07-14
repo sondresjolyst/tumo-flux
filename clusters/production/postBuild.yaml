@@ -11,28 +11,28 @@ spec:
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
       BOBBY_API_VERSION: 1.0.0 # https://artifacthub.io/packages/helm/tumogroup/bobby-api
-      CERT_MANAGER_VERSION: 1.18.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.18.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.15.0 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.33.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.6 # https://artifacthub.io/packages/helm/emqx-operator/emqx
       GARGE_API_VERSION: 0.1.4 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.4 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/garge/garge-operator
-      GRAFANA_VERSION: 9.2.9 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 9.2.10 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION_ET: 1.2.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 1.2.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      INFLUXDB_VERSION: 7.1.6 # https://artifacthub.io/packages/helm/bitnami/influxdb
+      INFLUXDB_VERSION: 7.1.8 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.6.2 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.15.2 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.12.2 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 4.26.3 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
-      MYSQL_VERSION: 13.0.2 # https://artifacthub.io/packages/helm/bitnami/mysql
-      NGINX_VERSION: 4.12.3 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      PROMETHEUS_VERSION: 75.6.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      REDIS_VERSION: 21.2.6 # https://artifacthub.io/packages/helm/bitnami/redis
-      SPARK_KUBERNETES_OPERATOR_VERSION: 1.1.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
+      MYSQL_VERSION: 13.0.3 # https://artifacthub.io/packages/helm/bitnami/mysql
+      NGINX_VERSION: 4.13.0 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
+      PROMETHEUS_VERSION: 75.10.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      REDIS_VERSION: 21.2.10 # https://artifacthub.io/packages/helm/bitnami/redis
+      SPARK_KUBERNETES_OPERATOR_VERSION: 1.2.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.59 # https://artifacthub.io/packages/helm/influxdata/telegraf
       VAULT_VERSION: 0.30.0 # https://artifacthub.io/packages/helm/hashicorp/vault
     substituteFrom:
