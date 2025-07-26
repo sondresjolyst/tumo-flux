@@ -27,7 +27,6 @@ resources:
   - ../../components/third-party/spark-kubernetes-operator
   - ../../components/third-party/telegraf
   - ../../components/third-party/tumogroup
-  - ../../components/third-party/vault
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/garge-app
   - ./overlay/third-party/home-assistant
@@ -36,7 +35,6 @@ resources:
   - ./overlay/third-party/ingress-nginx
   - ./overlay/third-party/mosquitto
   - ./overlay/third-party/mysql
-  - ./overlay/third-party/vault
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/bobby-api/helmRelease.yaml
@@ -62,5 +60,4 @@ patches:
   - path: ./overlay/third-party/mysql/helmRelease.yaml
   - path: ./overlay/third-party/redis/helmRelease.yaml
   - path: ./overlay/third-party/spark-kubernetes-operator/helmRelease.yaml
-  - path: ./overlay/third-party/vault/helmRelease.yaml
   - path: ../../components/third-party/redis/ociRepo.yaml
