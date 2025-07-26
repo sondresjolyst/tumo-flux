@@ -6,7 +6,7 @@ on:
       vault_addr:
         description: 'Vault Address'
         required: true
-        default: 'http://vault-0.vault-transit.svc:8200'
+        default: 'http://vault.vault-transit.svc:8200'
 
 
 jobs:

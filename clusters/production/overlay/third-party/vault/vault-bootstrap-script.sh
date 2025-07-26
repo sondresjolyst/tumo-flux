@@ -20,98 +20,133 @@ chmod +x vault && mv vault /usr/local/bin/
 
 : "${VAULT_ADDR:?VAULT_ADDR must be set as an environment variable}"
 
+# Set secret names per role
 if [[ "$ROLE" == "transit" ]]; then
-  echo "[transit] Bootstrapping Transit Vault..."
-  # Wait for Vault API to be reachable
-  for i in {1..60}; do
-    if vault status >/dev/null 2>&1; then
-      echo "[transit] Vault API is reachable."
-      break
-    fi
-    echo "[transit] Waiting for Vault API... ($i/60)"
-    sleep 5
-  done
-  if vault status | grep -q 'Initialized.*false'; then
-    echo "[transit] Vault is uninitialized, proceeding with initialization."
-    vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json
-    for i in 0 1 2; do
-      vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)"
-    done
-    VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
-    export VAULT_TOKEN
-  else
-    echo "[transit] Vault already initialized. Attempting to unseal if needed."
-    # Try to unseal with known keys if possible (idempotency)
-    if [ -f /tmp/init.json ]; then
-      for i in 0 1 2; do
-        vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)" || true
-      done
-      VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
-      export VAULT_TOKEN
+    INIT_SECRET="vault-b-init"
+    UNSEAL_SECRET="vault-b-unseal-token"
+    NAMESPACE="vault"
+elif [[ "$ROLE" == "main" ]]; then
+    INIT_SECRET="vault-main-init"
+    UNSEAL_SECRET="vault-b-unseal-token"
+    NAMESPACE="vault"
+else
+    echo "ERROR: Unknown ROLE: $ROLE. Must be 'transit' or 'main'."
+    exit 1
+fi
+
+# Restore /tmp/init.json from secret if missing
+if [ ! -f /tmp/init.json ]; then
+    echo "[${ROLE}] Attempting to restore /tmp/init.json from secret $INIT_SECRET in namespace $NAMESPACE..."
+    kubectl get secret "$INIT_SECRET" -n "$NAMESPACE" -o jsonpath='{.data.init\.json}' 2>/dev/null | base64 -d > /tmp/init.json || true
+    if [ -s /tmp/init.json ]; then
+        echo "[${ROLE}] Restored /tmp/init.json from secret."
     else
-      echo "[transit] No init.json found, skipping unseal."
+        rm -f /tmp/init.json
+        echo "[${ROLE}] No existing init.json found in secret."
     fi
-  fi
-  # Enable transit and create key/policy/token if not already present
-  if ! vault secrets list | grep -q '^transit/'; then
-    vault secrets enable transit
-  fi
-  if ! vault read transit/keys/autounseal >/dev/null 2>&1; then
-    vault write -f transit/keys/autounseal
-  fi
-  vault policy write autounseal - <<EOF
+fi
+
+if [[ "$ROLE" == "transit" ]]; then
+    echo "[transit] Bootstrapping Transit Vault..."
+    # Wait for Vault API to be reachable
+    for i in {1..60}; do
+        status=$(curl -s -o /dev/null -w "%{http_code}" "$VAULT_ADDR/v1/sys/health" || true)
+        if [ "$status" = "501" ] || [ "$status" = "503" ] || [ "$status" = "429" ] || [ "$status" = "200" ]; then
+            echo "[transit] Vault API is reachable (status $status)."
+            break
+        fi
+        echo "[transit] Waiting for Vault API... ($i/60, status $status)"
+        sleep 5
+    done
+    # Robust check for initialization status
+    init_status=$(curl -s $VAULT_ADDR/v1/sys/health | jq -r .initialized)
+    if [ "$init_status" = "false" ]; then
+        echo "[transit] Vault is uninitialized, proceeding with initialization."
+        vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json
+        for i in 0 1 2; do
+            vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)"
+        done
+        VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
+        export VAULT_TOKEN
+        # Save /tmp/init.json to secret
+        kubectl delete secret "$INIT_SECRET" -n "$NAMESPACE" --ignore-not-found
+        kubectl create secret generic "$INIT_SECRET" -n "$NAMESPACE" --from-file=init.json=/tmp/init.json
+        echo "[transit] Saved /tmp/init.json to secret $INIT_SECRET."
+    else
+        echo "[transit] Vault already initialized. Attempting to unseal if needed."
+        if [ -f /tmp/init.json ]; then
+            for i in 0 1 2; do
+                vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)" || true
+            done
+            VAULT_TOKEN=$(jq -r ".root_token" /tmp/init.json)
+            export VAULT_TOKEN
+        else
+            echo "[transit] No init.json found, skipping unseal."
+        fi
+    fi
+    # Enable transit and create key/policy/token if not already present
+    if ! vault secrets list | grep -q '^transit/'; then
+        vault secrets enable transit
+    fi
+    if ! vault read transit/keys/autounseal >/dev/null 2>&1; then
+        vault write -f transit/keys/autounseal
+    fi
+    vault policy write autounseal - <<EOF
 path "transit/encrypt/autounseal" { capabilities = ["update"] }
 path "transit/decrypt/autounseal" { capabilities = ["update"] }
 EOF
-  TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
-  kubectl delete secret vault-b-unseal-token -n vault --ignore-not-found
-  kubectl create secret generic vault-b-unseal-token -n vault --from-literal=token="$TOKEN"
-  echo "[transit] ✅ Transit Vault bootstrap complete."
+    TOKEN=$(vault token create -policy=autounseal -period=8760h -format=json | jq -r '.auth.client_token')
+    kubectl delete secret "$UNSEAL_SECRET" -n "$NAMESPACE" --ignore-not-found
+    kubectl create secret generic "$UNSEAL_SECRET" -n "$NAMESPACE" --from-literal=token="$TOKEN"
+    echo "[transit] ✅ Transit Vault bootstrap complete."
 
 elif [[ "$ROLE" == "main" ]]; then
-  echo "[main] Bootstrapping Main Vault..."
-  # Wait for the unseal token secret from transit Vault
-  for i in {1..60}; do
-    TOKEN=$(kubectl get secret vault-b-unseal-token -n vault -o jsonpath='{.data.token}' | base64 -d 2>/dev/null || true)
-    if [[ -n "$TOKEN" ]]; then
-      echo "[main] Found unseal token from transit Vault."
-      break
-    fi
-    echo "[main] Waiting for vault-b-unseal-token secret... ($i/60)"
-    sleep 5
-  done
-  if [[ -z "$TOKEN" ]]; then
-    echo "[main] ERROR: Could not retrieve unseal token from transit Vault."
-    exit 1
-  fi
-  export VAULT_TOKEN="$TOKEN"
-  # Wait for Vault API to be reachable
-  for i in {1..60}; do
-    if vault status >/dev/null 2>&1; then
-      echo "[main] Vault API is reachable."
-      break
-    fi
-    echo "[main] Waiting for Vault API... ($i/60)"
-    sleep 5
-  done
-  if vault status | grep -q 'Initialized.*false'; then
-    echo "[main] Vault is uninitialized, proceeding with initialization."
-    vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json
-    for i in 0 1 2; do
-      vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)"
+    echo "[main] Bootstrapping Main Vault..."
+    # Wait for the unseal token secret from transit Vault
+    for i in {1..60}; do
+        TOKEN=$(kubectl get secret "$UNSEAL_SECRET" -n "$NAMESPACE" -o jsonpath='{.data.token}' | base64 -d 2>/dev/null || true)
+        if [[ -n "$TOKEN" ]]; then
+            echo "[main] Found unseal token from transit Vault."
+            break
+        fi
+        echo "[main] Waiting for $UNSEAL_SECRET secret... ($i/60)"
+        sleep 5
     done
-  else
-    echo "[main] Vault already initialized. Attempting to unseal if needed."
-    if [ -f /tmp/init.json ]; then
-      for i in 0 1 2; do
-        vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)" || true
-      done
-    else
-      echo "[main] No init.json found, skipping unseal."
+    if [[ -z "$TOKEN" ]]; then
+        echo "[main] ERROR: Could not retrieve unseal token from transit Vault."
+        exit 1
     fi
-  fi
-  echo "[main] ✅ Main Vault bootstrap complete."
-else
-  echo "ERROR: Unknown ROLE: $ROLE. Must be 'transit' or 'main'."
-  exit 1
+    export VAULT_TOKEN="$TOKEN"
+    # Wait for Vault API to be reachable
+    for i in {1..60}; do
+        status=$(curl -s -o /dev/null -w "%{http_code}" "$VAULT_ADDR/v1/sys/health" || true)
+        if [ "$status" = "501" ] || [ "$status" = "503" ] || [ "$status" = "429" ] || [ "$status" = "200" ]; then
+            echo "[main] Vault API is reachable (status $status)."
+            break
+        fi
+        echo "[main] Waiting for Vault API... ($i/60, status $status)"
+        sleep 5
+    done
+    init_status=$(curl -s $VAULT_ADDR/v1/sys/health | jq -r .initialized)
+    if [ "$init_status" = "false" ]; then
+        echo "[main] Vault is uninitialized, proceeding with initialization."
+        vault operator init -format=json -key-shares=5 -key-threshold=3 >/tmp/init.json
+        for i in 0 1 2; do
+            vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)"
+        done
+        # Save /tmp/init.json to secret
+        kubectl delete secret "$INIT_SECRET" -n "$NAMESPACE" --ignore-not-found
+        kubectl create secret generic "$INIT_SECRET" -n "$NAMESPACE" --from-file=init.json=/tmp/init.json
+        echo "[main] Saved /tmp/init.json to secret $INIT_SECRET."
+    else
+        echo "[main] Vault already initialized. Attempting to unseal if needed."
+        if [ -f /tmp/init.json ]; then
+            for i in 0 1 2; do
+                vault operator unseal "$(jq -r ".unseal_keys_b64[$i]" /tmp/init.json)" || true
+            done
+        else
+            echo "[main] No init.json found, skipping unseal."
+        fi
+    fi
+    echo "[main] ✅ Main Vault bootstrap complete."
 fi
