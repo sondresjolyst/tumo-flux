@@ -8,7 +8,6 @@ resources:
   - ../../components/third-party/descheduler
   - ../../components/third-party/emqx
   - ../../components/third-party/grafana
-  # - ../../components/third-party/grav
   - ../../components/third-party/garge
   - ../../components/third-party/garge-api
   - ../../components/third-party/garge-app
@@ -29,10 +28,8 @@ resources:
   - ../../components/third-party/telegraf
   - ../../components/third-party/tumogroup
   - ../../components/third-party/vault
-  # - ../../components/third-party/wordpress
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/garge-app
-  # - ./overlay/third-party/grav
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
   - ./overlay/third-party/influxdb
@@ -40,7 +37,6 @@ resources:
   - ./overlay/third-party/mosquitto
   - ./overlay/third-party/mysql
   - ./overlay/third-party/vault
-  # - ./overlay/third-party/wordpress
 patches:
   - path: ./postBuild.yaml
   - path: ./overlay/third-party/bobby-api/helmRelease.yaml
@@ -52,7 +48,6 @@ patches:
   - path: ./overlay/third-party/garge-app/helmRelease.yaml
   - path: ./overlay/third-party/garge-operator/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
-  # - path: ./overlay/third-party/grav/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant-et/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant/helmRelease.yaml
   - path: ./overlay/third-party/influxdb/helmRelease.yaml
@@ -69,4 +64,3 @@ patches:
   - path: ./overlay/third-party/spark-kubernetes-operator/helmRelease.yaml
   - path: ./overlay/third-party/vault/helmRelease.yaml
   - path: ../../components/third-party/redis/ociRepo.yaml
-  # - path: ./overlay/third-party/wordpress/helmRelease.yaml
