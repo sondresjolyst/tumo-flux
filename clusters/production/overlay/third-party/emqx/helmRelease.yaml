@@ -9,18 +9,18 @@ spec:
       chart: emqx
       version: ${EMQX_VERSION} # Set in postBuild production
   values:
-    volumes:
-      - name: ssl-volume
-        secret:
-          secretName: emqx-mqtt-tls
-    volumeMounts:
-      - name: ssl-volume
-        mountPath: /tmp/ssl
-        readOnly: true
-    emqxConfig:
-      EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: /tmp/ssl/tls.crt
-      EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: /tmp/ssl/tls.key
-      EMQX_LISTENERS__TCP__DEFAULT__PROXY_PROTOCOL: "true"
+    # volumes:
+    #   - name: ssl-volume
+    #     secret:
+    #       secretName: emqx-mqtt-tls
+    # volumeMounts:
+    #   - name: ssl-volume
+    #     mountPath: /tmp/ssl
+    #     readOnly: true
+    # emqxConfig:
+    #   EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: /tmp/ssl/tls.crt
+    #   EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: /tmp/ssl/tls.key
+    #   EMQX_LISTENERS__TCP__DEFAULT__PROXY_PROTOCOL: "true"
     persistence:
       enabled: true
       storageClassName: nfs
@@ -61,7 +61,11 @@ spec:
               - emqx-mqtt.prod.tumogroup.com
       ssl:
         enabled: true
-        useExisting: true
-        existingName: emqx-mqtt-tls
+        commonName: emqx-mqtt.prod.tumogroup.com
+        dnsnames:
+          - emqx-mqtt.prod.tumogroup.com
+        issuer:
+          name: letsencrypt-prod
+          kind: ClusterIssuer
     metrics:
       enabled: true
