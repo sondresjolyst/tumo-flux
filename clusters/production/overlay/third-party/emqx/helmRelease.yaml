@@ -9,6 +9,10 @@ spec:
       chart: emqx
       version: ${EMQX_VERSION} # Set in postBuild production
   values:
+    emqxConfig:
+      listeners.ssl.default.ssl_options.certfile: "/tmp/ssl/tls.crt"
+      listeners.ssl.default.ssl_options.keyfile: "/tmp/ssl/tls.key"
+      listeners.tcp.default.proxy_protocol: "true"
     persistence:
       enabled: true
       storageClassName: nfs
