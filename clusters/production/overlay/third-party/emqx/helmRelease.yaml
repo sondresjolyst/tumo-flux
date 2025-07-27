@@ -9,6 +9,7 @@ spec:
       chart: emqx
       version: ${EMQX_VERSION} # Set in postBuild production
   values:
+    recreatePods: true
     # volumes:
     #   - name: ssl-volume
     #     secret:
@@ -59,13 +60,13 @@ spec:
           - secretName: emqx-mqtt-tls
             hosts:
               - emqx-mqtt.prod.tumogroup.com
-      ssl:
-        enabled: true
-        commonName: emqx-mqtt1.prod.tumogroup.com
-        dnsnames:
-          - emqx-mqtt1.prod.tumogroup.com
-        issuer:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+    ssl:
+      enabled: true
+      commonName: emqx-mqtt1.prod.tumogroup.com
+      dnsnames:
+        - emqx-mqtt1.prod.tumogroup.com
+      issuer:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
     metrics:
       enabled: true
