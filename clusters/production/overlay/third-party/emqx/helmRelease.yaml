@@ -62,11 +62,7 @@ spec:
               - emqx-mqtt.prod.tumogroup.com
     ssl:
       enabled: true
-      commonName: emqx-mqtt1.prod.tumogroup.com
-      dnsnames:
-        - emqx-mqtt1.prod.tumogroup.com
-      issuer:
-        name: letsencrypt-prod
-        kind: ClusterIssuer
+      useExisting: true
+      existingName: emqx-mqtt-tls
     metrics:
       enabled: true
