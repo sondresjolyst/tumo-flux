@@ -51,14 +51,22 @@ spec:
           - secretName: emqx-mqtt-tls
             hosts:
               - emqx-mqtt.prod.tumogroup.com
-      ssl:
-        enabled: true
-        useExisting: true
-        existingName: emqx-mqtt-tls
-        # dnsnames:
-        #   - emqx-mqtt.prod.tumogroup.com
-        issuer:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+      # ssl:
+      #   enabled: true
+      #   useExisting: true
+      #   existingName: emqx-mqtt-tls
+      #   # dnsnames:
+      #   #   - emqx-mqtt.prod.tumogroup.com
+      #   issuer:
+      #     name: letsencrypt-prod
+      #     kind: ClusterIssuer
+      extraVolumes:
+        - name: emqx-mqtt-tls
+          secret:
+            secretName: emqx-mqtt-tls
+      extraVolumeMounts:
+        - name: emqx-mqtt-tls
+          mountPath: /tmp/ssl
+          readOnly: true
     metrics:
       enabled: true
