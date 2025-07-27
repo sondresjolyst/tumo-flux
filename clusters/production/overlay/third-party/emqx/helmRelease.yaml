@@ -9,10 +9,10 @@ spec:
       chart: emqx
       version: ${EMQX_VERSION} # Set in postBuild production
   values:
-    # emqxConfig:
-    #   listeners.ssl.default.ssl_options.certfile: "/tmp/ssl/tls.crt"
-    #   listeners.ssl.default.ssl_options.keyfile: "/tmp/ssl/tls.key"
-    #   listeners.tcp.default.proxy_protocol: "true"
+    emqxConfig:
+      EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: /tmp/ssl/tls.crt
+      EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: /tmp/ssl/tls.key
+      # EMQX_LISTENERS__TCP__DEFAULT__PROXY_PROTOCOL: "true"
     persistence:
       enabled: true
       storageClassName: nfs
@@ -55,16 +55,5 @@ spec:
         enabled: true
         useExisting: true
         existingName: emqx-mqtt-tls
-        issuer:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
-      # extraVolumes:
-      #   - name: emqx-mqtt-tls
-      #     secret:
-      #       secretName: emqx-mqtt-tls
-      # extraVolumeMounts:
-      #   - name: emqx-mqtt-tls
-      #     mountPath: /tmp/ssl
-      #     readOnly: true
     metrics:
       enabled: true
