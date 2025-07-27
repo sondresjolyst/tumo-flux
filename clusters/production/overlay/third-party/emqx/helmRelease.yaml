@@ -48,21 +48,25 @@ spec:
           - secretName: emqx-dashboard-tls
             hosts:
               - emqx-dashboard.prod.tumogroup.com
-      mqtt:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        pathType: Prefix
-        path: /
-        hosts:
-          - emqx-mqtt.prod.tumogroup.com
-        tls:
-          - secretName: emqx-mqtt-tls
-            hosts:
-              - emqx-mqtt.prod.tumogroup.com
+      # mqtt:
+      #   enabled: true
+      #   annotations:
+      #     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      #   pathType: Prefix
+      #   path: /
+      #   hosts:
+      #     - emqx-mqtt.prod.tumogroup.com
+      #   tls:
+      #     - secretName: emqx-mqtt-tls
+      #       hosts:
+      #         - emqx-mqtt.prod.tumogroup.com
     ssl:
       enabled: true
-      useExisting: true
-      existingName: emqx-mqtt-tls
+      commonName: emqx-mqtt.prod.tumogroup.com
+      dnsnames:
+        - emqx-mqtt.prod.tumogroup.com
+      issuer:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
     metrics:
       enabled: true
