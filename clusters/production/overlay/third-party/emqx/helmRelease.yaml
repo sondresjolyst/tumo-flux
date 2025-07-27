@@ -47,5 +47,12 @@ spec:
           - secretName: emqx-mqtt-tls
             hosts:
               - emqx-mqtt.prod.tumogroup.com
+      ssl:
+        enabled: true
+        dnsnames:
+          - emqx-mqtt.prod.tumogroup.com
+        issuer:
+          name: letsencrypt-prod
+          kind: ClusterIssuer
     metrics:
       enabled: true
