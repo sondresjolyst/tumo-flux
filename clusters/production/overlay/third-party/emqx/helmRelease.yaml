@@ -10,14 +10,6 @@ spec:
       version: ${EMQX_VERSION} # Set in postBuild production
   values:
     recreatePods: true
-    # volumes:
-    #   - name: ssl-volume
-    #     secret:
-    #       secretName: emqx-mqtt-tls
-    # volumeMounts:
-    #   - name: ssl-volume
-    #     mountPath: /tmp/ssl
-    #     readOnly: true
     emqxConfig:
       EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CERTFILE: /tmp/ssl/tls.crt
       EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__KEYFILE: /tmp/ssl/tls.key
@@ -48,18 +40,6 @@ spec:
           - secretName: emqx-dashboard-tls
             hosts:
               - emqx-dashboard.prod.tumogroup.com
-      # mqtt:
-      #   enabled: true
-      #   annotations:
-      #     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      #   pathType: Prefix
-      #   path: /
-      #   hosts:
-      #     - emqx-mqtt.prod.tumogroup.com
-      #   tls:
-      #     - secretName: emqx-mqtt-tls
-      #       hosts:
-      #         - emqx-mqtt.prod.tumogroup.com
     ssl:
       enabled: true
       commonName: emqx-mqtt.prod.tumogroup.com

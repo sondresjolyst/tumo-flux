@@ -4,4 +4,3 @@ metadata:
   name: emqx
   labels:
     tumo-wildcard-sync: tumo-wildcard-tls-cert
-
