@@ -33,7 +33,7 @@ spec:
       PROMETHEUS_VERSION: 75.15.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       REDIS_VERSION: 21.2.13 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.2.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
-      TELEGRAF_VERSION: 1.8.60 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      TELEGRAF_VERSION: 1.8.61 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
