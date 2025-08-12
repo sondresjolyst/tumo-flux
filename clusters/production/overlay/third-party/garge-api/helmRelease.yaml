@@ -22,17 +22,17 @@ spec:
         secretKeyRef:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
-      - name: SENDGRIDSETTINGS__APIKEY
+      - name: BREVOSETTINGS__APIKEY
         secretKeyRef:
-          key: SENDGRIDSETTINGS__APIKEY
+          key: BREVOSETTINGS__APIKEY
           name: garge-api-secrets
-      - name: SENDGRIDSETTINGS__SENDEREMAIL
+      - name: BREVOSETTINGS__SENDEREMAIL
         secretKeyRef:
-          key: SENDGRIDSETTINGS__SENDEREMAIL
+          key: BREVOSETTINGS__SENDEREMAIL
           name: garge-api-secrets
-      - name: SENDGRIDSETTINGS__SENDERNAME
+      - name: BREVOSETTINGS__SENDERNAME
         secretKeyRef:
-          key: SENDGRIDSETTINGS__SENDERNAME
+          key: BREVOSETTINGS__SENDERNAME
           name: garge-api-secrets
     image:
       tag: "dev"
@@ -82,17 +82,17 @@ spec:
         secretKeyRef:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
           name: garge-api-secrets
-      - name: SENDGRIDSETTINGS__APIKEY
+      - name: BREVOSETTINGS__APIKEY
         secretKeyRef:
-          key: SENDGRIDSETTINGS__APIKEY
+          key: BREVOSETTINGS__APIKEY
           name: garge-api-secrets
-      - name: SENDGRIDSETTINGS__SENDEREMAIL
+      - name: BREVOSETTINGS__SENDEREMAIL
         secretKeyRef:
-          key: SENDGRIDSETTINGS__SENDEREMAIL
+          key: BREVOSETTINGS__SENDEREMAIL
           name: garge-api-secrets
-      - name: SENDGRIDSETTINGS__SENDERNAME
+      - name: BREVOSETTINGS__SENDERNAME
         secretKeyRef:
-          key: SENDGRIDSETTINGS__SENDERNAME
+          key: BREVOSETTINGS__SENDERNAME
           name: garge-api-secrets
     image:
       pullPolicy: Always
