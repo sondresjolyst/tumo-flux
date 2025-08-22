@@ -18,7 +18,7 @@ spec:
       GARGE_API_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/garge/garge-operator
-      GRAFANA_VERSION: 9.3.2 # https://artifacthub.io/packages/helm/grafana/grafana
+      GRAFANA_VERSION: 9.3.3 # https://artifacthub.io/packages/helm/grafana/grafana
       HOME_ASSISTANT_VERSION_ET: 1.4.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 1.4.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.18 # https://artifacthub.io/packages/helm/bitnami/influxdb
