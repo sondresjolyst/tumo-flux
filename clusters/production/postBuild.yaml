@@ -14,7 +14,7 @@ spec:
       CERT_MANAGER_VERSION: 1.18.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.15.0 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.33.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
-      EMQX_VERSION: 5.8.7 # https://artifacthub.io/packages/helm/emqx-operator/emqx
+      EMQX_VERSION: 5.8.8 # https://artifacthub.io/packages/helm/emqx-operator/emqx
       GARGE_API_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/garge/garge-operator
