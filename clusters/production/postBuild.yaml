@@ -23,7 +23,7 @@ spec:
       HOME_ASSISTANT_VERSION: 1.5.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
-      KURED_VERSION: 5.9.0 # https://artifacthub.io/packages/helm/kured/kured
+      KURED_VERSION: 5.10.0 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.15.2 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.13.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 4.26.4 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
