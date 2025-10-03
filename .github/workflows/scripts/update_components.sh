@@ -67,7 +67,7 @@ function get_version() {
                 replace="$(echo ${entry} | awk '{print $2}') ${newest}"
                 sed -i "s/${find}/${replace}/" "${file}"
                 git add "${file}"
-                git commit -m "Update ${package_name} from ${current} to ${newest}"
+                git commit -m "chore(${SOURCE_CLUSTER}): update ${package_name} from ${current} to ${newest}"
                 push=true
             else
                 printf "No new version available for %s - Current %s\n" "${package_name}" "${current}"

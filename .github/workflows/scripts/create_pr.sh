@@ -19,7 +19,7 @@ function create-pr() {
 
     if [[ "${PR_STATE}" != "OPEN" ]]; then
         echo "Create PR"
-        gh pr create --title "${PR_NAME}" --base master --body "**Automatic Pull Request**" --label "enhancement" 
+        gh pr create --title "${PR_NAME}" --base master --body "**automatic pull request**" --label "enhancement"
     fi
 }
 
