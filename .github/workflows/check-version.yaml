@@ -31,7 +31,7 @@ jobs:
       - name: Set environments
         run: |
           PR_BRANCH_TEMP="automatic-version-update"
-          PR_NAME_TEMP="Automatic Pull Request"
+          PR_NAME_TEMP="automatic pull request"
           destinationCluster="${{ inputs.destinationCluster }}"
 
           if [ -z $destinationCluster ]; then
