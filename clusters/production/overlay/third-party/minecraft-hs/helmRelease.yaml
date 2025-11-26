@@ -34,7 +34,7 @@ spec:
       storageClass: nfs
       dataDir:
         enabled: true
-        Size: 10Gi
+        Size: 20Gi
     mcbackup:
       enabled: true    
       persistence:
