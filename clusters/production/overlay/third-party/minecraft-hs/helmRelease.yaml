@@ -22,14 +22,14 @@ spec:
       icon: "https://static.miraheze.org/windowswallpaperwiki/thumb/0/06/Koala.jpg/200px-Koala.jpg"
       memory: 16G
       serviceType: LoadBalancer
-      pluginUrls: [
-        "https://dev.bukkit.org/projects/chunky-pregenerator/files/latest",
-        "https://dev.bukkit.org/projects/thizzyz-tree-feller/files/latest",
-        "https://dev.bukkit.org/projects/essentialsx/files/latest",
-        "https://dev.bukkit.org/projects/vault/files/latest",
-        "https://dev.bukkit.org/projects/gui-shop/files/latest",
-        "https://dev.bukkit.org/projects/gravity-control/files/latest",
-      ]
+      # pluginUrls: [
+      #   "https://dev.bukkit.org/projects/chunky-pregenerator/files/latest",
+      #   "https://dev.bukkit.org/projects/thizzyz-tree-feller/files/latest",
+      #   "https://dev.bukkit.org/projects/essentialsx/files/latest",
+      #   "https://dev.bukkit.org/projects/vault/files/latest",
+      #   "https://dev.bukkit.org/projects/gui-shop/files/latest",
+      #   "https://dev.bukkit.org/projects/gravity-control/files/latest",
+      # ]
     persistence:
       storageClass: nfs
       dataDir:
