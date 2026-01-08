@@ -12,15 +12,15 @@ spec:
       TUMO_ENVIRONMENT: prod # prod
       BOBBY_API_VERSION: 1.0.0 # https://artifacthub.io/packages/helm/tumogroup/bobby-api
       CERT_MANAGER_VERSION: 1.19.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
-      DEMOCRATIC_CSI_VERSION: 0.15.0 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
+      DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.34.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
       GARGE_API_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/garge/garge-operator
-      GRAFANA_VERSION: 10.5.3 # https://artifacthub.io/packages/helm/grafana/grafana
-      HOME_ASSISTANT_VERSION_ET: 1.8.5 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      HOME_ASSISTANT_VERSION: 1.8.5 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      GRAFANA_VERSION: 10.5.4 # https://artifacthub.io/packages/helm/grafana/grafana
+      HOME_ASSISTANT_VERSION_ET: 2.0.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION: 2.0.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.10.0 # https://artifacthub.io/packages/helm/kured/kured
@@ -30,7 +30,7 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 14.0.3 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.14.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      PROMETHEUS_VERSION: 80.13.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 80.13.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       REDIS_VERSION: 24.1.0 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.4.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.65 # https://artifacthub.io/packages/helm/influxdata/telegraf
