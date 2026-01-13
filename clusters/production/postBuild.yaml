@@ -19,8 +19,8 @@ spec:
       GARGE_APP_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/garge/garge-operator
       GRAFANA_VERSION: 10.5.5 # https://artifacthub.io/packages/helm/grafana/grafana
-      HOME_ASSISTANT_VERSION_ET: 2.0.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      HOME_ASSISTANT_VERSION: 2.0.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION_ET: 2.0.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION: 2.0.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
       KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
       KURED_VERSION: 5.10.0 # https://artifacthub.io/packages/helm/kured/kured
@@ -33,7 +33,7 @@ spec:
       PROMETHEUS_VERSION: 80.13.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       REDIS_VERSION: 24.1.0 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.4.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
-      TELEGRAF_VERSION: 1.8.65 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      TELEGRAF_VERSION: 1.8.66 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
