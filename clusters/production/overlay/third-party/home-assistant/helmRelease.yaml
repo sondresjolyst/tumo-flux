@@ -21,7 +21,7 @@ spec:
     persistence:
       enabled: true
       storageClass: nfs
-      size: 10Gi
+      size: 20Gi
       additionalVolumes:
         - name: config-volume
           configMap:
