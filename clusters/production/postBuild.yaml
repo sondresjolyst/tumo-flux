@@ -15,7 +15,7 @@ spec:
       DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.35.1 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.22 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_API_VERSION: 0.1.23 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.19 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.17 # https://artifacthub.io/packages/helm/garge/garge-operator
       GRAFANA_VERSION: 10.5.15 # https://artifacthub.io/packages/helm/grafana/grafana
