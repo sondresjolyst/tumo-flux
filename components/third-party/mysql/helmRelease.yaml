@@ -5,14 +5,10 @@ metadata:
   namespace: mysql
 spec:
   releaseName: mysql
-  chart:
-    spec:
-      chart: mysql
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: mysql
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: mysql
+    namespace: flux-system
   interval: 5m
   install:
     remediation:

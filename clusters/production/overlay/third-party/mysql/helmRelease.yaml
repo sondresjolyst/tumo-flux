@@ -4,9 +4,6 @@ metadata:
   name: mysql
   namespace: mysql
 spec:
-  chart:
-    spec:
-      version: ${MYSQL_VERSION} # Set in postBuild production
   values:
     image:
       debug: true
