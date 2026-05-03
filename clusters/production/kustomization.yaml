@@ -18,11 +18,13 @@ resources:
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/kubed
   - ../../components/third-party/kured
+  - ../../components/third-party/loki
   - ../../components/third-party/metallb
   - ../../components/third-party/metrics-server
   - ../../components/third-party/minecraft
   - ../../components/third-party/mosquitto
   - ../../components/third-party/mysql
+  - ../../components/third-party/alloy
   - ../../components/third-party/redis
   - ../../components/third-party/spark-kubernetes-operator
   - ../../components/third-party/telegraf
@@ -53,11 +55,13 @@ patches:
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
   - path: ./overlay/third-party/kubed/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
+  - path: ./overlay/third-party/loki/helmRelease.yaml
   - path: ./overlay/third-party/metallb/helmRelease.yaml
   - path: ./overlay/third-party/metrics-server/helmRelease.yaml
   - path: ./overlay/third-party/minecraft-hs/helmRelease.yaml
   - path: ./overlay/third-party/mosquitto/helmRelease.yaml
   - path: ./overlay/third-party/mysql/helmRelease.yaml
+  - path: ./overlay/third-party/alloy/helmRelease.yaml
   - path: ./overlay/third-party/redis/helmRelease.yaml
   - path: ./overlay/third-party/spark-kubernetes-operator/helmRelease.yaml
   - path: ../../components/third-party/redis/ociRepo.yaml
