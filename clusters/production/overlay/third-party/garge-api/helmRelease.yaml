@@ -34,6 +34,14 @@ spec:
         secretKeyRef:
           key: BREVOSETTINGS__SENDERNAME
           name: garge-api-secrets
+      - name: VAPID__PUBLICKEY
+        secretKeyRef:
+          key: VAPID__PUBLICKEY
+          name: garge-api-secrets
+      - name: VAPID__PRIVATEKEY
+        secretKeyRef:
+          key: VAPID__PRIVATEKEY
+          name: garge-api-secrets
     image:
       tag: "dev"
       pullPolicy: Always
