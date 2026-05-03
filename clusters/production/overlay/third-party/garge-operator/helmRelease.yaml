@@ -42,6 +42,10 @@ spec:
         secretKeyRef:
           key: WEBHOOK__URL
           name: garge-operator-secrets
+      - name: WEBHOOK__URL
+        secretKeyRef:
+          key: WEBHOOK__SECRET
+          name: garge-operator-secrets
     image:
       tag: "dev"
       pullPolicy: Always
