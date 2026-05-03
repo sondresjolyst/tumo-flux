@@ -24,9 +24,8 @@ spec:
         memory: "256Mi"
     nodeSelector: {"kubernetes.io/os": "linux"}
     env:
-      GF_DATABASE_TYPE: mysql
-      GF_DATABASE_SSL_MODE: "skip-verify"
-      GF_DATABASE_CA_CERT_PATH: /etc/ssl/certs/ca-certificates.crt
+      GF_DATABASE_TYPE: postgres
+      GF_DATABASE_SSL_MODE: "require"
       # GF_SERVER_ROOT_URL: ""                    # Set by secret
       # GF_DATABASE_PASSWORD: ""                  # Set by secret
       # GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ""       # Set by secret
