@@ -15,9 +15,12 @@ spec:
     plugins:
       - volkovlabs-image-panel
       - yesoreyeram-infinity-datasource
-    additionalDataSources:
-      - name: Loki
-        type: loki
-        url: http://loki.monitor.svc.cluster.local:3100
-        access: proxy
-        isDefault: false
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Loki
+            type: loki
+            url: http://loki.monitor.svc.cluster.local:3100
+            access: proxy
+            isDefault: false
