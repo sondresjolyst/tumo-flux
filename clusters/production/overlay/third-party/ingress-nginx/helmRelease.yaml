@@ -13,8 +13,13 @@ spec:
       service:
         ports:
           https: 444
+      config:
+        use-proxy-protocol: "true"
+        real-ip-header: "proxy_protocol"
+        use-forwarded-headers: "false"
+        proxy-real-ip-cidr: "192.168.1.122/32"
       metrics:
-        serviceMonitor: 
+        serviceMonitor:
           enabled: true
         enabled: true
       resources:
