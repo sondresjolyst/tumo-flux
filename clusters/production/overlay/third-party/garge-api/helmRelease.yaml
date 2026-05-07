@@ -42,6 +42,22 @@ spec:
         secretKeyRef:
           key: VAPID__PRIVATEKEY
           name: garge-api-secrets
+      - name: VIPPS__CLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__CLIENTSECRET
+          name: garge-api-secrets
+      - name: VIPPS__SUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__SUBSCRIPTIONKEY
+          name: garge-api-secrets
+      - name: VIPPS__TESTCLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__TESTCLIENTSECRET
+          name: garge-api-secrets
+      - name: VIPPS__TESTSUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__TESTSUBSCRIPTIONKEY
+          name: garge-api-secrets
     image:
       tag: "dev"
       pullPolicy: Always
@@ -109,6 +125,22 @@ spec:
       - name: VAPID__PRIVATEKEY
         secretKeyRef:
           key: VAPID__PRIVATEKEY
+          name: garge-api-secrets
+      - name: VIPPS__CLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__CLIENTSECRET
+          name: garge-api-secrets
+      - name: VIPPS__SUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__SUBSCRIPTIONKEY
+          name: garge-api-secrets
+      - name: VIPPS__TESTCLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__TESTCLIENTSECRET
+          name: garge-api-secrets
+      - name: VIPPS__TESTSUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__TESTSUBSCRIPTIONKEY
           name: garge-api-secrets
     image:
       pullPolicy: Always
