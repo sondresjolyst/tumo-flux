@@ -66,6 +66,14 @@ spec:
         secretKeyRef:
           key: VIPPS__TESTMERCHANTSERIALNUMBER
           name: garge-api-secrets
+      - name: APP__FRONTENDBASEURL
+        secretKeyRef:
+          key: APP__FRONTENDBASEURL
+          name: garge-api-secrets
+      - name: APP__APIBASEURL
+        secretKeyRef:
+          key: APP__APIBASEURL
+          name: garge-api-secrets
     image:
       tag: "dev"
       pullPolicy: Always
@@ -157,6 +165,14 @@ spec:
       - name: VIPPS__TESTMERCHANTSERIALNUMBER
         secretKeyRef:
           key: VIPPS__TESTMERCHANTSERIALNUMBER
+          name: garge-api-secrets
+      - name: APP__FRONTENDBASEURL
+        secretKeyRef:
+          key: APP__FRONTENDBASEURL
+          name: garge-api-secrets
+      - name: APP__APIBASEURL
+        secretKeyRef:
+          key: APP__APIBASEURL
           name: garge-api-secrets
     image:
       pullPolicy: Always
