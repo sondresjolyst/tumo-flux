@@ -17,7 +17,7 @@ spec:
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
       GARGE_API_VERSION: 0.1.30 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.24 # https://artifacthub.io/packages/helm/garge/garge-app
-      GARGE_OPERATOR_VERSION: 0.1.22 # https://artifacthub.io/packages/helm/garge/garge-operator
+      GARGE_OPERATOR_VERSION: 0.1.23 # https://artifacthub.io/packages/helm/garge/garge-operator
       GRAFANA_VERSION: 12.3.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.4.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.4.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
@@ -33,7 +33,7 @@ spec:
       LOKI_VERSION: 13.6.1 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 84.5.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.8.1 # https://artifacthub.io/packages/helm/grafana/alloy
-      REDIS_VERSION: 25.5.1 # https://artifacthub.io/packages/helm/bitnami/redis
+      REDIS_VERSION: 25.5.2 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.6.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.70 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
