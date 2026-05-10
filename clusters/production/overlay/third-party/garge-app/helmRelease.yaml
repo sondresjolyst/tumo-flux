@@ -18,6 +18,10 @@ spec:
         secretKeyRef:
           key: NEXTAUTH_URL
           name: garge-app-secrets
+      - name: GARGE_API_JWT_SECRET
+        secretKeyRef:
+          name: garge-app-secrets
+          key: GARGE_API_JWT_SECRET
     image:
       tag: "dev"
       pullPolicy: Always
@@ -62,6 +66,10 @@ spec:
         secretKeyRef:
           key: NEXTAUTH_URL
           name: garge-app-secrets
+      - name: GARGE_API_JWT_SECRET
+        secretKeyRef:
+          name: garge-app-secrets
+          key: GARGE_API_JWT_SECRET
     image:
       pullPolicy: Always
     ingress:
