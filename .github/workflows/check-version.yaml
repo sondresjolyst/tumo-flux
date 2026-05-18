@@ -2,6 +2,7 @@ name: Check for new versions
 on:
   schedule:
     - cron: "0 3 * * *"
+      timezone: "Europe/Oslo"
   workflow_dispatch:
     inputs:
       sourceCluster:
@@ -11,6 +12,7 @@ on:
         options:
           - "production"
         default: "production"
+
       destinationCluster:
         description: "Destination cluster"
         required: false
@@ -26,13 +28,13 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set environments
         run: |
           PR_BRANCH_TEMP="automatic-version-update"
           PR_NAME_TEMP="automatic pull request"
-          destinationCluster="${{ inputs.destinationCluster }}"
+          destinationCluster="${DESTINATION_CLUSTER}"
 
           if [ -z $destinationCluster ]; then
             destinationCluster="production"
@@ -40,6 +42,9 @@ jobs:
 
           echo "PR_BRANCH=chore/${PR_BRANCH_TEMP}-${destinationCluster}" >> $GITHUB_ENV
           echo "PR_NAME=chore(${destinationCluster}): ${PR_NAME_TEMP}" >> $GITHUB_ENV
+        env:
+          DESTINATION_CLUSTER: ${{ inputs.destinationCluster }}
+
       - name: Check version
         id: checkversion
         env:
