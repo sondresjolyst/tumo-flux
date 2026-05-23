@@ -15,8 +15,8 @@ spec:
       DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.36.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.39 # https://artifacthub.io/packages/helm/garge/garge-api
-      GARGE_APP_VERSION: 0.1.32 # https://artifacthub.io/packages/helm/garge/garge-app
+      GARGE_API_VERSION: 0.1.40 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_APP_VERSION: 0.1.33 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.26 # https://artifacthub.io/packages/helm/garge/garge-operator
       GRAFANA_VERSION: 12.4.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.5.3 # https://artifacthub.io/packages/helm/alekc/home-assistant
@@ -30,8 +30,8 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 14.0.3 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.15.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      LOKI_VERSION: 17.0.1 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 85.2.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      LOKI_VERSION: 17.1.0 # https://artifacthub.io/packages/helm/grafana-community/loki
+      PROMETHEUS_VERSION: 85.3.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.8.1 # https://artifacthub.io/packages/helm/grafana/alloy
       REDIS_VERSION: 25.5.3 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.7.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
