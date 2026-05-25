@@ -16,7 +16,7 @@ spec:
       DESCHEDULER_VERSION: 0.36.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
       GARGE_API_VERSION: 0.1.41 # https://artifacthub.io/packages/helm/garge/garge-api
-      GARGE_APP_VERSION: 0.1.33 # https://artifacthub.io/packages/helm/garge/garge-app
+      GARGE_APP_VERSION: 0.1.34 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.26 # https://artifacthub.io/packages/helm/garge/garge-operator
       GRAFANA_VERSION: 12.4.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.5.3 # https://artifacthub.io/packages/helm/alekc/home-assistant
