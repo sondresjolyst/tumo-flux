@@ -1,0 +1,32 @@
+name: 📝 Format Dependabot PR titles
+
+on:
+  pull_request_target:
+    types: [opened, reopened, edited, synchronize]
+
+permissions: {}
+
+jobs:
+  rewrite:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Add backticks around package name
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: ${{ github.event.pull_request.title }}
+          NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [[ "$TITLE" == *'`'* ]]; then
+            echo "Already formatted, skipping"
+            exit 0
+          fi
+          new_title=$(printf '%s' "$TITLE" | sed -E 's/^(deps: bump )([^ ]+)( from .+)$/\1`\2`\3/')
+          if [[ "$new_title" == "$TITLE" ]]; then
+            echo "Title pattern did not match, skipping"
+            exit 0
+          fi
+          gh pr edit "$NUMBER" --title "$new_title" --repo "$REPO"
