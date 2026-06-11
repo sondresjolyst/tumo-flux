@@ -1,0 +1,120 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nstuning-api
+  namespace: nstuning-dev
+spec:
+  chart:
+    spec:
+      chart: nstuning-api
+      version: ${NSTUNING_API_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: nstuning-api-secrets
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: nstuning-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: nstuning-api-secrets
+      - name: BREVOSETTINGS__APIKEY
+        secretKeyRef:
+          key: BREVOSETTINGS__APIKEY
+          name: nstuning-api-secrets
+      - name: BREVOSETTINGS__SENDEREMAIL
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDEREMAIL
+          name: nstuning-api-secrets
+      - name: BREVOSETTINGS__SENDERNAME
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDERNAME
+          name: nstuning-api-secrets
+    image:
+      tag: "dev"
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+      hosts:
+        - host: nstuning-api-dev.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: nstuning-api-tls
+          hosts:
+            - nstuning-api-dev.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "500m"
+      limits:
+        memory: "256Mi"
+        cpu: "500m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nstuning-api
+  namespace: nstuning-prod
+spec:
+  chart:
+    spec:
+      chart: nstuning-api
+      version: ${NSTUNING_API_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: nstuning-api-secrets
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: nstuning-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: nstuning-api-secrets
+      - name: BREVOSETTINGS__APIKEY
+        secretKeyRef:
+          key: BREVOSETTINGS__APIKEY
+          name: nstuning-api-secrets
+      - name: BREVOSETTINGS__SENDEREMAIL
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDEREMAIL
+          name: nstuning-api-secrets
+      - name: BREVOSETTINGS__SENDERNAME
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDERNAME
+          name: nstuning-api-secrets
+    image:
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+      hosts:
+        - host: nstuning-api.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: nstuning-api-tls
+          hosts:
+            - nstuning-api.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "500m"
+      limits:
+        memory: "256Mi"
+        cpu: "500m"

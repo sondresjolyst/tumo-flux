@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nstuning-api
+  namespace: nstuning-dev
+spec:
+  releaseName: nstuning-api
+  chart:
+    spec:
+      chart: nstuning-api
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "500m"
+      limits:
+        memory: "256Mi"
+        cpu: "500m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nstuning-api
+  namespace: nstuning-prod
+spec:
+  releaseName: nstuning-api
+  chart:
+    spec:
+      chart: nstuning-api
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "500m"
+      limits:
+        memory: "256Mi"
+        cpu: "500m"
