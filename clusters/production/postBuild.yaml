@@ -18,8 +18,8 @@ spec:
       GARGE_API_VERSION: 0.1.41 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.34 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.27 # https://artifacthub.io/packages/helm/garge/garge-operator
-      NSTUNING_API_VERSION: 0.1.0 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
-      NSTUNING_APP_VERSION: 0.1.0 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
+      NSTUNING_API_VERSION: 0.1.1 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
+      NSTUNING_APP_VERSION: 0.1.1 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       GRAFANA_VERSION: 12.4.4 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.6.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.6.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
@@ -35,7 +35,7 @@ spec:
       LOKI_VERSION: 17.3.1 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 86.2.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.9.0 # https://artifacthub.io/packages/helm/grafana/alloy
-      REDIS_VERSION: 27.0.7 # https://artifacthub.io/packages/helm/bitnami/redis
+      REDIS_VERSION: 27.0.8 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.7.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.72 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
