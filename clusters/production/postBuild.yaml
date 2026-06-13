@@ -32,7 +32,7 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 14.0.3 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.15.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      LOKI_VERSION: 17.3.1 # https://artifacthub.io/packages/helm/grafana-community/loki
+      LOKI_VERSION: 17.3.3 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 86.2.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.9.0 # https://artifacthub.io/packages/helm/grafana/alloy
       REDIS_VERSION: 27.0.8 # https://artifacthub.io/packages/helm/bitnami/redis
