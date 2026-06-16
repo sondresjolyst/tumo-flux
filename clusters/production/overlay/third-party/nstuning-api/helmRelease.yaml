@@ -53,10 +53,10 @@ spec:
             - nstuning-api-dev.prod.tumogroup.com
     resources:
       requests:
-        memory: "256Mi"
+        memory: "512Mi"
         cpu: "500m"
       limits:
-        memory: "256Mi"
+        memory: "512Mi"
         cpu: "500m"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -113,8 +113,8 @@ spec:
             - nstuning-api.prod.tumogroup.com
     resources:
       requests:
-        memory: "256Mi"
+        memory: "512Mi"
         cpu: "500m"
       limits:
-        memory: "256Mi"
+        memory: "512Mi"
         cpu: "500m"
