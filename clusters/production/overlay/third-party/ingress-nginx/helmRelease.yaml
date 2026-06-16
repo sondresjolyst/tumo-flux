@@ -13,6 +13,7 @@ spec:
       service:
         ports:
           https: 444
+      allowSnippetAnnotations: true
       config:
         use-proxy-protocol: "true"
         real-ip-header: "proxy_protocol"
