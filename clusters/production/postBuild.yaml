@@ -35,7 +35,7 @@ spec:
       LOKI_VERSION: 17.4.10 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 87.0.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.10.0 # https://artifacthub.io/packages/helm/grafana/alloy
-      REDIS_VERSION: 27.0.10 # https://artifacthub.io/packages/helm/bitnami/redis
+      REDIS_VERSION: 27.0.11 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.7.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.72 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
