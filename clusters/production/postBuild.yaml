@@ -20,7 +20,7 @@ spec:
       GARGE_OPERATOR_VERSION: 0.1.28 # https://artifacthub.io/packages/helm/garge/garge-operator
       NSTUNING_API_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
-      GRAFANA_VERSION: 12.6.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
+      GRAFANA_VERSION: 12.7.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.6.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.6.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
