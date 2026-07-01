@@ -37,7 +37,7 @@ spec:
       ALLOY_VERSION: 1.10.0 # https://artifacthub.io/packages/helm/grafana/alloy
       REDIS_VERSION: 27.0.13 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.7.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
-      TELEGRAF_VERSION: 1.8.72 # https://artifacthub.io/packages/helm/influxdata/telegraf
+      TELEGRAF_VERSION: 1.8.73 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
