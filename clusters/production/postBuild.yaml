@@ -34,7 +34,7 @@ spec:
       NGINX_VERSION: 4.15.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
       LOKI_VERSION: 18.4.4 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 87.14.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      ALLOY_VERSION: 1.10.0 # https://artifacthub.io/packages/helm/grafana/alloy
+      ALLOY_VERSION: 1.10.1 # https://artifacthub.io/packages/helm/grafana/alloy
       REDIS_VERSION: 27.0.14 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.7.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.73 # https://artifacthub.io/packages/helm/influxdata/telegraf
