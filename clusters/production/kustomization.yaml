@@ -19,7 +19,7 @@ resources:
   - ../../components/third-party/influxdb
   - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
-  - ../../components/third-party/config-syncer
+  - ../../components/third-party/reflector
   - ../../components/third-party/kured
   - ../../components/third-party/loki
   - ../../components/third-party/metallb
@@ -57,7 +57,7 @@ patches:
   - path: ./overlay/third-party/influxdb/helmRelease.yaml
   - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
-  - path: ./overlay/third-party/config-syncer/helmRelease.yaml
+  - path: ./overlay/third-party/reflector/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml
   - path: ./overlay/third-party/loki/helmRelease.yaml
   - path: ./overlay/third-party/metallb/helmRelease.yaml

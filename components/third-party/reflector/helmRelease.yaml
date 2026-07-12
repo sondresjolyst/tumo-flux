@@ -1,22 +1,22 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: config-syncer
+  name: reflector
   namespace: kube-system
 spec:
-  releaseName: config-syncer
+  releaseName: reflector
   chart:
     spec:
-      chart: config-syncer
+      chart: reflector
       version: xx # Set by flux patch
       sourceRef:
         kind: HelmRepository
-        name: config-syncer
+        name: reflector
         namespace: flux-system
   interval: 5m
   install:
     remediation:
       retries: 3
   values:
-    config:
-      clusterName: ${TUMO_ZONE} # Defined in flux patch
+    image:
+      repository: ghcr.io/emberstack/kubernetes-reflector

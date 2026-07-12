@@ -8,7 +8,10 @@ spec:
   secretName: tumo-wildcard-tls-cert
   secretTemplate:
     annotations:
-      kubed.appscode.com/sync: "tumo-wildcard-sync=tumo-wildcard-tls-cert"
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "monitor,bobby-prod,emqx"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "monitor,bobby-prod,emqx"
   issuerRef:
     kind: ClusterIssuer
     name: ${CERT_ISSUER}
@@ -27,7 +30,8 @@ spec:
   secretName: canmodi-wildcard-tls-cert
   secretTemplate:
     annotations:
-      kubed.appscode.com/sync: "canmodi-wildcard-sync=canmodi-wildcard-tls-cert"
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "false"
   issuerRef:
     kind: ClusterIssuer
     name: ${CERT_ISSUER}
@@ -49,7 +53,10 @@ spec:
   secretName: garge-wildcard-tls-cert
   secretTemplate:
     annotations:
-      kubed.appscode.com/sync: "garge-wildcard-sync=garge-wildcard-tls-cert"
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "garge-dev,garge-prod"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "garge-dev,garge-prod"
   issuerRef:
     kind: ClusterIssuer
     name: ${CERT_ISSUER}
@@ -69,7 +76,10 @@ spec:
   secretName: nstuning-wildcard-tls-cert
   secretTemplate:
     annotations:
-      kubed.appscode.com/sync: "nstuning-wildcard-sync=nstuning-wildcard-tls-cert"
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "nstuning-dev,nstuning-prod"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "nstuning-dev,nstuning-prod"
   issuerRef:
     kind: ClusterIssuer
     name: ${CERT_ISSUER}
