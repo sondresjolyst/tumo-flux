@@ -10,19 +10,19 @@ spec:
       FLUX_CONFIG_PATH: ./clusters/production
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
-      BOBBY_API_VERSION: 1.0.0 # https://artifacthub.io/packages/helm/tumogroup/bobby-api
+      BOBBY_API_VERSION: 1.0.1 # https://artifacthub.io/packages/helm/tumogroup/bobby-api
       CERT_MANAGER_VERSION: 1.21.0 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.36.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.44 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_API_VERSION: 0.1.45 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.37 # https://artifacthub.io/packages/helm/garge/garge-app
-      GARGE_OPERATOR_VERSION: 0.1.28 # https://artifacthub.io/packages/helm/garge/garge-operator
-      NSTUNING_API_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
+      GARGE_OPERATOR_VERSION: 0.1.29 # https://artifacthub.io/packages/helm/garge/garge-operator
+      NSTUNING_API_VERSION: 0.1.10 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       GRAFANA_VERSION: 12.7.2 # https://artifacthub.io/packages/helm/grafana-community/grafana
-      HOME_ASSISTANT_VERSION_ET: 2.7.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      HOME_ASSISTANT_VERSION: 2.7.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION_ET: 2.7.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION: 2.7.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
       REFLECTOR_VERSION: 10.0.58 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
@@ -32,10 +32,10 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 14.0.3 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.15.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      LOKI_VERSION: 18.4.2 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 87.12.3 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      ALLOY_VERSION: 1.10.0 # https://artifacthub.io/packages/helm/grafana/alloy
-      REDIS_VERSION: 27.0.14 # https://artifacthub.io/packages/helm/bitnami/redis
+      LOKI_VERSION: 18.4.4 # https://artifacthub.io/packages/helm/grafana-community/loki
+      PROMETHEUS_VERSION: 87.15.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      ALLOY_VERSION: 1.10.1 # https://artifacthub.io/packages/helm/grafana/alloy
+      REDIS_VERSION: 27.0.15 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.7.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
       TELEGRAF_VERSION: 1.8.73 # https://artifacthub.io/packages/helm/influxdata/telegraf
     substituteFrom:
