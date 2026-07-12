@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: kubed
+  name: config-syncer
   namespace: flux-system
 spec:
   interval: 10m

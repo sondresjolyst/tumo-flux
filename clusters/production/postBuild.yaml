@@ -24,7 +24,7 @@ spec:
       HOME_ASSISTANT_VERSION_ET: 2.7.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.7.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
-      KUBED_VERSION: 0.13.2 # https://artifacthub.io/packages/helm/appscode/kubed
+      CONFIG_SYNCER_VERSION: 0.15.5 # https://artifacthub.io/packages/helm/appscode/config-syncer
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.13.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server

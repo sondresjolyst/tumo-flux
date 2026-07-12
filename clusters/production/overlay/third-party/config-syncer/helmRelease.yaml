@@ -1,9 +1,9 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kubed
+  name: config-syncer
   namespace: kube-system
 spec:
   chart:
     spec:
-      version: ${KUBED_VERSION} # Set in postBuild production
+      version: ${CONFIG_SYNCER_VERSION} # Set in postBuild production
