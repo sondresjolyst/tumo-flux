@@ -47,11 +47,36 @@ spec:
               source_labels = ["__meta_kubernetes_pod_node_name"]
               target_label  = "node"
             }
+            rule {
+              source_labels = ["__meta_kubernetes_pod_label_logformat"]
+              target_label  = "logformat"
+            }
           }
 
           loki.source.kubernetes "pod_logs" {
             targets    = discovery.relabel.pod_logs.output
+            forward_to = [loki.process.pod_logs.receiver]
+          }
+
+          loki.process "pod_logs" {
             forward_to = [loki.write.default.receiver]
+
+            stage.match {
+              selector = "{logformat=\"serilog\"}"
+
+              stage.multiline {
+                firstline     = "^\\[\\d{2}:\\d{2}:\\d{2} (VRB|DBG|INF|WRN|ERR|FTL)\\]"
+                max_wait_time = "3s"
+              }
+
+              stage.regex {
+                expression = "^\\[\\d{2}:\\d{2}:\\d{2} (?P<level>VRB|DBG|INF|WRN|ERR|FTL)\\]"
+              }
+
+              stage.labels {
+                values = { level = "" }
+              }
+            }
           }
 
           loki.write "default" {
