@@ -18,6 +18,8 @@ spec:
         secretKeyRef:
           key: API_PASSWORD
           name: bobby-api-secrets
+    podLabels:
+      logformat: serilog
     image:
       pullPolicy: Always
     ingress:

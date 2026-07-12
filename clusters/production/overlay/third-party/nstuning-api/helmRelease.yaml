@@ -34,6 +34,8 @@ spec:
         secretKeyRef:
           key: BREVOSETTINGS__SENDERNAME
           name: nstuning-api-secrets
+    podLabels:
+      logformat: serilog
     image:
       tag: "dev"
       pullPolicy: Always
@@ -95,6 +97,8 @@ spec:
         secretKeyRef:
           key: BREVOSETTINGS__SENDERNAME
           name: nstuning-api-secrets
+    podLabels:
+      logformat: serilog
     image:
       pullPolicy: Always
     ingress:
