@@ -74,6 +74,8 @@ spec:
         secretKeyRef:
           key: APP__APIBASEURL
           name: garge-api-secrets
+    podLabels:
+      logformat: serilog
     image:
       tag: "dev"
       pullPolicy: Always
@@ -174,6 +176,8 @@ spec:
         secretKeyRef:
           key: APP__APIBASEURL
           name: garge-api-secrets
+    podLabels:
+      logformat: serilog
     image:
       pullPolicy: Always
     ingress:

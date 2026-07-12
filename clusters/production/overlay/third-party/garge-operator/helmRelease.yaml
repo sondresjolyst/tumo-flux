@@ -46,6 +46,8 @@ spec:
         secretKeyRef:
           key: WEBHOOK__SECRET
           name: garge-operator-secrets
+    podLabels:
+      logformat: serilog
     image:
       tag: "dev"
       pullPolicy: Always
@@ -105,6 +107,8 @@ spec:
         secretKeyRef:
           key: WEBHOOK__SECRET
           name: garge-operator-secrets
+    podLabels:
+      logformat: serilog
     image:
       pullPolicy: Always
     resources:
