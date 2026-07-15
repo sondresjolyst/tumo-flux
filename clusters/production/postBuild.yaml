@@ -24,7 +24,7 @@ spec:
       HOME_ASSISTANT_VERSION_ET: 2.7.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.7.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
-      REFLECTOR_VERSION: 10.0.59 # https://artifacthub.io/packages/helm/emberstack/reflector
+      REFLECTOR_VERSION: 10.0.60 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.13.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
@@ -32,8 +32,8 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       MYSQL_VERSION: 14.0.3 # https://artifacthub.io/packages/helm/bitnami/mysql
       NGINX_VERSION: 4.15.1 # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
-      LOKI_VERSION: 18.4.4 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 87.15.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      LOKI_VERSION: 18.5.0 # https://artifacthub.io/packages/helm/grafana-community/loki
+      PROMETHEUS_VERSION: 87.16.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.10.1 # https://artifacthub.io/packages/helm/grafana/alloy
       REDIS_VERSION: 27.0.15 # https://artifacthub.io/packages/helm/bitnami/redis
       SPARK_KUBERNETES_OPERATOR_VERSION: 1.7.0 # https://artifacthub.io/packages/helm/spark-kubernetes-operator/spark-kubernetes-operator
