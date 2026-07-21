@@ -18,7 +18,7 @@ spec:
       GARGE_API_VERSION: 0.1.46 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.38 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.29 # https://artifacthub.io/packages/helm/garge/garge-operator
-      NSTUNING_API_VERSION: 0.1.10 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
+      NSTUNING_API_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       GRAFANA_VERSION: 12.7.2 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.7.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
