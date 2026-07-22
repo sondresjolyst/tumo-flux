@@ -21,7 +21,7 @@ spec:
       NSTUNING_API_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.10 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       GRAFANA_VERSION: 12.8.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
-      HOME_ASSISTANT_VERSION_ET: 2.7.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION_ET: 2.7.3 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.7.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
       REFLECTOR_VERSION: 10.0.60 # https://artifacthub.io/packages/helm/emberstack/reflector
