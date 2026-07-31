@@ -8,6 +8,8 @@ spec:
     spec:
       version: ${GRAFANA_VERSION} # Set in postBuild production
   values:
+    ingress:
+      ingressClassName: traefik
     env:
       GF_DATABASE_HOST: postgresql-prod.tumogroup.com:5432
       GF_DATABASE_NAME: grafana
