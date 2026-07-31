@@ -41,9 +41,9 @@ spec:
       pullPolicy: Always
     ingress:
       enabled: true
+      className: traefik
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        nginx.ingress.kubernetes.io/proxy-body-size: "50m"
       hosts:
         - host: nstuning-api-dev.prod.tumogroup.com
           paths:
@@ -103,9 +103,9 @@ spec:
       pullPolicy: Always
     ingress:
       enabled: true
+      className: traefik
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        nginx.ingress.kubernetes.io/proxy-body-size: "50m"
       hosts:
         - host: nstuning-api.prod.tumogroup.com
           paths:

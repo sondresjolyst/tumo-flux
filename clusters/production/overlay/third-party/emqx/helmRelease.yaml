@@ -30,6 +30,7 @@ spec:
     ingress:
       dashboard:
         enabled: true
+        ingressClassName: traefik
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-prod"
         pathType: Prefix

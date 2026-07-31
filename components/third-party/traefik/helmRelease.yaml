@@ -36,33 +36,31 @@ spec:
                 - traefik
             topologyKey: kubernetes.io/hostname
     ingressClass:
-      # The nginx IngressClass is declared in ingressClass.yaml instead.
-      enabled: false
+      enabled: true
+      isDefaultClass: true
     providers:
       kubernetesCRD:
         enabled: true
       kubernetesIngress:
-        # The ingress-nginx provider below claims every Ingress in this cluster.
-        enabled: false
-      kubernetesIngressNGINX:
-        # Reads ingressClassName: nginx and nginx.ingress.kubernetes.io/* annotations,
-        # so no Ingress resource needs to change. Requires Traefik v3.7+.
         enabled: true
-        ingressClass: nginx
-        controllerClass: k8s.io/ingress-nginx
-        ingressClassByName: true
-        watchIngressWithoutClass: true
-        publishService:
+        publishedService:
           enabled: true
-        proxyBodySize: 104857600 # nginx proxy-body-size: 100m
-        proxyBufferSize: 16384 # nginx proxy-buffer-size: 16k
+    ports:
+      web:
+        http:
+          # Replaces the ssl-redirect the nginx provider applied per Ingress.
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
     service:
       spec:
         externalTrafficPolicy: Local
     tlsStore:
       default:
-        # Replaces ingress-nginx extraArgs.default-ssl-certificate. The secret is
-        # mirrored into this namespace by reflector, see cert-manager certificate.yaml.
+        # The secret is mirrored into this namespace by reflector, see
+        # cert-manager certificate.yaml.
         defaultCertificate:
           secretName: tumo-wildcard-tls-cert
     metrics:
