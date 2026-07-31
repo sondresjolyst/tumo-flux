@@ -1,0 +1,83 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  chart:
+    spec:
+      chart: traefik
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: flux-system
+  interval: 1m0s
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+  values:
+    deployment:
+      podLabels:
+        app: traefik
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - traefik
+            topologyKey: kubernetes.io/hostname
+    ingressClass:
+      # ingress-nginx owns the default IngressClass while both controllers run.
+      # Two default classes is an error state - enable this at cutover.
+      enabled: false
+    providers:
+      kubernetesCRD:
+        enabled: true
+      kubernetesIngress:
+        # The ingress-nginx provider below claims every Ingress in this cluster.
+        # Leaving this on would make both providers handle the same objects.
+        enabled: false
+      kubernetesIngressNGINX:
+        # Reads ingressClassName: nginx and nginx.ingress.kubernetes.io/* annotations,
+        # so no Ingress resource needs to change. Requires Traefik v3.7+.
+        enabled: true
+        ingressClass: nginx
+        controllerClass: k8s.io/ingress-nginx
+        ingressClassByName: true # ingress-nginx controller.ingressClassByName
+        watchIngressWithoutClass: true # ingress-nginx controller.watchIngressWithoutClass
+        publishService:
+          # ingress-nginx keeps writing Ingress .status while both controllers run,
+          # otherwise they fight over status.loadBalancer.ingress[].
+          enabled: false
+        proxyBodySize: 104857600 # ingress-nginx proxy-body-size: 100m
+        proxyBufferSize: 16384 # ingress-nginx proxy-buffer-size: 16k
+    service:
+      spec:
+        externalTrafficPolicy: Local
+    tlsStore:
+      default:
+        # Replaces ingress-nginx extraArgs.default-ssl-certificate. The secret is
+        # mirrored into this namespace by reflector, see cert-manager certificate.yaml.
+        defaultCertificate:
+          secretName: tumo-wildcard-tls-cert
+    metrics:
+      prometheus:
+        service:
+          enabled: true
+        serviceMonitor:
+          enabled: true
+    resources:
+      limits:
+        memory: 512Mi
+      requests:
+        cpu: 100m
+        memory: 512Mi
