@@ -10,6 +10,9 @@ spec:
   values:
     controller:
       replicaCount: 2
+      ingressClassResource:
+        annotations:
+          helm.sh/resource-policy: keep
       service:
         ports:
           https: 444
