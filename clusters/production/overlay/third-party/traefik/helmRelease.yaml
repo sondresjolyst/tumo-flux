@@ -10,6 +10,9 @@ spec:
   values:
     deployment:
       replicas: 2
+    service:
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: 192.168.1.195
     ports:
       web:
         # Replaces ingress-nginx use-proxy-protocol + proxy-real-ip-cidr.
