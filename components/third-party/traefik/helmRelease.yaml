@@ -38,6 +38,9 @@ spec:
     ingressClass:
       enabled: true
       isDefaultClass: true
+    ingressRoute:
+      dashboard:
+        enabled: true
     providers:
       kubernetesCRD:
         enabled: true
