@@ -45,10 +45,12 @@ spec:
         enabled: true
         publishedService:
           enabled: true
+    additionalArguments:
+    # websecure is exposed on 444 for HAProxy, but clients reach it on 443.
+    - --entrypoints.web.http.redirections.entrypoint.port=:443
     ports:
       web:
         http:
-          # Replaces the ssl-redirect the nginx provider applied per Ingress.
           redirections:
             entryPoint:
               to: websecure
