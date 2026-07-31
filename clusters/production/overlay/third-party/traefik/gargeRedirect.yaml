@@ -1,0 +1,29 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: garge-redirect
+  namespace: garge-prod
+spec:
+  redirectRegex:
+    regex: "^https?://[^/]+/(.*)"
+    replacement: "https://www.garge.no/$${1}"
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: garge-redirect
+  namespace: garge-prod
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`garge.no`)
+    middlewares:
+    - name: garge-redirect
+    services:
+    - name: noop@internal
+      kind: TraefikService
+  tls:
+    secretName: garge-wildcard-tls-cert

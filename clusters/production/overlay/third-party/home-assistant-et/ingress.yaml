@@ -10,7 +10,7 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   tls:
     - hosts:
         - "et.ha.prod.tumogroup.com"
