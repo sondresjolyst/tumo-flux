@@ -45,15 +45,14 @@ spec:
         enabled: true
         publishedService:
           enabled: true
-    additionalArguments:
-    # websecure is exposed on 444 for HAProxy, but clients reach it on 443.
-    - --entrypoints.web.http.redirections.entrypoint.port=:443
     ports:
       web:
         http:
           redirections:
             entryPoint:
-              to: websecure
+              # Not websecure: the chart resolves that to its exposed port, 444.
+              # Clients reach HAProxy on 443.
+              to: ":443"
               scheme: https
               permanent: true
     service:
