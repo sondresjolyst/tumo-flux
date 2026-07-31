@@ -45,16 +45,13 @@ spec:
         enabled: true
         publishedService:
           enabled: true
-    ports:
-      web:
-        http:
-          redirections:
-            entryPoint:
-              # Not websecure: the chart resolves that to its exposed port, 444.
-              # Clients reach HAProxy on 443.
-              to: ":443"
-              scheme: https
-              permanent: true
+    additionalArguments:
+    # Not the chart's ports.web.http.redirections: it validates `to` against its
+    # own entryPoint list and resolves websecure to its exposed port, 444.
+    # Clients reach HAProxy on 443, and Traefik accepts a bare port here.
+    - --entryPoints.web.http.redirections.entryPoint.to=:443
+    - --entryPoints.web.http.redirections.entryPoint.scheme=https
+    - --entryPoints.web.http.redirections.entryPoint.permanent=true
     service:
       spec:
         externalTrafficPolicy: Local
