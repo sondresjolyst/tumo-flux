@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  chart:
+    spec:
+      version: ${TRAEFIK_VERSION} # Set in postBuild production
+  values:
+    deployment:
+      replicas: 2
+    ports:
+      web:
+        # Replaces ingress-nginx use-proxy-protocol + proxy-real-ip-cidr.
+        # 192.168.1.122 is the upstream HAProxy.
+        proxyProtocol:
+          trustedIPs:
+          - 192.168.1.122/32
+      websecure:
+        exposedPort: 444 # ingress-nginx service.ports.https
+        proxyProtocol:
+          trustedIPs:
+          - 192.168.1.122/32
+    resources:
+      limits:
+        memory: 1024Mi
+      requests:
+        cpu: 100m
+        memory: 1024Mi
