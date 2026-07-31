@@ -5,7 +5,7 @@ metadata:
   namespace: nstuning-prod
 spec:
   redirectRegex:
-    regex: "^https?://nstuning\\.no/(.*)"
+    regex: "^https?://[^/]+/(.*)"
     replacement: "https://www.nstuning.no/${1}"
     permanent: true
 ---
