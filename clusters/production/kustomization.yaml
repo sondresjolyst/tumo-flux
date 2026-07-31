@@ -17,7 +17,6 @@ resources:
   - ../../components/third-party/nstuning-app
   - ../../components/third-party/home-assistant
   - ../../components/third-party/influxdb
-  - ../../components/third-party/ingress-nginx
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/reflector
   - ../../components/third-party/kured
@@ -34,11 +33,9 @@ resources:
   - ../../components/third-party/tumogroup
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/garge-app
-  - ./overlay/third-party/nstuning-app
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
   - ./overlay/third-party/influxdb
-  - ./overlay/third-party/ingress-nginx
   - ./overlay/third-party/mosquitto
   - ./overlay/third-party/traefik
 patches:
@@ -57,7 +54,6 @@ patches:
   - path: ./overlay/third-party/home-assistant-et/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant/helmRelease.yaml
   - path: ./overlay/third-party/influxdb/helmRelease.yaml
-  - path: ./overlay/third-party/ingress-nginx/helmRelease.yaml
   - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
   - path: ./overlay/third-party/reflector/helmRelease.yaml
   - path: ./overlay/third-party/kured/helmRelease.yaml

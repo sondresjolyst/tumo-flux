@@ -36,15 +36,13 @@ spec:
                 - traefik
             topologyKey: kubernetes.io/hostname
     ingressClass:
-      # ingress-nginx owns the default IngressClass while both controllers run.
-      # Two default classes is an error state - enable this at cutover.
+      # The nginx IngressClass is declared in ingressClass.yaml instead.
       enabled: false
     providers:
       kubernetesCRD:
         enabled: true
       kubernetesIngress:
         # The ingress-nginx provider below claims every Ingress in this cluster.
-        # Leaving this on would make both providers handle the same objects.
         enabled: false
       kubernetesIngressNGINX:
         # Reads ingressClassName: nginx and nginx.ingress.kubernetes.io/* annotations,
@@ -52,14 +50,12 @@ spec:
         enabled: true
         ingressClass: nginx
         controllerClass: k8s.io/ingress-nginx
-        ingressClassByName: true # ingress-nginx controller.ingressClassByName
-        watchIngressWithoutClass: true # ingress-nginx controller.watchIngressWithoutClass
+        ingressClassByName: true
+        watchIngressWithoutClass: true
         publishService:
-          # ingress-nginx keeps writing Ingress .status while both controllers run,
-          # otherwise they fight over status.loadBalancer.ingress[].
-          enabled: false
-        proxyBodySize: 104857600 # ingress-nginx proxy-body-size: 100m
-        proxyBufferSize: 16384 # ingress-nginx proxy-buffer-size: 16k
+          enabled: true
+        proxyBodySize: 104857600 # nginx proxy-body-size: 100m
+        proxyBufferSize: 16384 # nginx proxy-buffer-size: 16k
     service:
       spec:
         externalTrafficPolicy: Local
