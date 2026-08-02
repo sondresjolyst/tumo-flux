@@ -2,9 +2,9 @@ name: Code scanning
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   schedule:
     # Run every Wednesday at 00:00 UTC.
     - cron: 0 0 * * 3
