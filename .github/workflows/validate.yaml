@@ -48,4 +48,11 @@ jobs:
           flux build kustomization flux-system \
             --path ./clusters/production \
             --kustomization-file ./clusters/production/postBuild.yaml \
-            --dry-run > /dev/null
+            --dry-run > "${RUNNER_TEMP}/rendered.yaml"
+
+      - name: Check every chart version was patched
+        run: |
+          if grep -n "version: xx" "${RUNNER_TEMP}/rendered.yaml"; then
+            echo "::error::HelmRelease reached the cluster without a patched chart version"
+            exit 1
+          fi
