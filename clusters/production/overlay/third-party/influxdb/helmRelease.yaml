@@ -13,10 +13,9 @@ spec:
       enabled: true
       storageClass: nfs
       size: 8Gi
-    influxdb:
-      service:
-        type: LoadBalancer
-      resources:
-        requests:
-          cpu: "100m"
-          memory: "512Mi"
+    service:
+      type: LoadBalancer
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "512Mi"
