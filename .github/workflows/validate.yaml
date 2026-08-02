@@ -1,0 +1,51 @@
+name: Validate manifests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions: {}
+
+jobs:
+  validate:
+    name: Build and validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      KUSTOMIZE_VERSION: v5.8.1 # https://github.com/kubernetes-sigs/kustomize/releases
+      FLUX_VERSION: v2.9.3 # https://github.com/fluxcd/flux2/releases
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install kustomize and flux
+        run: |
+          mkdir -p "${RUNNER_TEMP}/bin"
+          curl -fsSL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz" \
+            | tar -xz -C "${RUNNER_TEMP}/bin" kustomize
+          curl -fsSL "https://github.com/fluxcd/flux2/releases/download/${FLUX_VERSION}/flux_${FLUX_VERSION#v}_linux_amd64.tar.gz" \
+            | tar -xz -C "${RUNNER_TEMP}/bin" flux
+          echo "${RUNNER_TEMP}/bin" >> "${GITHUB_PATH}"
+
+      - name: Build every kustomization
+        run: |
+          status=0
+          while read -r kustomization; do
+            dir=$(dirname "${kustomization}")
+            echo "==> ${dir}"
+            kustomize build "${dir}" > /dev/null || status=1
+          done < <(find clusters components -name kustomization.yaml | sort)
+          exit "${status}"
+
+      - name: Build the flux-system Kustomization
+        run: |
+          flux build kustomization flux-system \
+            --path ./clusters/production \
+            --kustomization-file ./clusters/production/postBuild.yaml \
+            --dry-run > /dev/null
