@@ -23,5 +23,3 @@ spec:
       requests:
         cpu: "100m"
         memory: "512Mi"
-    auth:
-      existingSecret: influxdb-secret
