@@ -23,7 +23,6 @@ spec:
       GRAFANA_VERSION: 12.10.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.7.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.7.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      INFLUXDB_VERSION: 7.1.20 # https://artifacthub.io/packages/helm/bitnami/influxdb
       REFLECTOR_VERSION: 10.0.61 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
@@ -33,7 +32,6 @@ spec:
       LOKI_VERSION: 18.7.1 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 88.0.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.11.0 # https://artifacthub.io/packages/helm/grafana/alloy
-      TELEGRAF_VERSION: 1.8.73 # https://artifacthub.io/packages/helm/influxdata/telegraf
       TRAEFIK_VERSION: 41.1.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
       - kind: ConfigMap
