@@ -20,6 +20,9 @@ spec:
   values:
     image:
       repository: bitnamilegacy/influxdb
+    createAdminTokenJob:
+      image:
+        repository: bitnamilegacy/kubectl
     objectStore: file
     resources:
       requests:
