@@ -23,7 +23,7 @@ spec:
       GRAFANA_VERSION: 12.10.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.7.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.7.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      REFLECTOR_VERSION: 10.0.61 # https://artifacthub.io/packages/helm/emberstack/reflector
+      REFLECTOR_VERSION: 10.0.62 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.13.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
