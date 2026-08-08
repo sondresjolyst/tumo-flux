@@ -32,7 +32,7 @@ spec:
       LOKI_VERSION: 18.7.5 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 88.2.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.11.1 # https://artifacthub.io/packages/helm/grafana/alloy
-      TRAEFIK_VERSION: 41.1.1 # https://artifacthub.io/packages/helm/traefik/traefik
+      TRAEFIK_VERSION: 41.2.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
