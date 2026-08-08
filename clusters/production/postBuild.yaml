@@ -20,19 +20,19 @@ spec:
       GARGE_OPERATOR_VERSION: 0.1.31 # https://artifacthub.io/packages/helm/garge/garge-operator
       NSTUNING_API_VERSION: 0.1.13 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
-      GRAFANA_VERSION: 12.10.3 # https://artifacthub.io/packages/helm/grafana-community/grafana
-      HOME_ASSISTANT_VERSION_ET: 2.8.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      HOME_ASSISTANT_VERSION: 2.8.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      GRAFANA_VERSION: 12.10.4 # https://artifacthub.io/packages/helm/grafana-community/grafana
+      HOME_ASSISTANT_VERSION_ET: 2.8.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION: 2.8.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       REFLECTOR_VERSION: 10.0.63 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.13.1 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.1.3 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
-      LOKI_VERSION: 18.7.4 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 88.1.5 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      LOKI_VERSION: 18.7.5 # https://artifacthub.io/packages/helm/grafana-community/loki
+      PROMETHEUS_VERSION: 88.2.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.11.1 # https://artifacthub.io/packages/helm/grafana/alloy
-      TRAEFIK_VERSION: 41.1.1 # https://artifacthub.io/packages/helm/traefik/traefik
+      TRAEFIK_VERSION: 41.2.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
