@@ -89,3 +89,26 @@ spec:
   dnsNames:
   - "nstuning.no"
   - "*.nstuning.no"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: altinnendata-wildcard-tls
+  namespace: default
+spec:
+  secretName: altinnendata-wildcard-tls-cert
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "altinnendata-dev,altinnendata-prod"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "altinnendata-dev,altinnendata-prod"
+  issuerRef:
+    kind: ClusterIssuer
+    name: ${CERT_ISSUER}
+  duration: 2160h # 90d
+  renewBefore: 762h # 32d. Let's Encrypt will email an alert if 30d remain and cert has not been renewed.
+  commonName: "altinnendata.no"
+  dnsNames:
+  - "altinnendata.no"
+  - "*.altinnendata.no"

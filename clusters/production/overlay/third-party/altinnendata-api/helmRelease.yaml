@@ -1,0 +1,140 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: altinnendata-api
+  namespace: altinnendata-dev
+spec:
+  chart:
+    spec:
+      chart: altinnendata-api
+      version: ${ALTINNENDATA_API_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: altinnendata-api-secrets
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: altinnendata-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: altinnendata-api-secrets
+      - name: BREVOSETTINGS__APIKEY
+        secretKeyRef:
+          key: BREVOSETTINGS__APIKEY
+          name: altinnendata-api-secrets
+      - name: BREVOSETTINGS__SENDEREMAIL
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDEREMAIL
+          name: altinnendata-api-secrets
+      - name: BREVOSETTINGS__SENDERNAME
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDERNAME
+          name: altinnendata-api-secrets
+      - name: SEED__ADMINEMAIL
+        secretKeyRef:
+          key: SEED__ADMINEMAIL
+          name: altinnendata-api-secrets
+      - name: SEED__ADMINPASSWORD
+        secretKeyRef:
+          key: SEED__ADMINPASSWORD
+          name: altinnendata-api-secrets
+    podLabels:
+      logformat: serilog
+    image:
+      tag: "dev"
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: altinnendata-api-dev.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: altinnendata-api-tls
+          hosts:
+            - altinnendata-api-dev.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: altinnendata-api
+  namespace: altinnendata-prod
+spec:
+  chart:
+    spec:
+      chart: altinnendata-api
+      version: ${ALTINNENDATA_API_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: altinnendata-api-secrets
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: altinnendata-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: altinnendata-api-secrets
+      - name: BREVOSETTINGS__APIKEY
+        secretKeyRef:
+          key: BREVOSETTINGS__APIKEY
+          name: altinnendata-api-secrets
+      - name: BREVOSETTINGS__SENDEREMAIL
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDEREMAIL
+          name: altinnendata-api-secrets
+      - name: BREVOSETTINGS__SENDERNAME
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDERNAME
+          name: altinnendata-api-secrets
+      - name: SEED__ADMINEMAIL
+        secretKeyRef:
+          key: SEED__ADMINEMAIL
+          name: altinnendata-api-secrets
+      - name: SEED__ADMINPASSWORD
+        secretKeyRef:
+          key: SEED__ADMINPASSWORD
+          name: altinnendata-api-secrets
+    podLabels:
+      logformat: serilog
+    image:
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: altinnendata-api.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: altinnendata-api-tls
+          hosts:
+            - altinnendata-api.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"

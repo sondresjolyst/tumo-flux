@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: altinnendata-dev
+  labels:
+    altinnendata-wildcard-sync: altinnendata-wildcard-tls-cert
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: altinnendata-prod
+  labels:
+    altinnendata-wildcard-sync: altinnendata-wildcard-tls-cert
