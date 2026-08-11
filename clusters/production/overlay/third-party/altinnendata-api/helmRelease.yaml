@@ -42,6 +42,11 @@ spec:
         secretKeyRef:
           key: SEED__ADMINPASSWORD
           name: altinnendata-api-secrets
+      # Password and invite emails link back here, so it must match this environment.
+      - name: SITE__BASEURL
+        secretKeyRef:
+          key: SITE__BASEURL
+          name: altinnendata-api-secrets
     podLabels:
       logformat: serilog
     image:
@@ -112,6 +117,11 @@ spec:
       - name: SEED__ADMINPASSWORD
         secretKeyRef:
           key: SEED__ADMINPASSWORD
+          name: altinnendata-api-secrets
+      # Password and invite emails link back here, so it must match this environment.
+      - name: SITE__BASEURL
+        secretKeyRef:
+          key: SITE__BASEURL
           name: altinnendata-api-secrets
     podLabels:
       logformat: serilog
