@@ -24,7 +24,7 @@ spec:
       ALTINNENDATA_APP_VERSION: 0.1.4 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       GRAFANA_VERSION: 12.10.4 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.9.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      HOME_ASSISTANT_VERSION: 2.8.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION: 2.9.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       REFLECTOR_VERSION: 10.0.64 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
