@@ -85,6 +85,9 @@ spec:
           names:
             User-Agent: keep
             Referer: keep
+            # Next.js marks a speculative prefetch with this. Without it a prefetch and a real
+            # navigation are the same request, and page views cannot be counted.
+            Next-Router-Prefetch: keep
     resources:
       limits:
         memory: 512Mi
