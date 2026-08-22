@@ -21,7 +21,7 @@ spec:
       NSTUNING_API_VERSION: 0.1.15 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.14 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       ALTINNENDATA_API_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
-      ALTINNENDATA_APP_VERSION: 0.1.5 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
+      ALTINNENDATA_APP_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       GRAFANA_VERSION: 12.11.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.9.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.9.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
