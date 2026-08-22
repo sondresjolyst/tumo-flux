@@ -26,3 +26,8 @@ spec:
             url: http://loki.monitor.svc.cluster.local:3100
             access: proxy
             isDefault: false
+          - name: Prometheus
+            type: prometheus
+            url: http://kube-prometheus-stack-prometheus.monitor.svc.cluster.local:9090
+            access: proxy
+            isDefault: true
