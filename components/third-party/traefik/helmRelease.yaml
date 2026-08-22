@@ -70,6 +70,21 @@ spec:
           enabled: true
         serviceMonitor:
           enabled: true
+    # Alloy ships stdout to Loki, so json here is queryable with `| json`.
+    accessLog:
+      enabled: true
+      format: json
+      fields:
+        names:
+          # ClientHost is the caller's address; the rest of the client fields carry nothing
+          # the dashboards use.
+          ClientAddr: drop
+          ClientPort: drop
+          ClientUsername: drop
+        headers:
+          names:
+            User-Agent: keep
+            Referer: keep
     resources:
       limits:
         memory: 512Mi
