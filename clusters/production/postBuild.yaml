@@ -15,13 +15,13 @@ spec:
       DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.36.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.49 # https://artifacthub.io/packages/helm/garge/garge-api
-      GARGE_APP_VERSION: 0.1.41 # https://artifacthub.io/packages/helm/garge/garge-app
-      GARGE_OPERATOR_VERSION: 0.1.31 # https://artifacthub.io/packages/helm/garge/garge-operator
+      GARGE_API_VERSION: 0.1.52 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_APP_VERSION: 0.1.44 # https://artifacthub.io/packages/helm/garge/garge-app
+      GARGE_OPERATOR_VERSION: 0.1.33 # https://artifacthub.io/packages/helm/garge/garge-operator
       NSTUNING_API_VERSION: 0.1.16 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.15 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       ALTINNENDATA_API_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
-      ALTINNENDATA_APP_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
+      ALTINNENDATA_APP_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       GRAFANA_VERSION: 12.11.2 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.9.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.9.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
@@ -33,7 +33,7 @@ spec:
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       LOKI_VERSION: 18.11.2 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 88.5.4 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      ALLOY_VERSION: 1.11.1 # https://artifacthub.io/packages/helm/grafana/alloy
+      ALLOY_VERSION: 1.12.0 # https://artifacthub.io/packages/helm/grafana/alloy
       TRAEFIK_VERSION: 41.3.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
       - kind: ConfigMap
