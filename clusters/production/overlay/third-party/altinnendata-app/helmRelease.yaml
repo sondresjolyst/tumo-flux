@@ -22,6 +22,10 @@ spec:
         secretKeyRef:
           key: ALTINNENDATA_API_JWT_SECRET
           name: altinnendata-app-secrets
+      - name: LIBRETRANSLATE_URL
+        secretKeyRef:
+          key: LIBRETRANSLATE_URL
+          name: altinnendata-app-secrets
     image:
       tag: "dev"
       pullPolicy: Always
@@ -70,6 +74,10 @@ spec:
       - name: ALTINNENDATA_API_JWT_SECRET
         secretKeyRef:
           key: ALTINNENDATA_API_JWT_SECRET
+          name: altinnendata-app-secrets
+      - name: LIBRETRANSLATE_URL
+        secretKeyRef:
+          key: LIBRETRANSLATE_URL
           name: altinnendata-app-secrets
     image:
       pullPolicy: Always
