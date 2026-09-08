@@ -33,9 +33,9 @@ spec:
       MINECRAFT_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
       LOKI_VERSION: 18.12.1 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 89.2.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 90.0.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.12.1 # https://artifacthub.io/packages/helm/grafana/alloy
-      TRAEFIK_VERSION: 41.4.0 # https://artifacthub.io/packages/helm/traefik/traefik
+      TRAEFIK_VERSION: 41.5.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
