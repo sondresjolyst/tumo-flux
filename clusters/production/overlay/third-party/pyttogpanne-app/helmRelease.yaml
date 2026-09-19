@@ -1,0 +1,96 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pyttogpanne-app
+  namespace: pyttogpanne-dev
+spec:
+  chart:
+    spec:
+      chart: pyttogpanne-app
+      version: ${PYTTOGPANNE_APP_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: NEXTAUTH_SECRET
+        secretKeyRef:
+          key: NEXTAUTH_SECRET
+          name: pyttogpanne-app-secrets
+      - name: NEXTAUTH_URL
+        secretKeyRef:
+          key: NEXTAUTH_URL
+          name: pyttogpanne-app-secrets
+      - name: PYTTOGPANNE_API_JWT_SECRET
+        secretKeyRef:
+          key: PYTTOGPANNE_API_JWT_SECRET
+          name: pyttogpanne-app-secrets
+    image:
+      tag: "dev"
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: pyttogpanne-dev.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: pyttogpanne-app-tls
+          hosts:
+            - pyttogpanne-dev.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pyttogpanne-app
+  namespace: pyttogpanne-prod
+spec:
+  chart:
+    spec:
+      chart: pyttogpanne-app
+      version: ${PYTTOGPANNE_APP_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: NEXTAUTH_SECRET
+        secretKeyRef:
+          key: NEXTAUTH_SECRET
+          name: pyttogpanne-app-secrets
+      - name: NEXTAUTH_URL
+        secretKeyRef:
+          key: NEXTAUTH_URL
+          name: pyttogpanne-app-secrets
+      - name: PYTTOGPANNE_API_JWT_SECRET
+        secretKeyRef:
+          key: PYTTOGPANNE_API_JWT_SECRET
+          name: pyttogpanne-app-secrets
+    image:
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: pyttogpanne.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: pyttogpanne-app-tls
+          hosts:
+            - pyttogpanne.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
