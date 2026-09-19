@@ -18,6 +18,9 @@ resources:
   - ../../components/third-party/altinnendata
   - ../../components/third-party/altinnendata-api
   - ../../components/third-party/altinnendata-app
+  - ../../components/third-party/pyttogpanne
+  - ../../components/third-party/pyttogpanne-api
+  - ../../components/third-party/pyttogpanne-app
   - ../../components/third-party/home-assistant
   - ../../components/third-party/kube-prometheus-stack
   - ../../components/third-party/reflector
@@ -49,6 +52,8 @@ patches:
   - path: ./overlay/third-party/nstuning-app/helmRelease.yaml
   - path: ./overlay/third-party/altinnendata-api/helmRelease.yaml
   - path: ./overlay/third-party/altinnendata-app/helmRelease.yaml
+  - path: ./overlay/third-party/pyttogpanne-api/helmRelease.yaml
+  - path: ./overlay/third-party/pyttogpanne-app/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant-et/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant/helmRelease.yaml

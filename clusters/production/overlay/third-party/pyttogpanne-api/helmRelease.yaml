@@ -1,0 +1,150 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pyttogpanne-api
+  namespace: pyttogpanne-dev
+spec:
+  chart:
+    spec:
+      chart: pyttogpanne-api
+      version: ${PYTTOGPANNE_API_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: pyttogpanne-api-secrets
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: pyttogpanne-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: pyttogpanne-api-secrets
+      - name: BREVOSETTINGS__APIKEY
+        secretKeyRef:
+          key: BREVOSETTINGS__APIKEY
+          name: pyttogpanne-api-secrets
+      - name: BREVOSETTINGS__SENDEREMAIL
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDEREMAIL
+          name: pyttogpanne-api-secrets
+      - name: BREVOSETTINGS__SENDERNAME
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDERNAME
+          name: pyttogpanne-api-secrets
+      - name: SEED__ADMINEMAIL
+        secretKeyRef:
+          key: SEED__ADMINEMAIL
+          name: pyttogpanne-api-secrets
+      - name: SEED__ADMINPASSWORD
+        secretKeyRef:
+          key: SEED__ADMINPASSWORD
+          name: pyttogpanne-api-secrets
+      # Password and invite emails link back here, so it must match this environment.
+      - name: SITE__BASEURL
+        secretKeyRef:
+          key: SITE__BASEURL
+          name: pyttogpanne-api-secrets
+    podLabels:
+      logformat: serilog
+    image:
+      tag: "dev"
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: pyttogpanne-api-dev.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: pyttogpanne-api-tls
+          hosts:
+            - pyttogpanne-api-dev.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pyttogpanne-api
+  namespace: pyttogpanne-prod
+spec:
+  chart:
+    spec:
+      chart: pyttogpanne-api
+      version: ${PYTTOGPANNE_API_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
+        secretKeyRef:
+          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
+          name: pyttogpanne-api-secrets
+      - name: JWT__KEY
+        secretKeyRef:
+          key: JWT__KEY
+          name: pyttogpanne-api-secrets
+      - name: JWT__ISSUER
+        secretKeyRef:
+          key: JWT__ISSUER
+          name: pyttogpanne-api-secrets
+      - name: BREVOSETTINGS__APIKEY
+        secretKeyRef:
+          key: BREVOSETTINGS__APIKEY
+          name: pyttogpanne-api-secrets
+      - name: BREVOSETTINGS__SENDEREMAIL
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDEREMAIL
+          name: pyttogpanne-api-secrets
+      - name: BREVOSETTINGS__SENDERNAME
+        secretKeyRef:
+          key: BREVOSETTINGS__SENDERNAME
+          name: pyttogpanne-api-secrets
+      - name: SEED__ADMINEMAIL
+        secretKeyRef:
+          key: SEED__ADMINEMAIL
+          name: pyttogpanne-api-secrets
+      - name: SEED__ADMINPASSWORD
+        secretKeyRef:
+          key: SEED__ADMINPASSWORD
+          name: pyttogpanne-api-secrets
+      # Password and invite emails link back here, so it must match this environment.
+      - name: SITE__BASEURL
+        secretKeyRef:
+          key: SITE__BASEURL
+          name: pyttogpanne-api-secrets
+    podLabels:
+      logformat: serilog
+    image:
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: pyttogpanne-api.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: pyttogpanne-api-tls
+          hosts:
+            - pyttogpanne-api.prod.tumogroup.com
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
