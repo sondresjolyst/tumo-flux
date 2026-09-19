@@ -11,22 +11,22 @@ spec:
       TUMO_ZONE: prod # dev | playground | prod
       TUMO_ENVIRONMENT: prod # prod
       BOBBY_API_VERSION: 1.0.1 # https://artifacthub.io/packages/helm/tumogroup/bobby-api
-      CERT_MANAGER_VERSION: 1.21.1 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
+      CERT_MANAGER_VERSION: 1.21.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.36.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.54 # https://artifacthub.io/packages/helm/garge/garge-api
-      GARGE_APP_VERSION: 0.1.46 # https://artifacthub.io/packages/helm/garge/garge-app
+      GARGE_API_VERSION: 0.1.55 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_APP_VERSION: 0.1.47 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.34 # https://artifacthub.io/packages/helm/garge/garge-operator
-      NSTUNING_API_VERSION: 0.1.19 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
-      NSTUNING_APP_VERSION: 0.1.17 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
-      ALTINNENDATA_API_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
-      ALTINNENDATA_APP_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
+      NSTUNING_API_VERSION: 0.1.20 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
+      NSTUNING_APP_VERSION: 0.1.18 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
+      ALTINNENDATA_API_VERSION: 0.1.16 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
+      ALTINNENDATA_APP_VERSION: 0.1.17 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       PYTTOGPANNE_API_VERSION: 0.1.0 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
       PYTTOGPANNE_APP_VERSION: 0.1.0 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
-      GRAFANA_VERSION: 13.2.2 # https://artifacthub.io/packages/helm/grafana-community/grafana
-      HOME_ASSISTANT_VERSION_ET: 2.11.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      HOME_ASSISTANT_VERSION: 2.11.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      GRAFANA_VERSION: 13.2.5 # https://artifacthub.io/packages/helm/grafana-community/grafana
+      HOME_ASSISTANT_VERSION_ET: 2.11.3 # https://artifacthub.io/packages/helm/alekc/home-assistant
+      HOME_ASSISTANT_VERSION: 2.11.3 # https://artifacthub.io/packages/helm/alekc/home-assistant
       REFLECTOR_VERSION: 10.0.65 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       LIBRETRANSLATE_VERSION: v1.9.6 # https://github.com/LibreTranslate/LibreTranslate/releases
@@ -34,10 +34,10 @@ spec:
       METRICS_VERSION: 3.14.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       MOSQUITTO_VERSION: 16.0.1 # https://artifacthub.io/packages/helm/truecharts/mosquitto
-      LOKI_VERSION: 18.12.1 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 90.0.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      LOKI_VERSION: 18.13.3 # https://artifacthub.io/packages/helm/grafana-community/loki
+      PROMETHEUS_VERSION: 91.4.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.12.1 # https://artifacthub.io/packages/helm/grafana/alloy
-      TRAEFIK_VERSION: 41.5.0 # https://artifacthub.io/packages/helm/traefik/traefik
+      TRAEFIK_VERSION: 41.6.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config
