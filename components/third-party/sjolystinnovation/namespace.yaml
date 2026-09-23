@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sjolystinnovation-dev
+  labels:
+    sjolystinnovation-wildcard-sync: sjolystinnovation-wildcard-tls-cert
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sjolystinnovation-prod
+  labels:
+    sjolystinnovation-wildcard-sync: sjolystinnovation-wildcard-tls-cert

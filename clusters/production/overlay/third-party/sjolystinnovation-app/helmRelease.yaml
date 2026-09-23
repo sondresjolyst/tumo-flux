@@ -1,0 +1,104 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sjolystinnovation-app
+  namespace: sjolystinnovation-dev
+spec:
+  chart:
+    spec:
+      chart: sjolystinnovation-app
+      version: ${SJOLYSTINNOVATION_APP_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: BREVO_API_KEY
+        secretKeyRef:
+          key: BREVO_API_KEY
+          name: sjolystinnovation-app-secrets
+      - name: BREVO_SENDER_EMAIL
+        secretKeyRef:
+          key: BREVO_SENDER_EMAIL
+          name: sjolystinnovation-app-secrets
+      - name: BREVO_SENDER_NAME
+        secretKeyRef:
+          key: BREVO_SENDER_NAME
+          name: sjolystinnovation-app-secrets
+      - name: CONTACT_TO_EMAIL
+        secretKeyRef:
+          key: CONTACT_TO_EMAIL
+          name: sjolystinnovation-app-secrets
+    image:
+      tag: "dev"
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: dev.sjolystinnovation.no
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: sjolystinnovation-app-tls
+          hosts:
+            - dev.sjolystinnovation.no
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "256Mi"
+        cpu: "250m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sjolystinnovation-app
+  namespace: sjolystinnovation-prod
+spec:
+  chart:
+    spec:
+      chart: sjolystinnovation-app
+      version: ${SJOLYSTINNOVATION_APP_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: BREVO_API_KEY
+        secretKeyRef:
+          key: BREVO_API_KEY
+          name: sjolystinnovation-app-secrets
+      - name: BREVO_SENDER_EMAIL
+        secretKeyRef:
+          key: BREVO_SENDER_EMAIL
+          name: sjolystinnovation-app-secrets
+      - name: BREVO_SENDER_NAME
+        secretKeyRef:
+          key: BREVO_SENDER_NAME
+          name: sjolystinnovation-app-secrets
+      - name: CONTACT_TO_EMAIL
+        secretKeyRef:
+          key: CONTACT_TO_EMAIL
+          name: sjolystinnovation-app-secrets
+    image:
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: www.sjolystinnovation.no
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: sjolystinnovation-app-tls
+          hosts:
+            - www.sjolystinnovation.no
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "256Mi"
+        cpu: "250m"
