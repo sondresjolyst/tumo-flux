@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sjolystinnovation-app
+  namespace: sjolystinnovation-dev
+spec:
+  releaseName: sjolystinnovation-app
+  chart:
+    spec:
+      chart: sjolystinnovation-app
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "256Mi"
+        cpu: "250m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sjolystinnovation-app
+  namespace: sjolystinnovation-prod
+spec:
+  releaseName: sjolystinnovation-app
+  chart:
+    spec:
+      chart: sjolystinnovation-app
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "256Mi"
+        cpu: "250m"
