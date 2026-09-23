@@ -62,6 +62,7 @@ spec:
       chart: sjolystinnovation-app
       version: ${SJOLYSTINNOVATION_APP_VERSION} # Set in postBuild production
   values:
+    replicaCount: 2
     env:
       - name: BREVO_API_KEY
         secretKeyRef:
