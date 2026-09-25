@@ -1,0 +1,31 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: altinnendata-api-health
+  namespace: altinnendata-prod
+spec:
+  # The probes reach the pod directly, so nothing needs to read /health through the ingress.
+  ipAllowList:
+    sourceRange:
+      - 127.0.0.1/32
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: altinnendata-api-health
+  namespace: altinnendata-prod
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`altinnendata-api.prod.tumogroup.com`) && PathPrefix(`/health`)
+    # Above the router the chart's Ingress creates for the same host at /.
+    priority: 100
+    middlewares:
+    - name: altinnendata-api-health
+    services:
+    - name: altinnendata-api
+      port: 80
+  tls:
+    secretName: altinnendata-api-tls
