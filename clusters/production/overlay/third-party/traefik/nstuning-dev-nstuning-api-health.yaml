@@ -1,0 +1,31 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: nstuning-api-health
+  namespace: nstuning-dev
+spec:
+  # The probes reach the pod directly, so nothing needs to read /health through the ingress.
+  ipAllowList:
+    sourceRange:
+      - 127.0.0.1/32
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nstuning-api-health
+  namespace: nstuning-dev
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`nstuning-api-dev.prod.tumogroup.com`) && PathPrefix(`/health`)
+    # Above the router the chart's Ingress creates for the same host at /.
+    priority: 100
+    middlewares:
+    - name: nstuning-api-health
+    services:
+    - name: nstuning-api
+      port: 80
+  tls:
+    secretName: nstuning-api-tls

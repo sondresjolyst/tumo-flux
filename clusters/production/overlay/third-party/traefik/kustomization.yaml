@@ -5,3 +5,11 @@ resources:
 - nstuningRedirect.yaml
 - altinnendataRedirect.yaml
 - sjolystinnovationRedirect.yaml
+- altinnendata-dev-altinnendata-api-health.yaml
+- altinnendata-prod-altinnendata-api-health.yaml
+- nstuning-dev-nstuning-api-health.yaml
+- nstuning-prod-nstuning-api-health.yaml
+- pyttogpanne-dev-pyttogpanne-api-health.yaml
+- pyttogpanne-prod-pyttogpanne-api-health.yaml
+- garge-dev-garge-api-health.yaml
+- garge-prod-garge-api-health.yaml
