@@ -60,3 +60,6 @@ spec:
       enabled: false
     resultsCache:
       enabled: false
+    monitoring:
+      serviceMonitor:
+        enabled: true

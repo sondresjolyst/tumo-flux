@@ -90,3 +90,5 @@ spec:
       requests:
         cpu: "50m"
         memory: "128Mi"
+    serviceMonitor:
+      enabled: true
