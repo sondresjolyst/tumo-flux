@@ -9,6 +9,8 @@ spec:
       chart: garge-operator
       version: ${GARGE_OPERATOR_VERSION} # Set in postBuild production
   values:
+    # Stopped: there is no dev EMQX, so this only produced failed MQTT logins.
+    replicaCount: 0
     env:
       - name: API__BASEURL
         secretKeyRef:
