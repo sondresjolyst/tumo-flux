@@ -14,6 +14,8 @@ spec:
         name: minecraft-server-charts
         namespace: flux-system
   interval: 5m
+  # Server is intentionally stopped; suspended so Flux stops retrying the upgrade.
+  suspend: true
   install:
     remediation:
       retries: 3
