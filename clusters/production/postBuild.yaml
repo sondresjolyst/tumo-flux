@@ -15,9 +15,9 @@ spec:
       DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DESCHEDULER_VERSION: 0.36.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.63 # https://artifacthub.io/packages/helm/garge/garge-api
-      GARGE_APP_VERSION: 0.1.52 # https://artifacthub.io/packages/helm/garge/garge-app
-      GARGE_OPERATOR_VERSION: 0.1.38 # https://artifacthub.io/packages/helm/garge/garge-operator
+      GARGE_API_VERSION: 0.1.64 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_APP_VERSION: 0.1.53 # https://artifacthub.io/packages/helm/garge/garge-app
+      GARGE_OPERATOR_VERSION: 0.1.39 # https://artifacthub.io/packages/helm/garge/garge-operator
       NSTUNING_API_VERSION: 0.1.25 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.22 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       ALTINNENDATA_API_VERSION: 0.1.20 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
@@ -35,7 +35,7 @@ spec:
       METRICS_VERSION: 3.14.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       LOKI_VERSION: 18.13.7 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 91.6.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 91.8.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.13.0 # https://artifacthub.io/packages/helm/grafana/alloy
       TRAEFIK_VERSION: 41.6.0 # https://artifacthub.io/packages/helm/traefik/traefik
     substituteFrom:
