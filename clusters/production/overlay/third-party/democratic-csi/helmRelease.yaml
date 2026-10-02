@@ -19,7 +19,7 @@ spec:
         enabled: true
         image:
           registry: docker.io/democraticcsi/democratic-csi
-          tag: next
+          tag: ${DEMOCRATIC_CSI_DRIVER_IMAGE_TAG} # Set in postBuild production
     csiDriver:
       name: "nfs"
     storageClasses:
