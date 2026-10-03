@@ -92,13 +92,32 @@ function get_version() {
                 continue
             fi
 
+            # Reject version strings that are not a plain tag. The value is
+            # fed to the file rewrite below; anything with shell or sed
+            # metacharacters must never reach it.
+            if ! [[ "${newest}" =~ ^[A-Za-z0-9][A-Za-z0-9._/+-]*$ ]]; then
+                printf "Skipping %s - unexpected version string: %s\n" "${package_name}" "${newest}"
+                continue
+            fi
+
             # Compare versions
             if [[ "${current}" && "${newest}" && "${current}" != "${newest}" ]]; then
                 # Update file, create branch and commit change
                 printf "New version for %s available: %s -> %s\n" "${package_name}" "${current}" "${newest}"
                 find="$(echo ${entry} | awk '{print $2}') ${current}"
                 replace="$(echo ${entry} | awk '{print $2}') ${newest}"
-                sed -i "s/${find}/${replace}/" "${file}"
+                # Replace the value on its own line only, treating both the old
+                # and new strings as literal data (index/substr, not a regex),
+                # so a crafted version string cannot inject sed or shell code.
+                tmp=$(mktemp)
+                old="${find}" new="${replace}" ln="${line}" awk '
+                    NR==(ENVIRON["ln"]+0) {
+                        o=ENVIRON["old"]; n=ENVIRON["new"]
+                        i=index($0, o)
+                        if (i>0) $0=substr($0,1,i-1) n substr($0, i+length(o))
+                    }
+                    { print }
+                ' "${file}" > "${tmp}" && mv "${tmp}" "${file}"
                 git add "${file}"
                 git commit -m "chore(${SOURCE_CLUSTER}): update ${package_name} from ${current} to ${newest}"
                 push=true
