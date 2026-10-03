@@ -14,6 +14,38 @@ fi
 
 numberOfChanges=0
 
+function artifacthub_version() {
+    local repo="$1"
+    curl "https://artifacthub.io/api/v1/packages/helm/${repo}" \
+        --request "GET" \
+        --header "accept: application/json" \
+        --silent |
+        jq -er '.version // empty'
+}
+
+function github_version() {
+    local repo="$1"
+    local auth=()
+    if [[ -n "${GITHUB_TOKEN}" ]]; then
+        auth=(--header "Authorization: Bearer ${GITHUB_TOKEN}")
+    fi
+
+    # Prefer the published release, fall back to the newest tag for repos that
+    # tag without cutting GitHub releases.
+    curl "https://api.github.com/repos/${repo}/releases/latest" \
+        --request "GET" \
+        --header "Accept: application/vnd.github.v3+json" \
+        "${auth[@]}" \
+        --silent |
+        jq -er '.tag_name // empty' ||
+        curl "https://api.github.com/repos/${repo}/tags" \
+            --request "GET" \
+            --header "Accept: application/vnd.github.v3+json" \
+            "${auth[@]}" \
+            --silent |
+        jq -er '.[0].name // empty'
+}
+
 function get_version() {
     local push=false
     git config --global user.name 'github-actions[bot]'
@@ -25,26 +57,27 @@ function get_version() {
         local file=$(echo ${entry} | awk '{split($1,a,":"); print a[1]}')
         local line=$(echo ${entry} | awk '{split($1,a,":"); print a[2]}')
         local current=$(echo ${entry} | awk '{print $3}')
-        local repo=$(echo ${entry} | grep -Eo 'https://[^ >]+' | sed 's/\/releases.*$//' | awk '{n=split($1,a,"/"); print a[n-1]"/"a[n]}')
+        local url=$(echo ${entry} | grep -Eo 'https://[^ >]+')
+        local repo=$(echo ${url} | sed 's/\/releases.*$//' | awk '{n=split($1,a,"/"); print a[n-1]"/"a[n]}')
         local package_name=${repo##*/}
 
         if [[ "${current}" ]]; then
             if [[ "${SOURCE_CLUSTER}" == "${DESTINATION_CLUSTER}" ]]; then
-                # Get version from ArtifactHub
-                newest=$(curl "https://artifacthub.io/api/v1/packages/helm/${repo}" \
-                    --request "GET" \
-                    --header "accept: application/json" \
-                    --silent |
-                    jq -er '.version // empty' ||
-                    # Try GitHub
-                    curl "https://api.github.com/repos/${repo}/tags" \
-                        --request "GET" \
-                        --header "Accept: application/vnd.github.v3+json" \
-                        --silent |
-                    jq -er '.[0].name // empty') || {
-                    echo "Version for $package_name not found. $current"
-                    continue
-                }
+                # Pick the datasource from the URL host. Some GitHub org/repo
+                # pairs also resolve to an unrelated ArtifactHub Helm chart, so
+                # querying ArtifactHub for a GitHub URL returns the chart
+                # version instead of the release tag.
+                if [[ "${url}" == *github.com* ]]; then
+                    newest=$(github_version "${repo}") || {
+                        echo "Version for $package_name not found. $current"
+                        continue
+                    }
+                else
+                    newest=$(artifacthub_version "${repo}") || {
+                        echo "Version for $package_name not found. $current"
+                        continue
+                    }
+                fi
             else
                 # Update versions in destination cluster with versions in source cluster
                 newest="${current}"
