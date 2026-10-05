@@ -25,7 +25,7 @@ spec:
       ALTINNENDATA_APP_VERSION: 0.1.24 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       PYTTOGPANNE_API_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
       PYTTOGPANNE_APP_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
-      SJOLYSTINNOVATION_APP_VERSION: 0.1.5 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
+      SJOLYSTINNOVATION_APP_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       GRAFANA_VERSION: 13.2.7 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.11.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.11.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
