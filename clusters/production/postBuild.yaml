@@ -20,7 +20,7 @@ spec:
       GARGE_APP_VERSION: 0.1.54 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.41 # https://artifacthub.io/packages/helm/garge/garge-operator
       NSTUNING_API_VERSION: 0.1.26 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
-      NSTUNING_APP_VERSION: 0.1.22 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
+      NSTUNING_APP_VERSION: 0.1.23 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       ALTINNENDATA_API_VERSION: 0.1.20 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
       ALTINNENDATA_APP_VERSION: 0.1.23 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       PYTTOGPANNE_API_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
