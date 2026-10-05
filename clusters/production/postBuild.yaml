@@ -14,18 +14,18 @@ spec:
       CERT_MANAGER_VERSION: 1.21.2 # https://artifacthub.io/packages/helm/cert-manager/cert-manager
       DEMOCRATIC_CSI_VERSION: 0.15.1 # https://artifacthub.io/packages/helm/democratic-csi/democratic-csi
       DEMOCRATIC_CSI_DRIVER_IMAGE_TAG: v1.9.5 # https://github.com/democratic-csi/democratic-csi/releases
-      DESCHEDULER_VERSION: 0.36.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
+      DESCHEDULER_VERSION: 0.37.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.65 # https://artifacthub.io/packages/helm/garge/garge-api
-      GARGE_APP_VERSION: 0.1.53 # https://artifacthub.io/packages/helm/garge/garge-app
-      GARGE_OPERATOR_VERSION: 0.1.40 # https://artifacthub.io/packages/helm/garge/garge-operator
-      NSTUNING_API_VERSION: 0.1.25 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
-      NSTUNING_APP_VERSION: 0.1.22 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
-      ALTINNENDATA_API_VERSION: 0.1.20 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
-      ALTINNENDATA_APP_VERSION: 0.1.23 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
-      PYTTOGPANNE_API_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
-      PYTTOGPANNE_APP_VERSION: 0.1.5 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
-      SJOLYSTINNOVATION_APP_VERSION: 0.1.5 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
+      GARGE_API_VERSION: 0.1.66 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_APP_VERSION: 0.1.54 # https://artifacthub.io/packages/helm/garge/garge-app
+      GARGE_OPERATOR_VERSION: 0.1.41 # https://artifacthub.io/packages/helm/garge/garge-operator
+      NSTUNING_API_VERSION: 0.1.26 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
+      NSTUNING_APP_VERSION: 0.1.23 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
+      ALTINNENDATA_API_VERSION: 0.1.21 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
+      ALTINNENDATA_APP_VERSION: 0.1.24 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
+      PYTTOGPANNE_API_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
+      PYTTOGPANNE_APP_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
+      SJOLYSTINNOVATION_APP_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       GRAFANA_VERSION: 13.2.7 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.11.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.11.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
@@ -35,7 +35,7 @@ spec:
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.14.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
-      LOKI_VERSION: 18.13.7 # https://artifacthub.io/packages/helm/grafana-community/loki
+      LOKI_VERSION: 18.13.8 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 91.9.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.13.0 # https://artifacthub.io/packages/helm/grafana/alloy
       TRAEFIK_VERSION: 41.6.1 # https://artifacthub.io/packages/helm/traefik/traefik
