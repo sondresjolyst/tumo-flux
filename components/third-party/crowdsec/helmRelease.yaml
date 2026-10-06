@@ -1,0 +1,72 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: crowdsec
+  namespace: crowdsec
+spec:
+  releaseName: crowdsec
+  chart:
+    spec:
+      chart: crowdsec
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: crowdsec
+        namespace: flux-system
+  interval: 5m
+  install:
+    disableSchemaValidation: true
+    remediation:
+      retries: 3
+  upgrade:
+    disableSchemaValidation: true
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    container_runtime: containerd
+    config:
+      simulation.yaml: |
+        simulation: true
+    lapi:
+      env:
+      - name: BOUNCER_KEY_traefik
+        valueFrom:
+          secretKeyRef:
+            name: crowdsec-bouncer-key
+            key: BOUNCER_KEY_traefik
+      - name: DISABLE_ONLINE_API
+        value: "true"
+      metrics:
+        serviceMonitor:
+          enabled: true
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 50m
+          memory: 128Mi
+    agent:
+      isDeployment: true
+      replicas: 1
+      serviceAccountName: crowdsec-agent
+      hostVarLog: false
+      acquisition: []
+      additionalAcquisition:
+      - source: kubernetes
+        namespace: traefik
+        selector: app.kubernetes.io/name=traefik
+        labels:
+          type: traefik
+      env:
+      - name: COLLECTIONS
+        value: crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios crowdsecurity/whitelist-good-actors
+      metrics:
+        serviceMonitor:
+          enabled: true
+      resources:
+        limits:
+          memory: 512Mi
+        requests:
+          cpu: 100m
+          memory: 256Mi
