@@ -37,6 +37,11 @@ spec:
             key: BOUNCER_KEY_traefik
       - name: DISABLE_ONLINE_API
         value: "true"
+      persistentVolume:
+        data:
+          storageClassName: nfs
+        config:
+          storageClassName: nfs
       metrics:
         serviceMonitor:
           enabled: true
