@@ -12,6 +12,7 @@ spec:
       crowdsecLapiHost: crowdsec-service.crowdsec.svc.cluster.local:8080
       crowdsecLapiKeyFile: /etc/traefik/crowdsec/BOUNCER_KEY_traefik
       updateIntervalSeconds: 60
+      updateMaxFailure: -1
       clientTrustedIPs:
       - 10.0.0.0/8
       - 172.16.0.0/12
