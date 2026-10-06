@@ -39,6 +39,8 @@ spec:
       PROMETHEUS_VERSION: 91.9.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.13.0 # https://artifacthub.io/packages/helm/grafana/alloy
       TRAEFIK_VERSION: 41.6.1 # https://artifacthub.io/packages/helm/traefik/traefik
+      CROWDSEC_VERSION: 0.24.2 # https://artifacthub.io/packages/helm/crowdsec/crowdsec
+      CROWDSEC_BOUNCER_PLUGIN_VERSION: v1.7.1 # https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin/releases
     substituteFrom:
       - kind: ConfigMap
         name: tumo-flux-config

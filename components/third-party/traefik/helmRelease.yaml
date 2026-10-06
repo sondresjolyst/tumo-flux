@@ -26,6 +26,15 @@ spec:
     deployment:
       podLabels:
         app: traefik
+      additionalVolumes:
+      - name: crowdsec-bouncer-key
+        secret:
+          secretName: crowdsec-bouncer-key
+          optional: true
+    additionalVolumeMounts:
+    - name: crowdsec-bouncer-key
+      mountPath: /etc/traefik/crowdsec
+      readOnly: true
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
