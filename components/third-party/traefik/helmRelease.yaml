@@ -88,9 +88,9 @@ spec:
       format: json
       fields:
         names:
-          # ClientHost is the caller's address; the rest of the client fields carry nothing
-          # the dashboards use.
-          ClientAddr: drop
+          # ClientHost is the caller's address. ClientAddr is kept because the CrowdSec
+          # traefik parser reads it. The remaining client fields carry nothing the
+          # dashboards use.
           ClientPort: drop
           ClientUsername: drop
         headers:
