@@ -36,7 +36,7 @@ spec:
               cidr:
                 - "192.169.0.0/16"
       simulation.yaml: |
-        simulation: true
+        simulation: false
       config.yaml.local: |
         api:
           server:
