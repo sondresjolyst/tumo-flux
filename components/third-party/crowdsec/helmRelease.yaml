@@ -26,6 +26,15 @@ spec:
   values:
     container_runtime: containerd
     config:
+      parsers:
+        s02-enrich:
+          pod-network-whitelist.yaml: |
+            name: tumo/pod-network-whitelist
+            description: Whitelist the cluster pod network
+            whitelist:
+              reason: cluster pod network
+              cidr:
+                - "192.169.0.0/16"
       simulation.yaml: |
         simulation: true
       config.yaml.local: |

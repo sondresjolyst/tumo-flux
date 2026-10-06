@@ -30,6 +30,7 @@ spec:
           - traefik-crowdsec-bouncer@kubernetescrd
           - traefik-rate-limit@kubernetescrd
     experimental:
+      abortOnPluginFailure: true
       plugins:
         bouncer:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
