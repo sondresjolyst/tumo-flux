@@ -35,23 +35,6 @@ spec:
               reason: cluster pod network
               cidr:
                 - "192.169.0.0/16"
-      profiles.yaml: |
-        name: escalating_ip_remediation
-        filters:
-          - Alert.Remediation == true && Alert.GetScope() == "Ip" && GetActiveDecisionsCount(Alert.GetValue()) == 0
-        decisions:
-          - type: ban
-            duration: 4h
-        duration_expr: "Sprintf('%dh', min(168, 4 * (GetDecisionsSinceCount(Alert.GetValue(), '30d') + 1)))"
-        on_success: break
-        ---
-        name: default_range_remediation
-        filters:
-          - Alert.Remediation == true && Alert.GetScope() == "Range"
-        decisions:
-          - type: ban
-            duration: 4h
-        on_success: break
       simulation.yaml: |
         simulation: false
       config.yaml.local: |
