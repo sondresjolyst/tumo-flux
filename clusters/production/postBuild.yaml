@@ -36,7 +36,7 @@ spec:
       METRICS_VERSION: 3.14.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       LOKI_VERSION: 18.15.1 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 92.1.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 92.2.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.13.0 # https://artifacthub.io/packages/helm/grafana/alloy
       TRAEFIK_VERSION: 41.6.1 # https://artifacthub.io/packages/helm/traefik/traefik
       CROWDSEC_VERSION: 0.24.2 # https://artifacthub.io/packages/helm/crowdsec/crowdsec
