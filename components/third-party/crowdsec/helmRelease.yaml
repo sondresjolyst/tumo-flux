@@ -35,6 +35,23 @@ spec:
               reason: cluster pod network
               cidr:
                 - "192.169.0.0/16"
+      profiles.yaml: |
+        name: escalating_ip_remediation
+        filters:
+          - Alert.Remediation == true && Alert.GetScope() == "Ip"
+        decisions:
+          - type: ban
+            duration: 4h
+        duration_expr: "Sprintf('%dh', min(720, 4 * (GetDecisionsSinceCount(Alert.GetValue(), '30d') + 1) * (GetDecisionsSinceCount(Alert.GetValue(), '30d') + 1)))"
+        on_success: break
+        ---
+        name: default_range_remediation
+        filters:
+          - Alert.Remediation == true && Alert.GetScope() == "Range"
+        decisions:
+          - type: ban
+            duration: 4h
+        on_success: break
       simulation.yaml: |
         simulation: false
       config.yaml.local: |
@@ -56,8 +73,6 @@ spec:
           secretKeyRef:
             name: crowdsec-bouncer-key
             key: BOUNCER_KEY_traefik
-      - name: DISABLE_ONLINE_API
-        value: "true"
       persistentVolume:
         data:
           storageClassName: nfs
