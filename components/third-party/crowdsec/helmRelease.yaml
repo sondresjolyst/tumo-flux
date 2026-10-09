@@ -38,11 +38,11 @@ spec:
       profiles.yaml: |
         name: escalating_ip_remediation
         filters:
-          - Alert.Remediation == true && Alert.GetScope() == "Ip"
+          - Alert.Remediation == true && Alert.GetScope() == "Ip" && GetActiveDecisionsCount(Alert.GetValue()) == 0
         decisions:
           - type: ban
             duration: 4h
-        duration_expr: "Sprintf('%dh', min(720, 4 * (GetDecisionsSinceCount(Alert.GetValue(), '30d') + 1) * (GetDecisionsSinceCount(Alert.GetValue(), '30d') + 1)))"
+        duration_expr: "Sprintf('%dh', min(168, 4 * (GetDecisionsSinceCount(Alert.GetValue(), '30d') + 1)))"
         on_success: break
         ---
         name: default_range_remediation
