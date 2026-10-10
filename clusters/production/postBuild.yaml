@@ -26,7 +26,7 @@ spec:
       PYTTOGPANNE_API_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
       PYTTOGPANNE_APP_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
       SJOLYSTINNOVATION_APP_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
-      GRAFANA_VERSION: 13.4.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
+      GRAFANA_VERSION: 13.5.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.12.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.12.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       REFLECTOR_VERSION: 10.0.65 # https://artifacthub.io/packages/helm/emberstack/reflector
