@@ -34,6 +34,11 @@ spec:
         secretKeyRef:
           key: BREVOSETTINGS__SENDERNAME
           name: nstuning-api-secrets
+      # Password and invite emails link back here, so it must match this environment.
+      - name: SITE__BASEURL
+        secretKeyRef:
+          key: SITE__BASEURL
+          name: nstuning-api-secrets
     podLabels:
       logformat: serilog
     image:
@@ -96,6 +101,11 @@ spec:
       - name: BREVOSETTINGS__SENDERNAME
         secretKeyRef:
           key: BREVOSETTINGS__SENDERNAME
+          name: nstuning-api-secrets
+      # Password and invite emails link back here, so it must match this environment.
+      - name: SITE__BASEURL
+        secretKeyRef:
+          key: SITE__BASEURL
           name: nstuning-api-secrets
     podLabels:
       logformat: serilog
