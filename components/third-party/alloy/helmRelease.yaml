@@ -61,6 +61,11 @@ spec:
           loki.process "pod_logs" {
             forward_to = [loki.write.default.receiver]
 
+            stage.replace {
+              expression = "(?i)access_token(?:=|%3D)([^&\"\\s\\\\]+)"
+              replace    = "REDACTED"
+            }
+
             stage.match {
               selector = "{logformat=\"serilog\"}"
 
