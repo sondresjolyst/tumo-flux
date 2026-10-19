@@ -58,11 +58,11 @@ spec:
             failureThreshold: 40
           resources:
             requests:
-              memory: "2Gi"
-              cpu: "500m"
+              memory: "1Gi"
+              cpu: "2"
             limits:
-              memory: "2Gi"
-              cpu: "500m"
+              memory: "1Gi"
+              cpu: "2"
       volumes:
         - name: models
           persistentVolumeClaim:
