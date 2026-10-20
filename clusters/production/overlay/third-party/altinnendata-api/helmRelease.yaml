@@ -73,10 +73,10 @@ spec:
     resources:
       requests:
         memory: "1024Mi"
-        cpu: "500m"
+        cpu: "750m"
       limits:
         memory: "1024Mi"
-        cpu: "500m"
+        cpu: "750m"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -152,7 +152,7 @@ spec:
     resources:
       requests:
         memory: "1024Mi"
-        cpu: "500m"
+        cpu: "750m"
       limits:
         memory: "1024Mi"
-        cpu: "500m"
+        cpu: "750m"
