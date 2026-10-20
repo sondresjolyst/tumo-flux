@@ -20,7 +20,7 @@ spec:
       GARGE_APP_VERSION: 0.1.56 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.42 # https://artifacthub.io/packages/helm/garge/garge-operator
       NSTUNING_API_VERSION: 0.1.28 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
-      NSTUNING_APP_VERSION: 0.1.24 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
+      NSTUNING_APP_VERSION: 0.1.25 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       ALTINNENDATA_API_VERSION: 0.1.23 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
       ALTINNENDATA_APP_VERSION: 0.1.25 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       PYTTOGPANNE_API_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
@@ -37,7 +37,7 @@ spec:
       MINECRAFT_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       LOKI_VERSION: 18.17.1 # https://artifacthub.io/packages/helm/grafana-community/loki
       PROMETHEUS_VERSION: 92.10.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
-      ALLOY_VERSION: 1.13.1 # https://artifacthub.io/packages/helm/grafana/alloy
+      ALLOY_VERSION: 1.14.0 # https://artifacthub.io/packages/helm/grafana/alloy
       TRAEFIK_VERSION: 42.0.0 # https://artifacthub.io/packages/helm/traefik/traefik
       CROWDSEC_VERSION: 0.24.2 # https://artifacthub.io/packages/helm/crowdsec/crowdsec
       CROWDSEC_BOUNCER_PLUGIN_VERSION: v1.8.1 # https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin/releases
