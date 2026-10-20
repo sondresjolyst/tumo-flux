@@ -10,6 +10,10 @@ spec:
       version: ${ALTINNENDATA_API_VERSION} # Set in postBuild production
   values:
     env:
+      # Chrome's own sandbox cannot start in this pod. The pod already runs unprivileged
+      # with a read-only root filesystem, no capabilities and the default seccomp profile.
+      - name: PUPPETEER_NO_SANDBOX
+        value: "1"
       - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
         secretKeyRef:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
@@ -68,10 +72,10 @@ spec:
             - altinnendata-api-dev.prod.tumogroup.com
     resources:
       requests:
-        memory: "512Mi"
+        memory: "1024Mi"
         cpu: "500m"
       limits:
-        memory: "512Mi"
+        memory: "1024Mi"
         cpu: "500m"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -86,6 +90,10 @@ spec:
       version: ${ALTINNENDATA_API_VERSION} # Set in postBuild production
   values:
     env:
+      # Chrome's own sandbox cannot start in this pod. The pod already runs unprivileged
+      # with a read-only root filesystem, no capabilities and the default seccomp profile.
+      - name: PUPPETEER_NO_SANDBOX
+        value: "1"
       - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
         secretKeyRef:
           key: CONNECTIONSTRINGS__DEFAULTCONNECTION
@@ -143,8 +151,8 @@ spec:
             - altinnendata-api.prod.tumogroup.com
     resources:
       requests:
-        memory: "512Mi"
+        memory: "1024Mi"
         cpu: "500m"
       limits:
-        memory: "512Mi"
+        memory: "1024Mi"
         cpu: "500m"
