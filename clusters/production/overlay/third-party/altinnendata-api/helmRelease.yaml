@@ -51,6 +51,43 @@ spec:
         secretKeyRef:
           key: SITE__BASEURL
           name: altinnendata-api-secrets
+      - name: VIPPS__CLIENTID
+        secretKeyRef:
+          key: VIPPS__CLIENTID
+          name: altinnendata-api-secrets
+      - name: VIPPS__CLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__CLIENTSECRET
+          name: altinnendata-api-secrets
+      - name: VIPPS__SUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__SUBSCRIPTIONKEY
+          name: altinnendata-api-secrets
+      - name: VIPPS__MERCHANTSERIALNUMBER
+        secretKeyRef:
+          key: VIPPS__MERCHANTSERIALNUMBER
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTCLIENTID
+        secretKeyRef:
+          key: VIPPS__TESTCLIENTID
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTCLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__TESTCLIENTSECRET
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTSUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__TESTSUBSCRIPTIONKEY
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTMERCHANTSERIALNUMBER
+        secretKeyRef:
+          key: VIPPS__TESTMERCHANTSERIALNUMBER
+          name: altinnendata-api-secrets
+      # The API registers its Vipps webhook at this address.
+      - name: API__PUBLICBASEURL
+        secretKeyRef:
+          key: API__PUBLICBASEURL
+          name: altinnendata-api-secrets
     podLabels:
       logformat: serilog
     image:
@@ -130,6 +167,43 @@ spec:
       - name: SITE__BASEURL
         secretKeyRef:
           key: SITE__BASEURL
+          name: altinnendata-api-secrets
+      - name: VIPPS__CLIENTID
+        secretKeyRef:
+          key: VIPPS__CLIENTID
+          name: altinnendata-api-secrets
+      - name: VIPPS__CLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__CLIENTSECRET
+          name: altinnendata-api-secrets
+      - name: VIPPS__SUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__SUBSCRIPTIONKEY
+          name: altinnendata-api-secrets
+      - name: VIPPS__MERCHANTSERIALNUMBER
+        secretKeyRef:
+          key: VIPPS__MERCHANTSERIALNUMBER
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTCLIENTID
+        secretKeyRef:
+          key: VIPPS__TESTCLIENTID
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTCLIENTSECRET
+        secretKeyRef:
+          key: VIPPS__TESTCLIENTSECRET
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTSUBSCRIPTIONKEY
+        secretKeyRef:
+          key: VIPPS__TESTSUBSCRIPTIONKEY
+          name: altinnendata-api-secrets
+      - name: VIPPS__TESTMERCHANTSERIALNUMBER
+        secretKeyRef:
+          key: VIPPS__TESTMERCHANTSERIALNUMBER
+          name: altinnendata-api-secrets
+      # The API registers its Vipps webhook at this address.
+      - name: API__PUBLICBASEURL
+        secretKeyRef:
+          key: API__PUBLICBASEURL
           name: altinnendata-api-secrets
     podLabels:
       logformat: serilog
