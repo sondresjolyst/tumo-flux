@@ -16,7 +16,7 @@ spec:
       DEMOCRATIC_CSI_DRIVER_IMAGE_TAG: v1.9.5 # https://github.com/democratic-csi/democratic-csi/releases
       DESCHEDULER_VERSION: 0.37.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.68 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_API_VERSION: 0.1.69 # https://artifacthub.io/packages/helm/garge/garge-api
       GARGE_APP_VERSION: 0.1.56 # https://artifacthub.io/packages/helm/garge/garge-app
       GARGE_OPERATOR_VERSION: 0.1.42 # https://artifacthub.io/packages/helm/garge/garge-operator
       NSTUNING_API_VERSION: 0.1.30 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
@@ -25,7 +25,7 @@ spec:
       ALTINNENDATA_APP_VERSION: 0.1.27 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       PYTTOGPANNE_API_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
       PYTTOGPANNE_APP_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
-      SJOLYSTINNOVATION_APP_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
+      SJOLYSTINNOVATION_APP_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       GRAFANA_VERSION: 14.0.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.12.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.12.2 # https://artifacthub.io/packages/helm/alekc/home-assistant
@@ -35,10 +35,10 @@ spec:
       METALLB_VERSION: 0.16.1 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.14.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.2.0 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
-      LOKI_VERSION: 18.17.1 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 92.10.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      LOKI_VERSION: 19.0.2 # https://artifacthub.io/packages/helm/grafana-community/loki
+      PROMETHEUS_VERSION: 92.11.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.14.0 # https://artifacthub.io/packages/helm/grafana/alloy
-      TRAEFIK_VERSION: 42.0.0 # https://artifacthub.io/packages/helm/traefik/traefik
+      TRAEFIK_VERSION: 42.1.1 # https://artifacthub.io/packages/helm/traefik/traefik
       CROWDSEC_VERSION: 0.24.2 # https://artifacthub.io/packages/helm/crowdsec/crowdsec
       CROWDSEC_BOUNCER_PLUGIN_VERSION: v1.8.1 # https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin/releases
     substituteFrom:
