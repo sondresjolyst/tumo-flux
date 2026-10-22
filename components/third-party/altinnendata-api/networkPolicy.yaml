@@ -40,3 +40,46 @@ spec:
               - 192.169.0.0/16
               - 100.64.0.0/10
               - 169.254.0.0/16
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: altinnendata-api-egress
+  namespace: altinnendata-prod
+spec:
+  # The API renders PDFs with headless Chromium. Only DNS, Postgres and the public internet are reachable,
+  # so nothing the browser loads can reach other services on the local network or in the cluster.
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: altinnendata-api
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    - to:
+        - ipBlock:
+            cidr: 192.168.1.0/24
+      ports:
+        - protocol: TCP
+          port: 5432
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+              - 192.168.0.0/16
+              - 192.169.0.0/16
+              - 100.64.0.0/10
+              - 169.254.0.0/16
