@@ -88,6 +88,11 @@ spec:
         secretKeyRef:
           key: API__PUBLICBASEURL
           name: altinnendata-api-secrets
+      # Encrypts the Data Protection keys stored in the database.
+      - name: DATAPROTECTION__CERTIFICATE
+        secretKeyRef:
+          key: DATAPROTECTION__CERTIFICATE
+          name: altinnendata-api-secrets
     podLabels:
       logformat: serilog
     image:
@@ -204,6 +209,11 @@ spec:
       - name: API__PUBLICBASEURL
         secretKeyRef:
           key: API__PUBLICBASEURL
+          name: altinnendata-api-secrets
+      # Encrypts the Data Protection keys stored in the database.
+      - name: DATAPROTECTION__CERTIFICATE
+        secretKeyRef:
+          key: DATAPROTECTION__CERTIFICATE
           name: altinnendata-api-secrets
     podLabels:
       logformat: serilog
