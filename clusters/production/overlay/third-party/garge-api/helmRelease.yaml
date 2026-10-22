@@ -62,6 +62,11 @@ spec:
         secretKeyRef:
           key: VIPPS__TESTSUBSCRIPTIONKEY
           name: garge-api-secrets
+      # Encrypts the Data Protection keys stored in the database.
+      - name: DATAPROTECTION__CERTIFICATE
+        secretKeyRef:
+          key: DATAPROTECTION__CERTIFICATE
+          name: garge-api-secrets
       - name: VIPPS__TESTCLIENTID
         secretKeyRef:
           key: VIPPS__TESTCLIENTID
@@ -168,6 +173,11 @@ spec:
       - name: VIPPS__TESTSUBSCRIPTIONKEY
         secretKeyRef:
           key: VIPPS__TESTSUBSCRIPTIONKEY
+          name: garge-api-secrets
+      # Encrypts the Data Protection keys stored in the database.
+      - name: DATAPROTECTION__CERTIFICATE
+        secretKeyRef:
+          key: DATAPROTECTION__CERTIFICATE
           name: garge-api-secrets
       - name: VIPPS__TESTCLIENTID
         secretKeyRef:
