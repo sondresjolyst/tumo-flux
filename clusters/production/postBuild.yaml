@@ -22,7 +22,7 @@ spec:
       NSTUNING_API_VERSION: 0.1.30 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
       NSTUNING_APP_VERSION: 0.1.27 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
       ALTINNENDATA_API_VERSION: 0.1.27 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
-      ALTINNENDATA_APP_VERSION: 0.1.28 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
+      ALTINNENDATA_APP_VERSION: 0.1.30 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       PYTTOGPANNE_API_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
       PYTTOGPANNE_APP_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
       SJOLYSTINNOVATION_APP_VERSION: 0.1.9 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
