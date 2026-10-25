@@ -16,16 +16,16 @@ spec:
       DEMOCRATIC_CSI_DRIVER_IMAGE_TAG: v1.9.5 # https://github.com/democratic-csi/democratic-csi/releases
       DESCHEDULER_VERSION: 0.37.0 # https://artifacthub.io/packages/helm/descheduler/descheduler
       EMQX_VERSION: 5.8.9 # https://artifacthub.io/packages/helm/emqx-operator/emqx
-      GARGE_API_VERSION: 0.1.72 # https://artifacthub.io/packages/helm/garge/garge-api
-      GARGE_APP_VERSION: 0.1.59 # https://artifacthub.io/packages/helm/garge/garge-app
-      GARGE_OPERATOR_VERSION: 0.1.42 # https://artifacthub.io/packages/helm/garge/garge-operator
-      NSTUNING_API_VERSION: 0.1.31 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
-      NSTUNING_APP_VERSION: 0.1.29 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
-      ALTINNENDATA_API_VERSION: 0.1.30 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
-      ALTINNENDATA_APP_VERSION: 0.1.34 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
-      PYTTOGPANNE_API_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
-      PYTTOGPANNE_APP_VERSION: 0.1.10 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
-      SJOLYSTINNOVATION_APP_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
+      GARGE_API_VERSION: 0.1.73 # https://artifacthub.io/packages/helm/garge/garge-api
+      GARGE_APP_VERSION: 0.1.60 # https://artifacthub.io/packages/helm/garge/garge-app
+      GARGE_OPERATOR_VERSION: 0.1.43 # https://artifacthub.io/packages/helm/garge/garge-operator
+      NSTUNING_API_VERSION: 0.1.32 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
+      NSTUNING_APP_VERSION: 0.1.30 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
+      ALTINNENDATA_API_VERSION: 0.1.31 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
+      ALTINNENDATA_APP_VERSION: 0.1.35 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
+      PYTTOGPANNE_API_VERSION: 0.1.13 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
+      PYTTOGPANNE_APP_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
+      SJOLYSTINNOVATION_APP_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       GRAFANA_VERSION: 14.0.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.12.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.12.4 # https://artifacthub.io/packages/helm/alekc/home-assistant
