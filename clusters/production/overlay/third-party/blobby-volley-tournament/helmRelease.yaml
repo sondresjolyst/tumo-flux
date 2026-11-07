@@ -1,0 +1,124 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: blobby-volley-tournament
+  namespace: julalan-dev
+spec:
+  chart:
+    spec:
+      chart: blobby-volley-tournament
+      version: ${BLOBBY_VOLLEY_TOURNAMENT_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: DATABASE_URL
+        secretKeyRef:
+          key: DATABASE_URL
+          name: blobby-volley-tournament-secrets
+      - name: NEXTAUTH_URL
+        secretKeyRef:
+          key: NEXTAUTH_URL
+          name: blobby-volley-tournament-secrets
+      - name: NEXTAUTH_SECRET
+        secretKeyRef:
+          key: NEXTAUTH_SECRET
+          name: blobby-volley-tournament-secrets
+      - name: GITHUB_CLIENT_ID
+        secretKeyRef:
+          key: GITHUB_CLIENT_ID
+          name: blobby-volley-tournament-secrets
+      - name: GITHUB_CLIENT_SECRET
+        secretKeyRef:
+          key: GITHUB_CLIENT_SECRET
+          name: blobby-volley-tournament-secrets
+      - name: ALLOWED_GITHUB_USER_IDS
+        secretKeyRef:
+          key: ALLOWED_GITHUB_USER_IDS
+          name: blobby-volley-tournament-secrets
+      - name: TRUSTED_PROXY_IP_HEADER
+        value: x-real-ip
+    image:
+      tag: "dev"
+      pullPolicy: Always
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: dev.julalan.no
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: blobby-volley-tournament-tls
+          hosts:
+            - dev.julalan.no
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "250m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: blobby-volley-tournament
+  namespace: julalan-prod
+spec:
+  # Unsuspend once the site's first release has pushed the v0.1.0 image.
+  suspend: true
+  chart:
+    spec:
+      chart: blobby-volley-tournament
+      version: ${BLOBBY_VOLLEY_TOURNAMENT_VERSION} # Set in postBuild production
+  values:
+    env:
+      - name: DATABASE_URL
+        secretKeyRef:
+          key: DATABASE_URL
+          name: blobby-volley-tournament-secrets
+      - name: NEXTAUTH_URL
+        secretKeyRef:
+          key: NEXTAUTH_URL
+          name: blobby-volley-tournament-secrets
+      - name: NEXTAUTH_SECRET
+        secretKeyRef:
+          key: NEXTAUTH_SECRET
+          name: blobby-volley-tournament-secrets
+      - name: GITHUB_CLIENT_ID
+        secretKeyRef:
+          key: GITHUB_CLIENT_ID
+          name: blobby-volley-tournament-secrets
+      - name: GITHUB_CLIENT_SECRET
+        secretKeyRef:
+          key: GITHUB_CLIENT_SECRET
+          name: blobby-volley-tournament-secrets
+      - name: ALLOWED_GITHUB_USER_IDS
+        secretKeyRef:
+          key: ALLOWED_GITHUB_USER_IDS
+          name: blobby-volley-tournament-secrets
+      - name: TRUSTED_PROXY_IP_HEADER
+        value: x-real-ip
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: julalan.no
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: blobby-volley-tournament-tls
+          hosts:
+            - julalan.no
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "250m"

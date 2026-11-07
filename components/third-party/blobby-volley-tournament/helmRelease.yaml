@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: blobby-volley-tournament
+  namespace: julalan-dev
+spec:
+  releaseName: blobby-volley-tournament
+  chart:
+    spec:
+      chart: blobby-volley-tournament
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "250m"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: blobby-volley-tournament
+  namespace: julalan-prod
+spec:
+  releaseName: blobby-volley-tournament
+  chart:
+    spec:
+      chart: blobby-volley-tournament
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "250m"
