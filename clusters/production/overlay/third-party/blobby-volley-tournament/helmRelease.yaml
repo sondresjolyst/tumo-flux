@@ -58,7 +58,7 @@ spec:
         memory: "256Mi"
         cpu: "250m"
       limits:
-        memory: "256Mi"
+        memory: "512Mi"
         cpu: "250m"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -67,6 +67,8 @@ metadata:
   name: blobby-volley-tournament
   namespace: julalan-prod
 spec:
+  # Unsuspend after the first release is pinned, when BLOBBY_VOLLEY_TOURNAMENT_VERSION points to the chart with the v0.1.0 image.
+  suspend: true
   chart:
     spec:
       chart: blobby-volley-tournament
@@ -118,5 +120,5 @@ spec:
         memory: "256Mi"
         cpu: "250m"
       limits:
-        memory: "256Mi"
+        memory: "512Mi"
         cpu: "250m"
