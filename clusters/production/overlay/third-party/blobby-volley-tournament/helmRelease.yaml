@@ -36,6 +36,8 @@ spec:
           name: blobby-volley-tournament-secrets
       - name: TRUSTED_PROXY_IP_HEADER
         value: x-real-ip
+      - name: BLOBBY_SERVER_TAG
+        value: "dev"
     image:
       tag: "dev"
       pullPolicy: Always
