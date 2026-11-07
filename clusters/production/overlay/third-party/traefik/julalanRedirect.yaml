@@ -1,0 +1,29 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: julalan-redirect
+  namespace: julalan-prod
+spec:
+  redirectRegex:
+    regex: "^https?://[^/]+/(.*)"
+    replacement: "https://julalan.no/$${1}"
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: julalan-redirect
+  namespace: julalan-prod
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`www.julalan.no`)
+    middlewares:
+    - name: julalan-redirect
+    services:
+    - name: noop@internal
+      kind: TraefikService
+  tls:
+    secretName: julalan-wildcard-tls-cert
