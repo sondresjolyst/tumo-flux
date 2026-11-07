@@ -27,7 +27,7 @@ spec:
       PYTTOGPANNE_APP_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
       SJOLYSTINNOVATION_APP_VERSION: 0.1.13 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       TUMOGROUP_MONITOR_VERSION: 0.1.2 # https://artifacthub.io/packages/helm/tumogroup/tumogroup-monitor
-      BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.0 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
+      BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.2 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
       GRAFANA_VERSION: 14.4.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.14.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.14.0 # https://artifacthub.io/packages/helm/alekc/home-assistant
