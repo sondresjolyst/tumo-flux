@@ -67,7 +67,7 @@ metadata:
   name: blobby-volley-tournament
   namespace: julalan-prod
 spec:
-  # Unsuspend after the first release is pinned, when BLOBBY_VOLLEY_TOURNAMENT_VERSION points to the chart with the v0.1.0 image.
+  # Unsuspend once the site's first release has pushed the v0.1.0 image.
   suspend: true
   chart:
     spec:
