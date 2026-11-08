@@ -21,9 +21,10 @@ spec:
     image:
       tag: "dev"
       pullPolicy: Always
-    # Players join blobby.dev.julalan.no:1235.
-    service:
+    # Players join blobby.dev.julalan.no:1235. The server listens on the same port, and the Service uses it too.
+    server:
       port: 1235
+    service:
       loadBalancerIP: 192.168.1.198
     persistence:
       storageClass: nfs
@@ -50,9 +51,10 @@ spec:
           name: blobby-server-secrets
     image:
       tag: "${BLOBBY_SERVER_IMAGE_TAG}" # Set in postBuild production
-    # Players join blobby.julalan.no:1234.
-    service:
+    # Players join blobby.julalan.no:1234. The server listens on the same port, and the Service uses it too.
+    server:
       port: 1234
+    service:
       loadBalancerIP: 192.168.1.199
     persistence:
       storageClass: nfs
