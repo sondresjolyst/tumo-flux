@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: blobby-server
+  namespace: julalan-dev
+spec:
+  releaseName: blobby-server
+  chart:
+    spec:
+      chart: blobby-server
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "256Mi"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: blobby-server
+  namespace: julalan-prod
+spec:
+  releaseName: blobby-server
+  chart:
+    spec:
+      chart: blobby-server
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  # Suspended until the game has a release image. Set BLOBBY_SERVER_IMAGE_TAG in postBuild first, then remove this.
+  suspend: true
+  install:
+    remediation:
+      retries: 3
+  values:
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "256Mi"

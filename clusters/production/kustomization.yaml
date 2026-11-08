@@ -38,6 +38,7 @@ resources:
   - ../../components/third-party/tumogroup-monitor
   - ../../components/third-party/julalan
   - ../../components/third-party/blobby-volley-tournament
+  - ../../components/third-party/blobby-server
   - ./overlay/third-party/cert-manager
   - ./overlay/third-party/home-assistant
   - ./overlay/third-party/home-assistant-et
@@ -62,6 +63,7 @@ patches:
   - path: ./overlay/third-party/sjolystinnovation-app/helmRelease.yaml
   - path: ./overlay/third-party/tumogroup-monitor/helmRelease.yaml
   - path: ./overlay/third-party/blobby-volley-tournament/helmRelease.yaml
+  - path: ./overlay/third-party/blobby-server/helmRelease.yaml
   - path: ./overlay/third-party/grafana/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant-et/helmRelease.yaml
   - path: ./overlay/third-party/home-assistant/helmRelease.yaml
