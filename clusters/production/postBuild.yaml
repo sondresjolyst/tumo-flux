@@ -27,7 +27,7 @@ spec:
       PYTTOGPANNE_APP_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
       SJOLYSTINNOVATION_APP_VERSION: 0.1.14 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       TUMOGROUP_MONITOR_VERSION: 0.1.2 # https://artifacthub.io/packages/helm/tumogroup/tumogroup-monitor
-      BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.5 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
+      BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
       BLOBBY_SERVER_VERSION: 0.2.0 # https://artifacthub.io/packages/helm/tumogroup/blobby-server
       BLOBBY_SERVER_IMAGE_TAG: unreleased # Game release image for prod, such as 0.1.0@sha256:<digest>. Unsuspend prod blobby-server after.
       GRAFANA_VERSION: 14.4.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
