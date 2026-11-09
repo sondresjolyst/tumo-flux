@@ -24,7 +24,7 @@ spec:
       ALTINNENDATA_API_VERSION: 0.1.34 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
       ALTINNENDATA_APP_VERSION: 0.1.36 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
       PYTTOGPANNE_API_VERSION: 0.1.14 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
-      PYTTOGPANNE_APP_VERSION: 0.1.11 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
+      PYTTOGPANNE_APP_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
       SJOLYSTINNOVATION_APP_VERSION: 0.1.13 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       TUMOGROUP_MONITOR_VERSION: 0.1.2 # https://artifacthub.io/packages/helm/tumogroup/tumogroup-monitor
       BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.5 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
