@@ -14,8 +14,6 @@ spec:
         name: tumogroup
         namespace: flux-system
   interval: 5m
-  # Suspended until the blobby-server-secrets Secret exists. Create it with the blobby-server bootstrap for dev, then remove this.
-  suspend: true
   install:
     remediation:
       retries: 3
