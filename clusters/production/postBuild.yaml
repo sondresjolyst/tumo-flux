@@ -27,22 +27,22 @@ spec:
       PYTTOGPANNE_APP_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
       SJOLYSTINNOVATION_APP_VERSION: 0.1.14 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
       TUMOGROUP_MONITOR_VERSION: 0.1.2 # https://artifacthub.io/packages/helm/tumogroup/tumogroup-monitor
-      BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.6 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
+      BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
       BLOBBY_SERVER_VERSION: 0.2.0 # https://artifacthub.io/packages/helm/tumogroup/blobby-server
       BLOBBY_SERVER_IMAGE_TAG: unreleased # Game release image for prod, such as 0.1.0@sha256:<digest>. Unsuspend prod blobby-server after.
-      GRAFANA_VERSION: 14.4.0 # https://artifacthub.io/packages/helm/grafana-community/grafana
+      GRAFANA_VERSION: 14.4.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      REFLECTOR_VERSION: 10.0.75 # https://artifacthub.io/packages/helm/emberstack/reflector
+      REFLECTOR_VERSION: 10.0.76 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       LIBRETRANSLATE_VERSION: v1.9.6 # https://github.com/LibreTranslate/LibreTranslate/releases
       METALLB_VERSION: 0.16.2 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.14.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.3.1 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
-      LOKI_VERSION: 21.1.1 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 93.1.1 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      LOKI_VERSION: 21.2.1 # https://artifacthub.io/packages/helm/grafana-community/loki
+      PROMETHEUS_VERSION: 93.2.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.15.0 # https://artifacthub.io/packages/helm/grafana/alloy
-      TRAEFIK_VERSION: 42.3.1 # https://artifacthub.io/packages/helm/traefik/traefik
+      TRAEFIK_VERSION: 42.3.2 # https://artifacthub.io/packages/helm/traefik/traefik
       CROWDSEC_VERSION: 0.24.3 # https://artifacthub.io/packages/helm/crowdsec/crowdsec
       CROWDSEC_BOUNCER_PLUGIN_VERSION: v1.8.1 # https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin/releases
     substituteFrom:
