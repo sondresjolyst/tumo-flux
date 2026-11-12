@@ -33,14 +33,14 @@ spec:
       GRAFANA_VERSION: 14.4.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
       HOME_ASSISTANT_VERSION_ET: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
       HOME_ASSISTANT_VERSION: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
-      REFLECTOR_VERSION: 10.0.76 # https://artifacthub.io/packages/helm/emberstack/reflector
+      REFLECTOR_VERSION: 10.0.77 # https://artifacthub.io/packages/helm/emberstack/reflector
       KURED_VERSION: 6.1.0 # https://artifacthub.io/packages/helm/kured/kured
       LIBRETRANSLATE_VERSION: v1.9.6 # https://github.com/LibreTranslate/LibreTranslate/releases
       METALLB_VERSION: 0.16.2 # https://artifacthub.io/packages/helm/metallb/metallb
       METRICS_VERSION: 3.14.0 # https://artifacthub.io/packages/helm/metrics-server/metrics-server
       MINECRAFT_VERSION: 5.3.1 # https://artifacthub.io/packages/helm/minecraft-server-charts/minecraft
       LOKI_VERSION: 21.2.1 # https://artifacthub.io/packages/helm/grafana-community/loki
-      PROMETHEUS_VERSION: 93.2.0 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+      PROMETHEUS_VERSION: 93.2.2 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
       ALLOY_VERSION: 1.15.0 # https://artifacthub.io/packages/helm/grafana/alloy
       TRAEFIK_VERSION: 42.3.2 # https://artifacthub.io/packages/helm/traefik/traefik
       CROWDSEC_VERSION: 0.24.3 # https://artifacthub.io/packages/helm/crowdsec/crowdsec
