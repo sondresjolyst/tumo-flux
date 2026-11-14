@@ -4,9 +4,6 @@ metadata:
   name: kured
   namespace: kube-system
 spec:
-  chart:
-    spec:
-      version: ${KURED_VERSION} # Set in postBuild production
   values:
     extraArgs:
       start-time: 2am

@@ -5,14 +5,6 @@ metadata:
   namespace: democratic-csi
 spec:
   releaseName: democratic-csi
-  chart:
-    spec:
-      chart: democratic-csi
-      version: ${DEMOCRATIC_CSI_VERSION} # Set in postBuild production
-      sourceRef:
-        kind: HelmRepository
-        name: democratic-csi
-        namespace: flux-system
   values:
     controller:
       driver:

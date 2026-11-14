@@ -5,14 +5,10 @@ metadata:
   namespace: metallb-system
 spec:
   releaseName: metallb
-  chart:
-    spec:
-      chart: metallb
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: metallb
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: metallb
+    namespace: flux-system
   interval: 15m
   timeout: 5m
   install:

@@ -5,14 +5,10 @@ metadata:
   namespace: kube-system
 spec:
   releaseName: reflector
-  chart:
-    spec:
-      chart: reflector
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: reflector
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: reflector
+    namespace: flux-system
   interval: 5m
   install:
     remediation:

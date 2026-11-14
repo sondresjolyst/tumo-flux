@@ -4,10 +4,6 @@ metadata:
   name: minecraft
   namespace: minecraft
 spec:
-  chart:
-    spec:
-      chart: minecraft
-      version: ${MINECRAFT_VERSION} # Set in postBuild production
   values:
     resources:
       requests:

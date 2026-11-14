@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+kind: OCIRepository
 metadata:
   name: democratic-csi
   namespace: flux-system
 spec:
-  interval: 10m
-  url: https://democratic-csi.github.io/charts/
+  ref:
+    tag: ${DEMOCRATIC_CSI_VERSION} # Set in postBuild production

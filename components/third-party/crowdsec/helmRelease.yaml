@@ -5,14 +5,10 @@ metadata:
   namespace: crowdsec
 spec:
   releaseName: crowdsec
-  chart:
-    spec:
-      chart: crowdsec
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: crowdsec
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: crowdsec
+    namespace: flux-system
   interval: 5m
   install:
     disableSchemaValidation: true

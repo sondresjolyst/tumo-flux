@@ -5,14 +5,10 @@ metadata:
   namespace: monitor
 spec:
   releaseName: grafana
-  chart:
-    spec:
-      chart: grafana
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: grafana-community
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: grafana
+    namespace: flux-system
   interval: 5m
   install:
     remediation:

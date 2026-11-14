@@ -4,9 +4,6 @@ metadata:
   name: traefik
   namespace: traefik
 spec:
-  chart:
-    spec:
-      version: ${TRAEFIK_VERSION} # Set in postBuild production
   values:
     deployment:
       replicas: 2

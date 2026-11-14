@@ -5,14 +5,10 @@ metadata:
   namespace: cert-manager
 spec:
   releaseName: cert-manager
-  chart:
-    spec:
-      chart: cert-manager
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: cert-manager
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: cert-manager
+    namespace: flux-system
   interval: 5m
   install:
     remediation:

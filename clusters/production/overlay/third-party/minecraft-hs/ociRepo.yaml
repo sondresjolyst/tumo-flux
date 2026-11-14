@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: minecraft
+  namespace: flux-system
+spec:
+  ref:
+    tag: ${MINECRAFT_VERSION} # Set in postBuild production

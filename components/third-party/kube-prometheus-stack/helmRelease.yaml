@@ -5,14 +5,10 @@ metadata:
   namespace: monitor
 spec:
   releaseName: kube-prometheus-stack
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: kube-prometheus-stack
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack
+    namespace: flux-system
   interval: 5m
   install:
     remediation:
