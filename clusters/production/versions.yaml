@@ -25,8 +25,7 @@ data:
   SJOLYSTINNOVATION_APP_VERSION: 0.1.14 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
   TUMOGROUP_MONITOR_VERSION: 0.1.2 # https://artifacthub.io/packages/helm/tumogroup/tumogroup-monitor
   BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
-  BLOBBY_SERVER_VERSION: 0.2.0 # https://artifacthub.io/packages/helm/tumogroup/blobby-server
-  BLOBBY_SERVER_IMAGE_TAG: unreleased # Game release image for prod, such as 0.1.0@sha256:<digest>. Unsuspend prod blobby-server after.
+  BLOBBY_SERVER_VERSION: 0.2.1 # https://artifacthub.io/packages/helm/tumogroup/blobby-server
   GRAFANA_VERSION: 14.4.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
   HOME_ASSISTANT_VERSION_ET: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
   HOME_ASSISTANT_VERSION: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant

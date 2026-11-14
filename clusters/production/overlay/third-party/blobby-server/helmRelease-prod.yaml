@@ -5,8 +5,6 @@ metadata:
   namespace: julalan-prod
 spec:
   values:
-    image:
-      tag: "${BLOBBY_SERVER_IMAGE_TAG}" # Set in postBuild production
     # Players join blobby.julalan.no:1234. The server listens on the same port, and the Service uses it too.
     server:
       port: 1234
