@@ -15,8 +15,14 @@ jobs:
       contents: read
 
     env:
-      KUSTOMIZE_VERSION: v5.8.1 # https://github.com/kubernetes-sigs/kustomize/releases
-      FLUX_VERSION: v2.9.3 # https://github.com/fluxcd/flux2/releases
+      # renovate: datasource=github-releases depName=kubernetes-sigs/kustomize extractVersion=^kustomize/(?<version>v.+)$
+      KUSTOMIZE_VERSION: v5.8.1
+      # renovate: datasource=github-releases depName=fluxcd/flux2
+      FLUX_VERSION: v2.10.0
+      # renovate: datasource=github-releases depName=yannh/kubeconform
+      KUBECONFORM_VERSION: v0.8.0
+      # Server version of the production cluster, for the built-in schemas.
+      KUBERNETES_VERSION: 1.36.1
 
     steps:
       - name: Checkout
@@ -64,14 +70,23 @@ jobs:
             --kustomization-file "${ks}/flux-system.yaml" \
             --dry-run > "${rendered}/flux-system.yaml"
 
-          # Each layer substitutes from the cluster-versions and tumo-flux-config
+          # Each layer is built from its own spec in layers.yaml, so its patches
+          # apply. It substitutes from the cluster-versions and tumo-flux-config
           # ConfigMaps. A dry run cannot read them, so inline their data.
           while read -r name path; do
-            {
-              printf 'apiVersion: kustomize.toolkit.fluxcd.io/v1\nkind: Kustomization\nmetadata:\n  name: %s\n  namespace: flux-system\nspec:\n  path: %s\n  postBuild:\n    substitute:\n' "${name}" "${path}"
-              sed -n '/^data:/,$p' clusters/production/versions.yaml | tail -n +2 | sed 's/^/    /'
-              printf '      clusterName: %s\n      clusterType: %s\n      dnsZone: %s\n' "${CLUSTER_NAME}" "${CLUSTER_TYPE}" "${DNS_ZONE}"
-            } > "${ks}/${name}.yaml"
+            NAME="${name}" yq eval-all '
+              select(.kind == "Kustomization" and .metadata.name == strenv(NAME))
+              | del(.spec.postBuild.substituteFrom)
+              | .spec.postBuild.substitute = (load("clusters/production/versions.yaml").data + {
+                  "clusterName": strenv(CLUSTER_NAME),
+                  "clusterType": strenv(CLUSTER_TYPE),
+                  "dnsZone": strenv(DNS_ZONE)
+                })
+            ' clusters/production/layers.yaml > "${ks}/${name}.yaml"
+            test -s "${ks}/${name}.yaml" || {
+              echo "::error::No Kustomization named ${name} in clusters/production/layers.yaml"
+              exit 1
+            }
             echo "==> ${name}"
             flux build kustomization "${name}" \
               --path "${path}" \
@@ -83,6 +98,27 @@ jobs:
           infrastructure-configs ./clusters/production/infrastructure/configs
           apps ./clusters/production/apps
           EOF
+
+      - name: Validate rendered manifests against schemas
+        run: |
+          set -euo pipefail
+          dir="${RUNNER_TEMP}/kubeconform"
+          mkdir -p "${dir}"
+          base="https://github.com/yannh/kubeconform/releases/download/${KUBECONFORM_VERSION}"
+          curl -fsSL -o "${dir}/kubeconform-linux-amd64.tar.gz" "${base}/kubeconform-linux-amd64.tar.gz"
+          curl -fsSL -o "${dir}/CHECKSUMS" "${base}/CHECKSUMS"
+          (cd "${dir}" && grep ' kubeconform-linux-amd64.tar.gz$' CHECKSUMS | sha256sum --check --strict)
+          tar -xzf "${dir}/kubeconform-linux-amd64.tar.gz" -C "${RUNNER_TEMP}/bin" kubeconform
+          # The flux-system render carries the Flux CRDs, which have no schema.
+          # Any other kind without a schema fails the check.
+          kubeconform \
+            -strict \
+            -summary \
+            -skip CustomResourceDefinition \
+            -kubernetes-version "${KUBERNETES_VERSION}" \
+            -schema-location default \
+            -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+            "${RUNNER_TEMP}"/rendered/*.yaml
 
       - name: Check every version is a string
         run: |
