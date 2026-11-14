@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pyttogpanne-app
+  namespace: pyttogpanne-dev
+spec:
+  values:
+    image:
+      tag: "dev"
+    ingress:
+      hosts:
+        - host: pyttogpanne-dev.prod.tumogroup.com
+          paths:
+            - path: /
+              pathType: Prefix

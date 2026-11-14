@@ -1,0 +1,68 @@
+# The ingress host is written once per namespace, in hosts[0].host of helmRelease-dev.yaml and helmRelease-prod.yaml.
+# These replacements copy it, and the TLS secret name, to every place that has to match.
+- source:
+    kind: HelmRelease
+    name: garge-api
+    namespace: garge-dev
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: garge-api
+        namespace: garge-dev
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0
+    - select:
+        kind: IngressRoute
+        name: garge-api-health
+        namespace: garge-dev
+      fieldPaths:
+        - spec.routes.0.match
+      options:
+        delimiter: "`"
+        index: 1
+- source:
+    kind: HelmRelease
+    name: garge-api
+    namespace: garge-dev
+    fieldPath: spec.values.ingress.tls.0.secretName
+  targets:
+    - select:
+        kind: IngressRoute
+        name: garge-api-health
+        namespace: garge-dev
+      fieldPaths:
+        - spec.tls.secretName
+- source:
+    kind: HelmRelease
+    name: garge-api
+    namespace: garge-prod
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: garge-api
+        namespace: garge-prod
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0
+    - select:
+        kind: IngressRoute
+        name: garge-api-health
+        namespace: garge-prod
+      fieldPaths:
+        - spec.routes.0.match
+      options:
+        delimiter: "`"
+        index: 1
+- source:
+    kind: HelmRelease
+    name: garge-api
+    namespace: garge-prod
+    fieldPath: spec.values.ingress.tls.0.secretName
+  targets:
+    - select:
+        kind: IngressRoute
+        name: garge-api-health
+        namespace: garge-prod
+      fieldPaths:
+        - spec.tls.secretName

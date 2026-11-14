@@ -1,0 +1,13 @@
+# Copies the ingress host to the TLS hosts, so it is written once.
+- source:
+    kind: HelmRelease
+    name: bobby-api
+    namespace: bobby-prod
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: bobby-api
+        namespace: bobby-prod
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0

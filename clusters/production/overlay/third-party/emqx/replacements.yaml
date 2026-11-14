@@ -1,0 +1,25 @@
+# Copies each host to the fields that have to match it, so it is written once.
+- source:
+    kind: HelmRelease
+    name: emqx
+    namespace: emqx
+    fieldPath: spec.values.ingress.dashboard.hosts.0
+  targets:
+    - select:
+        kind: HelmRelease
+        name: emqx
+        namespace: emqx
+      fieldPaths:
+        - spec.values.ingress.dashboard.tls.0.hosts.0
+- source:
+    kind: HelmRelease
+    name: emqx
+    namespace: emqx
+    fieldPath: spec.values.ssl.commonName
+  targets:
+    - select:
+        kind: HelmRelease
+        name: emqx
+        namespace: emqx
+      fieldPaths:
+        - spec.values.ssl.dnsnames.0

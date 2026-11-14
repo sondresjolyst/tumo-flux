@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: blobby-server
+  namespace: julalan-dev
+spec:
+  values:
+    image:
+      tag: "dev"
+      pullPolicy: Always
+    # Players join blobby.dev.julalan.no:1235. The server listens on the same port, and the Service uses it too.
+    server:
+      port: 1235
+    service:
+      loadBalancerIP: 192.168.1.198

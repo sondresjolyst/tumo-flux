@@ -35,7 +35,8 @@ spec:
       tls:
         - secretName: bobby-api-tls
           hosts:
-            - bobby-api.prod.tumogroup.com
+            # Copied from hosts[0].host by replacements.yaml.
+            - set-by-replacement
     resources:
       requests:
         memory: "512Mi"

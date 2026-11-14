@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: garge-app
+  namespace: garge-dev
+spec:
+  values:
+    image:
+      tag: "dev"
+    ingress:
+      hosts:
+        - host: dev.garge.no
+          paths:
+            - path: /
+              pathType: Prefix

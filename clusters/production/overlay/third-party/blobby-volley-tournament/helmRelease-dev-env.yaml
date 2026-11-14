@@ -1,0 +1,6 @@
+# Dev has one more env entry. A JSON patch appends it, because a strategic merge would replace the list from helmRelease.yaml.
+- op: add
+  path: /spec/values/env/-
+  value:
+    name: BLOBBY_SERVER_TAG
+    value: "dev"

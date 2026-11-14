@@ -13,7 +13,8 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - "home-assistant.prod.tumogroup.com"
+        # Copied from rules[0].host by the replacement in kustomization.yaml.
+        - set-by-replacement
       secretName: home-assistant-tls
   rules:
     - host: home-assistant.prod.tumogroup.com

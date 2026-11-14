@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nstuning-app
+  namespace: nstuning-dev
+spec:
+  values:
+    image:
+      tag: "dev"
+    ingress:
+      hosts:
+        - host: dev.nstuning.no
+          paths:
+            - path: /
+              pathType: Prefix

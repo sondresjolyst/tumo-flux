@@ -1,76 +1,8 @@
+# Shared by dev and prod. What differs per namespace is in helmRelease-dev.yaml and helmRelease-prod.yaml.
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: nstuning-api
-  namespace: nstuning-dev
-spec:
-  chart:
-    spec:
-      chart: nstuning-api
-      version: ${NSTUNING_API_VERSION} # Set in postBuild production
-  values:
-    env:
-      - name: CONNECTIONSTRINGS__DEFAULTCONNECTION
-        secretKeyRef:
-          key: CONNECTIONSTRINGS__DEFAULTCONNECTION
-          name: nstuning-api-secrets
-      - name: JWT__KEY
-        secretKeyRef:
-          key: JWT__KEY
-          name: nstuning-api-secrets
-      - name: JWT__ISSUER
-        secretKeyRef:
-          key: JWT__ISSUER
-          name: nstuning-api-secrets
-      - name: BREVOSETTINGS__APIKEY
-        secretKeyRef:
-          key: BREVOSETTINGS__APIKEY
-          name: nstuning-api-secrets
-      - name: BREVOSETTINGS__SENDEREMAIL
-        secretKeyRef:
-          key: BREVOSETTINGS__SENDEREMAIL
-          name: nstuning-api-secrets
-      - name: BREVOSETTINGS__SENDERNAME
-        secretKeyRef:
-          key: BREVOSETTINGS__SENDERNAME
-          name: nstuning-api-secrets
-      # Password and invite emails link back here, so it must match this environment.
-      - name: SITE__BASEURL
-        secretKeyRef:
-          key: SITE__BASEURL
-          name: nstuning-api-secrets
-    podLabels:
-      logformat: serilog
-    image:
-      tag: "dev"
-      pullPolicy: Always
-    ingress:
-      enabled: true
-      className: traefik
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      hosts:
-        - host: nstuning-api-dev.prod.tumogroup.com
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - secretName: nstuning-api-tls
-          hosts:
-            - nstuning-api-dev.prod.tumogroup.com
-    resources:
-      requests:
-        memory: "512Mi"
-        cpu: "500m"
-      limits:
-        memory: "512Mi"
-        cpu: "500m"
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: nstuning-api
-  namespace: nstuning-prod
 spec:
   chart:
     spec:
@@ -116,15 +48,11 @@ spec:
       className: traefik
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      hosts:
-        - host: nstuning-api.prod.tumogroup.com
-          paths:
-            - path: /
-              pathType: Prefix
       tls:
         - secretName: nstuning-api-tls
           hosts:
-            - nstuning-api.prod.tumogroup.com
+            # Copied from hosts[0].host in each namespace by replacements.yaml.
+            - set-by-replacement
     resources:
       requests:
         memory: "512Mi"

@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pyttogpanne-api
+spec:
+  releaseName: pyttogpanne-api
+  chart:
+    spec:
+      chart: pyttogpanne-api
+      version: xx # Set by flux patch
+      sourceRef:
+        kind: HelmRepository
+        name: tumogroup
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3

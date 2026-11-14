@@ -1,0 +1,35 @@
+# The ingress host is written once per namespace, in hosts[0].host of helmRelease-dev.yaml and helmRelease-prod.yaml.
+# These replacements copy it to every place that has to match.
+- source:
+    kind: HelmRelease
+    name: sjolystinnovation-app
+    namespace: sjolystinnovation-dev
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: sjolystinnovation-app
+        namespace: sjolystinnovation-dev
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0
+- source:
+    kind: HelmRelease
+    name: sjolystinnovation-app
+    namespace: sjolystinnovation-prod
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: sjolystinnovation-app
+        namespace: sjolystinnovation-prod
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0
+    - select:
+        kind: Middleware
+        name: sjolystinnovation-redirect
+        namespace: sjolystinnovation-prod
+      fieldPaths:
+        - spec.redirectRegex.replacement
+      options:
+        delimiter: "/"
+        index: 2

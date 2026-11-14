@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sjolystinnovation-app
+  namespace: sjolystinnovation-prod
+spec:
+  values:
+    replicaCount: 2
+    ingress:
+      hosts:
+        - host: www.sjolystinnovation.no
+          paths:
+            - path: /
+              pathType: Prefix

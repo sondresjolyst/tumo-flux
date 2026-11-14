@@ -138,6 +138,15 @@ jobs:
             exit 1
           fi
 
+      - name: Check every replacement was applied
+        run: |
+          # A replacement whose target no longer matches is skipped without an error.
+          if grep -n "set-by-replacement" "${RUNNER_TEMP}"/rendered/*.yaml
+          then
+            echo "::error::A placeholder reached the cluster. Fix the replacements that should fill it."
+            exit 1
+          fi
+
       - name: Check every HelmRelease namespace has Discord alerts
         run: |
           rendered=$(awk '/^kind: HelmRelease$/{hr=1} /^---$/{hr=0} hr && /^  namespace: /{print $2}' "${RUNNER_TEMP}"/rendered/*.yaml | sort -u)

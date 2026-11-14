@@ -1,0 +1,53 @@
+# The ingress host is written once per namespace, in hosts[0].host of helmRelease-dev.yaml and helmRelease-prod.yaml.
+# These replacements copy it to every place that has to match.
+- source:
+    kind: HelmRelease
+    name: blobby-volley-tournament
+    namespace: julalan-dev
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: blobby-volley-tournament
+        namespace: julalan-dev
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0
+    - select:
+        kind: HelmRelease
+        name: blobby-server
+        namespace: julalan-dev
+      fieldPaths:
+        - spec.values.env.[name=BLOBBY_SITE_URL].value
+      options:
+        delimiter: "/"
+        index: 2
+- source:
+    kind: HelmRelease
+    name: blobby-volley-tournament
+    namespace: julalan-prod
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: blobby-volley-tournament
+        namespace: julalan-prod
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0
+    - select:
+        kind: Middleware
+        name: julalan-redirect
+        namespace: julalan-prod
+      fieldPaths:
+        - spec.redirectRegex.replacement
+      options:
+        delimiter: "/"
+        index: 2
+    - select:
+        kind: HelmRelease
+        name: blobby-server
+        namespace: julalan-prod
+      fieldPaths:
+        - spec.values.env.[name=BLOBBY_SITE_URL].value
+      options:
+        delimiter: "/"
+        index: 2
