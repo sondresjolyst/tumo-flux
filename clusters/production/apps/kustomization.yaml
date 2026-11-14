@@ -32,20 +32,85 @@ patches:
   - path: ../overlay/third-party/tumogroup-monitor/helmRelease.yaml
   - path: ../overlay/third-party/bobby-api/helmRelease.yaml
   - path: ../overlay/third-party/emqx/helmRelease.yaml
+  # Apps with a dev and a prod release get one patch for both, then one per namespace with what differs.
   - path: ../overlay/third-party/garge-api/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: garge-api
+  - path: ../overlay/third-party/garge-api/helmRelease-dev.yaml
+  - path: ../overlay/third-party/garge-api/helmRelease-prod.yaml
   - path: ../overlay/third-party/garge-app/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: garge-app
+  - path: ../overlay/third-party/garge-app/helmRelease-dev.yaml
+  - path: ../overlay/third-party/garge-app/helmRelease-prod.yaml
   - path: ../overlay/third-party/garge-operator/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: garge-operator
+  - path: ../overlay/third-party/garge-operator/helmRelease-dev.yaml
   - path: ../overlay/third-party/nstuning-api/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: nstuning-api
+  - path: ../overlay/third-party/nstuning-api/helmRelease-dev.yaml
+  - path: ../overlay/third-party/nstuning-api/helmRelease-prod.yaml
   - path: ../overlay/third-party/nstuning-app/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: nstuning-app
+  - path: ../overlay/third-party/nstuning-app/helmRelease-dev.yaml
+  - path: ../overlay/third-party/nstuning-app/helmRelease-prod.yaml
   - path: ../overlay/third-party/altinnendata-api/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: altinnendata-api
+  - path: ../overlay/third-party/altinnendata-api/helmRelease-dev.yaml
+  - path: ../overlay/third-party/altinnendata-api/helmRelease-prod.yaml
   - path: ../overlay/third-party/altinnendata-app/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: altinnendata-app
+  - path: ../overlay/third-party/altinnendata-app/helmRelease-dev.yaml
+  - path: ../overlay/third-party/altinnendata-app/helmRelease-prod.yaml
   - path: ../overlay/third-party/pyttogpanne-api/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: pyttogpanne-api
+  - path: ../overlay/third-party/pyttogpanne-api/helmRelease-dev.yaml
+  - path: ../overlay/third-party/pyttogpanne-api/helmRelease-prod.yaml
   - path: ../overlay/third-party/pyttogpanne-app/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: pyttogpanne-app
+  - path: ../overlay/third-party/pyttogpanne-app/helmRelease-dev.yaml
+  - path: ../overlay/third-party/pyttogpanne-app/helmRelease-prod.yaml
   - path: ../overlay/third-party/sjolystinnovation-app/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: sjolystinnovation-app
+  - path: ../overlay/third-party/sjolystinnovation-app/helmRelease-dev.yaml
+  - path: ../overlay/third-party/sjolystinnovation-app/helmRelease-prod.yaml
   - path: ../overlay/third-party/home-assistant/helmRelease.yaml
   - path: ../overlay/third-party/minecraft-hs/helmRelease.yaml
   - path: ../overlay/third-party/blobby-volley-tournament/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: blobby-volley-tournament
+  - path: ../overlay/third-party/blobby-volley-tournament/helmRelease-dev.yaml
+  - path: ../overlay/third-party/blobby-volley-tournament/helmRelease-dev-env.yaml
+    target:
+      kind: HelmRelease
+      name: blobby-volley-tournament
+      namespace: julalan-dev
+  - path: ../overlay/third-party/blobby-volley-tournament/helmRelease-prod.yaml
   - path: ../overlay/third-party/blobby-server/helmRelease.yaml
+    target:
+      kind: HelmRelease
+      name: blobby-server
+  - path: ../overlay/third-party/blobby-server/helmRelease-dev.yaml
+  - path: ../overlay/third-party/blobby-server/helmRelease-prod.yaml
   # Flux must never delete namespaces or volumes, even when they leave the repo.
   - target:
       kind: Namespace

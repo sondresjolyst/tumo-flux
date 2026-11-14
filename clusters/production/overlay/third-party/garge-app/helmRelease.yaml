@@ -1,57 +1,8 @@
+# Shared by dev and prod. What differs per namespace is in helmRelease-dev.yaml and helmRelease-prod.yaml.
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: garge-app
-  namespace: garge-dev
-spec:
-  chart:
-    spec:
-      chart: garge-app
-      version: ${GARGE_APP_VERSION} # Set in postBuild production
-  values:
-    env:
-      - name: NEXTAUTH_SECRET
-        secretKeyRef:
-          key: NEXTAUTH_SECRET
-          name: garge-app-secrets
-      - name: NEXTAUTH_URL
-        secretKeyRef:
-          key: NEXTAUTH_URL
-          name: garge-app-secrets
-      - name: GARGE_API_JWT_SECRET
-        secretKeyRef:
-          name: garge-app-secrets
-          key: GARGE_API_JWT_SECRET
-    image:
-      tag: "dev"
-      pullPolicy: Always
-    ingress:
-      enabled: true
-      className: traefik
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      hosts:
-        - host: dev.garge.no
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - secretName: garge-app-tls
-          hosts:
-            - dev.garge.no
-    resources:
-      requests:
-        memory: "2048Mi"
-        cpu: "750m"
-      limits:
-        memory: "2048Mi"
-        cpu: "750m"
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: garge-app
-  namespace: garge-prod
 spec:
   chart:
     spec:
@@ -78,15 +29,6 @@ spec:
       className: traefik
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      hosts:
-        - host: www.garge.no
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - secretName: garge-app-tls
-          hosts:
-            - www.garge.no
     resources:
       requests:
         memory: "2048Mi"

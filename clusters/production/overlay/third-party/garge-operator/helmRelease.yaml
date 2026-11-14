@@ -1,71 +1,8 @@
+# Shared by dev and prod. What differs per namespace is in helmRelease-dev.yaml.
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: garge-operator
-  namespace: garge-dev
-spec:
-  chart:
-    spec:
-      chart: garge-operator
-      version: ${GARGE_OPERATOR_VERSION} # Set in postBuild production
-  values:
-    # Stopped: there is no dev EMQX, so this only produced failed MQTT logins.
-    replicaCount: 0
-    env:
-      - name: API__BASEURL
-        secretKeyRef:
-          key: API__BASEURL
-          name: garge-operator-secrets
-      - name: MQTT__BROKER
-        secretKeyRef:
-          key: MQTT__BROKER
-          name: garge-operator-secrets
-      - name: MQTT__PORT
-        secretKeyRef:
-          key: MQTT__PORT
-          name: garge-operator-secrets
-      - name: MQTT__USERNAME
-        secretKeyRef:
-          key: MQTT__USERNAME
-          name: garge-operator-secrets
-      - name: MQTT__PASSWORD
-        secretKeyRef:
-          key: MQTT__PASSWORD
-          name: garge-operator-secrets
-      - name: API__EMAIL
-        secretKeyRef:
-          key: API__EMAIL
-          name: garge-operator-secrets
-      - name: API__PASSWORD
-        secretKeyRef:
-          key: API__PASSWORD
-          name: garge-operator-secrets
-      - name: WEBHOOK__URL
-        secretKeyRef:
-          key: WEBHOOK__URL
-          name: garge-operator-secrets
-      - name: WEBHOOK__SECRET
-        secretKeyRef:
-          key: WEBHOOK__SECRET
-          name: garge-operator-secrets
-    podLabels:
-      logformat: serilog
-    image:
-      tag: "dev"
-      pullPolicy: Always
-    resources:
-      requests:
-        memory: "256Mi"
-        cpu: "500m"
-      limits:
-        memory: "256Mi"
-        cpu: "500m"
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: garge-operator
-  namespace: garge-prod
 spec:
   chart:
     spec:

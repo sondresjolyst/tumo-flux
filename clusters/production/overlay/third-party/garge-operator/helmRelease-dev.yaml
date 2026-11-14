@@ -1,0 +1,11 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: garge-operator
+  namespace: garge-dev
+spec:
+  values:
+    # Stopped: there is no dev EMQX, so this only produced failed MQTT logins.
+    replicaCount: 0
+    image:
+      tag: "dev"
