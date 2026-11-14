@@ -41,6 +41,11 @@ spec:
       className: traefik
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      tls:
+        - secretName: blobby-volley-tournament-tls
+          hosts:
+            # Copied from hosts[0].host in each namespace by replacements.yaml.
+            - set-by-replacement
     resources:
       requests:
         memory: "256Mi"

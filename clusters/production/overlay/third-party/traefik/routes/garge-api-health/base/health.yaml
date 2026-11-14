@@ -1,8 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: pyttogpanne-api-health
-  namespace: pyttogpanne-prod
+  name: garge-api-health
 spec:
   # The probes reach the pod directly, so nothing needs to read /health through the ingress.
   ipAllowList:
@@ -12,20 +11,21 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: pyttogpanne-api-health
-  namespace: pyttogpanne-prod
+  name: garge-api-health
 spec:
   entryPoints:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`pyttogpanne-api.prod.tumogroup.com`) && PathPrefix(`/health`)
+    # The host comes from the app's ingress host, by replacements.yaml in the app's overlay folder.
+    match: Host(`set-by-replacement`) && PathPrefix(`/health`)
     # Above the router the chart's Ingress creates for the same host at /.
     priority: 100
     middlewares:
-    - name: pyttogpanne-api-health
+    - name: garge-api-health
     services:
-    - name: pyttogpanne-api
+    - name: garge-api
       port: 80
   tls:
-    secretName: pyttogpanne-api-tls
+    # The ingress TLS secret, copied by the same replacements.yaml.
+    secretName: set-by-replacement

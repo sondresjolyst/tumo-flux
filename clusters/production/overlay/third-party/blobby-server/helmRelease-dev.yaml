@@ -5,15 +5,6 @@ metadata:
   namespace: julalan-dev
 spec:
   values:
-    env:
-      - name: BLOBBY_TOURNAMENT
-        value: "1"
-      - name: BLOBBY_SITE_URL
-        value: https://dev.julalan.no
-      - name: BLOBBY_SITE_TOKEN
-        secretKeyRef:
-          key: BLOBBY_SITE_TOKEN
-          name: blobby-server-secrets
     image:
       tag: "dev"
       pullPolicy: Always

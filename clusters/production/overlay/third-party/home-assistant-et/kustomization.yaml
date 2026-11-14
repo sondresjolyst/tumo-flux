@@ -5,3 +5,17 @@ resources:
 - configMap.yaml
 - namespace.yaml
 - helmRelease.yaml
+# The host is written once, in rules[0].host, and copied to the TLS hosts.
+replacements:
+  - source:
+      kind: Ingress
+      name: home-assistant-et
+      namespace: home-assistant-et
+      fieldPath: spec.rules.0.host
+    targets:
+      - select:
+          kind: Ingress
+          name: home-assistant-et
+          namespace: home-assistant-et
+        fieldPaths:
+          - spec.tls.0.hosts.0

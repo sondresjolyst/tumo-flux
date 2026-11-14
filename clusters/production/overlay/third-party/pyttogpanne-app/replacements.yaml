@@ -1,0 +1,26 @@
+# The ingress host is written once per namespace, in hosts[0].host of helmRelease-dev.yaml and helmRelease-prod.yaml.
+# These replacements copy it to every place that has to match.
+- source:
+    kind: HelmRelease
+    name: pyttogpanne-app
+    namespace: pyttogpanne-dev
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: pyttogpanne-app
+        namespace: pyttogpanne-dev
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0
+- source:
+    kind: HelmRelease
+    name: pyttogpanne-app
+    namespace: pyttogpanne-prod
+    fieldPath: spec.values.ingress.hosts.0.host
+  targets:
+    - select:
+        kind: HelmRelease
+        name: pyttogpanne-app
+        namespace: pyttogpanne-prod
+      fieldPaths:
+        - spec.values.ingress.tls.0.hosts.0

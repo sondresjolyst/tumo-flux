@@ -40,12 +40,14 @@ spec:
         tls:
           - secretName: emqx-dashboard-tls
             hosts:
-              - emqx-dashboard.prod.tumogroup.com
+              # Copied from hosts[0] by replacements.yaml.
+              - set-by-replacement
     ssl:
       enabled: true
       commonName: emqx-mqtt.prod.tumogroup.com
       dnsnames:
-        - emqx-mqtt.prod.tumogroup.com
+        # Copied from commonName by replacements.yaml.
+        - set-by-replacement
       issuer:
         name: letsencrypt-prod
         kind: ClusterIssuer

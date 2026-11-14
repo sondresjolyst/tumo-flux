@@ -3,3 +3,17 @@ kind: Kustomization
 resources:
 - ingress.yaml
 - configMap.yaml
+# The host is written once, in rules[0].host, and copied to the TLS hosts.
+replacements:
+  - source:
+      kind: Ingress
+      name: home-assistant
+      namespace: home-assistant
+      fieldPath: spec.rules.0.host
+    targets:
+      - select:
+          kind: Ingress
+          name: home-assistant
+          namespace: home-assistant
+        fieldPaths:
+          - spec.tls.0.hosts.0

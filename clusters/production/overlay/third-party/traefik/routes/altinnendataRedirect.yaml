@@ -6,7 +6,8 @@ metadata:
 spec:
   redirectRegex:
     regex: "^https?://[^/]+/(.*)"
-    replacement: "https://www.altinnendata.no/$${1}"
+    # The host is copied from the app's prod ingress host by its replacements.yaml.
+    replacement: "https://set-by-replacement/$${1}"
     permanent: true
 ---
 apiVersion: traefik.io/v1alpha1

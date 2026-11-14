@@ -5,15 +5,6 @@ metadata:
   namespace: julalan-prod
 spec:
   values:
-    env:
-      - name: BLOBBY_TOURNAMENT
-        value: "1"
-      - name: BLOBBY_SITE_URL
-        value: https://julalan.no
-      - name: BLOBBY_SITE_TOKEN
-        secretKeyRef:
-          key: BLOBBY_SITE_TOKEN
-          name: blobby-server-secrets
     image:
       tag: "${BLOBBY_SERVER_IMAGE_TAG}" # Set in postBuild production
     # Players join blobby.julalan.no:1234. The server listens on the same port, and the Service uses it too.

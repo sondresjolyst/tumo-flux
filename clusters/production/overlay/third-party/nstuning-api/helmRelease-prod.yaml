@@ -11,7 +11,3 @@ spec:
           paths:
             - path: /
               pathType: Prefix
-      tls:
-        - secretName: nstuning-api-tls
-          hosts:
-            - nstuning-api.prod.tumogroup.com

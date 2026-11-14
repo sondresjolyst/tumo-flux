@@ -9,5 +9,15 @@ spec:
       chart: blobby-server
       version: ${BLOBBY_SERVER_VERSION} # Set in postBuild production
   values:
+    env:
+      - name: BLOBBY_TOURNAMENT
+        value: "1"
+      - name: BLOBBY_SITE_URL
+        # The tournament site's ingress host, copied by blobby-volley-tournament/replacements.yaml.
+        value: https://set-by-replacement
+      - name: BLOBBY_SITE_TOKEN
+        secretKeyRef:
+          key: BLOBBY_SITE_TOKEN
+          name: blobby-server-secrets
     persistence:
       storageClass: nfs

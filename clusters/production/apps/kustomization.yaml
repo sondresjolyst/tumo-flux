@@ -139,3 +139,17 @@ patches:
         name: prune-disabled
         annotations:
           kustomize.toolkit.fluxcd.io/prune: disabled
+# Values that have to match are written once and copied by these, after the patches above.
+replacements:
+  - path: ../overlay/third-party/altinnendata-api/replacements.yaml
+  - path: ../overlay/third-party/altinnendata-app/replacements.yaml
+  - path: ../overlay/third-party/blobby-volley-tournament/replacements.yaml
+  - path: ../overlay/third-party/bobby-api/replacements.yaml
+  - path: ../overlay/third-party/emqx/replacements.yaml
+  - path: ../overlay/third-party/garge-api/replacements.yaml
+  - path: ../overlay/third-party/garge-app/replacements.yaml
+  - path: ../overlay/third-party/nstuning-api/replacements.yaml
+  - path: ../overlay/third-party/nstuning-app/replacements.yaml
+  - path: ../overlay/third-party/pyttogpanne-api/replacements.yaml
+  - path: ../overlay/third-party/pyttogpanne-app/replacements.yaml
+  - path: ../overlay/third-party/sjolystinnovation-app/replacements.yaml

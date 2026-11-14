@@ -11,7 +11,3 @@ spec:
           paths:
             - path: /
               pathType: Prefix
-      tls:
-        - secretName: blobby-volley-tournament-tls
-          hosts:
-            - julalan.no

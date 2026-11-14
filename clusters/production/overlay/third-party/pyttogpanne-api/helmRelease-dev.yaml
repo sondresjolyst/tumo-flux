@@ -13,7 +13,3 @@ spec:
           paths:
             - path: /
               pathType: Prefix
-      tls:
-        - secretName: pyttogpanne-api-tls
-          hosts:
-            - pyttogpanne-api-dev.prod.tumogroup.com
