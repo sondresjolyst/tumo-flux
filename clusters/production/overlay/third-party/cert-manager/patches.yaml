@@ -4,36 +4,10 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
-  patches:
-    - target:
-        kind: OCIRepository
-        name: cert-manager
-        namespace: flux-system
-      patch: |-
-        apiVersion: source.toolkit.fluxcd.io/v1
-        kind: OCIRepository
-        metadata:
-          name: cert-manager
-          namespace: flux-system
-        spec:
-          ref:
-            tag: v${CERT_MANAGER_VERSION} # Set in postBuild production. The OCI tag has a v prefix.
-    - target:
-        kind: HelmRelease
-        name: cert-manager
-        namespace: cert-manager
-      patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: cert-manager
-          namespace: cert-manager
-        spec:
-          values:
-            resources:
-              limits:
-                cpu: 100m
-                memory: 512Mi
-              requests:
-                cpu: 50m
-                memory: 128Mi
+  path: ./clusters/production/overlay/third-party/cert-manager/chart
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-versions
+      - kind: ConfigMap
+        name: tumo-flux-config
