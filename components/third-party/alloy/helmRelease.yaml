@@ -5,14 +5,10 @@ metadata:
   namespace: monitor
 spec:
   releaseName: alloy
-  chart:
-    spec:
-      chart: alloy
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: grafana
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: alloy
+    namespace: flux-system
   interval: 5m
   install:
     remediation:

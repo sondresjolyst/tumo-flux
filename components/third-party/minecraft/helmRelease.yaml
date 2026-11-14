@@ -5,14 +5,10 @@ metadata:
   namespace: minecraft
 spec:
   releaseName: minecraft
-  chart:
-    spec:
-      chart: minecraft
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: minecraft-server-charts
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: minecraft
+    namespace: flux-system
   interval: 5m
   # Server is intentionally stopped; suspended so Flux stops retrying the upgrade.
   suspend: true

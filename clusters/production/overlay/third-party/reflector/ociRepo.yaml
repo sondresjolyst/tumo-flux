@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+kind: OCIRepository
 metadata:
   name: reflector
   namespace: flux-system
 spec:
-  interval: 10m
-  url: https://emberstack.github.io/helm-charts
+  ref:
+    tag: ${REFLECTOR_VERSION} # Set in postBuild production

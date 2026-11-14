@@ -4,14 +4,10 @@ metadata:
   name: traefik
   namespace: traefik
 spec:
-  chart:
-    spec:
-      chart: traefik
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: traefik
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: traefik
+    namespace: flux-system
   interval: 1m
   install:
     crds: Create

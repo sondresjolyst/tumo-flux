@@ -94,6 +94,7 @@ patches:
   - path: ../overlay/third-party/sjolystinnovation-app/helmRelease-prod.yaml
   - path: ../overlay/third-party/home-assistant/helmRelease.yaml
   - path: ../overlay/third-party/minecraft-hs/helmRelease.yaml
+  - path: ../overlay/third-party/minecraft-hs/ociRepo.yaml
   - path: ../overlay/third-party/blobby-volley-tournament/helmRelease.yaml
     target:
       kind: HelmRelease

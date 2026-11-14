@@ -5,14 +5,10 @@ metadata:
   namespace: democratic-csi
 spec:
   releaseName: democratic-csi
-  chart:
-    spec:
-      chart: democratic-csi
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: democratic-csi
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: democratic-csi
+    namespace: flux-system
   values:
     resources:
       requests:

@@ -4,9 +4,6 @@ metadata:
   name: grafana
   namespace: monitor
 spec:
-  chart:
-    spec:
-      version: ${GRAFANA_VERSION} # Set in postBuild production
   values:
     ingress:
       ingressClassName: traefik

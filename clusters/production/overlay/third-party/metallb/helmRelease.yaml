@@ -5,14 +5,6 @@ metadata:
   namespace: metallb-system
 spec:
   releaseName: metallb
-  chart:
-    spec:
-      chart: metallb
-      version: ${METALLB_VERSION} # Set in postBuild production
-      sourceRef:
-        kind: HelmRepository
-        name: metallb
-        namespace: flux-system
   interval: 15m
   timeout: 5m
   # valuesFrom:

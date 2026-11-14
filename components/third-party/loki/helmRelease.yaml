@@ -5,14 +5,10 @@ metadata:
   namespace: monitor
 spec:
   releaseName: loki
-  chart:
-    spec:
-      chart: loki
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: grafana-community
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: loki
+    namespace: flux-system
   interval: 5m
   install:
     remediation:

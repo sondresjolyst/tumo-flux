@@ -7,14 +7,10 @@ metadata:
   namespace: kube-system
 spec:
   releaseName: kured
-  chart:
-    spec:
-      chart: kured
-      version: xx # Set by flux patch
-      sourceRef:
-        kind: HelmRepository
-        name: kured
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: kured
+    namespace: flux-system
   interval: 5m
   install:
     remediation:

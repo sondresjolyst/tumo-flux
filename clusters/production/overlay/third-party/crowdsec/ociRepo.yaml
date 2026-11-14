@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+kind: OCIRepository
 metadata:
   name: crowdsec
   namespace: flux-system
 spec:
-  interval: 10m
-  url: https://crowdsecurity.github.io/helm-charts
+  ref:
+    tag: ${CROWDSEC_VERSION} # Set in postBuild production

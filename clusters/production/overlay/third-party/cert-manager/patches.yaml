@@ -6,6 +6,19 @@ metadata:
 spec:
   patches:
     - target:
+        kind: OCIRepository
+        name: cert-manager
+        namespace: flux-system
+      patch: |-
+        apiVersion: source.toolkit.fluxcd.io/v1
+        kind: OCIRepository
+        metadata:
+          name: cert-manager
+          namespace: flux-system
+        spec:
+          ref:
+            tag: v${CERT_MANAGER_VERSION} # Set in postBuild production. The OCI tag has a v prefix.
+    - target:
         kind: HelmRelease
         name: cert-manager
         namespace: cert-manager
@@ -16,9 +29,6 @@ spec:
           name: cert-manager
           namespace: cert-manager
         spec:
-          chart:
-            spec:
-              version: ${CERT_MANAGER_VERSION} # Set in postBuild production
           values:
             resources:
               limits:

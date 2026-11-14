@@ -99,6 +99,22 @@ jobs:
           apps ./clusters/production/apps
           EOF
 
+          # The cert-manager chart is applied by a child Kustomization, which the
+          # infrastructure-controllers layer patches with the chart version.
+          # Build it from its rendered spec, so those patches are checked too.
+          yq eval '
+            select(.apiVersion == "kustomize.toolkit.fluxcd.io/v1" and .kind == "Kustomization" and .metadata.name == "cert-manager")
+          ' "${rendered}/infrastructure-controllers.yaml" > "${ks}/cert-manager.yaml"
+          test -s "${ks}/cert-manager.yaml" || {
+            echo "::error::No cert-manager Kustomization in the infrastructure-controllers render"
+            exit 1
+          }
+          echo "==> cert-manager"
+          flux build kustomization cert-manager \
+            --path "$(yq eval '.spec.path' "${ks}/cert-manager.yaml")" \
+            --kustomization-file "${ks}/cert-manager.yaml" \
+            --dry-run > "${rendered}/cert-manager.yaml"
+
       - name: Validate rendered manifests against schemas
         run: |
           set -euo pipefail
@@ -133,8 +149,19 @@ jobs:
 
       - name: Check every chart version was patched
         run: |
-          if grep -n "version: xx" "${RUNNER_TEMP}"/rendered/*.yaml; then
-            echo "::error::HelmRelease reached the cluster without a patched chart version"
+          set -euo pipefail
+          if grep -nE "(version|tag): xx" "${RUNNER_TEMP}"/rendered/*.yaml; then
+            echo "::error::A chart source reached the cluster without a patched version"
+            exit 1
+          fi
+          # Every OCIRepository must point at one chart version.
+          bad=$(yq eval-all '
+            select(.kind == "OCIRepository")
+            | select((.spec.ref.tag // "") | test("^v?[0-9]+[.][0-9]+[.][0-9]+([-+][0-9A-Za-z.-]+)?$") | not)
+            | .metadata.name
+          ' "${RUNNER_TEMP}"/rendered/*.yaml)
+          if [ -n "${bad}" ]; then
+            echo "::error::OCIRepository without a chart version tag: ${bad}"
             exit 1
           fi
 
