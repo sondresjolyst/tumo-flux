@@ -1,0 +1,58 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../../components/third-party/cert-manager
+  - ../../../../components/third-party/crowdsec
+  - ../../../../components/third-party/democratic-csi
+  - ../../../../components/third-party/descheduler
+  - ../../../../components/third-party/grafana
+  - ../../../../components/third-party/kube-prometheus-stack
+  - ../../../../components/third-party/kured
+  - ../../../../components/third-party/loki
+  - ../../../../components/third-party/alloy
+  - ../../../../components/third-party/metallb
+  - ../../../../components/third-party/metrics-server
+  - ../../../../components/third-party/reflector
+  - ../../../../components/third-party/traefik
+patches:
+  - path: ../../overlay/third-party/cert-manager/patches.yaml
+  - path: ../../overlay/third-party/crowdsec/helmRelease.yaml
+  - path: ../../overlay/third-party/democratic-csi/helmRelease.yaml
+  - path: ../../overlay/third-party/descheduler/helmRelease.yaml
+  - path: ../../overlay/third-party/grafana/helmRelease.yaml
+  - path: ../../overlay/third-party/kube-prometheus-stack/helmRelease.yaml
+  - path: ../../overlay/third-party/kured/helmRelease.yaml
+  - path: ../../overlay/third-party/loki/helmRelease.yaml
+  - path: ../../overlay/third-party/alloy/helmRelease.yaml
+  - path: ../../overlay/third-party/metallb/helmRelease.yaml
+  - path: ../../overlay/third-party/metrics-server/helmRelease.yaml
+  - path: ../../overlay/third-party/reflector/helmRelease.yaml
+  - path: ../../overlay/third-party/traefik/helmRelease.yaml
+  # Flux must never delete namespaces or volumes, even when they leave the repo.
+  - target:
+      kind: Namespace
+    patch: |-
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
+  - target:
+      kind: PersistentVolumeClaim
+    patch: |-
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
+  - target:
+      kind: PersistentVolume
+    patch: |-
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled

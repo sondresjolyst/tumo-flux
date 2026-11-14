@@ -39,20 +39,65 @@ jobs:
           while read -r kustomization; do
             dir=$(dirname "${kustomization}")
             echo "==> ${dir}"
-            kustomize build "${dir}" > /dev/null || status=1
+            # The layer Kustomizations patch with overlay files outside their
+            # own directory, which Flux allows inside the repository.
+            kustomize build --load-restrictor LoadRestrictionsNone "${dir}" > /dev/null || status=1
           done < <(find clusters components -name kustomization.yaml | sort)
           exit "${status}"
 
-      - name: Build the flux-system Kustomization
+      - name: Build the Flux Kustomizations
+        env:
+          # Values of the in-cluster tumo-flux-config ConfigMap.
+          CLUSTER_NAME: kubernetes
+          CLUSTER_TYPE: production
+          DNS_ZONE: prod.tumogroup.com
         run: |
+          set -euo pipefail
+          rendered="${RUNNER_TEMP}/rendered"
+          ks="${RUNNER_TEMP}/ks"
+          mkdir -p "${rendered}" "${ks}"
+
+          printf 'apiVersion: kustomize.toolkit.fluxcd.io/v1\nkind: Kustomization\nmetadata:\n  name: flux-system\n  namespace: flux-system\nspec:\n  path: ./clusters/production\n' \
+            > "${ks}/flux-system.yaml"
           flux build kustomization flux-system \
             --path ./clusters/production \
-            --kustomization-file ./clusters/production/postBuild.yaml \
-            --dry-run > "${RUNNER_TEMP}/rendered.yaml"
+            --kustomization-file "${ks}/flux-system.yaml" \
+            --dry-run > "${rendered}/flux-system.yaml"
+
+          # Each layer substitutes from the cluster-versions and tumo-flux-config
+          # ConfigMaps. A dry run cannot read them, so inline their data.
+          while read -r name path; do
+            {
+              printf 'apiVersion: kustomize.toolkit.fluxcd.io/v1\nkind: Kustomization\nmetadata:\n  name: %s\n  namespace: flux-system\nspec:\n  path: %s\n  postBuild:\n    substitute:\n' "${name}" "${path}"
+              sed -n '/^data:/,$p' clusters/production/versions.yaml | tail -n +2 | sed 's/^/    /'
+              printf '      clusterName: %s\n      clusterType: %s\n      dnsZone: %s\n' "${CLUSTER_NAME}" "${CLUSTER_TYPE}" "${DNS_ZONE}"
+            } > "${ks}/${name}.yaml"
+            echo "==> ${name}"
+            flux build kustomization "${name}" \
+              --path "${path}" \
+              --kustomization-file "${ks}/${name}.yaml" \
+              --strict-substitute \
+              --dry-run > "${rendered}/${name}.yaml"
+          done <<'EOF'
+          infrastructure-controllers ./clusters/production/infrastructure/controllers
+          infrastructure-configs ./clusters/production/infrastructure/configs
+          apps ./clusters/production/apps
+          EOF
+
+      - name: Check every version is a string
+        run: |
+          # ConfigMap data only takes strings. Quoting is not an option because
+          # the update script rewrites the raw value.
+          if sed -n '/^data:/,$p' clusters/production/versions.yaml | tail -n +2 \
+            | awk '{ print $1, ($2 ~ /^#/ ? "" : $2) }' \
+            | grep -Ei ' ([-+]?([0-9_]+|[0-9_]*\.[0-9_]+|[0-9_]+\.[0-9_]*)([e][-+]?[0-9]+)?|0x[0-9a-f]+|true|false|yes|no|y|n|on|off|null|~)?$'; then
+            echo "::error::versions.yaml has a value that YAML reads as a number, a boolean or null"
+            exit 1
+          fi
 
       - name: Check every chart version was patched
         run: |
-          if grep -n "version: xx" "${RUNNER_TEMP}/rendered.yaml"; then
+          if grep -n "version: xx" "${RUNNER_TEMP}"/rendered/*.yaml; then
             echo "::error::HelmRelease reached the cluster without a patched chart version"
             exit 1
           fi

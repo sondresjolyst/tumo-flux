@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../overlay/third-party/cert-manager
+  - ../../overlay/third-party/traefik
+patches:
+  # Flux must never delete namespaces or volumes, even when they leave the repo.
+  - target:
+      kind: Namespace
+    patch: |-
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
+  - target:
+      kind: PersistentVolumeClaim
+    patch: |-
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
+  - target:
+      kind: PersistentVolume
+    patch: |-
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled

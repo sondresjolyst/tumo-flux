@@ -1,31 +1,29 @@
 # tumo-flux
 
-## Adding a new `postBuild` substitution variable
+## Layout
 
-`clusters/production/postBuild.yaml` is applied as a patch onto the
-`flux-system` Kustomization itself, a self-referential bootstrap pattern,
-see `clusters/production/flux-system/gotk-sync.yaml` and
-`clusters/production/kustomization.yaml`. This means a **new** variable
-added here can deadlock Flux on first reconcile after merge:
+The `flux-system` Kustomization applies `clusters/production`. That holds the
+Flux components, the `cluster-versions` ConfigMap in
+`clusters/production/versions.yaml` and three layer Kustomizations defined in
+`clusters/production/layers.yaml`:
 
-1. Flux rebuilds `clusters/production`, producing an updated `flux-system`
-   Kustomization spec that includes the new variable.
-2. Before applying anything, Flux runs `envsubst` against manifests using its
-   **current** in-cluster spec, which does not know about the new variable
-   yet.
-3. `envsubst` fails in strict mode, variable not set, so the apply step
-   aborts, and the updated spec with the new variable never gets written to
-   the cluster. Repeated reconciles fail the same way indefinitely.
+1. `infrastructure-controllers` applies `clusters/production/infrastructure/controllers`.
+   It is ready once the traefik HelmRelease and the cert-manager Kustomization are healthy.
+2. `infrastructure-configs` applies `clusters/production/infrastructure/configs`
+   after the controllers are ready.
+3. `apps` applies `clusters/production/apps` after the configs are ready.
 
-**Fix, one-time, after merging a new variable:** manually patch the live
-Kustomization to seed the new variable before reconciling again:
+Each layer substitutes `${VARIABLE}` from the `cluster-versions` and
+`tumo-flux-config` ConfigMaps.
 
-```bash
-kubectl -n flux-system patch kustomization flux-system --type merge \
-  -p '{"spec":{"postBuild":{"substitute":{"MY_NEW_VARIABLE":"value"}}}}'
-flux reconcile kustomization flux-system --with-source
-```
+## Adding a version variable
 
-After this, git becomes authoritative again and future changes to the
-variable's value, not newly adding it, reconcile normally without the
-manual patch.
+1. Add a line to `data` in `clusters/production/versions.yaml` in the form
+   `MY_CHART_VERSION: 1.2.3 # https://artifacthub.io/packages/helm/<repo>/<chart>`.
+   The URL comment lets the update workflow find and bump the version.
+2. Use `${MY_CHART_VERSION}` in a manifest that one of the layers applies.
+
+Both changes can merge in one PR. The layers read the ConfigMap on every
+reconcile, so no manual patch is needed. Leave the value unquoted, because
+the update workflow rewrites it as plain text. CI fails if YAML would read it
+as a number, such as `1.2`.
