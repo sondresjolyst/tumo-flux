@@ -25,7 +25,8 @@ spec:
     storageClasses:
       - name: nfs
         defaultClass: false
-        reclaimPolicy: Delete
+        # Keep the data on the NAS when a PVC is deleted. Remove released volumes by hand.
+        reclaimPolicy: Retain
         volumeBindingMode: Immediate
         allowVolumeExpansion: true
         parameters:
