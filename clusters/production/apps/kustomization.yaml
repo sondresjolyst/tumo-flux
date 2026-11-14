@@ -1,0 +1,76 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../components/third-party/tumogroup
+  - ../../../components/third-party/tumogroup-monitor
+  - ../../../components/third-party/bobby-api
+  - ../../../components/third-party/emqx
+  - ../../../components/third-party/garge
+  - ../../../components/third-party/garge-api
+  - ../../../components/third-party/garge-app
+  - ../../../components/third-party/garge-operator
+  - ../../../components/third-party/nstuning
+  - ../../../components/third-party/nstuning-api
+  - ../../../components/third-party/nstuning-app
+  - ../../../components/third-party/altinnendata
+  - ../../../components/third-party/altinnendata-api
+  - ../../../components/third-party/altinnendata-app
+  - ../../../components/third-party/pyttogpanne
+  - ../../../components/third-party/pyttogpanne-api
+  - ../../../components/third-party/pyttogpanne-app
+  - ../../../components/third-party/sjolystinnovation
+  - ../../../components/third-party/sjolystinnovation-app
+  - ../../../components/third-party/home-assistant
+  - ../../../components/third-party/minecraft
+  - ../../../components/third-party/julalan
+  - ../../../components/third-party/blobby-volley-tournament
+  - ../../../components/third-party/blobby-server
+  - ../overlay/third-party/home-assistant
+  - ../overlay/third-party/home-assistant-et
+  - ../overlay/third-party/traefik/routes
+patches:
+  - path: ../overlay/third-party/tumogroup-monitor/helmRelease.yaml
+  - path: ../overlay/third-party/bobby-api/helmRelease.yaml
+  - path: ../overlay/third-party/emqx/helmRelease.yaml
+  - path: ../overlay/third-party/garge-api/helmRelease.yaml
+  - path: ../overlay/third-party/garge-app/helmRelease.yaml
+  - path: ../overlay/third-party/garge-operator/helmRelease.yaml
+  - path: ../overlay/third-party/nstuning-api/helmRelease.yaml
+  - path: ../overlay/third-party/nstuning-app/helmRelease.yaml
+  - path: ../overlay/third-party/altinnendata-api/helmRelease.yaml
+  - path: ../overlay/third-party/altinnendata-app/helmRelease.yaml
+  - path: ../overlay/third-party/pyttogpanne-api/helmRelease.yaml
+  - path: ../overlay/third-party/pyttogpanne-app/helmRelease.yaml
+  - path: ../overlay/third-party/sjolystinnovation-app/helmRelease.yaml
+  - path: ../overlay/third-party/home-assistant/helmRelease.yaml
+  - path: ../overlay/third-party/minecraft-hs/helmRelease.yaml
+  - path: ../overlay/third-party/blobby-volley-tournament/helmRelease.yaml
+  - path: ../overlay/third-party/blobby-server/helmRelease.yaml
+  # Flux must never delete namespaces or volumes, even when they leave the repo.
+  - target:
+      kind: Namespace
+    patch: |-
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
+  - target:
+      kind: PersistentVolumeClaim
+    patch: |-
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
+  - target:
+      kind: PersistentVolume
+    patch: |-
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+        name: prune-disabled
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled

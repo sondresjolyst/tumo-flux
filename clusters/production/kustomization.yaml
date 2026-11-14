@@ -2,77 +2,24 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - flux-system
-  - ../../components/third-party/bobby-api
-  - ../../components/third-party/cert-manager
-  - ../../components/third-party/crowdsec
-  - ../../components/third-party/democratic-csi
-  - ../../components/third-party/descheduler
-  - ../../components/third-party/emqx
-  - ../../components/third-party/grafana
-  - ../../components/third-party/garge
-  - ../../components/third-party/garge-api
-  - ../../components/third-party/garge-app
-  - ../../components/third-party/garge-operator
-  - ../../components/third-party/nstuning
-  - ../../components/third-party/nstuning-api
-  - ../../components/third-party/nstuning-app
-  - ../../components/third-party/altinnendata
-  - ../../components/third-party/altinnendata-api
-  - ../../components/third-party/altinnendata-app
-  - ../../components/third-party/pyttogpanne
-  - ../../components/third-party/pyttogpanne-api
-  - ../../components/third-party/pyttogpanne-app
-  - ../../components/third-party/sjolystinnovation
-  - ../../components/third-party/sjolystinnovation-app
-  - ../../components/third-party/home-assistant
-  - ../../components/third-party/kube-prometheus-stack
-  - ../../components/third-party/reflector
-  - ../../components/third-party/kured
-  - ../../components/third-party/loki
-  - ../../components/third-party/metallb
-  - ../../components/third-party/metrics-server
-  - ../../components/third-party/minecraft
-  - ../../components/third-party/alloy
-  - ../../components/third-party/traefik
-  - ../../components/third-party/tumogroup
-  - ../../components/third-party/tumogroup-monitor
-  - ../../components/third-party/julalan
-  - ../../components/third-party/blobby-volley-tournament
-  - ../../components/third-party/blobby-server
-  - ./overlay/third-party/cert-manager
-  - ./overlay/third-party/home-assistant
-  - ./overlay/third-party/home-assistant-et
-  - ./overlay/third-party/traefik
+  - versions.yaml
+  - layers.yaml
 patches:
-  - path: ./postBuild.yaml
-  - path: ./overlay/third-party/bobby-api/helmRelease.yaml
-  - path: ./overlay/third-party/cert-manager/patches.yaml
-  - path: ./overlay/third-party/crowdsec/helmRelease.yaml
-  - path: ./overlay/third-party/democratic-csi/helmRelease.yaml
-  - path: ./overlay/third-party/descheduler/helmRelease.yaml
-  - path: ./overlay/third-party/emqx/helmRelease.yaml
-  - path: ./overlay/third-party/garge-api/helmRelease.yaml
-  - path: ./overlay/third-party/garge-app/helmRelease.yaml
-  - path: ./overlay/third-party/garge-operator/helmRelease.yaml
-  - path: ./overlay/third-party/nstuning-api/helmRelease.yaml
-  - path: ./overlay/third-party/nstuning-app/helmRelease.yaml
-  - path: ./overlay/third-party/altinnendata-api/helmRelease.yaml
-  - path: ./overlay/third-party/altinnendata-app/helmRelease.yaml
-  - path: ./overlay/third-party/pyttogpanne-api/helmRelease.yaml
-  - path: ./overlay/third-party/pyttogpanne-app/helmRelease.yaml
-  - path: ./overlay/third-party/sjolystinnovation-app/helmRelease.yaml
-  - path: ./overlay/third-party/tumogroup-monitor/helmRelease.yaml
-  - path: ./overlay/third-party/blobby-volley-tournament/helmRelease.yaml
-  - path: ./overlay/third-party/blobby-server/helmRelease.yaml
-  - path: ./overlay/third-party/grafana/helmRelease.yaml
-  - path: ./overlay/third-party/home-assistant-et/helmRelease.yaml
-  - path: ./overlay/third-party/home-assistant/helmRelease.yaml
-  - path: ./overlay/third-party/kube-prometheus-stack/helmRelease.yaml
-  - path: ./overlay/third-party/reflector/helmRelease.yaml
-  - path: ./overlay/third-party/kured/helmRelease.yaml
-  - path: ./overlay/third-party/loki/helmRelease.yaml
-  - path: ./overlay/third-party/metallb/helmRelease.yaml
-  - path: ./overlay/third-party/metrics-server/helmRelease.yaml
-  - path: ./overlay/third-party/minecraft-hs/helmRelease.yaml
-  - path: ./overlay/third-party/alloy/helmRelease.yaml
-  - path: ./overlay/third-party/traefik/helmRelease.yaml
+  # flux-system keeps pruning off while objects move to the layer Kustomizations.
+  - target:
+      kind: Kustomization
+      name: flux-system
+    patch: |-
+      - op: replace
+        path: /spec/prune
+        value: false
+  - target:
+      kind: Namespace
+      name: flux-system
+    patch: |-
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: flux-system
+        annotations:
+          kustomize.toolkit.fluxcd.io/prune: disabled
