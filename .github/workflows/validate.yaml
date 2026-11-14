@@ -99,11 +99,16 @@ jobs:
           apps ./clusters/production/apps
           EOF
 
-          # The cert-manager chart is applied by a child Kustomization, which the
-          # infrastructure-controllers layer patches with the chart version.
-          # Build it from its rendered spec, so those patches are checked too.
+          # The cert-manager chart is applied by a child Kustomization with its own
+          # substitutions. Build it from its rendered spec, with the data inlined.
           yq eval '
             select(.apiVersion == "kustomize.toolkit.fluxcd.io/v1" and .kind == "Kustomization" and .metadata.name == "cert-manager")
+            | del(.spec.postBuild.substituteFrom)
+            | .spec.postBuild.substitute = (load("clusters/production/versions.yaml").data + {
+                "clusterName": strenv(CLUSTER_NAME),
+                "clusterType": strenv(CLUSTER_TYPE),
+                "dnsZone": strenv(DNS_ZONE)
+              })
           ' "${rendered}/infrastructure-controllers.yaml" > "${ks}/cert-manager.yaml"
           test -s "${ks}/cert-manager.yaml" || {
             echo "::error::No cert-manager Kustomization in the infrastructure-controllers render"
@@ -113,6 +118,7 @@ jobs:
           flux build kustomization cert-manager \
             --path "$(yq eval '.spec.path' "${ks}/cert-manager.yaml")" \
             --kustomization-file "${ks}/cert-manager.yaml" \
+            --strict-substitute \
             --dry-run > "${rendered}/cert-manager.yaml"
 
       - name: Validate rendered manifests against schemas

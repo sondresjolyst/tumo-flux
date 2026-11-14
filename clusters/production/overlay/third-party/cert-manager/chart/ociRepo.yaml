@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: cert-manager
+  namespace: flux-system
+spec:
+  ref:
+    tag: v${CERT_MANAGER_VERSION} # The OCI tag has a v prefix.
