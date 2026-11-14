@@ -2,5 +2,17 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>sondresjolyst/si-renovate-config"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Tool versions in workflow env with a renovate comment",
+      "managerFilePatterns": [
+        "/^\\.github/workflows/[^/]+\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+) depName=(?<depName>\\S+)(?: extractVersion=(?<extractVersion>\\S+))?\\s+[A-Z0-9_]+: (?<currentValue>\\S+)"
+      ]
+    }
   ]
 }
