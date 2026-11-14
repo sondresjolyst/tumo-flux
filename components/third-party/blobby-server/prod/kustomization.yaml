@@ -3,13 +3,3 @@ kind: Kustomization
 namespace: julalan-prod
 resources:
 - ../base
-patches:
-  # Suspended until the game has a release image and the blobby-server-secrets Secret exists.
-  # Set BLOBBY_SERVER_IMAGE_TAG in postBuild and run the blobby-server bootstrap for prod, then remove this.
-  - patch: |-
-      apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      metadata:
-        name: blobby-server
-      spec:
-        suspend: true
