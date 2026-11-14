@@ -1,0 +1,104 @@
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Provider
+metadata:
+  name: discord
+  namespace: flux-system
+spec:
+  type: discord
+  # Created by scripts/flux/bootstrap.sh in tumo-platform.
+  secretRef:
+    name: discord-webhook
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Alert
+metadata:
+  name: discord-errors
+  namespace: flux-system
+spec:
+  providerRef:
+    name: discord
+  eventSeverity: error
+  # Alert sources take no namespace wildcard, so every HelmRelease namespace is listed.
+  # CI fails when a HelmRelease lives in a namespace missing from this list.
+  eventSources:
+    - kind: GitRepository
+      name: "*"
+    - kind: HelmRepository
+      name: "*"
+    - kind: Kustomization
+      name: "*"
+    - kind: HelmRelease
+      name: "*"
+      namespace: altinnendata-dev
+    - kind: HelmRelease
+      name: "*"
+      namespace: altinnendata-prod
+    - kind: HelmRelease
+      name: "*"
+      namespace: bobby-prod
+    - kind: HelmRelease
+      name: "*"
+      namespace: cert-manager
+    - kind: HelmRelease
+      name: "*"
+      namespace: crowdsec
+    - kind: HelmRelease
+      name: "*"
+      namespace: democratic-csi
+    - kind: HelmRelease
+      name: "*"
+      namespace: emqx
+    - kind: HelmRelease
+      name: "*"
+      namespace: garge-dev
+    - kind: HelmRelease
+      name: "*"
+      namespace: garge-prod
+    - kind: HelmRelease
+      name: "*"
+      namespace: home-assistant
+    - kind: HelmRelease
+      name: "*"
+      namespace: home-assistant-et
+    - kind: HelmRelease
+      name: "*"
+      namespace: julalan-dev
+    - kind: HelmRelease
+      name: "*"
+      namespace: julalan-prod
+    - kind: HelmRelease
+      name: "*"
+      namespace: kube-system
+    - kind: HelmRelease
+      name: "*"
+      namespace: metallb-system
+    - kind: HelmRelease
+      name: "*"
+      namespace: minecraft
+    - kind: HelmRelease
+      name: "*"
+      namespace: monitor
+    - kind: HelmRelease
+      name: "*"
+      namespace: nstuning-dev
+    - kind: HelmRelease
+      name: "*"
+      namespace: nstuning-prod
+    - kind: HelmRelease
+      name: "*"
+      namespace: pyttogpanne-dev
+    - kind: HelmRelease
+      name: "*"
+      namespace: pyttogpanne-prod
+    - kind: HelmRelease
+      name: "*"
+      namespace: sjolystinnovation-dev
+    - kind: HelmRelease
+      name: "*"
+      namespace: sjolystinnovation-prod
+    - kind: HelmRelease
+      name: "*"
+      namespace: traefik
+    - kind: HelmRelease
+      name: "*"
+      namespace: tumogroup-monitor-prod

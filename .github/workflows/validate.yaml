@@ -101,3 +101,13 @@ jobs:
             echo "::error::HelmRelease reached the cluster without a patched chart version"
             exit 1
           fi
+
+      - name: Check every HelmRelease namespace has Discord alerts
+        run: |
+          rendered=$(awk '/^kind: HelmRelease$/{hr=1} /^---$/{hr=0} hr && /^  namespace: /{print $2}' "${RUNNER_TEMP}"/rendered/*.yaml | sort -u)
+          listed=$(awk '/kind: HelmRelease/{hr=1; next} hr && /namespace: /{print $2; hr=0}' clusters/production/notifications.yaml | sort -u)
+          missing=$(comm -23 <(echo "${rendered}") <(echo "${listed}"))
+          if [ -n "${missing}" ]; then
+            echo "::error::Add these HelmRelease namespaces to clusters/production/notifications.yaml: ${missing}"
+            exit 1
+          fi

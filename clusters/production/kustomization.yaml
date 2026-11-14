@@ -4,6 +4,7 @@ resources:
   - flux-system
   - versions.yaml
   - layers.yaml
+  - notifications.yaml
 patches:
   - target:
       kind: Namespace
