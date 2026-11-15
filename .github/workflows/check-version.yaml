@@ -56,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SOURCE_CLUSTER: ${{ inputs.sourceCluster }}
           DESTINATION_CLUSTER: ${{ inputs.destinationCluster }}
-        run: .github/workflows/scripts/update_components.sh
+        run: bash .github/workflows/scripts/update_components.sh
 
       - name: Create PR
         if: ${{ steps.checkversion.outputs.numberOfChanges > 0 }}
@@ -64,4 +64,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_BRANCH: ${{ env.PR_BRANCH }}
           PR_NAME: ${{ env.PR_NAME }}
-        run: .github/workflows/scripts/create_pr.sh
+        run: bash .github/workflows/scripts/create_pr.sh
