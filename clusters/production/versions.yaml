@@ -16,16 +16,16 @@ data:
   GARGE_API_VERSION: 0.1.79 # https://artifacthub.io/packages/helm/garge/garge-api
   GARGE_APP_VERSION: 0.1.68 # https://artifacthub.io/packages/helm/garge/garge-app
   GARGE_OPERATOR_VERSION: 0.1.45 # https://artifacthub.io/packages/helm/garge/garge-operator
-  NSTUNING_API_VERSION: 0.1.33 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
-  NSTUNING_APP_VERSION: 0.1.34 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
-  ALTINNENDATA_API_VERSION: 0.1.37 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
-  ALTINNENDATA_APP_VERSION: 0.1.38 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
-  PYTTOGPANNE_API_VERSION: 0.1.14 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
-  PYTTOGPANNE_APP_VERSION: 0.1.12 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
-  SJOLYSTINNOVATION_APP_VERSION: 0.1.14 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
-  TUMOGROUP_MONITOR_VERSION: 0.1.2 # https://artifacthub.io/packages/helm/tumogroup/tumogroup-monitor
-  BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.7 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
-  BLOBBY_SERVER_VERSION: 0.2.1 # https://artifacthub.io/packages/helm/tumogroup/blobby-server
+  NSTUNING_API_VERSION: 0.1.34 # https://artifacthub.io/packages/helm/tumogroup/nstuning-api
+  NSTUNING_APP_VERSION: 0.1.35 # https://artifacthub.io/packages/helm/tumogroup/nstuning-app
+  ALTINNENDATA_API_VERSION: 0.1.38 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-api
+  ALTINNENDATA_APP_VERSION: 0.1.39 # https://artifacthub.io/packages/helm/tumogroup/altinnendata-app
+  PYTTOGPANNE_API_VERSION: 0.1.15 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-api
+  PYTTOGPANNE_APP_VERSION: 0.1.13 # https://artifacthub.io/packages/helm/tumogroup/pyttogpanne-app
+  SJOLYSTINNOVATION_APP_VERSION: 0.1.15 # https://artifacthub.io/packages/helm/tumogroup/sjolystinnovation-app
+  TUMOGROUP_MONITOR_VERSION: 0.1.3 # https://artifacthub.io/packages/helm/tumogroup/tumogroup-monitor
+  BLOBBY_VOLLEY_TOURNAMENT_VERSION: 0.1.8 # https://artifacthub.io/packages/helm/tumogroup/blobby-volley-tournament
+  BLOBBY_SERVER_VERSION: 0.2.2 # https://artifacthub.io/packages/helm/tumogroup/blobby-server
   GRAFANA_VERSION: 14.4.1 # https://artifacthub.io/packages/helm/grafana-community/grafana
   HOME_ASSISTANT_VERSION_ET: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
   HOME_ASSISTANT_VERSION: 2.14.1 # https://artifacthub.io/packages/helm/alekc/home-assistant
